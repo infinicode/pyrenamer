@@ -22,9 +22,9 @@ License:
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this package; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-   02111-1307, USA.
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+   02110-1301, USA.
 
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
@@ -51,3 +51,7 @@ Except for file src/TreeViewTooltips.py, which its license is:
    ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    SOFTWARE.
+   
+
+The Debian packaging is (C) 2007, Adolfo González Blázquez <code@infinicode.org>
+and is licensed under the GPL, see above.
