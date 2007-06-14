@@ -28,11 +28,13 @@
 -= Author =-
  Adolfo González Blázquez <code@infinicode.org>
  
+ 
 -= TreeFileBrowser =-
  pyRenamer uses a widget called treefilebrowser.py, which is a tree-like file browser,
  just like the one on Nautilus side bar.
  You can see its source code on src/treefilebrowser.py
  There's an example on how to use it on doc/treefilebrowser_example.py
+
 
 -= Thanks =-
   pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>
