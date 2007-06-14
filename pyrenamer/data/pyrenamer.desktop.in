@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=pyRenamer
+Comment=Mass rename files
+Exec=pyrenamer
+Icon=@IMAGEDIR@/pyrenamer.png
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Application;Utility;

@@ -1,0 +1,28 @@
+-======================-
+-=   pyRenamer 0.1    =-
+-======================-
+
+pyRenamer is an application for mass renaming files.
+
+pyRenamer is released under the terms of the GNU General Public License.
+
+-= You need =_
+ * python
+ * pygtk (>= 2.6)
+ * gconf
+ 
+ 
+ -= To install =-
+ $ ./configure --prefix /usr
+ $ sudo make install
+
+
+-= Website =-
+ More info on: http://www.infinicode.org/code/pyrenamer/
+ 
+-= Author =-
+ Adolfo González Blázquez <code@infinicode.org>
+ 
+
+-= Thanks =-
+  pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>
