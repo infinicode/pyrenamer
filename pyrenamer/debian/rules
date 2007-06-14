@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+# CDBS Classes & Rules
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/class/gnome.mk
+
+# Python stuff
+binary-install/pyrenamer::
+	dh_pysupport -ppyrenamer
