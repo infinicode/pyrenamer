@@ -2,9 +2,13 @@
 -=   pyRenamer 0.1    =-
 -======================-
 
-pyRenamer is an application for mass renaming files.
+  pyRenamer is an application for mass renaming files.
 
-pyRenamer is released under the terms of the GNU General Public License.
+  You can rename files using patterns, substitutions,
+  insert or delete text, or even rename files manually.
+
+  pyRenamer is released under the terms of the GNU General Public License.
+
 
 -= You need =_
  * python
@@ -12,7 +16,7 @@ pyRenamer is released under the terms of the GNU General Public License.
  * gconf
  
  
- -= To install =-
+-= To install =-
  $ ./configure --prefix /usr
  $ sudo make install
 
@@ -20,9 +24,15 @@ pyRenamer is released under the terms of the GNU General Public License.
 -= Website =-
  More info on: http://www.infinicode.org/code/pyrenamer/
  
+ 
 -= Author =-
  Adolfo González Blázquez <code@infinicode.org>
  
+-= TreeFileBrowser =-
+ pyRenamer uses a widget called treefilebrowser.py, which is a tree-like file browser,
+ just like the one on Nautilus side bar.
+ You can see its source code on src/treefilebrowser.py
+ There's an example on how to use it on doc/treefilebrowser_example.py
 
 -= Thanks =-
   pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>

@@ -21,6 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
+"""
+This is an example on how to use treefilebrowser.py, which is a
+tree-like file browser, like the one found on Nautilus.
+"""
+
 import gtk
 import pygtk
 import treefilebrowser
