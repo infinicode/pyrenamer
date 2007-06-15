@@ -27,6 +27,8 @@ import re
 import sys
 import time
 
+import EXIF
+
 STOP = False
 
 def set_stop(stop):
@@ -275,10 +277,48 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     newname = newname.replace('{dayname}', time.strftime("%A", time.localtime()))
     newname = newname.replace('{daysimp}', time.strftime("%a", time.localtime()))
     
+    # Image EXIF replacements
+    idate = get_exif_data(get_new_path(name, path))
+    if idate != None:
+        newname = newname.replace('{imagedate}', time.strftime("%d%b%Y", idate))
+        newname = newname.replace('{imageyear}', time.strftime("%Y", idate))
+        newname = newname.replace('{imagemonth}', time.strftime("%m", idate))
+        newname = newname.replace('{imagemonthname}', time.strftime("%B", idate))
+        newname = newname.replace('{imagemonthsimp}', time.strftime("%b", idate))
+        newname = newname.replace('{imageday}', time.strftime("%d", idate))
+        newname = newname.replace('{imagedayname}', time.strftime("%A", idate))
+        newname = newname.replace('{imagedaysimp}', time.strftime("%a", idate))
+    else:
+        newname = newname.replace('{imagedate}','')
+        newname = newname.replace('{imageyear}', '')
+        newname = newname.replace('{imagemonth}', '')
+        newname = newname.replace('{imagemonthname}', '')
+        newname = newname.replace('{imagemonthsimp}', '')
+        newname = newname.replace('{imageday}', '')
+        newname = newname.replace('{imagedayname}', '')
+        newname = newname.replace('{imagedaysimp}', '')
+        
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return newname, newpath
 
+
+def get_exif_data(path):
+    """ Get EXIF data from file. """
+    try:
+        file = open(path, 'rb')
+    except:
+        return None
+    
+    tags = EXIF.process_file(file)
+    if not tags:
+        return None
+    
+    # tags['EXIF DateTimeOriginal'] = "2001:03:31 12:27:36"
+    if tags.has_key('EXIF DateTimeOriginal'):
+        data = str(tags['EXIF DateTimeOriginal'])
+        return time.strptime(data, "%Y:%m:%d %H:%M:%S")
+    
 
 def rename_file(ori, new):
     """ Change filename with the new one """

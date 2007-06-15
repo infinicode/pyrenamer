@@ -2,6 +2,11 @@
 	
 	* src/pyrenamerfilefuncs.py: (escape_pattern), (get_file_listing):
 	Add function to scape special chars on patterns, so glob doesn't get confused.
+	
+	* src/EXIF.py: Added EXIF parser from Gene Cash.
+	
+	* src/pyrenamerfilefuncs.py: (rename_using_patterns), (get_exif_data):
+	Add support for extracting EXIF date info from images, to be used in the pattern view.
 
 2007-06-14  Adolfo González Blázquez <code@infinicode.org>
 

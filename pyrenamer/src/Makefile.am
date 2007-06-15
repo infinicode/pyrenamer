@@ -9,7 +9,8 @@ pyrenamer_PYTHON =		\
 	pyrenamer_globals.py	\
 	tooltips.py		\
 	treefilebrowser.py	\
-	TreeViewTooltips.py
+	TreeViewTooltips.py	\
+	EXIF.py
 
 EXTRA_DIST = 			\
 	$(bin_SCRIPTS)		\

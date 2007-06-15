@@ -321,9 +321,9 @@
 			<widget class="GtkEntry" id="original_pattern">
 			  <property name="visible">True</property>
 			  <property name="tooltip" translatable="yes">{#}	Numbers
-{L}	Letters
+{L}		Letters
 {C}	Characters (numbers and letters, not spaces)
-{X}	Numbers, letters, and spaces
+{X}		Numbers, letters, and spaces
 {@}	Trash </property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -391,7 +391,12 @@ Some date replacements:
 {monthsimp}	feb
 {day}			22
 {dayname}		friday
-{daysimp}		fri</property>
+{daysimp}		fri
+
+Add 'image' to get date from image EXIF data:
+{imagedate}
+{imageyear}
+....</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
