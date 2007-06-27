@@ -1,3 +1,14 @@
+2007-06-27  Adolfo González Blázquez <code@infinicode.org>
+
+	* data/pyrenamer.glade:
+	Add support for extracting EXIF info from images, in a new tab called Images
+	
+	* src/pyrenamerfilefuncs.py: (rename_using_patterns), (replace_images), (get_exif_data):
+	Add support for extracting EXIF info from images, in a new tab called Images
+	
+	* src/pyrenamer.py:
+	Add support for extracting EXIF info from images, in a new tab called Images
+	
 2007-06-15  Adolfo González Blázquez <code@infinicode.org>
 	
 	* src/pyrenamerfilefuncs.py: (escape_pattern), (get_file_listing):
