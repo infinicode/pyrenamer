@@ -71,7 +71,7 @@ class pyRenamer:
         # Gconf preferences stuff
         self.gconf_path = '/apps/' + glob.name
         self.gconf_key_dir = self.gconf_path + '/dir'
-	self.gconf_window_maximized = self.gconf_path + '/window_maximized'
+        self.gconf_window_maximized = self.gconf_path + '/window_maximized'
         self.gconf_pane_position = self.gconf_path + '/pane_position'
         self.gconf_window_width = self.gconf_path + '/window_width'
         self.gconf_window_height = self.gconf_path + '/window_height'
@@ -111,6 +111,10 @@ class pyRenamer:
         self.delete_to = self.glade_tree.get_widget("delete_to")
         self.manual = self.glade_tree.get_widget("manual")
         self.menu_rename = self.glade_tree.get_widget("menu_rename")
+        self.images_original_pattern = self.glade_tree.get_widget("images_original_pattern")
+        self.images_renamed_pattern = self.glade_tree.get_widget("images_renamed_pattern")
+        self.music_original_pattern = self.glade_tree.get_widget("music_original_pattern")
+        self.music_renamed_pattern = self.glade_tree.get_widget("music_renamed_pattern")
         
         self.statusbar_context = self.statusbar.get_context_id("file_renamer")
         
@@ -143,6 +147,10 @@ class pyRenamer:
                     "on_delete_radio_toggled": self.on_delete_radio_toggled,
                     "on_delete_from_changed": self.on_delete_from_changed,
                     "on_delete_to_changed": self.on_delete_to_changed,
+                    "on_images_original_pattern_changed": self.on_images_original_pattern_changed,
+                    "on_images_renamed_pattern_changed": self.on_images_renamed_pattern_changed,
+                    "on_music_original_pattern_changed": self.on_music_original_pattern_changed,
+                    "on_music_renamed_pattern_changed": self.on_music_renamed_pattern_changed,
                     "on_menu_quit_activate": self.on_main_quit,
                     "on_menu_about_activate": self.about_info,
                     "on_quit_button_clicked": self.on_main_quit }
@@ -315,6 +323,14 @@ class pyRenamer:
                 else:
                     newname = model.get_value(iter, 2)
                     newpath = model.get_value(iter, 3)
+        
+        elif self.notebook.get_current_page() == 4:
+            # Replace images using patterns
+            pattern_ini = self.images_original_pattern.get_text()
+            pattern_end = self.images_renamed_pattern.get_text()
+            newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
+            newname, newpath = renamerfilefuncs.replace_images(name, path, newname, newpath)
+        
         
         # Set new values on model
         model.set_value(iter, 2, newname)
@@ -499,6 +515,30 @@ class pyRenamer:
         self.menu_rename.set_sensitive(False)
         if self.delete_to.get_value() < self.delete_from.get_value(): 
             self.delete_to.set_value(self.delete_from.get_value())
+
+    def on_images_original_pattern_changed(self, widget):
+        """ Reload current dir and disable Rename button """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+
+
+    def on_images_renamed_pattern_changed(self, widget):
+        """ Disable Rename button (user has to click on Preview again) """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+
+
+    def on_music_original_pattern_changed(self, widget):
+        """ Reload current dir and disable Rename button """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+
+
+    def on_music_renamed_pattern_changed(self, widget):
+        """ Disable Rename button (user has to click on Preview again) """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+
 
 
     def on_main_quit(self, *args):

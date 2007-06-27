@@ -383,7 +383,7 @@ Use {num-10} for 10, 11, 12...
 Use {num2-10} for 010, 011, 012...
 Use {dir} for getting current dir
 
-Some date replacements:
+Some today date replacements:
 {date}			22feb1980
 {year}			1980
 {month}		02
@@ -391,12 +391,7 @@ Some date replacements:
 {monthsimp}	feb
 {day}			22
 {dayname}		friday
-{daysimp}		fri
-
-Add 'image' to get date from image EXIF data:
-{imagedate}
-{imageyear}
-....</property>
+{daysimp}		fri</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -405,7 +400,7 @@ Add 'image' to get date from image EXIF data:
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">●</property>
 			  <property name="activates_default">False</property>
-			  <signal name="changed" handler="on_renamed_pattern_changed" last_modification_time="Sat, 23 Sep 2006 13:49:47 GMT"/>
+			  <signal name="changed" handler="on_renamed_pattern_changed" last_modification_time="Wed, 27 Jun 2007 18:49:07 GMT"/>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
@@ -1124,6 +1119,348 @@ Dots to Spaces</property>
 		      <property name="type">tab</property>
 		    </packing>
 		  </child>
+
+		  <child>
+		    <widget class="GtkTable" id="images_table">
+		      <property name="border_width">12</property>
+		      <property name="visible">True</property>
+		      <property name="n_rows">2</property>
+		      <property name="n_columns">2</property>
+		      <property name="homogeneous">False</property>
+		      <property name="row_spacing">6</property>
+		      <property name="column_spacing">6</property>
+
+		      <child>
+			<widget class="GtkLabel" id="label20">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Original file name pattern</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">True</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">0</property>
+			  <property name="bottom_attach">1</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="images_original_pattern">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">{#}	Numbers
+{L}		Letters
+{C}	Characters (numbers and letters, not spaces)
+{X}		Numbers, letters, and spaces
+{@}	Trash </property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes">{X}</property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">●</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_images_original_pattern_changed" last_modification_time="Wed, 27 Jun 2007 18:41:36 GMT"/>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">0</property>
+			  <property name="bottom_attach">1</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkLabel" id="label21">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Renamed file name  pattern</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">True</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">1</property>
+			  <property name="bottom_attach">2</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="images_renamed_pattern">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Image EXIF data replacements:
+{imagewidth}			640
+{imageheight}			480
+{cameramaker}			Nikon
+{cameramodel}			D-50
+{imagedate}			22feb1980
+{imageyear}			1980
+{imagemonth}			02
+{imagemonthname}		february
+{imagemonthsimp}		feb
+{imageday}				22
+{imagedayname}		friday
+{imagedaysimp}		fri
+
+Common replacements:
+Use {1} for first catched item. {2} for second, etc...
+Use {num} for adding 1, 2, 3... to file names
+Use {num2} for 01, 02, 03.....
+Use {num3} for 001, 002, 003...
+Use {num-10} for 10, 11, 12...
+Use {num2-10} for 010, 011, 012...
+Use {dir} for getting current dir
+
+Some today date replacements:
+{date}			22feb1980
+{year}			1980
+{month}		02
+{monthname}	february
+{monthsimp}	feb
+{day}			22
+{dayname}		friday
+{daysimp}		fri</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes">{1}</property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">●</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_images_renamed_pattern_changed" last_modification_time="Wed, 27 Jun 2007 18:38:23 GMT"/>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">1</property>
+			  <property name="bottom_attach">2</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="tab_expand">False</property>
+		      <property name="tab_fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label18">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Images</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="type">tab</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkTable" id="table2">
+		      <property name="border_width">12</property>
+		      <property name="visible">True</property>
+		      <property name="n_rows">2</property>
+		      <property name="n_columns">2</property>
+		      <property name="homogeneous">False</property>
+		      <property name="row_spacing">6</property>
+		      <property name="column_spacing">6</property>
+
+		      <child>
+			<widget class="GtkLabel" id="label22">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Original file name pattern</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">True</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">0</property>
+			  <property name="bottom_attach">1</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="music_original_pattern">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">{#}	Numbers
+{L}		Letters
+{C}	Characters (numbers and letters, not spaces)
+{X}		Numbers, letters, and spaces
+{@}	Trash </property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes">{X}</property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">●</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_music_original_pattern_changed" last_modification_time="Wed, 27 Jun 2007 18:34:42 GMT"/>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">0</property>
+			  <property name="bottom_attach">1</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkLabel" id="label23">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Renamed file name  pattern</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">True</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">1</property>
+			  <property name="bottom_attach">2</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="music_renamed_pattern">
+			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Use {1} for first catched item. {2} for second, etc...
+Use {num} for adding 1, 2, 3... to file names
+Use {num2} for 01, 02, 03.....
+Use {num3} for 001, 002, 003...
+Use {num-10} for 10, 11, 12...
+Use {num2-10} for 010, 011, 012...
+Use {dir} for getting current dir
+
+Some today date replacements:
+{date}			22feb1980
+{year}			1980
+{month}		02
+{monthname}	february
+{monthsimp}	feb
+{day}			22
+{dayname}		friday
+{daysimp}		fri
+
+Add 'image' to get date from image EXIF data:
+{imagedate}
+{imageyear}
+....</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes">{1}</property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">●</property>
+			  <property name="activates_default">False</property>
+			  <signal name="changed" handler="on_music_renamed_pattern_changed" last_modification_time="Wed, 27 Jun 2007 18:34:50 GMT"/>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">1</property>
+			  <property name="bottom_attach">2</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="tab_expand">False</property>
+		      <property name="tab_fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkLabel" id="label19">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Music</property>
+		      <property name="use_underline">False</property>
+		      <property name="use_markup">False</property>
+		      <property name="justify">GTK_JUSTIFY_LEFT</property>
+		      <property name="wrap">False</property>
+		      <property name="selectable">False</property>
+		      <property name="xalign">0.5</property>
+		      <property name="yalign">0.5</property>
+		      <property name="xpad">0</property>
+		      <property name="ypad">0</property>
+		      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		      <property name="width_chars">-1</property>
+		      <property name="single_line_mode">False</property>
+		      <property name="angle">0</property>
+		    </widget>
+		    <packing>
+		      <property name="type">tab</property>
+		    </packing>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="padding">0</property>
@@ -1136,7 +1473,7 @@ Dots to Spaces</property>
 		<widget class="GtkVButtonBox" id="vbuttonbox1">
 		  <property name="visible">True</property>
 		  <property name="layout_style">GTK_BUTTONBOX_END</property>
-		  <property name="spacing">10</property>
+		  <property name="spacing">22</property>
 
 		  <child>
 		    <widget class="GtkButton" id="preview_button">

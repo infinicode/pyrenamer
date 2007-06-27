@@ -276,18 +276,27 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     newname = newname.replace('{day}', time.strftime("%d", time.localtime()))
     newname = newname.replace('{dayname}', time.strftime("%A", time.localtime()))
     newname = newname.replace('{daysimp}', time.strftime("%a", time.localtime()))
+        
+    # Returns new name and path
+    newpath = get_new_path(newname, path)
+    return newname, newpath
+
+
+def replace_images(name, path, newname, newpath):
+    """ Pattern replace for images """
     
     # Image EXIF replacements
-    idate = get_exif_data(get_new_path(name, path))
-    if idate != None:
-        newname = newname.replace('{imagedate}', time.strftime("%d%b%Y", idate))
-        newname = newname.replace('{imageyear}', time.strftime("%Y", idate))
-        newname = newname.replace('{imagemonth}', time.strftime("%m", idate))
-        newname = newname.replace('{imagemonthname}', time.strftime("%B", idate))
-        newname = newname.replace('{imagemonthsimp}', time.strftime("%b", idate))
-        newname = newname.replace('{imageday}', time.strftime("%d", idate))
-        newname = newname.replace('{imagedayname}', time.strftime("%A", idate))
-        newname = newname.replace('{imagedaysimp}', time.strftime("%a", idate))
+    date, width, height, cameramaker, cameramodel = get_exif_data(get_new_path(name, path))
+    
+    if date != None:
+        newname = newname.replace('{imagedate}', time.strftime("%d%b%Y", date))
+        newname = newname.replace('{imageyear}', time.strftime("%Y", date))
+        newname = newname.replace('{imagemonth}', time.strftime("%m", date))
+        newname = newname.replace('{imagemonthname}', time.strftime("%B", date))
+        newname = newname.replace('{imagemonthsimp}', time.strftime("%b", date))
+        newname = newname.replace('{imageday}', time.strftime("%d", date))
+        newname = newname.replace('{imagedayname}', time.strftime("%A", date))
+        newname = newname.replace('{imagedaysimp}', time.strftime("%a", date))
     else:
         newname = newname.replace('{imagedate}','')
         newname = newname.replace('{imageyear}', '')
@@ -298,6 +307,19 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
         newname = newname.replace('{imagedayname}', '')
         newname = newname.replace('{imagedaysimp}', '')
         
+    if width != None: newname = newname.replace('{imagewidth}', width)
+    else: newname = newname.replace('{imagewidth}', '')
+    
+    if height != None: newname = newname.replace('{imageheight}', height)
+    else: newname = newname.replace('{imageheight}', '')
+
+    if cameramaker != None: newname = newname.replace('{cameramaker}', cameramaker)
+    else: newname = newname.replace('{cameramaker}', '')
+
+    if cameramodel != None: newname = newname.replace('{cameramodel}', cameramodel)
+    else: newname = newname.replace('{cameramodel}', '')
+        
+        
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return newname, newpath
@@ -305,19 +327,44 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
 
 def get_exif_data(path):
     """ Get EXIF data from file. """
+    date = None
+    width = None
+    height = None
+    cameramaker = None
+    cameramodel = None
+    
     try:
         file = open(path, 'rb')
     except:
-        return None
+        print "ERROR: Opening image file", path
+        return date, width, height, cameramaker, cameramodel
     
     tags = EXIF.process_file(file)
     if not tags:
-        return None
+        print "ERROR: No EXIF tags on", path
+        return date, width, height, cameramaker, cameramodel
     
     # tags['EXIF DateTimeOriginal'] = "2001:03:31 12:27:36"
     if tags.has_key('EXIF DateTimeOriginal'):
         data = str(tags['EXIF DateTimeOriginal'])
-        return time.strptime(data, "%Y:%m:%d %H:%M:%S")
+        try:
+            date = time.strptime(data, "%Y:%m:%d %H:%M:%S")
+        except:
+            date = None
+        
+    if tags.has_key('EXIF ExifImageWidth'):
+        width = str(tags['EXIF ExifImageWidth'])
+        
+    if tags.has_key('EXIF ExifImageLength'):
+        height = str(tags['EXIF ExifImageLength'])
+        
+    if tags.has_key('Image Make'):
+        cameramaker = str(tags['Image Make'])
+        
+    if tags.has_key('Image Model'):
+        cameramodel = str(tags['Image Model'])
+        
+    return date, width, height, cameramaker, cameramodel
     
 
 def rename_file(ori, new):
