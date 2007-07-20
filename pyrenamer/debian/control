@@ -3,13 +3,13 @@ Section: gnome
 Priority: optional
 Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
 XSBC-Original-Maintainer: Adolfo González Blázquez <code@infinicode.org>
-Build-Depends: debhelper (>= 5.0.38), cdbs (>= 0.4.43), python-support (>= 0.5.3), python-gtk2-dev (>= 2.4), libgconf2-dev, python-eyeD3
+Build-Depends: debhelper (>= 5.0.38), cdbs (>= 0.4.43), python-support (>= 0.5.3), python-gtk2-dev (>= 2.4), libgconf2-dev, python-eyed3
 XS-Python-Version: >= 2.4
 Standards-Version: 3.7.2
 
 Package: pyrenamer
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, python-gtk2 (>= 2.4), python-eyeD3
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2 (>= 2.4), python-eyed3
 XB-Python-Version: ${python:Versions}
 Description: Mass file renamer written in PyGTK
  pyRenamer is a mass file renamer written in PyGTK.
