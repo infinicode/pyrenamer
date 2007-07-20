@@ -27,7 +27,10 @@ import re
 import sys
 import time
 
+import pyrenamer_globals
 import EXIF
+if pyrenamer_globals.have_eyed3:
+    import eyeD3
 
 STOP = False
 
@@ -297,6 +300,10 @@ def replace_images(name, path, newname, newpath):
         newname = newname.replace('{imageday}', time.strftime("%d", date))
         newname = newname.replace('{imagedayname}', time.strftime("%A", date))
         newname = newname.replace('{imagedaysimp}', time.strftime("%a", date))
+        newname = newname.replace('{imagetime}', time.strftime("%H_%M_%S", date))
+        newname = newname.replace('{imagehour}', time.strftime("%H", date))
+        newname = newname.replace('{imageminute}', time.strftime("%M", date))
+        newname = newname.replace('{imagesecond}', time.strftime("%S", date))
     else:
         newname = newname.replace('{imagedate}','')
         newname = newname.replace('{imageyear}', '')
@@ -306,6 +313,10 @@ def replace_images(name, path, newname, newpath):
         newname = newname.replace('{imageday}', '')
         newname = newname.replace('{imagedayname}', '')
         newname = newname.replace('{imagedaysimp}', '')
+        newname = newname.replace('{imagetime}', '')
+        newname = newname.replace('{imagehour}', '')
+        newname = newname.replace('{imageminute}', '')
+        newname = newname.replace('{imagesecond}', '')
         
     if width != None: newname = newname.replace('{imagewidth}', width)
     else: newname = newname.replace('{imagewidth}', '')
@@ -366,6 +377,56 @@ def get_exif_data(path):
         
     return date, width, height, cameramaker, cameramodel
     
+
+def replace_music(name, path, newname, newpath):
+    """ Pattern replace for mp3 """
+    
+    file = get_new_path(name, path)
+    
+    if eyeD3.isMp3File(file):
+        audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
+        tag = audioFile.getTag()
+        artist = tag.getArtist()
+        album  = tag.getAlbum()
+        title  = tag.getTitle()
+        track  = tag.getTrackNum()[0]
+        trackt = tag.getTrackNum()[1]
+        genre  = tag.getGenre().getName()
+        year   = tag.getYear()
+        
+        if artist != None: newname = newname.replace('{artist}', artist)
+        else: newname = newname.replace('{artist}', '')
+        
+        if album != None: newname = newname.replace('{album}', album)
+        else: newname = newname.replace('{album}', '')
+            
+        if title != None: newname = newname.replace('{title}', title)
+        else: newname = newname.replace('{title}', '')
+            
+        if track != None: newname = newname.replace('{track}', str(track))
+        else: newname = newname.replace('{track}', '')
+            
+        if trackt != None: newname = newname.replace('{tracktotal}', str(trackt))
+        else: newname = newname.replace('{tracktotal}', '')
+        
+        if genre != None: newname = newname.replace('{genre}', genre)
+        else: newname = newname.replace('{genre}', '')
+            
+        if year != None: newname = newname.replace('{year}', year)
+        else: newname = newname.replace('{year}', '')
+    else:
+        newname = newname.replace('{artist}', '')
+        newname = newname.replace('{album}', '')
+        newname = newname.replace('{title}', '')
+        newname = newname.replace('{track}', '')
+        newname = newname.replace('{tracktotal}', '')
+        newname = newname.replace('{genre}', '')
+        newname = newname.replace('{year}', '')
+        
+    # Returns new name and path
+    newpath = get_new_path(newname, path)
+    return newname, newpath
+
 
 def rename_file(ori, new):
     """ Change filename with the new one """

@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
+have_eyed3=@HAVE_EYED3@
+
 pixmaps_dir = "@IMAGEDIR@"
 resources_dir = "@RESOURCEDIR@"
 

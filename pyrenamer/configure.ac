@@ -16,6 +16,26 @@ PKG_CHECK_MODULES(GCONF, gconf-2.0)
 AC_PATH_PROG(GCONFTOOL, gconftool-2)
 AM_GCONF_SOURCE_2
 
+dnl CHECK FOR EYED3 (MUSIC RENAME)
+AC_MSG_CHECKING([for eyeD3 module])
+if AC_RUN_LOG([DISPLAY= $PYTHON -c '
+try:
+    import eyeD3
+except ImportError, e:
+    if str(e).find("eyeD3") >= 0:
+          raise
+except:
+    pass
+']); then
+  AC_MSG_RESULT([yes])
+  HAVE_EYED3=True
+else
+  AC_MSG_RESULT([no])
+  AC_MSG_WARN([eyeD3 not found, rename music disabled!])
+  HAVE_EYED3=False
+fi
+AC_SUBST(HAVE_EYED3)
+
 
 BINDIR=${prefix}/bin
 AC_SUBST(BINDIR)

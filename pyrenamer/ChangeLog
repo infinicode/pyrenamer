@@ -1,3 +1,26 @@
+2007-07-20  Adolfo González Blázquez <code@infinicode.org>
+
+	* configure.ac:
+	Check if eyeD3 is installed, and enable music rename if it is
+	
+	* data/pyrenamer.glade:
+	Add support for music renaming using MP3 id3 tags
+		
+	* src/pyrenamer.py: (__init__), (preview_rename_rows):
+	Add support for renaming MP3 using its id3 tags
+	
+	* src/pyrenamer.py:
+	Some refactorings
+	
+	* src/pyrenamer_globals.py.in:
+	Added variable "have_eyed3" to control if we have support for reading mp3'd id3 tags
+	
+	* src/pyrenamerfilefuncs.py: (replace_images):
+	Add support for renaming using EXIF date tags
+	
+	* src/pyrenamerfilefuncs.py: (replace_music):
+	Add support for renaming MP3 using its id3 tags
+
 2007-06-27  Adolfo González Blázquez <code@infinicode.org>
 
 	* data/pyrenamer.glade:

@@ -43,7 +43,7 @@ except:
 
 import treefilebrowser
 import pyrenamerfilefuncs as renamerfilefuncs
-import pyrenamer_globals as glob
+import pyrenamer_globals as pyrenamerglob
 import tooltips
 
 import threading
@@ -69,7 +69,7 @@ class pyRenamer:
         self.listing_thread = None
         
         # Gconf preferences stuff
-        self.gconf_path = '/apps/' + glob.name
+        self.gconf_path = '/apps/' + pyrenamerglob.name
         self.gconf_key_dir = self.gconf_path + '/dir'
         self.gconf_window_maximized = self.gconf_path + '/window_maximized'
         self.gconf_pane_position = self.gconf_path + '/pane_position'
@@ -79,7 +79,7 @@ class pyRenamer:
         self.gconf_window_posy = self.gconf_path + '/window_posy'
         
         # Init Glade stuff
-        self.glade_tree = gtk.glade.XML(glob.gladefile, "main_window")
+        self.glade_tree = gtk.glade.XML(pyrenamerglob.gladefile, "main_window")
         
         # Get some widgets
         self.main_window = self.glade_tree.get_widget("main_window")
@@ -197,10 +197,12 @@ class pyRenamer:
         self.subs_spaces_combo.set_active(0)
         self.subs_capitalization_combo.set_active(0)
         
-        # Init menu items and window name
+        # Init menu items, some widgets and window name
         self.menu_rename.set_sensitive(False)
-        self.main_window.set_title(glob.name_long)
-        self.main_window.set_icon_from_file(glob.icon)
+        self.main_window.set_title(pyrenamerglob.name_long)
+        self.main_window.set_icon_from_file(pyrenamerglob.icon)
+        self.delete_from.set_sensitive(False)
+        self.delete_to.set_sensitive(False)
         
         # Read preferences using Gconf
         if HAS_GCONF: self.preferences_read()
@@ -208,6 +210,10 @@ class pyRenamer:
         # Init tooltips
         tips = tooltips.ToolTips(self.column_preview)
         tips.add_view(self.selected_files)
+        
+        # Hide music tab if necessary
+        if not pyrenamerglob.have_eyed3:
+            self.notebook.get_nth_page(5).hide()
     
 
 
@@ -258,7 +264,7 @@ class pyRenamer:
     	ori = model.get_value(iter, 1)
     	new = model.get_value(iter, 3)
         
-        if new != None:
+        if new != None and new != '':
             result = renamerfilefuncs.rename_file(ori, new)
             if not result: self.display_error_dialog("Could not rename file %s to %s" % (ori, new))
 
@@ -330,11 +336,22 @@ class pyRenamer:
             pattern_end = self.images_renamed_pattern.get_text()
             newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
             newname, newpath = renamerfilefuncs.replace_images(name, path, newname, newpath)
+            
+        elif self.notebook.get_current_page() == 5 and pyrenamerglob.have_eyed3:
+            # Replace music using patterns
+            pattern_ini = self.music_original_pattern.get_text()
+            pattern_end = self.music_renamed_pattern.get_text()
+            newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
+            newname, newpath = renamerfilefuncs.replace_music(name, path, newname, newpath)
         
         
         # Set new values on model
-        model.set_value(iter, 2, newname)
-        model.set_value(iter, 3, newpath)
+        if newname != '' and newname != None:
+            model.set_value(iter, 2, newname)
+            model.set_value(iter, 3, newpath)
+        else:
+            model.set_value(iter, 2, None)
+            model.set_value(iter, 3, None)
         self.count += 1
         
 
@@ -475,6 +492,11 @@ class pyRenamer:
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        self.insert_entry.set_sensitive(True)
+        self.insert_pos.set_sensitive(True)
+        self.insert_end.set_sensitive(True)
+        self.delete_from.set_sensitive(False)
+        self.delete_to.set_sensitive(False)
         
         
     def on_insert_entry_changed(self, widget):
@@ -493,12 +515,18 @@ class pyRenamer:
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        self.insert_pos.set_sensitive(not self.insert_end.get_active())
         
         
     def on_delete_radio_toggled(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        self.delete_from.set_sensitive(True)
+        self.delete_to.set_sensitive(True)
+        self.insert_entry.set_sensitive(False)
+        self.insert_pos.set_sensitive(False)
+        self.insert_end.set_sensitive(False)
         
         
     def on_delete_from_changed(self, widget):
@@ -666,22 +694,22 @@ class pyRenamer:
         """ Display the About dialog """
 
         about = gtk.AboutDialog()
-        about.set_name(glob.name_long)
-        about.set_version(glob.version)
-        about.set_authors(glob.authors)
-        #about.set_artists(glob.artists)
+        about.set_name(pyrenamerglob.name_long)
+        about.set_version(pyrenamerglob.version)
+        about.set_authors(pyrenamerglob.authors)
+        #about.set_artists(pyrenamerglob.artists)
         #about.set_translator_credits(_('translator-credits'))
-        about.set_logo(gtk.gdk.pixbuf_new_from_file(glob.icon))
-        about.set_license(glob.license)
+        about.set_logo(gtk.gdk.pixbuf_new_from_file(pyrenamerglob.icon))
+        about.set_license(pyrenamerglob.license)
         about.set_wrap_license(True)
-        about.set_comments(glob.description)
-        about.set_copyright(glob.copyright)
+        about.set_comments(pyrenamerglob.description)
+        about.set_copyright(pyrenamerglob.copyright)
 
         def openHomePage(widget,url,url2):
             import webbrowser
             webbrowser.open_new(url)
-	gtk.about_dialog_set_url_hook(openHomePage,glob.website)
-        about.set_website(glob.website)
+	gtk.about_dialog_set_url_hook(openHomePage,pyrenamerglob.website)
+        about.set_website(pyrenamerglob.website)
         
         about.run()
         about.destroy()
