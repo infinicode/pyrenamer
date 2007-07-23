@@ -18,6 +18,9 @@
 	
 	* src/pyrenamer.py:
 	Preview and rename just selected items (nothing selected = all selected)
+	
+	* src/pyrenamerfilefuncs.py: (rename_file):
+	Avoid overwritting files when renaming (don't rename if a file with the same name already exists)
 
 2007-07-20  Adolfo González Blázquez <code@infinicode.org>
 
