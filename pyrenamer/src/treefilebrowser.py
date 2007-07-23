@@ -330,11 +330,16 @@ class TreeFileBrowser(gobject.GObject):
         
         icon_theme = gtk.icon_theme_get_default()
         try:
-            icon = icon_theme.load_icon("gnome-fs-directory", gtk.ICON_SIZE_MENU, 0)
+            icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
             return icon
         except gobject.GError, exc:
             print "Can't load icon", exc
-            return None
+            try:
+                icon = icon_theme.load_icon("gtk-directory", 16, 0)
+                return icon
+            except:
+                print "Can't load default icon"
+                return None
     
     
     def get_folder_opened_icon(self):
@@ -342,11 +347,16 @@ class TreeFileBrowser(gobject.GObject):
         
         icon_theme = gtk.icon_theme_get_default()
         try:
-            icon = icon_theme.load_icon("gnome-fs-directory-accept", gtk.ICON_SIZE_MENU, 0)
+            icon = icon_theme.load_icon("gnome-fs-directory-accept", 16, 0)
             return icon
         except gobject.GError, exc:
             print "Can't load icon", exc
-            return None
+            try:
+                icon = icon_theme.load_icon("gtk-directory", 16, 0)
+                return icon
+            except:
+                print "Can't load default icon"
+                return None
         
         
     def get_file_icon(self):
