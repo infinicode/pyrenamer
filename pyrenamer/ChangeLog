@@ -2,6 +2,9 @@
 
 	* src/treefilebrowser.py: (get_folder_closed_icon), (get_folder_opened_icon):
 	Show default gtk-directory icon if theme default fails
+	
+	* src/pyrenamer.py: (__init__), (on_preview_button_clicked), (populate_add_to_view):
+	Count correctly the items displayed (self.count = 0)
 
 2007-07-20  Adolfo González Blázquez <code@infinicode.org>
 

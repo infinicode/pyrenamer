@@ -59,7 +59,7 @@ class pyRenamer:
         self.home = os.environ["HOME"]
         self.current_dir = self.home
         self.window_maximized = False
-        self.count = 1
+        self.count = 0
         self.populate_id = []
         self.window_width = 1
         self.window_height = 1
@@ -400,7 +400,7 @@ class pyRenamer:
 
     def on_preview_button_clicked(self, widget):
     	""" Set the item count to zero and get new names and paths for files on model """
-        self.count = 1
+        self.count = 0
         self.file_selected_model.foreach(self.preview_rename_rows, None)
         self.selected_files.columns_autosize()
         self.rename_button.set_sensitive(True)
@@ -676,7 +676,7 @@ class pyRenamer:
         self.progressbar.set_fraction(0)
         self.statusbar.push(self.statusbar_context, "Directory: %s - Files: %s" % (self.current_dir, self.count))
         self.stop_button.hide()
-        self.count = 1
+        self.count = 0
         yield False
 
 
