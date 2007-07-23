@@ -153,6 +153,13 @@ class pyRenamer:
                     "on_music_renamed_pattern_changed": self.on_music_renamed_pattern_changed,
                     "on_menu_quit_activate": self.on_main_quit,
                     "on_menu_about_activate": self.about_info,
+                    "on_notebook_switch_page": self.on_notebook_switch_page,
+                    "on_cut_activate": self.on_cut_activate,
+                    "on_copy_activate": self.on_copy_activate,
+                    "on_paste_activate": self.on_paste_activate,
+                    "on_clear_activate": self.on_clear_activate,
+                    "on_select_all_activate": self.on_select_all_activate,
+                    "on_select_nothing_activate": self.on_select_nothing_activate,
                     "on_quit_button_clicked": self.on_main_quit }
         self.glade_tree.signal_autoconnect(signals)
         
@@ -227,6 +234,7 @@ class pyRenamer:
         view.set_enable_search(True)
         view.set_reorderable(False)
         view.set_rules_hint(True)
+        view.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
         view.connect("cursor-changed", self.on_selected_files_cursor_changed)
     
         # Create scrollbars around the view
@@ -392,7 +400,15 @@ class pyRenamer:
     
     def on_rename_button_clicked(self, widget):
     	""" For everyrow rename the files as requested """
-        self.file_selected_model.foreach(self.rename_rows, None)
+        
+        model, selected = self.selected_files.get_selection().get_selected_rows()
+        if selected == []: 
+            self.file_selected_model.foreach(self.rename_rows, None)
+        else:
+            iters = [model.get_iter(path) for path in selected]
+            for iter in iters:
+                self.rename_rows(model, path, iter, None)
+        
         self.dir_reload_current()
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
@@ -401,7 +417,15 @@ class pyRenamer:
     def on_preview_button_clicked(self, widget):
     	""" Set the item count to zero and get new names and paths for files on model """
         self.count = 0
-        self.file_selected_model.foreach(self.preview_rename_rows, None)
+        
+        model, selected = self.selected_files.get_selection().get_selected_rows()
+        if selected == []: 
+            self.file_selected_model.foreach(self.preview_rename_rows, None)
+        else:
+            iters = [model.get_iter(path) for path in selected]
+            for iter in iters:
+                self.preview_rename_rows(model, path, iter, None)
+            
         self.selected_files.columns_autosize()
         self.rename_button.set_sensitive(True)
         self.menu_rename.set_sensitive(True)
@@ -567,6 +591,51 @@ class pyRenamer:
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
 
+
+    def on_notebook_switch_page(self, notebook, page, page_num):
+        """ Tab changed """
+        if page_num == 3:
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
+        else:
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+            
+
+    def on_copy_activate(self, widget):
+        """ Copy to clipboard """
+        w = self.main_window.get_focus()
+        if isinstance(w, gtk.Entry):
+            w.emit('copy-clipboard')
+        
+        
+    def on_paste_activate(self, widget):
+        """ Paste from clipboard """
+        w = self.main_window.get_focus()
+        if isinstance(w, gtk.Entry):
+            w.emit('paste-clipboard')
+        
+        
+    def on_cut_activate(self, widget):
+        """ Cut to clipboard """
+        w = self.main_window.get_focus()
+        if isinstance(w, gtk.Entry):
+            w.emit('cut-clipboard')
+        
+        
+    def on_clear_activate(self, widget):
+        """ Clear text widget """
+        w = self.main_window.get_focus()
+        if isinstance(w, gtk.Entry):
+            w.set_text('')
+        
+        
+    def on_select_all_activate(self, widget):
+        """ Select every row on selected-files treeview """
+        self.selected_files.get_selection().select_all()
+        
+        
+    def on_select_nothing_activate(self, widget):
+        """ Select nothing on selected-files treeview """
+        self.selected_files.get_selection().unselect_all()
 
 
     def on_main_quit(self, *args):
