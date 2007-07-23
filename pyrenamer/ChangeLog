@@ -1,5 +1,7 @@
 2007-07-23  Adolfo González Blázquez <code@infinicode.org>
 
+	* Version 0.2 Released
+
 	* src/treefilebrowser.py: (get_folder_closed_icon), (get_folder_opened_icon):
 	Show default gtk-directory icon if theme default fails
 	

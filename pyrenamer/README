@@ -1,40 +1,44 @@
 -======================-
--=   pyRenamer 0.1    =-
+-=   pyRenamer 0.2    =-
 -======================-
 
   pyRenamer is an application for mass renaming files.
 
   You can rename files using patterns, substitutions,
   insert or delete text, or even rename files manually.
+  You can also rename images using their EXIF tags
+  and music using their internal tags.
 
   pyRenamer is released under the terms of the GNU General Public License.
 
 
 -= You need =_
- * python
- * pygtk (>= 2.6)
- * gconf
+  * python
+  * pygtk (>= 2.6)
+  * gconf
+  * python-eyed3 (for renaming MP3s)
  
  
 -= To install =-
- $ ./configure --prefix /usr
- $ sudo make install
+  $ ./configure --prefix /usr
+  $ sudo make install
 
 
 -= Website =-
- More info on: http://www.infinicode.org/code/pyrenamer/
+  More info on: http://www.infinicode.org/code/pyrenamer/
  
  
 -= Author =-
- Adolfo González Blázquez <code@infinicode.org>
+  Adolfo González Blázquez <code@infinicode.org>
  
  
 -= TreeFileBrowser =-
- pyRenamer uses a widget called treefilebrowser.py, which is a tree-like file browser,
- just like the one on Nautilus side bar.
- You can see its source code on src/treefilebrowser.py
- There's an example on how to use it on doc/treefilebrowser_example.py
+  pyRenamer uses a widget called treefilebrowser.py, which is a tree-like file browser,
+  just like the one on Nautilus side bar.
+  You can see its source code on src/treefilebrowser.py
+  There's an example on how to use it on doc/treefilebrowser_example.py
 
 
 -= Thanks =-
   pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>
+  pyRenamer uses EXIF.py from Gene Cash <gcash@cfl.rr.com>
