@@ -25,6 +25,9 @@
 	* data/pyrenamer.glade:
 	* src/pyrenamer.py:
 	Remove "Show hidden dirs" check box, as we have a context menu now on tree widget
+	
+	* data/pyrenamer.glade:
+	Add tooltip information for "File selection pattern" entry
 
 2007-07-20  Adolfo González Blázquez <code@infinicode.org>
 

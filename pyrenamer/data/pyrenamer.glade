@@ -286,6 +286,10 @@
 	      <child>
 		<widget class="GtkEntry" id="file_pattern">
 		  <property name="visible">True</property>
+		  <property name="tooltip" translatable="yes">*		Select every visible file
+*.jpg	Select just files that end with the &quot;jpg&quot; extension
+		Select every file (including hidden ones)
+.*		Select files starting by &quot;.&quot;</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
 		  <property name="visibility">True</property>
