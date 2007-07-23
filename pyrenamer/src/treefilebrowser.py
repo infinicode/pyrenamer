@@ -72,6 +72,7 @@ class TreeFileBrowser(gobject.GObject):
         
         self.view, self.scrolled = self.make_view()
         self.create_new()
+        self.create_popup()
     
     #####################################################
     # Accessors and Mutators
@@ -110,7 +111,9 @@ class TreeFileBrowser(gobject.GObject):
     
     def set_show_hidden(self, hidden): 
         self.show_hidden = hidden
+        activedir = self.get_selected()
         self.create_new()
+        if activedir != None: self.set_active_dir(activedir)
         
     def get_show_hidden(self):
         return self.show_hidden
@@ -178,7 +181,27 @@ class TreeFileBrowser(gobject.GObject):
         model, iter = treeview.get_selection().get_selected()
         # Send signal with path of expanded row
         self.emit('cursor-changed', model.get_value(iter,2))
+        
+        
+    def button_pressed(self, widget, event):
+        """ CALLBACK: clicked on widget """
+        if event.button == 3:
+            x = int(event.x)
+            y = int(event.y)
+            time = event.time
+            pthinfo = self.view.get_path_at_pos(x, y)
+            if pthinfo is not None:
+                path, col, cellx, celly = pthinfo
+                self.view.grab_focus()
+                self.view.set_cursor( path, col, 0)
+                self.popup.popup( None, None, None, event.button, time)
+            return 1
 
+    def show_hidden_toggled(self, widget):
+        """ CALLBACK: Show hidden files on context menu toggled """
+        state = widget.get_active()
+        self.set_show_hidden(state)
+        
 
     #####################################################
     # Directories and files, nodes and icons
@@ -324,6 +347,18 @@ class TreeFileBrowser(gobject.GObject):
         model.clear()
         iter = self.create_root()
         self.get_file_list(self.view.get_model(), iter, self.root)
+        
+    
+    def create_popup(self):
+        """ Create popup menu for right click """
+        self.popup = gtk.Menu()
+        
+        hidden_check_menu = gtk.CheckMenuItem("Show hidden files")
+        hidden_check_menu.connect('toggled', self.show_hidden_toggled)
+        
+        self.popup.add(hidden_check_menu)
+        self.popup.show_all()
+        
 
     def get_folder_closed_icon(self):
         """ Returns a pixbuf with the current theme closed folder icon """
@@ -388,6 +423,7 @@ class TreeFileBrowser(gobject.GObject):
         view.connect('row-collapsed', self.row_collapsed)
         view.connect('row-activated', self.row_activated)
         view.connect('cursor-changed', self.cursor_changed)
+        view.connect('button_press_event', self.button_pressed)
         
         col = gtk.TreeViewColumn()
         

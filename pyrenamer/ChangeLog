@@ -5,6 +5,10 @@
 	
 	* src/pyrenamer.py: (__init__), (on_preview_button_clicked), (populate_add_to_view):
 	Count correctly the items displayed (self.count = 0)
+	
+	* src/treefilebrowser.py: (__init__), (set_show_hidden), (button_pressed), (show_hidden_toggled),
+	(create_popup), (make_view):
+	Add right-click context menu, with "Show hidden files" option
 
 2007-07-20  Adolfo González Blázquez <code@infinicode.org>
 
