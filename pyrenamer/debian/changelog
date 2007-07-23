@@ -1,13 +1,14 @@
-pyrenamer (0.2-0ubuntu1) unstable; urgency=low
+pyrenamer (0.2-1) unstable; urgency=low
 
+  * First upload to Debian
   * New upstream release
-  * Updated copyright file
+  * Updated copyright file to add src/EXIF.py information
   * Added python-eyed3 to build-deps and binary-deps
   * Updated long description
 
  -- Adolfo González Blázquez <code@infinicode.org>  Mon, 23 Jul 2007 21:25:53 +0200
 
-pyrenamer (0.1-0ubuntu1) unstable; urgency=low
+pyrenamer (0.1-0ubuntu1) gutsy; urgency=low
 
   * Initial release
 
