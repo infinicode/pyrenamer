@@ -87,7 +87,6 @@ class pyRenamer:
         self.selected_files, selected_files_scrolled = self.create_selected_files_treeview()
         self.file_pattern = self.glade_tree.get_widget("file_pattern")
         self.add_recursive = self.glade_tree.get_widget("add_recursive")
-        self.show_hidden_dirs = self.glade_tree.get_widget("show_hidden_dirs")
         self.original_pattern = self.glade_tree.get_widget("original_pattern")
         self.renamed_pattern = self.glade_tree.get_widget("renamed_pattern")
         self.statusbar = self.glade_tree.get_widget("statusbar")
@@ -131,7 +130,6 @@ class pyRenamer:
                     "on_exit_button_clicked": self.on_main_quit,
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
-                    "on_show_hidden_dirs_toggled": self.on_show_hidden_dirs_toggled,
                     "on_subs_spaces_toggled": self.on_subs_spaces_toggled,
                     "on_subs_capitalization_toggled": self.on_subs_capitalization_toggled,
                     "on_subs_spaces_combo_changed": self.on_subs_spaces_combo_changed,
@@ -429,12 +427,6 @@ class pyRenamer:
         self.selected_files.columns_autosize()
         self.rename_button.set_sensitive(True)
         self.menu_rename.set_sensitive(True)
-        
-
-    def on_show_hidden_dirs_toggled(self, widget):
-    	""" Show hidden directories on dir browser """
-        self.file_browser.set_show_hidden(self.show_hidden_dirs.get_active())
-        self.file_browser.set_active_dir(self.current_dir)
 
 
     def on_add_recursive_toggled(self, widget):

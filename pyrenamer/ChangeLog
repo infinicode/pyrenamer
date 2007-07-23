@@ -21,6 +21,10 @@
 	
 	* src/pyrenamerfilefuncs.py: (rename_file):
 	Avoid overwritting files when renaming (don't rename if a file with the same name already exists)
+	
+	* data/pyrenamer.glade:
+	* src/pyrenamer.py:
+	Remove "Show hidden dirs" check box, as we have a context menu now on tree widget
 
 2007-07-20  Adolfo González Blázquez <code@infinicode.org>
 
