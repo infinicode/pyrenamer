@@ -9,11 +9,10 @@ Standards-Version: 3.7.2
 
 Package: pyrenamer
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, python-gtk2 (>= 2.4), python-eyed3
+Depends: ${misc:Depends}, ${python:Depends}, python-gtk2 (>= 2.4), python-glade2, python-eyed3
+Recommends: python-gnome2
 XB-Python-Version: ${python:Versions}
 Description: Mass file renamer written in PyGTK
- pyRenamer is a mass file renamer written in PyGTK.
- .
  You can rename files using patterns, search and replace,
  substitutions, insert or delete text, or even rename
  files manually.
