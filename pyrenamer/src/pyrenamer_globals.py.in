@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
+from gettext import gettext as _
+
 have_eyed3=@HAVE_EYED3@
 
 pixmaps_dir = "@IMAGEDIR@"
@@ -33,7 +35,7 @@ authors = ["Adolfo González Blázquez <code@infinicode.org>"]
 artists = []
 website = "http://www.infinicode.org/code/pyrenamer/"
 version = "@VERSION@"
-description = "Mass file renamer for GNOME"
+description = _("Mass file renamer for GNOME")
 icon = pixmaps_dir + "/pyrenamer.png"
 gladefile = resources_dir + "/pyrenamer.glade"
 

@@ -1,4 +1,3 @@
-* Internationalization support
 * Remember last entered patterns
 * Drop gconf (better using text files, so pyrenamer con run on Windows)
 * Add support from other music formats (ogg, ape, etc.)
