@@ -1,3 +1,8 @@
+2007-07-25  Adolfo González Blázquez <code@infinicode.org>
+
+	* src/pyrenamerfilefuncs.py: (rename_file):
+	Don't show error if we're trying to rename a file with the same name
+
 2007-07-23  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.2 Released
