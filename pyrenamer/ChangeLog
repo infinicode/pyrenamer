@@ -1,5 +1,8 @@
 2007-07-25  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (preview_rename_rows), (on_rename_button_clicked), (on_preview_button_clicked):
+	Better handling of file selection (update all list when preview is clicked, not just selected)
+
 	* src/treefilebrowser.py: (get_folder_closed_icon), (get_folder_opened_icon):
 	Don't display errors on console if icons are not available
 
