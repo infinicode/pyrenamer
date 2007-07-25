@@ -24,6 +24,7 @@ have_eyed3=@HAVE_EYED3@
 
 pixmaps_dir = "@IMAGEDIR@"
 resources_dir = "@RESOURCEDIR@"
+locale_dir = "@LOCALEDIR@"
 
 name = "@PACKAGE@"
 name_long = "pyRenamer"

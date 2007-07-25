@@ -30,7 +30,7 @@ except:
 
 import pygtk
 if gtk.pygtk_version < (2, 0):
-      print "PyGtk 2.0 or later required for this widget"
+      print "PyGtk 2.0 or later required for this app to run"
       raise SystemExit
 
   
@@ -48,6 +48,15 @@ import tooltips
 
 import threading
 import os
+
+import locale
+import gettext
+
+from gettext import gettext as _
+gettext.bindtextdomain(pyrenamerglob.name, pyrenamerglob.locale_dir)
+gettext.textdomain(pyrenamerglob.name)
+gtk.glade.bindtextdomain(pyrenamerglob.name, pyrenamerglob.locale_dir)
+gtk.glade.textdomain(pyrenamerglob.name)
 
 class pyRenamer:
     
@@ -252,12 +261,12 @@ class pyRenamer:
         self.selected_files.set_model(self.file_selected_model)
         
         renderer1 = gtk.CellRendererText()
-        column1 = gtk.TreeViewColumn("Original file name", renderer1, text=0)
+        column1 = gtk.TreeViewColumn(_("Original file name"), renderer1, text=0)
         #column1.set_resizable(True)
         self.selected_files.append_column(column1)
 
         renderer2 = gtk.CellRendererText()
-        column2 = gtk.TreeViewColumn("Renamed file name", renderer2, text=2)
+        column2 = gtk.TreeViewColumn(_("Renamed file name"), renderer2, text=2)
         self.column_preview = column2
         #column2.set_resizable(True)
         self.selected_files.append_column(column2)
@@ -272,7 +281,7 @@ class pyRenamer:
         
         if new != None and new != '':
             result = renamerfilefuncs.rename_file(ori, new)
-            if not result: self.display_error_dialog("Could not rename file %s to %s" % (ori, new))
+            if not result: self.display_error_dialog(_("Could not rename file %s to %s") % (ori, new))
 
 
     def preview_rename_rows(self, model, path, iter, paths):
@@ -653,7 +662,7 @@ class pyRenamer:
         
         self.populate_selected_files(dir)
         self.selected_files.columns_autosize()
-        self.statusbar.push(self.statusbar_context, "Reading contents of dir %s" % dir)
+        self.statusbar.push(self.statusbar_context, _("Reading contents of dir %s") % dir)
         
         
     def populate_stop(self):
@@ -672,7 +681,7 @@ class pyRenamer:
             
         self.selected_files.set_model(self.file_selected_model)
         self.progressbar.set_fraction(0)
-        self.statusbar.push(self.statusbar_context, "Directory: %s - Files: %s" % (self.current_dir, self.count))
+        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.current_dir, self.count))
         
         
     def populate_get_listing(self, dir, pattern, recursive):
@@ -724,13 +733,13 @@ class pyRenamer:
             self.file_selected_model.set_value(iter, 1, elem[1])
             
             self.progressbar.pulse()
-            self.statusbar.push(self.statusbar_context, "Adding file %s" % elem[1])
+            self.statusbar.push(self.statusbar_context, _("Adding file %s") % elem[1])
             self.count += 1
             yield True
     
         self.selected_files.set_model(self.file_selected_model)
         self.progressbar.set_fraction(0)
-        self.statusbar.push(self.statusbar_context, "Directory: %s - Files: %s" % (self.current_dir, self.count))
+        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.current_dir, self.count))
         self.stop_button.hide()
         self.count = 0
         yield False
@@ -787,7 +796,7 @@ class pyRenamer:
 
         
     def preferences_read(self):
-    	""" The name seys it all... """
+    	""" The name says it all... """
         client = gconf.client_get_default()
         
         #current_dir = client.get_string(self.gconf_key_dir)

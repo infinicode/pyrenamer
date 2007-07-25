@@ -21,6 +21,7 @@ If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
 import TreeViewTooltips as tvt
+from gettext import gettext as _
 
 class ToolTips(tvt.TreeViewTooltips):
 
@@ -35,9 +36,9 @@ class ToolTips(tvt.TreeViewTooltips):
         oldpath = model[path][1]
         newpath = model[path][3]
         if newpath != None:
-        	return '<b>Original filename: </b> %s\n<b>New filename: </b> %s' % (oldpath, newpath)
+        	return _("<b>Original: </b> %s\n<b>Renamed: </b> %s") % (oldpath, newpath)
         else:
-        	return '<b>Original filename: </b> %s' % oldpath
+        	return _("<b>Original: </b> %s") % oldpath
         	
         """if column is self.column:
             filepath = model[path][3]

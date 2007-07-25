@@ -32,6 +32,8 @@ if gtk.pygtk_version < (2, 0):
       print "PyGtk 2.0 or later required for this widget"
       raise SystemExit
   
+from gettext import gettext as _  
+
 try:
     from os import path as ospath
     import dircache
@@ -353,7 +355,7 @@ class TreeFileBrowser(gobject.GObject):
         """ Create popup menu for right click """
         self.popup = gtk.Menu()
         
-        hidden_check_menu = gtk.CheckMenuItem("Show hidden files")
+        hidden_check_menu = gtk.CheckMenuItem(_("Show hidden files"))
         hidden_check_menu.connect('toggled', self.show_hidden_toggled)
         
         self.popup.add(hidden_check_menu)

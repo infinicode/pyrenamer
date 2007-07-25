@@ -1,5 +1,21 @@
 2007-07-25  Adolfo González Blázquez <code@infinicode.org>
 
+	* configure.ac
+	* data/Makefile.am
+	* data/pyrenamer.desktop.in.in
+	* data/pyrenamer.glade
+	* Makefile.am
+	* po/*
+	* src/pyrenamer_globals.py.in
+	* src/pyrenamer.py
+	* src/pyrenamerfilefuncs.py
+	* src/tooltips.py
+	* src/treefilebrowser.py
+	Added internationalization support (English and Spanish by now)
+
+	* data/pyrenamer.schemas.in:
+	Set good default values for window pos/size
+
 	* src/pyrenamer.py: (preview_rename_rows), (on_rename_button_clicked), (on_preview_button_clicked):
 	Better handling of file selection (update all list when preview is clicked, not just selected)
 

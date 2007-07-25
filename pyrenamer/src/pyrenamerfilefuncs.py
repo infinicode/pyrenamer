@@ -31,6 +31,8 @@ import pyrenamer_globals
 import EXIF
 if pyrenamer_globals.have_eyed3:
     import eyeD3
+    
+from gettext import gettext as _
 
 STOP = False
 
@@ -435,7 +437,7 @@ def rename_file(ori, new):
         return True    # We don't need to rename the file, but don't show error message
     
     if os.path.exists(new):
-        print "Error while renaming %s to %s! -> %s already exists!" % (ori, new, new)
+        print -("Error while renaming %s to %s! -> %s already exists!") % (ori, new, new)
         return False
     
     try:
@@ -443,7 +445,7 @@ def rename_file(ori, new):
         print "Renaming %s to %s" % (ori, new)
         return True
     except Exception, e:
-        print "Error while renaming %s to %s!" % (ori, new)
+        print _("Error while renaming %s to %s!") % (ori, new)
         print e
         return False
 
