@@ -275,9 +275,15 @@ class pyRenamer:
             if not result: self.display_error_dialog("Could not rename file %s to %s" % (ori, new))
 
 
-    def preview_rename_rows(self, model, path, iter, user_data):
+    def preview_rename_rows(self, model, path, iter, paths):
     	""" Called when Preview button is clicked.
     	Get new names and paths and add it to the model """
+        
+        if (paths != None) and (path not in paths) and (paths != []):
+            # Preview only selected rows
+            model.set_value(iter, 2, None)
+            model.set_value(iter, 3, None)
+            return
         
         # Get current values
         name = model.get_value(iter, 0)
@@ -399,14 +405,7 @@ class pyRenamer:
     def on_rename_button_clicked(self, widget):
     	""" For everyrow rename the files as requested """
         
-        model, selected = self.selected_files.get_selection().get_selected_rows()
-        if selected == []: 
-            self.file_selected_model.foreach(self.rename_rows, None)
-        else:
-            iters = [model.get_iter(path) for path in selected]
-            for iter in iters:
-                self.rename_rows(model, path, iter, None)
-        
+        self.file_selected_model.foreach(self.rename_rows, None)
         self.dir_reload_current()
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
@@ -415,15 +414,11 @@ class pyRenamer:
     def on_preview_button_clicked(self, widget):
     	""" Set the item count to zero and get new names and paths for files on model """
         self.count = 0
-        
-        model, selected = self.selected_files.get_selection().get_selected_rows()
-        if selected == []: 
-            self.file_selected_model.foreach(self.preview_rename_rows, None)
-        else:
-            iters = [model.get_iter(path) for path in selected]
-            for iter in iters:
-                self.preview_rename_rows(model, path, iter, None)
             
+        # Get selected rows and execute rename function
+        model, paths = self.selected_files.get_selection().get_selected_rows()
+        self.file_selected_model.foreach(self.preview_rename_rows, paths)
+        
         self.selected_files.columns_autosize()
         self.rename_button.set_sensitive(True)
         self.menu_rename.set_sensitive(True)
