@@ -368,12 +368,12 @@ class TreeFileBrowser(gobject.GObject):
             icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
             return icon
         except gobject.GError, exc:
-            print "Can't load icon", exc
+            #print "Can't load icon", exc
             try:
                 icon = icon_theme.load_icon("gtk-directory", 16, 0)
                 return icon
             except:
-                print "Can't load default icon"
+                #print "Can't load default icon"
                 return None
     
     
@@ -385,12 +385,12 @@ class TreeFileBrowser(gobject.GObject):
             icon = icon_theme.load_icon("gnome-fs-directory-accept", 16, 0)
             return icon
         except gobject.GError, exc:
-            print "Can't load icon", exc
+            #print "Can't load icon", exc
             try:
                 icon = icon_theme.load_icon("gtk-directory", 16, 0)
                 return icon
             except:
-                print "Can't load default icon"
+                #print "Can't load default icon"
                 return None
         
         
