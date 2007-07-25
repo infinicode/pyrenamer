@@ -430,6 +430,10 @@ def replace_music(name, path, newname, newpath):
 
 def rename_file(ori, new):
     """ Change filename with the new one """
+    
+    if ori == new:
+        return True    # We don't need to rename the file, but don't show error message
+    
     if os.path.exists(new):
         print "Error while renaming %s to %s! -> %s already exists!" % (ori, new, new)
         return False
