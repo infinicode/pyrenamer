@@ -167,6 +167,7 @@ class pyRenamer:
                     "on_clear_activate": self.on_clear_activate,
                     "on_select_all_activate": self.on_select_all_activate,
                     "on_select_nothing_activate": self.on_select_nothing_activate,
+                    "on_manual_key_press_event": self.on_manual_key_press_event,
                     "on_quit_button_clicked": self.on_main_quit }
         self.glade_tree.signal_autoconnect(signals)
         
@@ -633,6 +634,34 @@ class pyRenamer:
         """ Select nothing on selected-files treeview """
         self.selected_files.get_selection().unselect_all()
 
+    
+    def on_manual_key_press_event(self, widget, event):
+        """ Key pressed on manual rename entry """
+        
+        if self.notebook.get_current_page() == 3:
+            if event.keyval == gtk.keysyms.Page_Up:
+                try:
+                    model, iter = self.selected_files.get_selection().get_selected()
+                    path = model.get_path(iter)
+                    path = path[0]-1
+                    if path < 0: return
+                    iter = model.get_iter(path)
+                    name = model.get_value(iter,0)
+                    self.manual.set_text(name)
+                    self.selected_files.get_selection().select_iter(iter)
+                    self.selected_files.scroll_to_cell(path)
+                except: pass
+            elif event.keyval == gtk.keysyms.Page_Down:
+                try:
+                    model, iter = self.selected_files.get_selection().get_selected()
+                    iter = model.iter_next(iter)
+                    path = model.get_path(iter)
+                    name = model.get_value(iter,0)
+                    self.manual.set_text(name)
+                    self.selected_files.get_selection().select_iter(iter)
+                    self.selected_files.scroll_to_cell(path)
+                except: pass
+            
 
     def on_main_quit(self, *args):
     	""" Bye bye! But first, save preferences """

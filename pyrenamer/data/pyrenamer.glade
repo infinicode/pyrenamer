@@ -1227,6 +1227,7 @@ First letter uppercase of each word</property>
 			  <property name="has_frame">True</property>
 			  <property name="invisible_char">●</property>
 			  <property name="activates_default">False</property>
+			  <signal name="key_press_event" handler="on_manual_key_press_event" last_modification_time="Mon, 30 Jul 2007 16:38:58 GMT"/>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
