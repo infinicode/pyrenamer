@@ -1,5 +1,7 @@
 2007-07-30  Adolfo González Blázquez <code@infinicode.org>
 
+	* Version 0.3 Released
+
 	* src/pyrenamer.py: (on_manual_key_press_event):
 	* data/pyrenamer.glade:
 	In "Manual Rename" mode, you can select the next and prev file using PAGE_UP and PAGE_DOWN keys

@@ -1,3 +1,13 @@
+2007-07-30  Adolfo González Blázquez <code@infinicode.org>
+
+	* Version 0.3 Released
+	* Added internationalization support (english and spanish by now)
+	* Better handling of file selection filter
+	* Better manual renaming (you can use page_up and page_down to select next/prev file)
+	* Set good default values for window pos/size (bugfix)
+	* Bugfixes
+
+	
 2007-07-23  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.2 Released

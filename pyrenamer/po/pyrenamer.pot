@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-25 21:43+0200\n"
+"POT-Creation-Date: 2007-07-30 20:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -335,36 +335,41 @@ msgstr ""
 msgid "Y position of the window"
 msgstr ""
 
-#: ../src/pyrenamer.py:264
+#: ../src/pyrenamer.py:265
 msgid "Original file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:269
+#: ../src/pyrenamer.py:270
 msgid "Renamed file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:284
+#: ../src/pyrenamer.py:285
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:665
+#: ../src/pyrenamer.py:694
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:684 ../src/pyrenamer.py:742
+#: ../src/pyrenamer.py:713 ../src/pyrenamer.py:771
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:736
+#: ../src/pyrenamer.py:765
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
 #: ../src/pyrenamer_globals.py.in:38
 msgid "Mass file renamer for GNOME"
+msgstr ""
+
+#: ../src/pyrenamerfilefuncs.py:440
+#, python-format
+msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr ""
 
 #: ../src/pyrenamerfilefuncs.py:448
