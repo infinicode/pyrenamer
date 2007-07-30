@@ -437,7 +437,7 @@ def rename_file(ori, new):
         return True    # We don't need to rename the file, but don't show error message
     
     if os.path.exists(new):
-        print -("Error while renaming %s to %s! -> %s already exists!") % (ori, new, new)
+        print _("Error while renaming %s to %s! -> %s already exists!") % (ori, new, new)
         return False
     
     try:

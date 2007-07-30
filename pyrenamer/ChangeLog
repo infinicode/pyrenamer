@@ -1,5 +1,8 @@
 2007-07-25  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamerfilefuncs.py: (rename_file):
+	Fixed typo (_ instead of -)
+
 	* configure.ac
 	* data/Makefile.am
 	* data/pyrenamer.desktop.in.in
