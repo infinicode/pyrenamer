@@ -288,8 +288,8 @@ class pyRenamer:
     	""" Called when Preview button is clicked.
     	Get new names and paths and add it to the model """
         
-        if (paths != None) and (path not in paths) and (paths != []):
-            # Preview only selected rows
+        if (paths != None) and (path not in paths) and (paths != []) and self.notebook.get_current_page() != 3:
+            # Preview only selected rows (if we're not on manual rename)
             model.set_value(iter, 2, None)
             model.set_value(iter, 3, None)
             return

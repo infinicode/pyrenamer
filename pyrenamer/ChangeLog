@@ -1,5 +1,8 @@
 2007-07-25  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (preview_rename_rows):
+	Disable filter by selection on manual rename
+
 	* src/pyrenamerfilefuncs.py: (rename_file):
 	Fixed typo (_ instead of -)
 
