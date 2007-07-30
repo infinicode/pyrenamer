@@ -1,7 +1,7 @@
 2007-07-30  Adolfo González Blázquez <code@infinicode.org>
 
-	* src/pyrenamer.py: (on_manual_key_press_event)
-	* data/pyrenamer.glade
+	* src/pyrenamer.py: (on_manual_key_press_event):
+	* data/pyrenamer.glade:
 	In "Manual Rename" mode, you can select the next and prev file using PAGE_UP and PAGE_DOWN keys
 
 	* src/pyrenamer.py: (preview_rename_rows):
@@ -12,17 +12,17 @@
 
 2007-07-25  Adolfo González Blázquez <code@infinicode.org>
 
-	* configure.ac
-	* data/Makefile.am
-	* data/pyrenamer.desktop.in.in
-	* data/pyrenamer.glade
-	* Makefile.am
-	* po/*
-	* src/pyrenamer_globals.py.in
-	* src/pyrenamer.py
-	* src/pyrenamerfilefuncs.py
-	* src/tooltips.py
-	* src/treefilebrowser.py
+	* configure.ac:
+	* data/Makefile.am:
+	* data/pyrenamer.desktop.in.in:
+	* data/pyrenamer.glade:
+	* Makefile.am:
+	* po/*:
+	* src/pyrenamer_globals.py.in:
+	* src/pyrenamer.py:
+	* src/pyrenamerfilefuncs.py:
+	* src/tooltips.py:
+	* src/treefilebrowser.py:
 	Added internationalization support (English and Spanish by now)
 
 	* data/pyrenamer.schemas.in:
