@@ -1,3 +1,9 @@
+2007-08-02  Adolfo González Blázquez <code@infinicode.org>
+
+	* data/pyrenamer.glade:
+	* pyrenamerfilefuncs.py: (rename_using_patterns):
+	Fixed bug on {num} pattern, and changed syntax from {num-5} to {num+5} to start counting at 5
+
 2007-07-30  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.3 Released
