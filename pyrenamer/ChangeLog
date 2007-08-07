@@ -1,5 +1,8 @@
 2007-08-02  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_clean_button_clicked):
+	Don't activate Rename button and menu item when clicking on Clean
+
 	* src/pyrenamer.py: (__init__), (preview_clean), (on_clean_button_clicked):
 	* data/pyrenamer.glade:
 	Add button to clean previewed filenames

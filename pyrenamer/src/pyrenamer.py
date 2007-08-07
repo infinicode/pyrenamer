@@ -478,8 +478,8 @@ class pyRenamer:
         self.file_selected_model.foreach(self.preview_clean)
         
         self.selected_files.columns_autosize()
-        self.rename_button.set_sensitive(True)
-        self.menu_rename.set_sensitive(True)
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
 
 
     def on_add_recursive_toggled(self, widget):
