@@ -376,6 +376,31 @@ class pyRenamer:
             model.set_value(iter, 3, None)
         self.count += 1
         
+    
+    def preview_selected_row(self):
+        """ Preview just selected row """
+        
+        # Get values of current row
+        model, iter = self.selected_files.get_selection().get_selected()
+        name = model.get_value(iter, 0)
+        path = model.get_value(iter, 1)
+        if iter != None:
+            newname = self.manual.get_text()
+            if newname != name:
+                newpath = renamerfilefuncs.get_new_path(newname, path)
+            else:
+                newname = None
+                newpath = None
+                
+         # Set new values on model
+        if newname != '' and newname != None:
+            model.set_value(iter, 2, newname)
+            model.set_value(iter, 3, newpath)
+        else:
+            model.set_value(iter, 2, None)
+            model.set_value(iter, 3, None)
+        self.count += 1
+        
 
 #---------------------------------------------------------------------------------------
 # Callbacks
@@ -384,9 +409,14 @@ class pyRenamer:
         """ Clicked a file """
         
         if self.notebook.get_current_page() == 3:
+            # Manual rename
             model, iter = treeview.get_selection().get_selected()
             name = model.get_value(iter,0)
-            self.manual.set_text(name)
+            newname = model.get_value(iter,2)
+            if newname != None:
+                self.manual.set_text(newname)
+            else:
+                self.manual.set_text(name)
 
 
     def on_stop_button_clicked(self, widget):
@@ -641,25 +671,29 @@ class pyRenamer:
         if self.notebook.get_current_page() == 3:
             if event.keyval == gtk.keysyms.Page_Up:
                 try:
+                    self.preview_selected_row()
                     model, iter = self.selected_files.get_selection().get_selected()
                     path = model.get_path(iter)
                     path = path[0]-1
                     if path < 0: return
                     iter = model.get_iter(path)
                     name = model.get_value(iter,0)
-                    self.manual.set_text(name)
+                    #self.manual.set_text(name)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
+                    self.on_selected_files_cursor_changed(self.selected_files)
                 except: pass
             elif event.keyval == gtk.keysyms.Page_Down:
                 try:
+                    self.preview_selected_row()
                     model, iter = self.selected_files.get_selection().get_selected()
                     iter = model.iter_next(iter)
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
-                    self.manual.set_text(name)
+                    #self.manual.set_text(name)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
+                    self.on_selected_files_cursor_changed(self.selected_files)
                 except: pass
             
 

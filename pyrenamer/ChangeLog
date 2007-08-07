@@ -1,5 +1,12 @@
 2007-08-02  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (preview_selected_row),
+						(on_selected_files_cursor_changed),
+						(on_manual_key_press_event):
+	Preview new filename when clicking PAGE_UP or PAGE_DOWN on manual rename
+
+2007-08-02  Adolfo González Blázquez <code@infinicode.org>
+
 	* data/pyrenamer.glade:
 	* pyrenamerfilefuncs.py: (rename_using_patterns):
 	Fixed bug on {num} pattern, and changed syntax from {num-5} to {num+5} to start counting at 5
