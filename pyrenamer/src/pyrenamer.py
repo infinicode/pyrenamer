@@ -678,7 +678,6 @@ class pyRenamer:
                     if path < 0: return
                     iter = model.get_iter(path)
                     name = model.get_value(iter,0)
-                    #self.manual.set_text(name)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
@@ -690,7 +689,6 @@ class pyRenamer:
                     iter = model.iter_next(iter)
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
-                    #self.manual.set_text(name)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
