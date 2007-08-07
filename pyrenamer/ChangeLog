@@ -1,5 +1,9 @@
 2007-08-02  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (preview_clean), (on_clean_button_clicked):
+	* data/pyrenamer.glade:
+	Add button to clean previewed filenames
+
 	* src/pyrenamer.py: (preview_selected_row),
 						(on_selected_files_cursor_changed),
 						(on_manual_key_press_event):

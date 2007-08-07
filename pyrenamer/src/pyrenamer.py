@@ -135,6 +135,7 @@ class pyRenamer:
                     "on_renamed_pattern_changed": self.on_renamed_pattern_changed,
                     "on_add_recursive_toggled": self.on_add_recursive_toggled,
                     "on_preview_button_clicked": self.on_preview_button_clicked,
+                    "on_clean_button_clicked": self.on_clean_button_clicked,
                     "on_rename_button_clicked": self.on_rename_button_clicked,
                     "on_exit_button_clicked": self.on_main_quit,
                     "on_menu_preview_activate": self.on_preview_button_clicked,
@@ -401,6 +402,11 @@ class pyRenamer:
             model.set_value(iter, 3, None)
         self.count += 1
         
+        
+    def preview_clean(self, model, path, iter):
+        """ Clean a row """
+        model.set_value(iter, 2, None)
+        model.set_value(iter, 3, None)
 
 #---------------------------------------------------------------------------------------
 # Callbacks
@@ -458,6 +464,18 @@ class pyRenamer:
         # Get selected rows and execute rename function
         model, paths = self.selected_files.get_selection().get_selected_rows()
         self.file_selected_model.foreach(self.preview_rename_rows, paths)
+        
+        self.selected_files.columns_autosize()
+        self.rename_button.set_sensitive(True)
+        self.menu_rename.set_sensitive(True)
+        
+        
+    def on_clean_button_clicked(self, widget):
+        """ Clean the previewed filenames """
+        self.count = 0
+            
+        # Clean every row
+        self.file_selected_model.foreach(self.preview_clean)
         
         self.selected_files.columns_autosize()
         self.rename_button.set_sensitive(True)
