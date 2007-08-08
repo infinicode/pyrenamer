@@ -6,4 +6,4 @@ Exec=@BINDIR@/pyrenamer
 Icon=@RESOURCEDIR@/pyrenamer.png
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;Application;Utility;
+Categories=GNOME;GTK;Utility;FileTools;
