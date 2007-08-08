@@ -1,6 +1,9 @@
-pixmapsdir = $(IMAGEDIR)
+pixmapsdir = $(datadir)/$(PACKAGE_NAME)
 pixmaps_DATA = \
 	pyrenamer.png \
 	pyrenamer.svg
 
-EXTRA_DIST = $(pixmaps_DATA)		
+icondir = $(datadir)/pixmaps
+icon_DATA = pyrenamer.png
+
+EXTRA_DIST = $(pixmaps_DATA) $(icon_DATA)

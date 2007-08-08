@@ -24,7 +24,7 @@ from gettext import gettext as _
 
 have_eyed3=@HAVE_EYED3@
 
-pixmaps_dir = "@IMAGEDIR@"
+pixmaps_dir = "@RESOURCEDIR@"
 resources_dir = "@RESOURCEDIR@"
 locale_dir = "@LOCALEDIR@"
 
