@@ -1,5 +1,5 @@
 [encoding: UTF-8]
-data/pyrenamer.desktop.in.in
+data/pyrenamer.desktop.in.in.in
 data/pyrenamer.glade
 data/pyrenamer.schemas.in
 src/pyrenamer.py
