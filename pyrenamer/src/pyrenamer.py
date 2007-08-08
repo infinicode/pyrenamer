@@ -352,6 +352,7 @@ class pyRenamer:
                 else:
                     newname = model.get_value(iter, 2)
                     newpath = model.get_value(iter, 3)
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
         
         elif self.notebook.get_current_page() == 4:
             # Replace images using patterns
