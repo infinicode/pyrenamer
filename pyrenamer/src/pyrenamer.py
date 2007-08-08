@@ -421,6 +421,8 @@ class pyRenamer:
         self.rename_button.set_sensitive(val)
         self.menu_rename.set_sensitive(val)
         
+        return val
+        
         
 
 #---------------------------------------------------------------------------------------
