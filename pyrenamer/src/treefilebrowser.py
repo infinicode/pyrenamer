@@ -181,7 +181,12 @@ class TreeFileBrowser(gobject.GObject):
     def cursor_changed(self, treeview):
         """ CALLBACK: a new row has been selected """
         model, iter = treeview.get_selection().get_selected()
+        
         # Send signal with path of expanded row
+        if iter == None:
+            path = treeview.get_cursor()[0]
+            iter = self.model.get_iter(path)
+        
         self.emit('cursor-changed', model.get_value(iter,2))
         
         
@@ -414,9 +419,9 @@ class TreeFileBrowser(gobject.GObject):
     def make_view(self):
         """ Create the view itself.
             (Icon, dir name, path) """
-        model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_STRING)
+        self.model = gtk.TreeStore(gtk.gdk.Pixbuf, gobject.TYPE_STRING, gobject.TYPE_STRING)
         
-        view = gtk.TreeView(model)
+        view = gtk.TreeView(self.model)
         view.set_headers_visible(False)
         view.set_enable_search(True)
         view.set_reorderable(False)
