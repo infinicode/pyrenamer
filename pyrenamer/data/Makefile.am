@@ -20,7 +20,7 @@ pyrenamer.desktop.in: pyrenamer.desktop.in.in
 		< $< > $@
 
 EXTRA_DIST += pyrenamer.desktop.in.in.in
-DISTCLEANFILES += $(desktop_DATA)
+DISTCLEANFILES += $(desktop_DATA) pyrenamer.desktop.in
 
 
 ###################################
