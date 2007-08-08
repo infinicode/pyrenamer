@@ -19,7 +19,7 @@ pyrenamer.desktop.in: pyrenamer.desktop.in.in
 		-e s!\@BINDIR\@!$(bindir)! \
 		< $< > $@
 
-EXTRA_DIST += $(desktop_in_files)
+EXTRA_DIST += pyrenamer.desktop.in.in.in
 DISTCLEANFILES += $(desktop_DATA)
 
 

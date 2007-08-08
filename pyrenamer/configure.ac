@@ -61,18 +61,6 @@ AC_SUBST(HAVE_EYED3)
 
 
 ###################################
-### Some variables
-###################################
-dnl if test "${prefix}" != NONE; then
-dnl	RESOURCEDIR=${prefix}/share/$PACKAGE/
-dnl	AC_SUBST(RESOURCEDIR)
-
-dnl 	BINDIR=${prefix}/bin/
-dnl	AC_SUBST(BINDIR)
-dnl fi
-
-
-###################################
 ### Config and output
 ###################################
 AC_CONFIG_FILES([
