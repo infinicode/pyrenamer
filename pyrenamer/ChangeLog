@@ -1,5 +1,9 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py:
+	* data/pyrenamer.glade:
+	Disable Clear button when needed
+
 	* pyrenamerfilefuncs.py:
 	Better unicode support
 

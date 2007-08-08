@@ -100,6 +100,7 @@ class pyRenamer:
         self.renamed_pattern = self.glade_tree.get_widget("renamed_pattern")
         self.statusbar = self.glade_tree.get_widget("statusbar")
         self.notebook = self.glade_tree.get_widget("notebook")
+        self.clear_button = self.glade_tree.get_widget("clear_button")
         self.rename_button = self.glade_tree.get_widget("rename_button")
         self.subs_spaces = self.glade_tree.get_widget("subs_spaces")
         self.subs_capitalization = self.glade_tree.get_widget("subs_capitalization")
@@ -118,6 +119,7 @@ class pyRenamer:
         self.delete_from = self.glade_tree.get_widget("delete_from")
         self.delete_to = self.glade_tree.get_widget("delete_to")
         self.manual = self.glade_tree.get_widget("manual")
+        self.menu_clear_preview = self.glade_tree.get_widget("menu_clear_preview")
         self.menu_rename = self.glade_tree.get_widget("menu_rename")
         self.images_original_pattern = self.glade_tree.get_widget("images_original_pattern")
         self.images_renamed_pattern = self.glade_tree.get_widget("images_renamed_pattern")
@@ -216,6 +218,7 @@ class pyRenamer:
         
         # Init menu items, some widgets and window name
         self.menu_rename.set_sensitive(False)
+        self.menu_clear_preview.set_sensitive(False)
         self.main_window.set_title(pyrenamerglob.name_long)
         self.main_window.set_icon_from_file(pyrenamerglob.icon)
         self.delete_from.set_sensitive(False)
@@ -404,7 +407,7 @@ class pyRenamer:
         self.count += 1
         
         
-    def preview_clean(self, model, path, iter, paths):
+    def preview_clear(self, model, path, iter, paths):
         """ Clean a row """
         
         if (paths != None) and (path not in paths) and (paths != []):
@@ -414,12 +417,14 @@ class pyRenamer:
         model.set_value(iter, 3, None)
         
         
-    def enable_rename(self, model, path, iter):
+    def enable_rename_and_clean(self, model, path, iter):
         """ Check if the rename button and menu should be enabled """
         val = model.get_value(iter, 2) != None
     
         self.rename_button.set_sensitive(val)
         self.menu_rename.set_sensitive(val)
+        self.clear_button.set_sensitive(val)
+        self.menu_clear_preview.set_sensitive(val)
         
         return val
         
@@ -473,6 +478,8 @@ class pyRenamer:
         
         self.file_selected_model.foreach(self.rename_rows, None)
         self.dir_reload_current()
+        self.clear_button.set_sensitive(False)
+        self.menu_clear_preview.set_sensitive(False)
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
 
@@ -486,6 +493,8 @@ class pyRenamer:
         self.file_selected_model.foreach(self.preview_rename_rows, paths)
         
         self.selected_files.columns_autosize()
+        self.clear_button.set_sensitive(True)
+        self.menu_clear_preview.set_sensitive(True)
         self.rename_button.set_sensitive(True)
         self.menu_rename.set_sensitive(True)
         
@@ -496,13 +505,11 @@ class pyRenamer:
             
         # Clean selected rows
         model, paths = self.selected_files.get_selection().get_selected_rows()
-        self.file_selected_model.foreach(self.preview_clean, paths)
+        self.file_selected_model.foreach(self.preview_clear, paths)
         
-        self.file_selected_model.foreach(self.enable_rename)
+        self.file_selected_model.foreach(self.enable_rename_and_clean)
         
         self.selected_files.columns_autosize()
-        #self.rename_button.set_sensitive(False)
-        #self.menu_rename.set_sensitive(False)
 
 
     def on_add_recursive_toggled(self, widget):
@@ -763,6 +770,7 @@ class pyRenamer:
         self.populate_stop()
         
         self.stop_button.show()
+        self.clear_button.set_sensitive(False)
         self.rename_button.set_sensitive(False)
         self.file_selected_model.clear()
         
