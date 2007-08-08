@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION=0.3
+VERSION=0.4
 
 if [ ! -d /usr/share/build-essential ]; then
 	echo "Please install build-essential package!"
