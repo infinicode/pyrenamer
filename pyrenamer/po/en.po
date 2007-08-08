@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-30 20:01+0200\n"
-"PO-Revision-Date: 2007-07-30 20:01+0100\n"
+"POT-Creation-Date: 2007-08-08 13:13+0200\n"
+"PO-Revision-Date: 2007-08-08 13:13+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Mass rename files"
 
-#: ../data/pyrenamer.desktop.in.in.h:2 ../data/pyrenamer.glade.h:128
+#: ../data/pyrenamer.desktop.in.in.h:2 ../data/pyrenamer.glade.h:130
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -94,18 +94,26 @@ msgstr ""
 "First letter uppercase of each word"
 
 #: ../data/pyrenamer.glade.h:19
+msgid "C_lear"
+msgstr "C_lear"
+
+#: ../data/pyrenamer.glade.h:20
+msgid "C_lear Preview"
+msgstr "C_lear Preview"
+
+#: ../data/pyrenamer.glade.h:21
 msgid "Capitalization"
 msgstr "Capitalization"
 
-#: ../data/pyrenamer.glade.h:20
+#: ../data/pyrenamer.glade.h:22
 msgid "Delete from"
 msgstr "Delete from"
 
-#: ../data/pyrenamer.glade.h:21
+#: ../data/pyrenamer.glade.h:23
 msgid "File selection pattern"
 msgstr "File selection pattern"
 
-#: ../data/pyrenamer.glade.h:22
+#: ../data/pyrenamer.glade.h:24
 msgid ""
 "Image EXIF data replacements:\n"
 "{imagewidth}\t\t\t640\n"
@@ -130,8 +138,8 @@ msgid ""
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -157,14 +165,18 @@ msgstr ""
 "{imageday}\t\t\t\t22\n"
 "{imagedayname}\t\tfriday\n"
 "{imagedaysimp}\t\tfri\n"
+"{imagetime}\t\t\t13_56_02\n"
+"{imagehour}\t\t\t13\n"
+"{imageminute}\t\t\t56\n"
+"{imagesecond}\t\t\t02\n"
 "\n"
 "Common replacements:\n"
 "Use {1} for first catched item. {2} for second, etc...\n"
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -177,19 +189,19 @@ msgstr ""
 "{dayname}\t\tfriday\n"
 "{daysimp}\t\tfri"
 
-#: ../data/pyrenamer.glade.h:58
+#: ../data/pyrenamer.glade.h:60
 msgid "Images"
 msgstr "Images"
 
-#: ../data/pyrenamer.glade.h:59
+#: ../data/pyrenamer.glade.h:61
 msgid "Insert"
 msgstr "Insert"
 
-#: ../data/pyrenamer.glade.h:60
+#: ../data/pyrenamer.glade.h:62
 msgid "Insert / Delete"
 msgstr "Insert / Delete"
 
-#: ../data/pyrenamer.glade.h:61
+#: ../data/pyrenamer.glade.h:63
 msgid ""
 "MP3 music ID3 replacements:\n"
 "{artist}\t\tAnxiA\n"
@@ -205,8 +217,8 @@ msgid ""
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -233,8 +245,8 @@ msgstr ""
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -247,51 +259,51 @@ msgstr ""
 "{dayname}\t\tfriday\n"
 "{daysimp}\t\tfri"
 
-#: ../data/pyrenamer.glade.h:88
+#: ../data/pyrenamer.glade.h:90
 msgid "Manual rename"
 msgstr "Manual rename"
 
-#: ../data/pyrenamer.glade.h:89
+#: ../data/pyrenamer.glade.h:91
 msgid "Music"
 msgstr "Music"
 
-#: ../data/pyrenamer.glade.h:90
+#: ../data/pyrenamer.glade.h:92
 msgid "New file name"
 msgstr "New file name"
 
-#: ../data/pyrenamer.glade.h:91
+#: ../data/pyrenamer.glade.h:93
 msgid "Original file name pattern"
 msgstr "Original file name pattern"
 
-#: ../data/pyrenamer.glade.h:92
+#: ../data/pyrenamer.glade.h:94
 msgid "Patterns"
 msgstr "Patterns"
 
-#: ../data/pyrenamer.glade.h:93
+#: ../data/pyrenamer.glade.h:95
 msgid "Remove accents"
 msgstr "Remove accents"
 
-#: ../data/pyrenamer.glade.h:94
+#: ../data/pyrenamer.glade.h:96
 msgid "Renamed file name pattern"
 msgstr "Renamed file name pattern"
 
-#: ../data/pyrenamer.glade.h:95
+#: ../data/pyrenamer.glade.h:97
 msgid "Replace"
 msgstr "Replace"
 
-#: ../data/pyrenamer.glade.h:96
+#: ../data/pyrenamer.glade.h:98
 msgid "Select  _nothing"
 msgstr "Select  _nothing"
 
-#: ../data/pyrenamer.glade.h:97
+#: ../data/pyrenamer.glade.h:99
 msgid "Select _all"
 msgstr "Select _all"
 
-#: ../data/pyrenamer.glade.h:98
+#: ../data/pyrenamer.glade.h:100
 msgid "Spaces"
 msgstr "Spaces"
 
-#: ../data/pyrenamer.glade.h:99
+#: ../data/pyrenamer.glade.h:101
 msgid ""
 "Spaces to Underscores\n"
 "Underscores to Spaces\n"
@@ -303,18 +315,18 @@ msgstr ""
 "Spaces to Dots\n"
 "Dots to Spaces"
 
-#: ../data/pyrenamer.glade.h:103
+#: ../data/pyrenamer.glade.h:105
 msgid "Substitutions"
 msgstr "Substitutions"
 
-#: ../data/pyrenamer.glade.h:104
+#: ../data/pyrenamer.glade.h:106
 msgid ""
 "Use {1} for first catched item. {2} for second, etc...\n"
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -331,8 +343,8 @@ msgstr ""
 "Use {num} for adding 1, 2, 3... to file names\n"
 "Use {num2} for 01, 02, 03.....\n"
 "Use {num3} for 001, 002, 003...\n"
-"Use {num-10} for 10, 11, 12...\n"
-"Use {num2-10} for 010, 011, 012...\n"
+"Use {num+10} for 10, 11, 12...\n"
+"Use {num2+10} for 010, 011, 012...\n"
 "Use {dir} for getting current dir\n"
 "\n"
 "Some today date replacements:\n"
@@ -345,43 +357,43 @@ msgstr ""
 "{dayname}\t\tfriday\n"
 "{daysimp}\t\tfri"
 
-#: ../data/pyrenamer.glade.h:121
+#: ../data/pyrenamer.glade.h:123
 msgid "_Edit"
 msgstr "_Edit"
 
-#: ../data/pyrenamer.glade.h:122
+#: ../data/pyrenamer.glade.h:124
 msgid "_File"
 msgstr "_File"
 
-#: ../data/pyrenamer.glade.h:123
+#: ../data/pyrenamer.glade.h:125
 msgid "_Help"
 msgstr "_Help"
 
-#: ../data/pyrenamer.glade.h:124
+#: ../data/pyrenamer.glade.h:126
 msgid "_Preview"
 msgstr "_Preview"
 
-#: ../data/pyrenamer.glade.h:125
+#: ../data/pyrenamer.glade.h:127
 msgid "_Rename"
 msgstr "_Rename"
 
-#: ../data/pyrenamer.glade.h:126
+#: ../data/pyrenamer.glade.h:128
 msgid "at"
 msgstr "at"
 
-#: ../data/pyrenamer.glade.h:127
+#: ../data/pyrenamer.glade.h:129
 msgid "or at the end"
 msgstr "or at the end"
 
-#: ../data/pyrenamer.glade.h:129
+#: ../data/pyrenamer.glade.h:131
 msgid "to"
 msgstr "to"
 
-#: ../data/pyrenamer.glade.h:130
+#: ../data/pyrenamer.glade.h:132
 msgid "with"
 msgstr "with"
 
-#: ../data/pyrenamer.glade.h:131
+#: ../data/pyrenamer.glade.h:133
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -395,11 +407,11 @@ msgstr ""
 "{X}\t\tNumbers, letters, and spaces\n"
 "{@}\tTrash "
 
-#: ../data/pyrenamer.glade.h:136
+#: ../data/pyrenamer.glade.h:138
 msgid "{1}"
 msgstr "{1}"
 
-#: ../data/pyrenamer.glade.h:137
+#: ../data/pyrenamer.glade.h:139
 msgid "{X}"
 msgstr "{X}"
 
@@ -431,30 +443,30 @@ msgstr "X position of the window"
 msgid "Y position of the window"
 msgstr "Y position of the window"
 
-#: ../src/pyrenamer.py:265
+#: ../src/pyrenamer.py:267
 msgid "Original file name"
 msgstr "Original file name"
 
-#: ../src/pyrenamer.py:270
+#: ../src/pyrenamer.py:272
 msgid "Renamed file name"
 msgstr "Renamed file name"
 
-#: ../src/pyrenamer.py:285
+#: ../src/pyrenamer.py:287
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Could not rename file %s to %s"
 
-#: ../src/pyrenamer.py:694
+#: ../src/pyrenamer.py:769
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Reading contents of dir %s"
 
-#: ../src/pyrenamer.py:713 ../src/pyrenamer.py:771
+#: ../src/pyrenamer.py:788 ../src/pyrenamer.py:846
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directory: %s - Files: %s"
 
-#: ../src/pyrenamer.py:765
+#: ../src/pyrenamer.py:840
 #, python-format
 msgid "Adding file %s"
 msgstr "Adding file %s"
@@ -463,12 +475,12 @@ msgstr "Adding file %s"
 msgid "Mass file renamer for GNOME"
 msgstr "Mass file renamer for GNOME"
 
-#: ../src/pyrenamerfilefuncs.py:440
+#: ../src/pyrenamerfilefuncs.py:445
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Error while renaming %s to %s! -> %s already exists!"
 
-#: ../src/pyrenamerfilefuncs.py:448
+#: ../src/pyrenamerfilefuncs.py:453
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Error while renaming %s to %s!"
@@ -487,6 +499,6 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:358
+#: ../src/treefilebrowser.py:363
 msgid "Show hidden files"
 msgstr "Show hidden files"
