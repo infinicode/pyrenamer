@@ -1,6 +1,7 @@
 pyrenamer (0.4-1) unstable; urgency=low
 
   * New upstream release
+  * Updated menu file to conform new specification
 
  -- Adolfo González Blázquez <code@infinicode.org>  Wed,  8 Aug 2007 22:05:27 +0200
 
