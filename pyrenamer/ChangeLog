@@ -1,5 +1,9 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
+	* Version 0.4 Released
+	
+	* Autoconf scripts updated
+
 	* src/pyrenamer.py:
 	* src/pyrenamer_globals.py.in:
 	Changes in About dialog

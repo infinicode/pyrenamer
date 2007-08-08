@@ -1,3 +1,14 @@
+2007-08-08  Adolfo González Blázquez <code@infinicode.org>
+
+	* Version 0.4 Released
+	* Fixed bug on {num} pattern and syntax change from {num-2} to {num+2}
+	* Preview new filename when clicking PAGE_UP or PAGE_DOWN on manual rename
+	* Add button to clear previewed filenames
+	* Better file selection filter
+	* Better unicode support
+	* Bug fixes
+	
+
 2007-07-30  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.3 Released
