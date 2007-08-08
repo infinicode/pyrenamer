@@ -877,19 +877,19 @@ class pyRenamer:
         about.set_version(pyrenamerglob.version)
         about.set_authors(pyrenamerglob.authors)
         #about.set_artists(pyrenamerglob.artists)
-        #about.set_translator_credits(_('translator-credits'))
+        about.set_translator_credits(_('translator-credits'))
         about.set_logo(gtk.gdk.pixbuf_new_from_file(pyrenamerglob.icon))
         about.set_license(pyrenamerglob.license)
         about.set_wrap_license(True)
-        about.set_comments(pyrenamerglob.description)
+        about.set_comments(_(pyrenamerglob.description))
         about.set_copyright(pyrenamerglob.copyright)
 
         def openHomePage(widget,url,url2):
             import webbrowser
             webbrowser.open_new(url)
-	gtk.about_dialog_set_url_hook(openHomePage,pyrenamerglob.website)
+	   
+        gtk.about_dialog_set_url_hook(openHomePage,pyrenamerglob.website)
         about.set_website(pyrenamerglob.website)
-        
         about.run()
         about.destroy()
 

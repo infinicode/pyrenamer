@@ -1,6 +1,10 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
 	* src/pyrenamer.py:
+	* src/pyrenamer_globals.py.in:
+	Changes in About dialog
+
+	* src/pyrenamer.py:
 	* data/pyrenamer.glade:
 	Disable Clear button when needed
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-08 13:13+0200\n"
-"PO-Revision-Date: 2007-08-08 13:13+0100\n"
+"POT-Creation-Date: 2007-08-08 16:38+0200\n"
+"PO-Revision-Date: 2007-08-08 16:34+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -443,44 +443,49 @@ msgstr "X position of the window"
 msgid "Y position of the window"
 msgstr "Y position of the window"
 
-#: ../src/pyrenamer.py:267
+#: ../src/pyrenamer.py:270
 msgid "Original file name"
 msgstr "Original file name"
 
-#: ../src/pyrenamer.py:272
+#: ../src/pyrenamer.py:275
 msgid "Renamed file name"
 msgstr "Renamed file name"
 
-#: ../src/pyrenamer.py:287
+#: ../src/pyrenamer.py:290
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Could not rename file %s to %s"
 
-#: ../src/pyrenamer.py:769
+#: ../src/pyrenamer.py:779
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Reading contents of dir %s"
 
-#: ../src/pyrenamer.py:788 ../src/pyrenamer.py:846
+#: ../src/pyrenamer.py:798 ../src/pyrenamer.py:856
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directory: %s - Files: %s"
 
-#: ../src/pyrenamer.py:840
+#: ../src/pyrenamer.py:850
 #, python-format
 msgid "Adding file %s"
 msgstr "Adding file %s"
+
+#. about.set_artists(pyrenamerglob.artists)
+#: ../src/pyrenamer.py:880
+msgid "translator-credits"
+msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
 #: ../src/pyrenamer_globals.py.in:38
 msgid "Mass file renamer for GNOME"
 msgstr "Mass file renamer for GNOME"
 
-#: ../src/pyrenamerfilefuncs.py:445
+#: ../src/pyrenamerfilefuncs.py:461
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Error while renaming %s to %s! -> %s already exists!"
 
-#: ../src/pyrenamerfilefuncs.py:453
+#: ../src/pyrenamerfilefuncs.py:469
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Error while renaming %s to %s!"
