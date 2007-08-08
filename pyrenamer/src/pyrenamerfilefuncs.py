@@ -123,6 +123,9 @@ def replace_spaces(name, path, mode):
         if mode == 1: '_' -> ' '
         if mode == 2: '_' -> '.'
         if mode == 3: '.' -> ' ' """
+    name = unicode(name)
+    path = unicode(path)
+    
     if mode == 0:
         newname = name.replace(' ', '_')
     elif mode == 1:
@@ -133,7 +136,7 @@ def replace_spaces(name, path, mode):
         newname = name.replace('.', ' ')
         
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def replace_capitalization(name, path, mode):
@@ -141,6 +144,9 @@ def replace_capitalization(name, path, mode):
     1: all to lowercase
     2: first letter uppercase
     3: first letter uppercase of each word """
+    name = unicode(name)
+    path = unicode(path)
+    
     if mode == 0:
         newname = name.upper()
     elif mode == 1:
@@ -148,22 +154,25 @@ def replace_capitalization(name, path, mode):
     elif mode == 2:
         newname = name.capitalize()
     elif mode == 3:
-        #newname = name.title()
-        newname = ' '.join([x.capitalize() for x in name.split()])
+        newname = name.title()
+        #newname = ' '.join([x.capitalize() for x in name.split()])
 
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
     
 
 def replace_with(name, path, orig, new):
     """ Replace all occurences of orig with new """
     newname = name.replace(orig, new)
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def replace_accents(name, path):
     """ Remove accents, umlauts and other locale symbols from words """
+    name = unicode(name)
+    path = unicode(path)
+    
     newname = name.replace('á', 'a')
     newname = newname.replace('à', 'a')
     newname = newname.replace('ä', 'a')
@@ -210,7 +219,7 @@ def replace_accents(name, path):
     newname = newname.replace('Û', 'U')
     
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
@@ -223,6 +232,8 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     {X} Numbers, letters, and spaces
     {@} Trash
     """
+    name = unicode(name)
+    path = unicode(path)
     
     pattern = pattern_ini
     newname = pattern_end
@@ -289,11 +300,16 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
         
     # Returns new name and path
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def replace_images(name, path, newname, newpath):
     """ Pattern replace for images """
+    
+    name = unicode(name)
+    path = unicode(path)
+    newname = unicode(newname)
+    newpath = unicode(newpath)
     
     # Image EXIF replacements
     date, width, height, cameramaker, cameramodel = get_exif_data(get_new_path(name, path))
@@ -340,7 +356,7 @@ def replace_images(name, path, newname, newpath):
         
     # Returns new name and path
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def get_exif_data(path):
@@ -432,7 +448,7 @@ def replace_music(name, path, newname, newpath):
         
     # Returns new name and path
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def rename_file(ori, new):
@@ -465,7 +481,7 @@ def insert_at(name, path, text, pos):
         newname = name + text
         
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)
 
 
 def delete_from(name, path, ini, to):
@@ -475,4 +491,4 @@ def delete_from(name, path, ini, to):
     newname = textini + textend
     
     newpath = get_new_path(newname, path)
-    return newname, newpath
+    return unicode(newname), unicode(newpath)

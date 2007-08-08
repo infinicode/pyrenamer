@@ -1,5 +1,8 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
+	* pyrenamerfilefuncs.py:
+	Better unicode support
+
 	* src/pyrenamer.py:
 	Fix clean preview
 
