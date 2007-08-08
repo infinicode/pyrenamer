@@ -140,6 +140,7 @@ class pyRenamer:
                     "on_exit_button_clicked": self.on_main_quit,
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
+                    "on_menu_clear_preview_activate": self.on_clean_button_clicked,
                     "on_subs_spaces_toggled": self.on_subs_spaces_toggled,
                     "on_subs_capitalization_toggled": self.on_subs_capitalization_toggled,
                     "on_subs_spaces_combo_changed": self.on_subs_spaces_combo_changed,
@@ -290,10 +291,8 @@ class pyRenamer:
     	""" Called when Preview button is clicked.
     	Get new names and paths and add it to the model """
         
-        if (paths != None) and (path not in paths) and (paths != []) and self.notebook.get_current_page() != 3:
+        if (paths != None) and (path not in paths) and (paths != []):
             # Preview only selected rows (if we're not on manual rename)
-            model.set_value(iter, 2, None)
-            model.set_value(iter, 3, None)
             return
         
         # Get current values
@@ -344,6 +343,7 @@ class pyRenamer:
                 
         elif self.notebook.get_current_page() == 3:
             # Manual rename
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
             nmodel, niter = self.selected_files.get_selection().get_selected()
             if niter != None:
                 if nmodel.get_value(niter,0) == name:
@@ -403,10 +403,24 @@ class pyRenamer:
         self.count += 1
         
         
-    def preview_clean(self, model, path, iter):
+    def preview_clean(self, model, path, iter, paths):
         """ Clean a row """
+        
+        if (paths != None) and (path not in paths) and (paths != []):
+            return
+        
         model.set_value(iter, 2, None)
         model.set_value(iter, 3, None)
+        
+        
+    def enable_rename(self, model, path, iter):
+        """ Check if the rename button and menu should be enabled """
+        val = model.get_value(iter, 2) != None
+    
+        self.rename_button.set_sensitive(val)
+        self.menu_rename.set_sensitive(val)
+        
+        
 
 #---------------------------------------------------------------------------------------
 # Callbacks
@@ -416,13 +430,16 @@ class pyRenamer:
         
         if self.notebook.get_current_page() == 3:
             # Manual rename
-            model, iter = treeview.get_selection().get_selected()
-            name = model.get_value(iter,0)
-            newname = model.get_value(iter,2)
-            if newname != None:
-                self.manual.set_text(newname)
-            else:
-                self.manual.set_text(name)
+            try:
+                self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
+                model, iter = treeview.get_selection().get_selected()
+                name = model.get_value(iter,0)
+                newname = model.get_value(iter,2)
+                if newname != None:
+                    self.manual.set_text(newname)
+                else:
+                    self.manual.set_text(name)
+            except: pass
 
 
     def on_stop_button_clicked(self, widget):
@@ -474,12 +491,15 @@ class pyRenamer:
         """ Clean the previewed filenames """
         self.count = 0
             
-        # Clean every row
-        self.file_selected_model.foreach(self.preview_clean)
+        # Clean selected rows
+        model, paths = self.selected_files.get_selection().get_selected_rows()
+        self.file_selected_model.foreach(self.preview_clean, paths)
+        
+        self.file_selected_model.foreach(self.enable_rename)
         
         self.selected_files.columns_autosize()
-        self.rename_button.set_sensitive(False)
-        self.menu_rename.set_sensitive(False)
+        #self.rename_button.set_sensitive(False)
+        #self.menu_rename.set_sensitive(False)
 
 
     def on_add_recursive_toggled(self, widget):
@@ -675,11 +695,15 @@ class pyRenamer:
         
     def on_select_all_activate(self, widget):
         """ Select every row on selected-files treeview """
+        if self.notebook.get_current_page() == 3:
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
         self.selected_files.get_selection().select_all()
         
         
     def on_select_nothing_activate(self, widget):
         """ Select nothing on selected-files treeview """
+        if self.notebook.get_current_page() == 3:
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
         self.selected_files.get_selection().unselect_all()
 
     

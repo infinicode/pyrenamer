@@ -54,7 +54,7 @@
 		      <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image29">
+			<widget class="GtkImage" id="image43">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-find</property>
 			  <property name="icon_size">1</property>
@@ -76,7 +76,7 @@
 		      <accelerator key="R" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image30">
+			<widget class="GtkImage" id="image44">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-apply</property>
 			  <property name="icon_size">1</property>
@@ -91,6 +91,34 @@
 
 		  <child>
 		    <widget class="GtkSeparatorMenuItem" id="separatormenuitem1">
+		      <property name="visible">True</property>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkImageMenuItem" id="menu_clear_preview">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">C_lear Preview</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_menu_clear_preview_activate" last_modification_time="Wed, 08 Aug 2007 09:03:43 GMT"/>
+		      <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image45">
+			  <property name="visible">True</property>
+			  <property name="stock">gtk-clear</property>
+			  <property name="icon_size">1</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkSeparatorMenuItem" id="separador2">
 		      <property name="visible">True</property>
 		    </widget>
 		  </child>
@@ -168,7 +196,7 @@
 		      <accelerator key="A" modifiers="GDK_CONTROL_MASK" signal="activate"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image31">
+			<widget class="GtkImage" id="image46">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-select-all</property>
 			  <property name="icon_size">1</property>
@@ -572,8 +600,8 @@ Some today date replacements:
 		    <widget class="GtkTable" id="subs_table">
 		      <property name="border_width">12</property>
 		      <property name="visible">True</property>
-		      <property name="n_rows">3</property>
-		      <property name="n_columns">4</property>
+		      <property name="n_rows">5</property>
+		      <property name="n_columns">2</property>
 		      <property name="homogeneous">False</property>
 		      <property name="row_spacing">6</property>
 		      <property name="column_spacing">6</property>
@@ -687,48 +715,52 @@ Dots to Spaces</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkCheckButton" id="subs_capitalization">
+			<widget class="GtkLabel" id="label33">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">Capitalization</property>
-			  <property name="use_underline">True</property>
-			  <property name="relief">GTK_RELIEF_NORMAL</property>
-			  <property name="focus_on_click">True</property>
-			  <property name="active">False</property>
-			  <property name="inconsistent">False</property>
-			  <property name="draw_indicator">True</property>
-			  <signal name="toggled" handler="on_subs_capitalization_toggled" last_modification_time="Mon, 25 Sep 2006 11:59:31 GMT"/>
+			  <property name="label" translatable="yes">&lt;b&gt;Common substitutions&lt;/b&gt;</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">True</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
 			</widget>
 			<packing>
-			  <property name="left_attach">2</property>
-			  <property name="right_attach">3</property>
-			  <property name="top_attach">1</property>
-			  <property name="bottom_attach">2</property>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">0</property>
+			  <property name="bottom_attach">1</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
 		      <child>
-			<widget class="GtkCheckButton" id="subs_accents">
+			<widget class="GtkComboBox" id="subs_capitalization_combo">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="label" translatable="yes">Remove accents</property>
-			  <property name="use_underline">True</property>
-			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="sensitive">False</property>
+			  <property name="items" translatable="yes">All uppercase
+All downcase
+First letter uppercase
+First letter uppercase of each word</property>
+			  <property name="add_tearoffs">False</property>
 			  <property name="focus_on_click">True</property>
-			  <property name="active">False</property>
-			  <property name="inconsistent">False</property>
-			  <property name="draw_indicator">True</property>
-			  <signal name="toggled" handler="on_subs_accents_toggled" last_modification_time="Wed, 13 Jun 2007 16:23:45 GMT"/>
+			  <signal name="changed" handler="on_subs_capitalization_combo_changed" last_modification_time="Mon, 25 Sep 2006 17:56:46 GMT"/>
 			</widget>
 			<packing>
-			  <property name="left_attach">2</property>
-			  <property name="right_attach">4</property>
-			  <property name="top_attach">2</property>
-			  <property name="bottom_attach">3</property>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">3</property>
+			  <property name="bottom_attach">4</property>
 			  <property name="x_options">fill</property>
-			  <property name="y_options"></property>
+			  <property name="y_options">fill</property>
 			</packing>
 		      </child>
 
@@ -781,52 +813,50 @@ Dots to Spaces</property>
 		      </child>
 
 		      <child>
-			<widget class="GtkLabel" id="label33">
+			<widget class="GtkCheckButton" id="subs_capitalization">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">&lt;b&gt;Common substitutions&lt;/b&gt;</property>
-			  <property name="use_underline">False</property>
-			  <property name="use_markup">True</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Capitalization</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <property name="active">False</property>
+			  <property name="inconsistent">False</property>
+			  <property name="draw_indicator">True</property>
+			  <signal name="toggled" handler="on_subs_capitalization_toggled" last_modification_time="Mon, 25 Sep 2006 11:59:31 GMT"/>
 			</widget>
 			<packing>
 			  <property name="left_attach">0</property>
-			  <property name="right_attach">4</property>
-			  <property name="top_attach">0</property>
-			  <property name="bottom_attach">1</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">3</property>
+			  <property name="bottom_attach">4</property>
+			  <property name="x_padding">12</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
 		      <child>
-			<widget class="GtkComboBox" id="subs_capitalization_combo">
+			<widget class="GtkCheckButton" id="subs_accents">
 			  <property name="visible">True</property>
-			  <property name="sensitive">False</property>
-			  <property name="items" translatable="yes">All uppercase
-All downcase
-First letter uppercase
-First letter uppercase of each word</property>
-			  <property name="add_tearoffs">False</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Remove accents</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
-			  <signal name="changed" handler="on_subs_capitalization_combo_changed" last_modification_time="Mon, 25 Sep 2006 17:56:46 GMT"/>
+			  <property name="active">False</property>
+			  <property name="inconsistent">False</property>
+			  <property name="draw_indicator">True</property>
+			  <signal name="toggled" handler="on_subs_accents_toggled" last_modification_time="Wed, 13 Jun 2007 16:23:45 GMT"/>
 			</widget>
 			<packing>
-			  <property name="left_attach">3</property>
-			  <property name="right_attach">4</property>
-			  <property name="top_attach">1</property>
-			  <property name="bottom_attach">2</property>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">4</property>
+			  <property name="bottom_attach">5</property>
+			  <property name="x_padding">12</property>
 			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 		    </widget>
@@ -1772,7 +1802,7 @@ Some today date replacements:
 		  <property name="yalign">0.5</property>
 		  <property name="xscale">1</property>
 		  <property name="yscale">1</property>
-		  <property name="top_padding">23</property>
+		  <property name="top_padding">61</property>
 		  <property name="bottom_padding">0</property>
 		  <property name="left_padding">0</property>
 		  <property name="right_padding">0</property>
