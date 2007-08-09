@@ -275,6 +275,7 @@ class TreeFileBrowser(gobject.GObject):
             # Expand baby expand!
             for i in range(depth):
                 newpath = dirtree[i+exp]
+                if iter == None: continue
                 val = model.get_value(iter, 1).replace('/','') + '/'
                 while val != newpath:
                     iter = model.iter_next(iter)

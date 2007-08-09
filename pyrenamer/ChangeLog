@@ -1,5 +1,8 @@
 2007-08-09  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/treefilebrowser.py: (set_active_dir):
+	If we can't read a dir, just ignore it (thanks to Piotr Ożarowski)
+
 	* src/pyrenamer.py:
 	Fix selection on Manual Rename tab
 
@@ -44,7 +47,7 @@
 	Added "Clear Preview" button and menu item
 	
 2007-08-07  Adolfo González Blázquez <code@infinicode.org>
-c
+
 	* src/pyrenamer.py: (on_clean_button_clicked):
 	Don't activate Rename button and menu item when clicking on Clean
 
