@@ -1,10 +1,11 @@
+2007-08-09  Adolfo González Blázquez <code@infinicode.org>
+
+	* data/pyrenamer.glade:
+	Adjusted buttons a bit
+
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
 	* Updated .desktop file category
-
-2007-08-08  Adolfo González Blázquez <code@infinicode.org>
-
-	* Version 0.4 Released
 	
 	* Autoconf scripts updated
 
