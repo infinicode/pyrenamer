@@ -28,7 +28,7 @@ tree-like file browser, like the one found on Nautilus.
 
 import gtk
 import pygtk
-import treefilebrowser
+from pyrenamer import treefilebrowser
 
 def make_buttons(list):
     buttonbox = gtk.HBox()
