@@ -47,7 +47,7 @@ import pyrenamer_globals as pyrenamerglob
 import tooltips
 
 import threading
-import os
+import user
 
 import locale
 import gettext
@@ -65,7 +65,7 @@ class pyRenamer:
     	global HAS_GCONF
         
         # Vars
-        self.home = os.environ["HOME"]
+        self.home = user.home
         self.current_dir = self.home
         self.window_maximized = False
         self.count = 0
