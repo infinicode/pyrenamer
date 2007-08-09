@@ -1,6 +1,9 @@
 2007-08-09  Adolfo González Blázquez <code@infinicode.org>
 
 	* src/pyrenamer.py:
+	Fix selection on Manual Rename tab
+
+	* src/pyrenamer.py:
 	Use user.home instead of os.environ['HOME']
 
 	* data/pyrenamer.glade:

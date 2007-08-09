@@ -669,9 +669,7 @@ class pyRenamer:
 
     def on_notebook_switch_page(self, notebook, page, page_num):
         """ Tab changed """
-        if page_num == 3:
-            self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
-        else:
+        if page_num != 3:
             self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
             
 
