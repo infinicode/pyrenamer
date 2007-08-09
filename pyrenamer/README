@@ -42,3 +42,4 @@
 -= Thanks =-
   pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>
   pyRenamer uses EXIF.py from Gene Cash <gcash@cfl.rr.com>
+  Thanks to Piotr Ożarowski for sponsoring Debian packages and helping debugging
