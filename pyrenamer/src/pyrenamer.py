@@ -80,12 +80,8 @@ class pyRenamer:
         
         # Directories variables
         self.home = user.home
-        
-        if rootdir == None: self.root_dir = '/'
-        else: self.root_dir = root_dir
-        
-        if startdir == None: self.active_dir = self.home
-        else: self.active_dir = startdir
+        self.root_dir = '/'
+        self.active_dir = self.home
         
         # Read preferences using Gconf
         if HAS_GCONF: 
@@ -100,6 +96,9 @@ class pyRenamer:
             self.gconf_window_posy = self.gconf_path + '/window_posy'
             self.preferences_read()
 
+        # Process commanline
+        if rootdir != None: self.root_dir = rootdir
+        if startdir != None: self.active_dir = startdir
 
         # Init Glade stuff
         self.glade_tree = gtk.glade.XML(pyrenamerglob.gladefile, "main_window")
@@ -943,9 +942,14 @@ class pyRenamer:
                    }
         self.preferences_tree.signal_autoconnect(signals)
         
-        # Fill the panel with actual values
-        self.prefs_entry_root.set_text(self.root_dir)
-        self.prefs_entry_active.set_text(self.active_dir)
+        # Fill the panel with gconf values or actual values (if gconf is empty)
+        client = gconf.client_get_default()
+        root_dir = client.get_string(self.gconf_root_dir)
+        if root_dir == None: root_dir = self.root_dir
+        active_dir = client.get_string(self.gconf_active_dir)
+        if active_dir == None: active_dir = self.active_dir
+        self.prefs_entry_root.set_text(root_dir)
+        self.prefs_entry_active.set_text(active_dir)
         
     
     def on_prefs_browse_root_clicked(self, widget):
@@ -989,14 +993,12 @@ class pyRenamer:
         if self.prefs_entry_active.get_text() != "":
             self.active_dir = self.prefs_entry_active.get_text()
         self.prefs_window.destroy()
-        self.preferences_save()
+        self.preferences_save_dirs()
 
         
     def preferences_save(self):
         """ Width and height are saved on the configure_event callback for main_window """      
         client = gconf.client_get_default()
-        client.set_string(self.gconf_root_dir, self.root_dir)
-        client.set_string(self.gconf_active_dir, self.active_dir)
         client.set_int(self.gconf_pane_position, self.main_hpaned.get_position())
         client.set_bool(self.gconf_window_maximized, self.window_maximized)
         client.set_int(self.gconf_window_width, self.window_width)
@@ -1004,6 +1006,12 @@ class pyRenamer:
         client.set_int(self.gconf_window_posx, self.window_posx)
         client.set_int(self.gconf_window_posy, self.window_posy)
 
+        
+    def preferences_save_dirs(self):
+        """ Save default directories """
+        client = gconf.client_get_default()
+        client.set_string(self.gconf_root_dir, self.root_dir)
+        client.set_string(self.gconf_active_dir, self.active_dir)
         
     def preferences_read(self):
     	""" The name says it all... """
