@@ -268,11 +268,8 @@ class TreeFileBrowser(gobject.GObject):
             # Count how many iterations we need
             depth = len(dirtree) - len(roottree)
             
-            # Expand depends on the rootdir. Ugly ugly hack!
-            if rootdir == '/': exp = 1
-            else: exp = 2
-            
             # Expand baby expand!
+            exp = len(roottree)
             for i in range(depth):
                 newpath = dirtree[i+exp]
                 if iter == None: continue
@@ -338,7 +335,9 @@ class TreeFileBrowser(gobject.GObject):
         
         model = self.view.get_model()
 
-        if self.root != '/': directory = self.root.split('/')[-1]
+        if self.root != '/': 
+            if self.root[-1] == '/': self.root  = self.root.rsplit('/',1)[0] # Remove last / if neccesary
+            directory = self.root.split('/')[-1]
         else: directory = self.root
 
         iter = model.insert_before(None, None)

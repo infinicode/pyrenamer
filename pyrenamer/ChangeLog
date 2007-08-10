@@ -1,3 +1,8 @@
+2007-08-10  Adolfo González Blázquez <code@infinicode.org>
+
+	* src/treefilebrowser.py: (set_active_dir), (create_root:
+	Fixed a couple of bugs in tree creation
+
 2007-08-09  Adolfo González Blázquez <code@infinicode.org>
 
 	* src/treefilebrowser.py: (set_active_dir):
