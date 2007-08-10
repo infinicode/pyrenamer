@@ -2,7 +2,7 @@
 
 	* src/pyrenamer.py:
 	* data/pyrenamer.glade:
-	Added preferences menu item a panel to select default directories
+	Added preferences menu item and panel to select default directories
 
 	* src/pyrenamer.py: (__init__), (read_preferences), (save_preferences):
 	Add rootdir and activedir to gconf preferences
