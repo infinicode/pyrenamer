@@ -70,7 +70,7 @@ class TreeFileBrowser(gobject.GObject):
         
         self.root = '/'
         if root != None and ospath.isdir(root): self.root = root
-        else: print "ERROR: %s doesn't exist. Setting root to default %s" % (root, self.root)
+        elif root != None: print "ERROR: %s doesn't exist. Setting root to default %s" % (root, self.root)
         
         self.view, self.scrolled = self.make_view()
         self.create_new()
