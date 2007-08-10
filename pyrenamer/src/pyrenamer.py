@@ -60,13 +60,16 @@ gtk.glade.textdomain(pyrenamerglob.name)
 
 class pyRenamer:
     
-    def __init__(self):
+    def __init__(self, rootdir=None, startdir=None):
     
     	global HAS_GCONF
         
-        # Vars
+        # Directories variables
         self.home = user.home
+        self.root = rootdir
         self.current_dir = self.home
+        if startdir != None: self.current_dir = startdir
+        
         self.window_maximized = False
         self.count = 0
         self.populate_id = []
@@ -197,7 +200,10 @@ class pyRenamer:
         self.stop_button.hide()
                
         # Init TreeFileBrowser
-        self.file_browser = treefilebrowser.TreeFileBrowser()
+        if rootdir == None:
+            self.file_browser = treefilebrowser.TreeFileBrowser()
+        else:
+            self.file_browser = treefilebrowser.TreeFileBrowser(self.root)
         self.file_browser_view = self.file_browser.get_view()
         file_browser_scrolled = self.file_browser.get_scrolled()
         self.file_browser.connect("cursor-changed", self.dir_selected)
@@ -210,7 +216,11 @@ class pyRenamer:
         self.create_model()
         
         #  Set cursor on selected dir
-        self.file_browser.set_active_dir(self.current_dir)
+        if not self.file_browser.set_active_dir(self.current_dir):
+            self.current_dir = self.home
+            if not self.file_browser.set_active_dir(self.current_dir):
+                self.current_dir = self.root
+                self.file_browser.set_active_dir(self.current_dir)
         
         # Init comboboxes
         self.subs_spaces_combo.set_active(0)

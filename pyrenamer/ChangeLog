@@ -1,5 +1,9 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer:
+	* src/pyrenamer.py: (__init__):
+	Added support for command line options
+
 	* src/treefilebrowser.py: (__init__), (set_active_dir):
 	Print some errors if needed
 
