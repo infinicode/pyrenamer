@@ -234,8 +234,11 @@ class TreeFileBrowser(gobject.GObject):
         if len(directory) > 1 and directory[-1] != '/': directory += '/'
         if len(rootdir) > 1 and rootdir[-1] != '/':  rootdir += '/'
 
-        if not ospath.isdir(directory) or not (rootdir in directory) or (directory == rootdir):
+        if not ospath.isdir(directory) or not (rootdir in directory):
             return False
+        if  directory == rootdir:
+            self.set_cursor_on_first_row()
+            return True
         else:
             
             # Now we check if the desired dir is valid
