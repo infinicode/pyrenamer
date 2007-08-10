@@ -1,5 +1,8 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/treefilebrowser.py: (__init__), (set_active_dir):
+	Print some errors if needed
+
 	* src/treefilebrowser.py: (set_active_dir):
 	If rootdir == activedir: set active the rootdir
 
@@ -7,7 +10,7 @@
 	* src/pyrenamer.py:
 	Added support for command line options
 
-	* src/treefilebrowser.py: (set_active_dir), (create_root:
+	* src/treefilebrowser.py: (set_active_dir), (create_root):
 	Fixed a couple of bugs in tree creation
 
 2007-08-09  Adolfo González Blázquez <code@infinicode.org>

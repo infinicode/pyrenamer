@@ -70,7 +70,7 @@ class TreeFileBrowser(gobject.GObject):
         
         self.root = '/'
         if root != None and ospath.isdir(root): self.root = root
-        #else: print "%s doesn't exist. Setting root to default %s" % (root, self.root)
+        else: print "ERROR: %s doesn't exist. Setting root to default %s" % (root, self.root)
         
         self.view, self.scrolled = self.make_view()
         self.create_new()
@@ -234,7 +234,13 @@ class TreeFileBrowser(gobject.GObject):
         if len(directory) > 1 and directory[-1] != '/': directory += '/'
         if len(rootdir) > 1 and rootdir[-1] != '/':  rootdir += '/'
 
-        if not ospath.isdir(directory) or not (rootdir in directory):
+        if not ospath.isdir(directory):
+            print "ERROR: %s doesn't exist. Setting active dir to %s" % (directory, self.root)
+            self.set_cursor_on_first_row()
+            return False
+        if  not (rootdir in directory):
+            print "ERROR: %s is not on root path. Setting active dir to %s" % (directory, self.root)
+            self.set_cursor_on_first_row()
             return False
         if  directory == rootdir:
             self.set_cursor_on_first_row()
