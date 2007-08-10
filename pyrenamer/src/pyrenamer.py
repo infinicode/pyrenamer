@@ -736,9 +736,9 @@ class pyRenamer:
 
     
     def on_preferences_activate(self, widget):
-        """ Preferences dialog """
-        print "preferences"
-        self.prefs_tree = gtk.glade.XML(pyrenamerglob.gladefile, "prefs_window")
+        """ Preferences menu item clicked """
+        self.create_preferences_dialog()
+        
     
     def on_manual_key_press_event(self, widget, event):
         """ Key pressed on manual rename entry """
@@ -919,6 +919,78 @@ class pyRenamer:
 
 #---------------------------------------------------------------------------------------
 # Preferences handling (Using Gconf)
+
+    def create_preferences_dialog(self):
+        """ Create Preferences dialog and connect signals """
+        
+        # Create the window
+        self.preferences_tree = gtk.glade.XML(pyrenamerglob.gladefile, "prefs_window")
+        
+        # Get text entries and buttons
+        self.prefs_window = self.preferences_tree.get_widget('prefs_window')
+        self.prefs_entry_root = self.preferences_tree.get_widget('prefs_entry_root')
+        self.prefs_entry_active = self.preferences_tree.get_widget('prefs_entry_active')
+        self.prefs_browse_root = self.preferences_tree.get_widget('prefs_browse_root')
+        self.prefs_browse_active = self.preferences_tree.get_widget('prefs_browse_active')
+        self.prefs_close = self.preferences_tree.get_widget('prefs_close')
+        
+        # Signals
+        signals = {
+                   "on_prefs_browse_root_clicked": self.on_prefs_browse_root_clicked,
+                   "on_prefs_browse_active_clicked": self.on_prefs_browse_active_clicked,
+                   "on_prefs_close_clicked": self.on_prefs_close_clicked,
+                   "on_prefs_window_destroy": self.on_prefs_close_clicked,
+                   }
+        self.preferences_tree.signal_autoconnect(signals)
+        
+        # Fill the panel with actual values
+        self.prefs_entry_root.set_text(self.root_dir)
+        self.prefs_entry_active.set_text(self.active_dir)
+        
+    
+    def on_prefs_browse_root_clicked(self, widget):
+        """ Browse root clicked """
+        f = gtk.FileChooserDialog(_('Select root directory'),
+                                  self.prefs_window,
+                                  gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
+                                  (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, 
+                                   gtk.STOCK_OK, gtk.RESPONSE_ACCEPT),
+                                   )
+        f.set_current_folder(self.prefs_entry_root.get_text())
+        response = f.run()
+        if response == gtk.RESPONSE_ACCEPT:
+            self.prefs_entry_root.set_text(f.get_filename())
+        elif response == gtk.RESPONSE_REJECT:
+            pass
+        f.destroy()
+    
+
+    def on_prefs_browse_active_clicked(self, widget):
+        """ Browse active clicked """
+        f = gtk.FileChooserDialog(_('Select active directory'),
+                                  self.prefs_window,
+                                  gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
+                                  (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, 
+                                   gtk.STOCK_OK, gtk.RESPONSE_ACCEPT),
+                                   )
+        f.set_current_folder(self.prefs_entry_active.get_text())
+        response = f.run()
+        if response == gtk.RESPONSE_ACCEPT:
+            self.prefs_entry_active.set_text(f.get_filename())
+        elif response == gtk.RESPONSE_REJECT:
+            pass
+        f.destroy()
+        
+        
+    def on_prefs_close_clicked(self, widget):
+        """ Prefs close button clicked """
+        if self.prefs_entry_root.get_text() != "":
+            self.root_dir = self.prefs_entry_root.get_text()
+        if self.prefs_entry_active.get_text() != "":
+            self.active_dir = self.prefs_entry_active.get_text()
+        self.prefs_window.destroy()
+        self.preferences_save()
+
         
     def preferences_save(self):
         """ Width and height are saved on the configure_event callback for main_window """      
