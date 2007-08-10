@@ -1,5 +1,8 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (read_preferences), (save_preferences):
+	Add rootdir and activedir to gconf preferences
+	
 	* src/pyrenamer:
 	* src/pyrenamer.py: (__init__):
 	Added support for command line options

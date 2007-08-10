@@ -1,13 +1,24 @@
 <gconfschemafile>
 	<schemalist>
 		<schema>
-			<key>/schemas/apps/pyrenamer/dir</key>
-			<applyto>/apps/pyrenamer/dir</applyto>
+			<key>/schemas/apps/pyrenamer/root_dir</key>
+			<applyto>/apps/pyrenamer/root_dir</applyto>
 			<owner>pyrenamer</owner>
 			<type>string</type>
-			<default></default>
+			<default>/</default>
 			<locale name="C">
-				<short>Last selected dir</short>
+				<short>Default root dir</short>
+				<long></long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/pyrenamer/active_dir</key>
+			<applyto>/apps/pyrenamer/active_dir</applyto>
+			<owner>pyrenamer</owner>
+			<type>string</type>
+			<default>/</default>
+			<locale name="C">
+				<short>Default active dir</short>
 				<long></long>
 			</locale>
 		</schema>

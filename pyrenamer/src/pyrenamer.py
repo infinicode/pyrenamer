@@ -64,32 +64,43 @@ class pyRenamer:
     
     	global HAS_GCONF
         
-        # Directories variables
-        self.home = user.home
-        self.root = rootdir
-        self.current_dir = self.home
-        if startdir != None: self.current_dir = startdir
-        
-        self.window_maximized = False
+        # Main variables
         self.count = 0
         self.populate_id = []
-        self.window_width = 1
-        self.window_height = 1
-        self.window_posx = 0
-        self.window_posy = 0
         self.listing = []
         self.listing_thread = None
         
-        # Gconf preferences stuff
-        self.gconf_path = '/apps/' + pyrenamerglob.name
-        self.gconf_key_dir = self.gconf_path + '/dir'
-        self.gconf_window_maximized = self.gconf_path + '/window_maximized'
-        self.gconf_pane_position = self.gconf_path + '/pane_position'
-        self.gconf_window_width = self.gconf_path + '/window_width'
-        self.gconf_window_height = self.gconf_path + '/window_height'
-        self.gconf_window_posx = self.gconf_path + '/window_posx'
-        self.gconf_window_posy = self.gconf_path + '/window_posy'
+        # Window geometry vars
+        self.window_maximized = False
+        self.window_width = 500
+        self.window_height = 500
+        self.window_posx = 0
+        self.window_posy = 0
+        self.pane_position = 250
         
+        # Directories variables
+        self.home = user.home
+        
+        if rootdir == None: self.root_dir = '/'
+        else: self.root_dir = root_dir
+        
+        if startdir == None: self.active_dir = self.home
+        else: self.active_dir = startdir
+        
+        # Read preferences using Gconf
+        if HAS_GCONF: 
+            self.gconf_path = '/apps/' + pyrenamerglob.name
+            self.gconf_root_dir = self.gconf_path + '/root_dir'
+            self.gconf_active_dir = self.gconf_path + '/active_dir'
+            self.gconf_window_maximized = self.gconf_path + '/window_maximized'
+            self.gconf_pane_position = self.gconf_path + '/pane_position'
+            self.gconf_window_width = self.gconf_path + '/window_width'
+            self.gconf_window_height = self.gconf_path + '/window_height'
+            self.gconf_window_posx = self.gconf_path + '/window_posx'
+            self.gconf_window_posy = self.gconf_path + '/window_posy'
+            self.preferences_read()
+
+
         # Init Glade stuff
         self.glade_tree = gtk.glade.XML(pyrenamerglob.gladefile, "main_window")
         
@@ -174,6 +185,7 @@ class pyRenamer:
                     "on_clear_activate": self.on_clear_activate,
                     "on_select_all_activate": self.on_select_all_activate,
                     "on_select_nothing_activate": self.on_select_nothing_activate,
+                    "on_preferences_activate": self.on_preferences_activate,
                     "on_manual_key_press_event": self.on_manual_key_press_event,
                     "on_quit_button_clicked": self.on_main_quit }
         self.glade_tree.signal_autoconnect(signals)
@@ -195,15 +207,11 @@ class pyRenamer:
         
         self.statusbar.pack_start(self.stop_button,0,0)
         self.statusbar.pack_start(self.progressbar,0,0)
-        #self.statusbar.set_size_request(24,24)
         self.statusbar.show_all()
         self.stop_button.hide()
                
         # Init TreeFileBrowser
-        if rootdir == None:
-            self.file_browser = treefilebrowser.TreeFileBrowser()
-        else:
-            self.file_browser = treefilebrowser.TreeFileBrowser(self.root)
+        self.file_browser = treefilebrowser.TreeFileBrowser(self.root_dir)
         self.file_browser_view = self.file_browser.get_view()
         file_browser_scrolled = self.file_browser.get_scrolled()
         self.file_browser.connect("cursor-changed", self.dir_selected)
@@ -216,26 +224,27 @@ class pyRenamer:
         self.create_model()
         
         #  Set cursor on selected dir
-        if not self.file_browser.set_active_dir(self.current_dir):
-            self.current_dir = self.home
-            if not self.file_browser.set_active_dir(self.current_dir):
-                self.current_dir = self.root
-                self.file_browser.set_active_dir(self.current_dir)
+        if not self.file_browser.set_active_dir(self.active_dir):
+            self.active_dir = self.home
+            if not self.file_browser.set_active_dir(self.active_dir):
+                self.active_dir = self.root_dir
+                self.file_browser.set_active_dir(self.active_dir)
         
         # Init comboboxes
         self.subs_spaces_combo.set_active(0)
         self.subs_capitalization_combo.set_active(0)
         
-        # Init menu items, some widgets and window name
+        # Init menu items, some widgets and window name, and set position
         self.menu_rename.set_sensitive(False)
         self.menu_clear_preview.set_sensitive(False)
         self.main_window.set_title(pyrenamerglob.name_long)
         self.main_window.set_icon_from_file(pyrenamerglob.icon)
+        self.main_window.move(self.window_posx, self.window_posy)
+        self.main_window.resize(self.window_width, self.window_height)
+        self.main_hpaned.set_position(self.pane_position)
+        if self.window_maximized: self.main_window.maximize()
         self.delete_from.set_sensitive(False)
         self.delete_to.set_sensitive(False)
-        
-        # Read preferences using Gconf
-        if HAS_GCONF: self.preferences_read()
         
         # Init tooltips
         tips = tooltips.ToolTips(self.column_preview)
@@ -481,6 +490,7 @@ class pyRenamer:
         """ Saving window size to avoid losing data when it gets destroyed """
         self.window_width, self.window_height = self.main_window.get_size()
         self.window_posx, self.window_posy = self.main_window.get_position()
+        self.pane_position = self.main_hpaned.get_position()
 
     
     def on_rename_button_clicked(self, widget):
@@ -725,6 +735,11 @@ class pyRenamer:
         self.selected_files.get_selection().unselect_all()
 
     
+    def on_preferences_activate(self, widget):
+        """ Preferences dialog """
+        print "preferences"
+        self.prefs_tree = gtk.glade.XML(pyrenamerglob.gladefile, "prefs_window")
+    
     def on_manual_key_press_event(self, widget, event):
         """ Key pressed on manual rename entry """
         
@@ -767,14 +782,14 @@ class pyRenamer:
 
     def dir_reload_current(self):
         """ An easy way to call dir_selected """
-        self.dir_selected(None, self.current_dir)
+        self.dir_selected(None, self.active_dir)
         
 
     def dir_selected(self, obj, dir):
     	""" The user has clicked on a directory on the left pane, so we need to load
     	the files inside that dir on the right pane. """
         
-        self.current_dir = dir
+        self.active_dir = dir
         self.populate_stop()
         
         self.stop_button.show()
@@ -803,7 +818,7 @@ class pyRenamer:
             
         self.selected_files.set_model(self.file_selected_model)
         self.progressbar.set_fraction(0)
-        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.current_dir, self.count))
+        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.active_dir, self.count))
         
         
     def populate_get_listing(self, dir, pattern, recursive):
@@ -861,7 +876,7 @@ class pyRenamer:
     
         self.selected_files.set_model(self.file_selected_model)
         self.progressbar.set_fraction(0)
-        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.current_dir, self.count))
+        self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.active_dir, self.count))
         self.stop_button.hide()
         self.count = 0
         yield False
@@ -908,7 +923,8 @@ class pyRenamer:
     def preferences_save(self):
         """ Width and height are saved on the configure_event callback for main_window """      
         client = gconf.client_get_default()
-        #client.set_string(self.gconf_key_dir, self.current_dir)
+        client.set_string(self.gconf_root_dir, self.root_dir)
+        client.set_string(self.gconf_active_dir, self.active_dir)
         client.set_int(self.gconf_pane_position, self.main_hpaned.get_position())
         client.set_bool(self.gconf_window_maximized, self.window_maximized)
         client.set_int(self.gconf_window_width, self.window_width)
@@ -921,20 +937,27 @@ class pyRenamer:
     	""" The name says it all... """
         client = gconf.client_get_default()
         
-        #current_dir = client.get_string(self.gconf_key_dir)
-        #if current_dir != None: self.current_dir = current_dir
+        root_dir = client.get_string(self.gconf_root_dir)
+        if root_dir != None: self.root_dir = root_dir
+        
+        active_dir = client.get_string(self.gconf_active_dir)
+        if active_dir != None: self.active_dir = active_dir
         
         pane_position = client.get_int(self.gconf_pane_position)
-        if pane_position != None: self.main_hpaned.set_position(pane_position)
+        if pane_position != None: self.pane_position = pane_position
             
         maximized = client.get_bool(self.gconf_window_maximized)
-        if maximized != None and maximized == True: self.main_window.maximize()
+        if maximized != None: self.window_maximized = maximized
         
         width = client.get_int(self.gconf_window_width)
         height = client.get_int(self.gconf_window_height)
-        if width != None and height != None: self.main_window.resize(width, height)
+        if width != None and height != None: 
+            self.window_width = width
+            self.window_height = height
         
         posx = client.get_int(self.gconf_window_posx)
         posy = client.get_int(self.gconf_window_posy)
-        if posx != None and posy != None: self.main_window.move(posx, posy)
+        if posx != None and posy != None: 
+            self.window_posx = posx
+            self.window_posy = posy
 
