@@ -767,6 +767,17 @@ class pyRenamer:
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
                 except: pass
+            elif event.keyval == gtk.keysyms.Return:
+                try:
+                    self.preview_selected_row()
+                    model, iter = self.selected_files.get_selection().get_selected()
+                    iter = model.iter_next(iter)
+                    path = model.get_path(iter)
+                    name = model.get_value(iter,0)
+                    self.selected_files.get_selection().select_iter(iter)
+                    self.selected_files.scroll_to_cell(path)
+                    self.on_selected_files_cursor_changed(self.selected_files)
+                except: pass
             
 
     def on_main_quit(self, *args):

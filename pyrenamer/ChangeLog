@@ -1,5 +1,8 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_manual_key_press_event):
+	Press Return to move to next file on Manual Rename
+
 	* src/pyrenamer.py:
 	Set window icon on Preferences and About dialogs
 
