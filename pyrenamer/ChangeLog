@@ -1,4 +1,7 @@
-2007-08-10  Adolfo González Blázquez <code@infinicode.org>
+2007-08-11  Adolfo González Blázquez <code@infinicode.org>
+
+	* doc/pyrenamer.1:
+	Updated man page
 
 	* src/pyrenamer.py: (on_manual_key_press_event):
 	Press Return to move to next file on Manual Rename
@@ -8,7 +11,9 @@
 
 	* src/pyrenamer_globals.py.in:
 	License little patch by Piotr Ożarowski
-	
+
+2007-08-10  Adolfo González Blázquez <code@infinicode.org>
+
 	* src/pyrenamer.py:
 	* data/pyrenamer.glade:
 	Added preferences menu item and panel to select default directories
