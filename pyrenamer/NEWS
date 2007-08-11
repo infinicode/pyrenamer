@@ -1,8 +1,11 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4 Released
+	* Now you can start pyRenamer in the directory that you want
+	* Preferences added to set default directories
+	* Added command line options to set directories
 	* Fixed bug on {num} pattern and syntax change from {num-2} to {num+2}
-	* Preview new filename when clicking PAGE_UP or PAGE_DOWN on manual rename
+	* Preview new filename when clicking PAGE_UP, PAGE_DOWN or RETURN on manual rename
 	* Add button to clear previewed filenames
 	* Better file selection filter
 	* Better unicode support

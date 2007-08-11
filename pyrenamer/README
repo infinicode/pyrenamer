@@ -22,7 +22,24 @@
 -= To install =-
   $ ./configure --prefix /usr
   $ sudo make install
+  
+  
+-= To run pyRenamer =-
 
+  $ pyrenamer
+  		This will launch pyRenamer
+  
+  $ pyrenamer /home/user/Music
+		This will launch pyRenamer and select /home/user/Music as active dir
+		
+  $ pyrenamer --root /mnt/music
+  		This will set /mnt/music as the roor dir on left directories tree		
+  		
+  $ pyrenamer --root /mnt/music /mnt/music/hardcorepunk
+  		This is like above option, but setting /mnt/music/hardcorepunk as active dir
+
+  $ pyrenamer --help
+  		This will show available command line options
 
 -= Website =-
   More info on: http://www.infinicode.org/code/pyrenamer/
