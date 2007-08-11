@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-10 19:40+0200\n"
+"POT-Creation-Date: 2007-08-11 18:14+0200\n"
 "PO-Revision-Date: 2007-08-10 19:25+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: English\n"
@@ -488,35 +488,35 @@ msgstr "Renamed file name"
 msgid "Could not rename file %s to %s"
 msgstr "Could not rename file %s to %s"
 
-#: ../src/pyrenamer.py:801
+#: ../src/pyrenamer.py:812
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Reading contents of dir %s"
 
-#: ../src/pyrenamer.py:820 ../src/pyrenamer.py:878
+#: ../src/pyrenamer.py:831 ../src/pyrenamer.py:889
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directory: %s - Files: %s"
 
-#: ../src/pyrenamer.py:872
+#: ../src/pyrenamer.py:883
 #, python-format
 msgid "Adding file %s"
 msgstr "Adding file %s"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:902
+#: ../src/pyrenamer.py:913
 msgid "translator-credits"
 msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
-#: ../src/pyrenamer.py:957
+#: ../src/pyrenamer.py:972
 msgid "Select root directory"
 msgstr "Select root directory"
 
-#: ../src/pyrenamer.py:974
+#: ../src/pyrenamer.py:989
 msgid "Select active directory"
 msgstr "Select active directory"
 
-#: ../src/pyrenamer_globals.py.in:38
+#: ../src/pyrenamer_globals.py.in:39
 msgid "Mass file renamer for GNOME"
 msgstr "Mass file renamer for GNOME"
 

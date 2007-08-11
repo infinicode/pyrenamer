@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-10 19:40+0200\n"
+"POT-Creation-Date: 2007-08-11 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -388,35 +388,35 @@ msgstr ""
 msgid "Could not rename file %s to %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:801
+#: ../src/pyrenamer.py:812
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:820 ../src/pyrenamer.py:878
+#: ../src/pyrenamer.py:831 ../src/pyrenamer.py:889
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:872
+#: ../src/pyrenamer.py:883
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:902
+#: ../src/pyrenamer.py:913
 msgid "translator-credits"
 msgstr ""
 
-#: ../src/pyrenamer.py:957
+#: ../src/pyrenamer.py:972
 msgid "Select root directory"
 msgstr ""
 
-#: ../src/pyrenamer.py:974
+#: ../src/pyrenamer.py:989
 msgid "Select active directory"
 msgstr ""
 
-#: ../src/pyrenamer_globals.py.in:38
+#: ../src/pyrenamer_globals.py.in:39
 msgid "Mass file renamer for GNOME"
 msgstr ""
 
