@@ -1,5 +1,8 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py:
+	Set window icon on Preferences and About dialogs
+
 	* src/pyrenamer_globals.py.in:
 	License little patch by Piotr Ożarowski
 	

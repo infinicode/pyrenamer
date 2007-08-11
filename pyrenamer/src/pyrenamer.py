@@ -912,6 +912,7 @@ class pyRenamer:
 	   
         gtk.about_dialog_set_url_hook(openHomePage,pyrenamerglob.website)
         about.set_website(pyrenamerglob.website)
+        about.set_icon_from_file(pyrenamerglob.icon)
         about.run()
         about.destroy()
 
@@ -950,6 +951,9 @@ class pyRenamer:
         if active_dir == None: active_dir = self.active_dir
         self.prefs_entry_root.set_text(root_dir)
         self.prefs_entry_active.set_text(active_dir)
+        
+        # Set prefs window icon
+        self.prefs_window.set_icon_from_file(pyrenamerglob.icon)
         
     
     def on_prefs_browse_root_clicked(self, widget):
