@@ -1,5 +1,7 @@
 2007-08-11  Adolfo González Blázquez <code@infinicode.org>
 
+	* Version 0.4 Released
+
 	* data/pyrenamer.schemas.in:
 	Set default dirs to None
 
