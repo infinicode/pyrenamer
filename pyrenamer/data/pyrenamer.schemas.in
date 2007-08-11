@@ -5,7 +5,7 @@
 			<applyto>/apps/pyrenamer/root_dir</applyto>
 			<owner>pyrenamer</owner>
 			<type>string</type>
-			<default>/</default>
+			<default></default>
 			<locale name="C">
 				<short>Default root dir</short>
 				<long></long>
@@ -16,7 +16,7 @@
 			<applyto>/apps/pyrenamer/active_dir</applyto>
 			<owner>pyrenamer</owner>
 			<type>string</type>
-			<default>/</default>
+			<default></default>
 			<locale name="C">
 				<short>Default active dir</short>
 				<long></long>
