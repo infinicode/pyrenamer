@@ -48,14 +48,14 @@ def command_unknown(cmd):
 def parse_commandline_options():
 	""" Parses options passed by command line and acts """
 	try:
-	    opts, args = getopt.getopt(sys.argv[1:],"?r:", ["help","root="])
+	    opts, args = getopt.getopt(sys.argv[1:],"hr:", ["help","root="])
 	except Exception, e:
 		print e
 		command_unknown(sys.argv[1])
 		sys.exit(2)
 	
 	for o, a in opts:
-		if o in ("-?", "--help"):
+		if o in ("-h", "--help"):
 			command_usage()
 		elif o in ("-r", "--root"):
 			if len(args) > 0:
