@@ -21,6 +21,7 @@ If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
 from gettext import gettext as _
+from os.path import isfile
 
 have_eyed3=@HAVE_EYED3@
 
@@ -39,7 +40,10 @@ description = _("Mass file renamer for GNOME")
 icon = pixmaps_dir + "/pyrenamer.png"
 gladefile = resources_dir + "/pyrenamer.glade"
 
-license = "This program is free software; you can redistribute it and/or modify \
+if isfile('/usr/share/common-licenses/GPL-2'):
+	license = open('/usr/share/common-licenses/GPL-2').read()
+else:
+	license = "This program is free software; you can redistribute it and/or modify \
 it under the terms of the GNU General Public License as published by \
 the Free Software Foundation; either version 2 of the License, or \
 (at your option) any later version. \n\n\

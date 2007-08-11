@@ -1,5 +1,8 @@
 2007-08-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer_globals.py.in:
+	License little patch by Piotr Ożarowski
+	
 	* src/pyrenamer.py:
 	* data/pyrenamer.glade:
 	Added preferences menu item and panel to select default directories
