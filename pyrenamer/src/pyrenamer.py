@@ -48,6 +48,7 @@ import tooltips
 
 import threading
 import user
+from os import path as ospath
 
 import locale
 import gettext
@@ -953,16 +954,16 @@ class pyRenamer:
                    "on_prefs_browse_root_clicked": self.on_prefs_browse_root_clicked,
                    "on_prefs_browse_active_clicked": self.on_prefs_browse_active_clicked,
                    "on_prefs_close_clicked": self.on_prefs_close_clicked,
-                   "on_prefs_window_destroy": self.on_prefs_close_clicked,
+                   "on_prefs_window_destroy": self.on_prefs_destroy,
                    }
         self.preferences_tree.signal_autoconnect(signals)
         
         # Fill the panel with gconf values or actual values (if gconf is empty)
         client = gconf.client_get_default()
         root_dir = client.get_string(self.gconf_root_dir)
-        if root_dir == None: root_dir = self.root_dir
+        if root_dir == (None or ''): root_dir = self.root_dir
         active_dir = client.get_string(self.gconf_active_dir)
-        if active_dir == None: active_dir = self.active_dir
+        if active_dir == (None or ''): active_dir = self.active_dir
         self.prefs_entry_root.set_text(root_dir)
         self.prefs_entry_active.set_text(active_dir)
         
@@ -1006,13 +1007,64 @@ class pyRenamer:
         
     def on_prefs_close_clicked(self, widget):
         """ Prefs close button clicked """
-        if self.prefs_entry_root.get_text() != "":
-            self.root_dir = self.prefs_entry_root.get_text()
-        if self.prefs_entry_active.get_text() != "":
-            self.active_dir = self.prefs_entry_active.get_text()
-        self.prefs_window.destroy()
-        self.preferences_save_dirs()
+        
+        root = self.prefs_entry_root.get_text()
+        active = self.prefs_entry_active.get_text()
+        if root != "" and active != "":
+            if not self.check_root_dir(root):
+                self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
+                self.prefs_entry_root.set_text('/')
+            elif not self.check_active_dir(root, active):
+                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
+                self.prefs_entry_active.set_text(root)
+            else:
+                self.root_dir = root
+                self.active_dir = active
+                self.prefs_window.destroy()
+                self.preferences_save_dirs()
+        else:
+            self.display_error_dialog(_("\nPlease set both directories!"))
+            if root == '': self.prefs_entry_root.set_text(self.root_dir)
+            if active == '': self.prefs_entry_active.set_text(self.active_dir)
 
+            
+    def on_prefs_destroy(self, widget):
+        """ Prefs window destroyed """
+        
+        root = self.prefs_entry_root.get_text()
+        active = self.prefs_entry_active.get_text()
+        if root != "" and active != "":
+            if not self.check_root_dir(root):
+                self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
+                self.create_preferences_dialog()
+                self.prefs_entry_root.set_text('/')
+            elif not self.check_active_dir(root, active):
+                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
+                self.create_preferences_dialog()
+                self.prefs_entry_active.set_text(root)
+            else:
+                self.root_dir = root
+                self.active_dir = active
+                self.prefs_window.destroy()
+                self.preferences_save_dirs()
+        else:
+            self.display_error_dialog(_("\nPlease set both directories!"))
+            self.create_preferences_dialog()
+            if root == '': self.prefs_entry_root.set_text(self.root_dir)
+            if active == '': self.prefs_entry_active.set_text(self.active_dir)
+
+        
+    def check_root_dir(self, root):
+        """ Checks if the root dir is correct """
+        return ospath.isdir(ospath.abspath(root))
+    
+    
+    def check_active_dir(self, root, active):
+        """ Checks if active dir is correct """
+        root = ospath.abspath(root)
+        active = ospath.abspath(active)
+        return ospath.isdir(active) and (root in active)
+        
         
     def preferences_save(self):
         """ Width and height are saved on the configure_event callback for main_window """      
