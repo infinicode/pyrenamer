@@ -1,3 +1,10 @@
+2007-08-13  Adolfo González Blázquez <code@infinicode.org>
+
+	* Version 0.4.1 Released
+	* Remove debug info from console
+	* Fix bug reading preferences from gconf
+	* Activate Rename button on selection using keys
+
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4 Released

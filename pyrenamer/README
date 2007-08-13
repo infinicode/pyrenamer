@@ -1,6 +1,6 @@
--======================-
--=   pyRenamer 0.4    =-
--======================-
+-========================-
+-=   pyRenamer 0.4.1    =-
+-========================-
 
   pyRenamer is an application for mass renaming files.
 
@@ -60,3 +60,4 @@
   pyRenamer uses TreeViewTooltips.py from Daniel J. Popowich <dpopowich@astro.umass.edu>
   pyRenamer uses EXIF.py from Gene Cash <gcash@cfl.rr.com>
   Thanks to Piotr Ożarowski for sponsoring Debian packages and helping debugging
+  Thanks to Jeremy Messenger for freebsd packaging and helping debugging

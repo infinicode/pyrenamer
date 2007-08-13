@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION=0.4
+VERSION=0.4.1
 
 if [ ! -d /usr/share/build-essential ]; then
 	echo "Please install build-essential package!"
@@ -17,6 +17,7 @@ if [ ! -f /usr/bin/fakeroot ]; then
 	exit 1
 fi
 
+sh autogen.sh
 
 mkdir deb
 cp debian/changelog debian.changelog

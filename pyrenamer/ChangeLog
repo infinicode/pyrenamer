@@ -1,5 +1,7 @@
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
+	* Version 0.4.1 Released
+
 	* src/pyrenamer.py: (preferences_read):
 	Be more careful when reading directories from GConf
 
@@ -7,7 +9,7 @@
 	Remove printing of debug information
 
 	* src/pyrenamer.py: (on_manual_key_press_event):
-	Activate Rename menu on selection using keys
+	Activate Rename button on selection using keys
 	
 2007-08-11  Adolfo González Blázquez <code@infinicode.org>
 
