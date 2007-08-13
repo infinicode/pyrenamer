@@ -1,5 +1,8 @@
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/treefilebrowser.py:
+	Remove printing of debug information
+
 	* src/pyrenamer.py: (on_manual_key_press_event):
 	Activate Rename menu on selection using keys
 	

@@ -70,7 +70,7 @@ class TreeFileBrowser(gobject.GObject):
         
         self.root = '/'
         if root != None and ospath.isdir(root): self.root = root
-        elif root != None: print "ERROR: %s doesn't exist." % root
+        #elif root != None: print "ERROR: %s doesn't exist." % root
         
         self.view, self.scrolled = self.make_view()
         self.create_new()
@@ -235,11 +235,11 @@ class TreeFileBrowser(gobject.GObject):
         if len(rootdir) > 1 and rootdir[-1] != '/':  rootdir += '/'
 
         if not ospath.isdir(directory):
-            print "ERROR: %s doesn't exist." % directory
+            #print "ERROR: %s doesn't exist." % directory
             self.set_cursor_on_first_row()
             return False
         if  not (rootdir in directory):
-            print "ERROR: %s is not on root path." % directory
+            #print "ERROR: %s is not on root path." % directory
             self.set_cursor_on_first_row()
             return False
         if  directory == rootdir:
@@ -418,7 +418,7 @@ class TreeFileBrowser(gobject.GObject):
             icon = icon_theme.load_icon("text-x-generic", gtk.ICON_SIZE_MENU, 0)
             return icon
         except gobject.GError, exc:
-            print "Can't load icon", exc
+            #print "Can't load icon", exc
             return None
 
 
