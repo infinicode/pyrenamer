@@ -1036,10 +1036,10 @@ class pyRenamer:
         client = gconf.client_get_default()
         
         root_dir = client.get_string(self.gconf_root_dir)
-        if root_dir != None: self.root_dir = root_dir
+        if root_dir != None and root_dir != '': self.root_dir = root_dir
         
         active_dir = client.get_string(self.gconf_active_dir)
-        if active_dir != None: self.active_dir = active_dir
+        if active_dir != None and active_dir != '': self.active_dir = active_dir
         
         pane_position = client.get_int(self.gconf_pane_position)
         if pane_position != None: self.pane_position = pane_position

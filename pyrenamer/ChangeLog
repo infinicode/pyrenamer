@@ -1,5 +1,8 @@
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamer.py: (preferences_read):
+	Be more careful when reading directories from GConf
+
 	* src/treefilebrowser.py:
 	Remove printing of debug information
 
