@@ -755,6 +755,7 @@ class pyRenamer:
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                 except: pass
             elif event.keyval == gtk.keysyms.Page_Down:
                 try:
@@ -766,6 +767,7 @@ class pyRenamer:
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                 except: pass
             elif event.keyval == gtk.keysyms.Return:
                 try:
@@ -777,6 +779,7 @@ class pyRenamer:
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                 except: pass
             
 
