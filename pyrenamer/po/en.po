@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-11 18:14+0200\n"
-"PO-Revision-Date: 2007-08-10 19:25+0100\n"
+"POT-Creation-Date: 2007-08-13 19:33+0200\n"
+"PO-Revision-Date: 2007-08-13 19:32+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -475,46 +475,74 @@ msgstr "X position of the window"
 msgid "Y position of the window"
 msgstr "Y position of the window"
 
-#: ../src/pyrenamer.py:288
+#: ../src/pyrenamer.py:289
 msgid "Original file name"
 msgstr "Original file name"
 
-#: ../src/pyrenamer.py:293
+#: ../src/pyrenamer.py:294
 msgid "Renamed file name"
 msgstr "Renamed file name"
 
-#: ../src/pyrenamer.py:308
+#: ../src/pyrenamer.py:309
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Could not rename file %s to %s"
 
-#: ../src/pyrenamer.py:812
+#: ../src/pyrenamer.py:816
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Reading contents of dir %s"
 
-#: ../src/pyrenamer.py:831 ../src/pyrenamer.py:889
+#: ../src/pyrenamer.py:835 ../src/pyrenamer.py:893
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directory: %s - Files: %s"
 
-#: ../src/pyrenamer.py:883
+#: ../src/pyrenamer.py:887
 #, python-format
 msgid "Adding file %s"
 msgstr "Adding file %s"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:913
+#: ../src/pyrenamer.py:917
 msgid "translator-credits"
 msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
-#: ../src/pyrenamer.py:972
+#: ../src/pyrenamer.py:976
 msgid "Select root directory"
 msgstr "Select root directory"
 
-#: ../src/pyrenamer.py:989
+#: ../src/pyrenamer.py:993
 msgid "Select active directory"
 msgstr "Select active directory"
+
+#: ../src/pyrenamer.py:1015 ../src/pyrenamer.py:1038
+msgid ""
+"\n"
+"The root directory is not valid!\n"
+"Please select another directory."
+msgstr ""
+"\n"
+"The root directory is not valid!\n"
+"Please select another directory."
+
+#: ../src/pyrenamer.py:1018 ../src/pyrenamer.py:1042
+msgid ""
+"\n"
+"The active directory is not valid!\n"
+"Please select another directory."
+msgstr ""
+"\n"
+"The active directory is not valid!\n"
+"Please select another directory."
+
+#: ../src/pyrenamer.py:1026 ../src/pyrenamer.py:1051
+msgid ""
+"\n"
+"Please set both directories!"
+msgstr ""
+"\n"
+"Please set both directories!"
 
 #: ../src/pyrenamer_globals.py.in:39
 msgid "Mass file renamer for GNOME"
