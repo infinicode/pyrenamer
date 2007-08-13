@@ -3,6 +3,7 @@
 	* Version 0.4.1 Released
 	* Remove debug info from console
 	* Fix bug reading preferences from gconf
+	* Check if Preferences are correct
 	* Activate Rename button on selection using keys
 
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
