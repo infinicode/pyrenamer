@@ -21,18 +21,18 @@ If you find any bugs or have any suggestions email: code@infinicode.org
 """
 
 try:
+    import pygtk
+    pygtk.require('2.0')
+except:
+      print "PyGtk 2.0 or later required for this app to run"
+      raise SystemExit
+  
+try:
     import gtk
     import gtk.glade
     import gobject
 except:
     raise SystemExit
-
-
-import pygtk
-if gtk.pygtk_version < (2, 0):
-      print "PyGtk 2.0 or later required for this app to run"
-      raise SystemExit
-
   
 try:
     import gconf

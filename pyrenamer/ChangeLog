@@ -1,3 +1,11 @@
+2007-18-10  Adolfo González Blázquez <code@infinicode.org>
+
+	* doc/treefilebrowser_example.py:
+	* src/pyrenamer:
+	* src/pyrenamer.py:
+	* src/treefilebrowser.py:
+	Fixed pygtk imports (add pygtk.require())
+
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4.1 Released

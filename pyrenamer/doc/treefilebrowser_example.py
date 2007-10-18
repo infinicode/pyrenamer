@@ -26,8 +26,9 @@ This is an example on how to use treefilebrowser.py, which is a
 tree-like file browser, like the one found on Nautilus.
 """
 
-import gtk
 import pygtk
+pygtk.require('2.0')
+import gtk
 from pyrenamer import treefilebrowser
 
 def make_buttons(list):
