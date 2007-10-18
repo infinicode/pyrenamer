@@ -1,3 +1,16 @@
 * Remember last entered patterns
 * Drop gconf (better using text files, so pyrenamer con run on Windows)
 * Add support from other music formats (ogg, ape, etc.)
+* Undo option
+* Reload folder
+
+* Rename folder
+* Tiny progressbar
+* Move files to another directories (target/$1)
+* Add support for 1 char/number pattern, or to define just a number
+  of chars, something like char{3} or {#4} for 4 numbers.
+* Keep extensions while renaming
+  
+* Unicode problems:
+	- For example, if I have the file "Episódio 2.srt", I can use the pattern 
+	  '{X} {C}.srt' but not 'Episódio {C}.srt'.
