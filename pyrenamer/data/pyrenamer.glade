@@ -714,7 +714,9 @@ Some today date replacements:
 			  <property name="items" translatable="yes">Spaces to Underscores
 Underscores to Spaces
 Spaces to Dots
-Dots to Spaces</property>
+Dots to Spaces
+Spaces to Dashes
+Dashes to Spaces</property>
 			  <property name="add_tearoffs">False</property>
 			  <property name="focus_on_click">True</property>
 			  <signal name="changed" handler="on_subs_spaces_combo_changed" last_modification_time="Mon, 25 Sep 2006 17:56:43 GMT"/>

@@ -1,5 +1,9 @@
 2007-18-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/pyrenamerfilefuncs.py:
+	Added option to replace spaces to dashes and viceversa
+
 	* src/pyrenamerfilefuncs.py:
 	Czech language accents replacement (thanks to Jan Virt)
 

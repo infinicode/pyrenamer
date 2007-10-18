@@ -122,7 +122,10 @@ def replace_spaces(name, path, mode):
     """ if mode == 0: ' ' -> '_'
         if mode == 1: '_' -> ' '
         if mode == 2: '_' -> '.'
-        if mode == 3: '.' -> ' ' """
+        if mode == 3: '.' -> ' '
+        if mode == 4: ' ' -> '-'
+        if mode == 5: '-' -> ' ' """
+        
     name = unicode(name)
     path = unicode(path)
     
@@ -134,6 +137,10 @@ def replace_spaces(name, path, mode):
         newname = name.replace(' ', '.')
     elif mode == 3:
         newname = name.replace('.', ' ')
+    elif mode == 4:
+        newname = name.replace(' ', '-')
+    elif mode == 5:
+        newname = name.replace('-', ' ')
         
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
