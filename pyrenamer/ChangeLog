@@ -1,5 +1,8 @@
 2007-18-10  Adolfo González Blázquez <code@infinicode.org>
 
+	* src/pyrenamerfilefuncs.py:
+	Czech language accents replacement (thanks to Jan Virt)
+
 	* doc/treefilebrowser_example.py:
 	* src/pyrenamer:
 	* src/pyrenamer.py:

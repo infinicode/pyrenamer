@@ -218,6 +218,22 @@ def replace_accents(name, path):
     newname = newname.replace('Ü', 'U')
     newname = newname.replace('Û', 'U')
     
+    """ Czech language accents replacement """
+    newname = newname.replace('ě', 'e')
+    newname = newname.replace('š', 's')
+    newname = newname.replace('č', 'c')
+    newname = newname.replace('ř', 'r')
+    newname = newname.replace('ž', 'z')
+    newname = newname.replace('ý', 'y')
+    newname = newname.replace('ů', 'u')
+    newname = newname.replace('Ě', 'E')
+    newname = newname.replace('Š', 'S')
+    newname = newname.replace('Č', 'C')
+    newname = newname.replace('Ř', 'R')
+    newname = newname.replace('Ž', 'Z')
+    newname = newname.replace('Ý', 'Y')
+    newname = newname.replace('Ů', 'U')
+    
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 

@@ -64,3 +64,4 @@
   pyRenamer uses EXIF.py from Gene Cash <gcash@cfl.rr.com>
   Thanks to Piotr Ożarowski for sponsoring Debian packages and helping debugging
   Thanks to Jeremy Messenger for freebsd packaging and helping debugging
+  Thanks to Jan Virt for czech language accents replacement
