@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-30 10:07+0200\n"
-"PO-Revision-Date: 2007-08-13 19:33+0100\n"
+"POT-Creation-Date: 2007-10-18 21:16+0200\n"
+"PO-Revision-Date: 2007-10-18 21:14+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Renombramiento masivo de archivos"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:136
+#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:138
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -334,18 +334,22 @@ msgid ""
 "Spaces to Underscores\n"
 "Underscores to Spaces\n"
 "Spaces to Dots\n"
-"Dots to Spaces"
+"Dots to Spaces\n"
+"Spaces to Dashes\n"
+"Dashes to Spaces"
 msgstr ""
 "Espacios a guiones bajos\n"
 "Guiones bajos a espacios\n"
 "Espacios a puntos\n"
-"Puntos a espacios"
+"Puntos a espacios\n"
+"Espacios a guiones\n"
+"Guiones a espacios"
 
-#: ../data/pyrenamer.glade.h:111
+#: ../data/pyrenamer.glade.h:113
 msgid "Substitutions"
 msgstr "Sustituciones"
 
-#: ../data/pyrenamer.glade.h:112
+#: ../data/pyrenamer.glade.h:114
 msgid ""
 "Use {1} for first catched item. {2} for second, etc...\n"
 "Use {num} for adding 1, 2, 3... to file names\n"
@@ -402,47 +406,47 @@ msgstr ""
 "{dayname}\t\tviernes\n"
 "{daysimp}\t\tvie"
 
-#: ../data/pyrenamer.glade.h:129
+#: ../data/pyrenamer.glade.h:131
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../data/pyrenamer.glade.h:130
+#: ../data/pyrenamer.glade.h:132
 msgid "_File"
 msgstr "_Archivo"
 
-#: ../data/pyrenamer.glade.h:131
+#: ../data/pyrenamer.glade.h:133
 msgid "_Help"
 msgstr "A_yuda"
 
-#: ../data/pyrenamer.glade.h:132
+#: ../data/pyrenamer.glade.h:134
 msgid "_Preview"
 msgstr "_Vista previa"
 
-#: ../data/pyrenamer.glade.h:133
+#: ../data/pyrenamer.glade.h:135
 msgid "_Rename"
 msgstr "_Renombrar"
 
-#: ../data/pyrenamer.glade.h:134
+#: ../data/pyrenamer.glade.h:136
 msgid "at"
 msgstr "en"
 
-#: ../data/pyrenamer.glade.h:135
+#: ../data/pyrenamer.glade.h:137
 msgid "or at the end"
 msgstr "o al final"
 
-#: ../data/pyrenamer.glade.h:137
+#: ../data/pyrenamer.glade.h:139
 msgid "pyRenamer preferences"
 msgstr "Preferencias de pyRenamer"
 
-#: ../data/pyrenamer.glade.h:138
+#: ../data/pyrenamer.glade.h:140
 msgid "to"
 msgstr "hasta"
 
-#: ../data/pyrenamer.glade.h:139
+#: ../data/pyrenamer.glade.h:141
 msgid "with"
 msgstr "con"
 
-#: ../data/pyrenamer.glade.h:140
+#: ../data/pyrenamer.glade.h:142
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -456,11 +460,11 @@ msgstr ""
 "{X}\t\tNúmeros, letras y espacios\n"
 "{@}\tBasura"
 
-#: ../data/pyrenamer.glade.h:145
+#: ../data/pyrenamer.glade.h:147
 msgid "{1}"
 msgstr "{1}"
 
-#: ../data/pyrenamer.glade.h:146
+#: ../data/pyrenamer.glade.h:148
 msgid "{X}"
 msgstr "{X}"
 
@@ -569,12 +573,12 @@ msgstr ""
 msgid "Mass file renamer for GNOME"
 msgstr "Renombramiento masivo de archivos para GNOME"
 
-#: ../src/pyrenamerfilefuncs.py:461
+#: ../src/pyrenamerfilefuncs.py:484
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Error al renombrar %s a %s! -> %s ya existe!"
 
-#: ../src/pyrenamerfilefuncs.py:469
+#: ../src/pyrenamerfilefuncs.py:492
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Error al renombrar %s a %s!"
@@ -593,7 +597,7 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:372
+#: ../src/treefilebrowser.py:374
 msgid "Show hidden files"
 msgstr "Mostrar archivos ocultos"
 
