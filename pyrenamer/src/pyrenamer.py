@@ -193,20 +193,24 @@ class pyRenamer:
         # Create ProgressBar and add it to the StatusBar. Add also a Stop icon
         self.progressbar = gtk.ProgressBar()
         self.progressbar.set_pulse_step(0.01)
+        self.progressbar.set_size_request(-1,14)
+        
+        self.progressbar_vbox = gtk.VBox()
+        self.progressbar_vbox.pack_start(self.progressbar, 0, 0)
+        self.progressbar_vbox.set_homogeneous(True)
         
         self.stop_button = gtk.Button()
         self.stop_button.set_relief(gtk.RELIEF_NONE)
         
         stop_image = gtk.Image()
-        stop_image.set_from_stock(gtk.STOCK_STOP, gtk.ICON_SIZE_MENU)
-        stop_image.set_size_request(12,12)
+        stop_image.set_from_file(pyrenamerglob.pixmaps_dir+'/stop.png')
         
         self.stop_button.connect("clicked", self.on_stop_button_clicked)
         self.stop_button.set_image(stop_image)
-        self.stop_button.set_size_request(24,12)
         
         self.statusbar.pack_start(self.stop_button,0,0)
-        self.statusbar.pack_start(self.progressbar,0,0)
+        self.statusbar.pack_start(self.progressbar_vbox,0,0)
+        self.statusbar.set_size_request(-1,20)
         self.statusbar.show_all()
         self.stop_button.hide()
                

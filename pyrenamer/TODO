@@ -5,7 +5,6 @@
 * Reload folder
 
 * Rename folder
-* Tiny progressbar
 * Move files to another directories (target/$1)
 * Add support for 1 char/number pattern, or to define just a number
   of chars, something like char{3} or {#4} for 4 numbers.
