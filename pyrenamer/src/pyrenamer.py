@@ -156,6 +156,7 @@ class pyRenamer:
                     "on_exit_button_clicked": self.on_main_quit,
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
+                    "on_menu_load_names_from_file_activate": self.on_menu_load_names_from_file_activate,
                     "on_menu_clear_preview_activate": self.on_clean_button_clicked,
                     "on_subs_spaces_toggled": self.on_subs_spaces_toggled,
                     "on_subs_capitalization_toggled": self.on_subs_capitalization_toggled,
@@ -786,6 +787,27 @@ class pyRenamer:
                     self.on_selected_files_cursor_changed(self.selected_files)
                     self.file_selected_model.foreach(self.enable_rename_and_clean)
                 except: pass
+                
+                
+    def on_menu_load_names_from_file_activate(self, widget):
+        """ Get file names from a file """
+        
+        filename = ""
+        f = gtk.FileChooserDialog(_('Select file'),
+                                  self.main_window,
+                                  gtk.FILE_CHOOSER_ACTION_OPEN,
+                                  (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, 
+                                   gtk.STOCK_OK, gtk.RESPONSE_ACCEPT),
+                                   )
+        response = f.run()
+        if response == gtk.RESPONSE_ACCEPT:
+            filename = f.get_filename()
+        elif response == gtk.RESPONSE_REJECT:
+            pass
+        f.destroy()
+        
+        if filename != "":
+            self.populate_from_file(filename)
             
 
     def on_main_quit(self, *args):
@@ -898,6 +920,40 @@ class pyRenamer:
         self.stop_button.hide()
         self.count = 0
         yield False
+    
+    
+    def populate_from_file(self, filename):
+        """ Populate file preview loading the names from a file """
+        
+        f = open(filename, 'r')
+        iter = self.file_selected_model.get_iter_root()
+        for line in f:
+            line = line.rstrip()
+            if len(line) > 255 or not isinstance(line, str) or line == "":
+                line = None
+                path = None
+            
+            if line != "" and line != None:
+                oripath = self.file_selected_model.get_value(iter, 1)
+                path = ospath.join(ospath.dirname(oripath), line)
+                
+            self.selected_files.set_model(None)
+            self.file_selected_model.set_value(iter, 2, line)
+            self.file_selected_model.set_value(iter, 3, path)
+            
+            self.count += 1
+            iter = self.file_selected_model.iter_next(iter)
+            if iter == None: break
+    
+        self.selected_files.set_model(self.file_selected_model)
+        
+        self.selected_files.columns_autosize()
+        self.clear_button.set_sensitive(True)
+        self.menu_clear_preview.set_sensitive(True)
+        self.rename_button.set_sensitive(True)
+        self.menu_rename.set_sensitive(True)
+        
+        f.close()
 
 
 #---------------------------------------------------------------------------------------

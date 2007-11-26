@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-18 21:16+0200\n"
-"PO-Revision-Date: 2007-10-18 21:16+0100\n"
+"POT-Creation-Date: 2007-11-26 21:16+0100\n"
+"PO-Revision-Date: 2007-11-26 21:15+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Renomme en masse les fichiers"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:138
+#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:139
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -400,34 +400,39 @@ msgid "_Help"
 msgstr "Aid_e"
 
 #: ../data/pyrenamer.glade.h:134
+#, fuzzy
+msgid "_Load names from file..."
+msgstr "_Load names from file..."
+
+#: ../data/pyrenamer.glade.h:135
 msgid "_Preview"
 msgstr "A_perçu"
 
-#: ../data/pyrenamer.glade.h:135
+#: ../data/pyrenamer.glade.h:136
 msgid "_Rename"
 msgstr "_Renommer"
 
-#: ../data/pyrenamer.glade.h:136
+#: ../data/pyrenamer.glade.h:137
 msgid "at"
 msgstr "en"
 
-#: ../data/pyrenamer.glade.h:137
+#: ../data/pyrenamer.glade.h:138
 msgid "or at the end"
 msgstr "ou à la fin"
 
-#: ../data/pyrenamer.glade.h:139
+#: ../data/pyrenamer.glade.h:140
 msgid "pyRenamer preferences"
 msgstr "Préférences de pyRenamer"
 
-#: ../data/pyrenamer.glade.h:140
+#: ../data/pyrenamer.glade.h:141
 msgid "to"
 msgstr "à"
 
-#: ../data/pyrenamer.glade.h:141
+#: ../data/pyrenamer.glade.h:142
 msgid "with"
 msgstr "par"
 
-#: ../data/pyrenamer.glade.h:142
+#: ../data/pyrenamer.glade.h:143
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -441,11 +446,11 @@ msgstr ""
 "{X}\t\tChiffres, lettres et espaces\n"
 "{@}\tCorbeille "
 
-#: ../data/pyrenamer.glade.h:147
+#: ../data/pyrenamer.glade.h:148
 msgid "{1}"
 msgstr "{1}"
 
-#: ../data/pyrenamer.glade.h:148
+#: ../data/pyrenamer.glade.h:149
 msgid "{X}"
 msgstr "{X}"
 
@@ -481,48 +486,52 @@ msgstr "Position X de la fenêtre"
 msgid "Y position of the window"
 msgstr "Position Y de la fenêtre"
 
-#: ../src/pyrenamer.py:289
+#: ../src/pyrenamer.py:294
 msgid "Original file name"
 msgstr "Nom de fichier original"
 
-#: ../src/pyrenamer.py:294
+#: ../src/pyrenamer.py:299
 msgid "Renamed file name"
 msgstr "Nouveau nom de fichier"
 
-#: ../src/pyrenamer.py:309
+#: ../src/pyrenamer.py:314
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Le fichier n'a pas pu être renommé de %s en %s"
 
-#: ../src/pyrenamer.py:816
+#: ../src/pyrenamer.py:796
+msgid "Select file"
+msgstr "Sélectionner fichier"
+
+#: ../src/pyrenamer.py:842
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Parcoure le contenu du répertoire %s"
 
-#: ../src/pyrenamer.py:835 ../src/pyrenamer.py:893
+#: ../src/pyrenamer.py:861 ../src/pyrenamer.py:919
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Répertoires: %s - Fichiers: %s"
 
-#: ../src/pyrenamer.py:887
+#: ../src/pyrenamer.py:913
 #, python-format
 msgid "Adding file %s"
 msgstr "Ajout des fichiers %s"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:917
+#: ../src/pyrenamer.py:974
 msgid "translator-credits"
 msgstr "Christophe Perez <christophe.perez.mail@gmail.com>"
 
-#: ../src/pyrenamer.py:976
+#: ../src/pyrenamer.py:1033
 msgid "Select root directory"
 msgstr "Sélectionnez le répertoire racine"
 
-#: ../src/pyrenamer.py:993
+#: ../src/pyrenamer.py:1050
 msgid "Select active directory"
 msgstr "Sélectionnez le répertoire actif"
 
-#: ../src/pyrenamer.py:1015 ../src/pyrenamer.py:1038
+#: ../src/pyrenamer.py:1072 ../src/pyrenamer.py:1095
 msgid ""
 "\n"
 "The root directory is not valid!\n"
@@ -532,7 +541,7 @@ msgstr ""
 "Le répertoire racine choisi n'est pas valide!\n"
 "Veuillez sélectionner un autre répertoire."
 
-#: ../src/pyrenamer.py:1018 ../src/pyrenamer.py:1042
+#: ../src/pyrenamer.py:1075 ../src/pyrenamer.py:1099
 msgid ""
 "\n"
 "The active directory is not valid!\n"
@@ -542,7 +551,7 @@ msgstr ""
 "Le répertoire actif choisi n'est pas valide!\n"
 "Veuillez sélectionner un autre répertoire."
 
-#: ../src/pyrenamer.py:1026 ../src/pyrenamer.py:1051
+#: ../src/pyrenamer.py:1083 ../src/pyrenamer.py:1108
 msgid ""
 "\n"
 "Please set both directories!"
