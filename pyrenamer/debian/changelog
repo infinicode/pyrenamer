@@ -2,6 +2,7 @@ pyrenamer (0.5.0-1) unstable; urgency=low
 
   * New upstream release (Closes: #466197)
   * Updated Standards-Version to 3.7.3
+  * Updated cdbs depends to >= 0.4.49
 
  -- Adolfo González Blázquez <code@infinicode.org>  Wed, 09 Apr 2008 09:57:07 +0200
 
