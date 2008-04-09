@@ -1,7 +1,7 @@
 ###################################
 ### Initialization
 ###################################
-AC_INIT([pyrenamer], [0.4.1])
+AC_INIT([pyrenamer], [0.5.0])
 AC_CONFIG_SRCDIR(src/pyrenamer)
 AM_INIT_AUTOMAKE([1.7])
 AM_MAINTAINER_MODE

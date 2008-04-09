@@ -1,3 +1,12 @@
+2008-04-09  Adolfo González Blázquez <code@infinicode.org>
+
+	* Version 0.5.0 Released
+	* Added option to read new file names from a text file
+	* Smaller progress bar and new stop icon
+	* Added option to replace spaces to dashes and viceversa
+	* Czech language accents replacement (thanks to Jan Virt)
+	* Fixed pygtk imports (add pygtk.require())
+
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4.1 Released
