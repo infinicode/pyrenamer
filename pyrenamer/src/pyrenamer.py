@@ -42,9 +42,11 @@ except:
 
 
 import treefilebrowser
-import pyrenamerfilefuncs as renamerfilefuncs
+import pyrenamer_filefuncs as renamerfilefuncs
 import pyrenamer_globals as pyrenamerglob
-import tooltips
+import pyrenamer_tooltips as tooltips
+import pyrenamer_prefs
+import pyrenamer_menu_cb
 
 import threading
 import user
@@ -64,6 +66,8 @@ class pyRenamer:
     def __init__(self, rootdir=None, startdir=None):
     
     	global HAS_GCONF
+    
+        self.menu_cb = pyrenamer_menu_cb.PyrenamerMenuCB(self)
         
         # Main variables
         self.count = 0
@@ -84,18 +88,14 @@ class pyRenamer:
         self.root_dir = '/'
         self.active_dir = self.home
         
+        # Options
+        self.options_shown = False
+        self.options_filedir = 0        # 0: Files; 1: Dirs; 2: Both
+        
         # Read preferences using Gconf
-        if HAS_GCONF: 
-            self.gconf_path = '/apps/' + pyrenamerglob.name
-            self.gconf_root_dir = self.gconf_path + '/root_dir'
-            self.gconf_active_dir = self.gconf_path + '/active_dir'
-            self.gconf_window_maximized = self.gconf_path + '/window_maximized'
-            self.gconf_pane_position = self.gconf_path + '/pane_position'
-            self.gconf_window_width = self.gconf_path + '/window_width'
-            self.gconf_window_height = self.gconf_path + '/window_height'
-            self.gconf_window_posx = self.gconf_path + '/window_posx'
-            self.gconf_window_posy = self.gconf_path + '/window_posy'
-            self.preferences_read()
+        if HAS_GCONF:
+            self.prefs = pyrenamer_prefs.PyrenamerPrefs(self)
+            self.prefs.preferences_read()
 
         # Process commanline
         if rootdir != None: self.root_dir = rootdir
@@ -115,6 +115,7 @@ class pyRenamer:
         self.statusbar = self.glade_tree.get_widget("statusbar")
         self.notebook = self.glade_tree.get_widget("notebook")
         self.clear_button = self.glade_tree.get_widget("clear_button")
+        self.preview_button = self.glade_tree.get_widget("preview_button")
         self.rename_button = self.glade_tree.get_widget("rename_button")
         self.subs_spaces = self.glade_tree.get_widget("subs_spaces")
         self.subs_capitalization = self.glade_tree.get_widget("subs_capitalization")
@@ -135,10 +136,28 @@ class pyRenamer:
         self.manual = self.glade_tree.get_widget("manual")
         self.menu_clear_preview = self.glade_tree.get_widget("menu_clear_preview")
         self.menu_rename = self.glade_tree.get_widget("menu_rename")
+        self.menu_show_options = self.glade_tree.get_widget("menu_show_options")
         self.images_original_pattern = self.glade_tree.get_widget("images_original_pattern")
         self.images_renamed_pattern = self.glade_tree.get_widget("images_renamed_pattern")
         self.music_original_pattern = self.glade_tree.get_widget("music_original_pattern")
         self.music_renamed_pattern = self.glade_tree.get_widget("music_renamed_pattern")
+        
+        # Options panel
+        self.options_button = self.glade_tree.get_widget("options_button")
+        self.options_vbox = self.glade_tree.get_widget("options_vbox")
+        self.options_label = self.glade_tree.get_widget("options_label")
+        self.options_close_button = self.glade_tree.get_widget("options_close_button")
+        self.filedir_combo = self.glade_tree.get_widget("filedir_combo")
+        self.pattern_hbox = self.glade_tree.get_widget("pattern_hbox")
+        self.add_recursive = self.glade_tree.get_widget("add_recursive")
+        self.extensions_check = self.glade_tree.get_widget("extensions_check")
+        
+        self.options_panel_state(self.options_shown)
+        self.menu_show_options.set_active(self.options_shown)
+        
+        self.filedir_combo.set_active(self.options_filedir)
+        
+       
         
         self.statusbar_context = self.statusbar.get_context_id("file_renamer")
         
@@ -146,18 +165,42 @@ class pyRenamer:
         signals = { "on_main_window_destroy": self.on_main_quit,
                     "on_main_window_window_state_event": self.on_main_window_window_state_event,
                     "on_main_window_configure_event": self.on_main_window_configure_event,
+                    "on_main_hpaned_notify": self.on_main_hpaned_notify,
+                    
                     "on_file_pattern_changed": self.on_file_pattern_changed,
                     "on_original_pattern_changed": self.on_original_pattern_changed,
                     "on_renamed_pattern_changed": self.on_renamed_pattern_changed,
-                    "on_add_recursive_toggled": self.on_add_recursive_toggled,
+                    
                     "on_preview_button_clicked": self.on_preview_button_clicked,
                     "on_clean_button_clicked": self.on_clean_button_clicked,
                     "on_rename_button_clicked": self.on_rename_button_clicked,
                     "on_exit_button_clicked": self.on_main_quit,
+                    
+                    "on_options_button_clicked": self.on_options_button_clicked,
+                    "on_add_recursive_toggled": self.on_add_recursive_toggled,
+                    "on_filedir_combo_changed": self.prefs.on_filedir_combo_changed,
+                    
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
                     "on_menu_load_names_from_file_activate": self.on_menu_load_names_from_file_activate,
                     "on_menu_clear_preview_activate": self.on_clean_button_clicked,
+                    
+                    "on_cut_activate": self.on_cut_activate,
+                    "on_copy_activate": self.on_copy_activate,
+                    "on_paste_activate": self.on_paste_activate,
+                    "on_clear_activate": self.on_clear_activate,
+                    "on_select_all_activate": self.on_select_all_activate,
+                    "on_select_nothing_activate": self.on_select_nothing_activate,
+                    "on_preferences_activate": self.on_preferences_activate,
+                    
+                    "on_menu_patterns_activate": self.menu_cb.on_menu_patterns_activate,
+                    "on_menu_substitutions_activate": self.menu_cb.on_menu_substitutions_activate,
+                    "on_menu_insert_activate": self.menu_cb.on_menu_insert_activate,
+                    "on_menu_manual_activate": self.menu_cb.on_menu_manual_activate,
+                    "on_menu_images_activate": self.menu_cb.on_menu_images_activate,
+                    "on_menu_music_activate": self.menu_cb.on_menu_music_activate,
+                    "on_menu_show_options_activate": self.menu_cb.on_menu_show_options_activate,
+                    
                     "on_subs_spaces_toggled": self.on_subs_spaces_toggled,
                     "on_subs_capitalization_toggled": self.on_subs_capitalization_toggled,
                     "on_subs_spaces_combo_changed": self.on_subs_spaces_combo_changed,
@@ -166,29 +209,29 @@ class pyRenamer:
                     "on_subs_replace_orig_changed": self.on_subs_replace_orig_changed,
                     "on_subs_replace_new_changed": self.on_subs_replace_new_changed,
                     "on_subs_accents_toggled": self.on_subs_accents_toggled,
+                    
                     "on_insert_radio_toggled": self.on_insert_radio_toggled,
                     "on_insert_entry_changed": self.on_insert_entry_changed,
                     "on_insert_pos_changed": self.on_insert_pos_changed,
                     "on_insert_end_toggled": self.on_insert_end_toggled,
+                    
                     "on_delete_radio_toggled": self.on_delete_radio_toggled,
                     "on_delete_from_changed": self.on_delete_from_changed,
                     "on_delete_to_changed": self.on_delete_to_changed,
+                    
                     "on_images_original_pattern_changed": self.on_images_original_pattern_changed,
                     "on_images_renamed_pattern_changed": self.on_images_renamed_pattern_changed,
+                    
                     "on_music_original_pattern_changed": self.on_music_original_pattern_changed,
                     "on_music_renamed_pattern_changed": self.on_music_renamed_pattern_changed,
                     "on_menu_quit_activate": self.on_main_quit,
                     "on_menu_about_activate": self.about_info,
+                    
                     "on_notebook_switch_page": self.on_notebook_switch_page,
-                    "on_cut_activate": self.on_cut_activate,
-                    "on_copy_activate": self.on_copy_activate,
-                    "on_paste_activate": self.on_paste_activate,
-                    "on_clear_activate": self.on_clear_activate,
-                    "on_select_all_activate": self.on_select_all_activate,
-                    "on_select_nothing_activate": self.on_select_nothing_activate,
-                    "on_preferences_activate": self.on_preferences_activate,
+                    
                     "on_manual_key_press_event": self.on_manual_key_press_event,
                     "on_quit_button_clicked": self.on_main_quit }
+        
         self.glade_tree.signal_autoconnect(signals)
         
         # Create ProgressBar and add it to the StatusBar. Add also a Stop icon
@@ -457,6 +500,7 @@ class pyRenamer:
 #---------------------------------------------------------------------------------------
 # Callbacks
 
+        
     def on_selected_files_cursor_changed(self, treeview):
         """ Clicked a file """
         
@@ -537,6 +581,30 @@ class pyRenamer:
         self.selected_files.columns_autosize()
 
 
+    def on_main_hpaned_notify(self, pane, gparamspec):
+        if gparamspec.name == 'position':
+            self.pane_position = pane.get_property('position')
+
+    def on_options_button_clicked(self, widget):
+        self.options_panel_state(not self.options_shown)
+            
+    def options_panel_state(self, state):
+
+        if state:
+            self.options_vbox.show()
+            self.options_label.show()
+            icon = self.options_button.get_child()
+            icon.set_from_stock(gtk.STOCK_CLOSE, gtk.ICON_SIZE_MENU)    
+        else:           
+            self.options_vbox.hide()
+            self.options_label.hide()
+            icon = self.options_button.get_child()
+            icon.set_from_stock(gtk.STOCK_PREFERENCES, gtk.ICON_SIZE_MENU)
+            
+        self.options_shown = state
+        self.menu_show_options.set_active(state)
+
+        
     def on_add_recursive_toggled(self, widget):
     	""" Reload current dir, but with Recursive flag enabled """
         self.dir_reload_current()
@@ -742,7 +810,7 @@ class pyRenamer:
     
     def on_preferences_activate(self, widget):
         """ Preferences menu item clicked """
-        self.create_preferences_dialog()
+        self.prefs.create_preferences_dialog()
         
     
     def on_manual_key_press_event(self, widget, event):
@@ -813,7 +881,7 @@ class pyRenamer:
     def on_main_quit(self, *args):
     	""" Bye bye! But first, save preferences """
         self.populate_stop()
-        if HAS_GCONF: self.preferences_save()
+        if HAS_GCONF: self.prefs.preferences_save()
         gtk.main_quit()
 
 
@@ -990,184 +1058,3 @@ class pyRenamer:
         about.set_icon_from_file(pyrenamerglob.icon)
         about.run()
         about.destroy()
-
-
-#---------------------------------------------------------------------------------------
-# Preferences handling (Using Gconf)
-
-    def create_preferences_dialog(self):
-        """ Create Preferences dialog and connect signals """
-        
-        # Create the window
-        self.preferences_tree = gtk.glade.XML(pyrenamerglob.gladefile, "prefs_window")
-        
-        # Get text entries and buttons
-        self.prefs_window = self.preferences_tree.get_widget('prefs_window')
-        self.prefs_entry_root = self.preferences_tree.get_widget('prefs_entry_root')
-        self.prefs_entry_active = self.preferences_tree.get_widget('prefs_entry_active')
-        self.prefs_browse_root = self.preferences_tree.get_widget('prefs_browse_root')
-        self.prefs_browse_active = self.preferences_tree.get_widget('prefs_browse_active')
-        self.prefs_close = self.preferences_tree.get_widget('prefs_close')
-        
-        # Signals
-        signals = {
-                   "on_prefs_browse_root_clicked": self.on_prefs_browse_root_clicked,
-                   "on_prefs_browse_active_clicked": self.on_prefs_browse_active_clicked,
-                   "on_prefs_close_clicked": self.on_prefs_close_clicked,
-                   "on_prefs_window_destroy": self.on_prefs_destroy,
-                   }
-        self.preferences_tree.signal_autoconnect(signals)
-        
-        # Fill the panel with gconf values or actual values (if gconf is empty)
-        client = gconf.client_get_default()
-        root_dir = client.get_string(self.gconf_root_dir)
-        if root_dir == (None or ''): root_dir = self.root_dir
-        active_dir = client.get_string(self.gconf_active_dir)
-        if active_dir == (None or ''): active_dir = self.active_dir
-        self.prefs_entry_root.set_text(root_dir)
-        self.prefs_entry_active.set_text(active_dir)
-        
-        # Set prefs window icon
-        self.prefs_window.set_icon_from_file(pyrenamerglob.icon)
-        
-    
-    def on_prefs_browse_root_clicked(self, widget):
-        """ Browse root clicked """
-        f = gtk.FileChooserDialog(_('Select root directory'),
-                                  self.prefs_window,
-                                  gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
-                                  (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, 
-                                   gtk.STOCK_OK, gtk.RESPONSE_ACCEPT),
-                                   )
-        f.set_current_folder(self.prefs_entry_root.get_text())
-        response = f.run()
-        if response == gtk.RESPONSE_ACCEPT:
-            self.prefs_entry_root.set_text(f.get_filename())
-        elif response == gtk.RESPONSE_REJECT:
-            pass
-        f.destroy()
-    
-
-    def on_prefs_browse_active_clicked(self, widget):
-        """ Browse active clicked """
-        f = gtk.FileChooserDialog(_('Select active directory'),
-                                  self.prefs_window,
-                                  gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
-                                  (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, 
-                                   gtk.STOCK_OK, gtk.RESPONSE_ACCEPT),
-                                   )
-        f.set_current_folder(self.prefs_entry_active.get_text())
-        response = f.run()
-        if response == gtk.RESPONSE_ACCEPT:
-            self.prefs_entry_active.set_text(f.get_filename())
-        elif response == gtk.RESPONSE_REJECT:
-            pass
-        f.destroy()
-        
-        
-    def on_prefs_close_clicked(self, widget):
-        """ Prefs close button clicked """
-        
-        root = self.prefs_entry_root.get_text()
-        active = self.prefs_entry_active.get_text()
-        if root != "" and active != "":
-            if not self.check_root_dir(root):
-                self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
-                self.prefs_entry_root.set_text('/')
-            elif not self.check_active_dir(root, active):
-                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
-                self.prefs_entry_active.set_text(root)
-            else:
-                self.root_dir = root
-                self.active_dir = active
-                self.prefs_window.destroy()
-                self.preferences_save_dirs()
-        else:
-            self.display_error_dialog(_("\nPlease set both directories!"))
-            if root == '': self.prefs_entry_root.set_text(self.root_dir)
-            if active == '': self.prefs_entry_active.set_text(self.active_dir)
-
-            
-    def on_prefs_destroy(self, widget):
-        """ Prefs window destroyed """
-        
-        root = self.prefs_entry_root.get_text()
-        active = self.prefs_entry_active.get_text()
-        if root != "" and active != "":
-            if not self.check_root_dir(root):
-                self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
-                self.create_preferences_dialog()
-                self.prefs_entry_root.set_text('/')
-            elif not self.check_active_dir(root, active):
-                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
-                self.create_preferences_dialog()
-                self.prefs_entry_active.set_text(root)
-            else:
-                self.root_dir = root
-                self.active_dir = active
-                self.prefs_window.destroy()
-                self.preferences_save_dirs()
-        else:
-            self.display_error_dialog(_("\nPlease set both directories!"))
-            self.create_preferences_dialog()
-            if root == '': self.prefs_entry_root.set_text(self.root_dir)
-            if active == '': self.prefs_entry_active.set_text(self.active_dir)
-
-        
-    def check_root_dir(self, root):
-        """ Checks if the root dir is correct """
-        return ospath.isdir(ospath.abspath(root))
-    
-    
-    def check_active_dir(self, root, active):
-        """ Checks if active dir is correct """
-        root = ospath.abspath(root)
-        active = ospath.abspath(active)
-        return ospath.isdir(active) and (root in active)
-        
-        
-    def preferences_save(self):
-        """ Width and height are saved on the configure_event callback for main_window """      
-        client = gconf.client_get_default()
-        client.set_int(self.gconf_pane_position, self.main_hpaned.get_position())
-        client.set_bool(self.gconf_window_maximized, self.window_maximized)
-        client.set_int(self.gconf_window_width, self.window_width)
-        client.set_int(self.gconf_window_height, self.window_height)
-        client.set_int(self.gconf_window_posx, self.window_posx)
-        client.set_int(self.gconf_window_posy, self.window_posy)
-
-        
-    def preferences_save_dirs(self):
-        """ Save default directories """
-        client = gconf.client_get_default()
-        client.set_string(self.gconf_root_dir, self.root_dir)
-        client.set_string(self.gconf_active_dir, self.active_dir)
-        
-    def preferences_read(self):
-    	""" The name says it all... """
-        client = gconf.client_get_default()
-        
-        root_dir = client.get_string(self.gconf_root_dir)
-        if root_dir != None and root_dir != '': self.root_dir = root_dir
-        
-        active_dir = client.get_string(self.gconf_active_dir)
-        if active_dir != None and active_dir != '': self.active_dir = active_dir
-        
-        pane_position = client.get_int(self.gconf_pane_position)
-        if pane_position != None: self.pane_position = pane_position
-            
-        maximized = client.get_bool(self.gconf_window_maximized)
-        if maximized != None: self.window_maximized = maximized
-        
-        width = client.get_int(self.gconf_window_width)
-        height = client.get_int(self.gconf_window_height)
-        if width != None and height != None: 
-            self.window_width = width
-            self.window_height = height
-        
-        posx = client.get_int(self.gconf_window_posx)
-        posy = client.get_int(self.gconf_window_posy)
-        if posx != None and posy != None: 
-            self.window_posx = posx
-            self.window_posy = posy
-

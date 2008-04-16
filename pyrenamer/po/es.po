@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-26 21:16+0100\n"
-"PO-Revision-Date: 2007-11-26 21:15+0100\n"
+"PO-Revision-Date: 2008-04-10 14:26+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Renombramiento masivo de archivos"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:139
+#: ../data/pyrenamer.desktop.in.in.in.h:2
+#: ../data/pyrenamer.glade.h:139
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -70,18 +71,12 @@ msgid "<b>Rename images using their EXIF data</b>"
 msgstr "<b>Renombrar imágenes usando sus etiquetas EXIF</b>"
 
 #: ../data/pyrenamer.glade.h:13
-msgid ""
-"<i>Put the mouse over the text fields to get help on which patterns you can "
-"use</i>"
-msgstr ""
-"<i>Ponga el ratón sobre los campos de texto para obtener ayuda sobre los "
-"patrones que puede usar</i>"
+msgid "<i>Put the mouse over the text fields to get help on which patterns you can use</i>"
+msgstr "<i>Ponga el ratón sobre los campos de texto para obtener ayuda sobre los patrones que puede usar</i>"
 
 #: ../data/pyrenamer.glade.h:14
 msgid "<i>Select the file to rename, change its name and click Preview</i>"
-msgstr ""
-"<i>Seleccione el archivo a renombrar, cambie su nombre y haga click en "
-"\"Vista previa\"</i>"
+msgstr "<i>Seleccione el archivo a renombrar, cambie su nombre y haga click en \"Vista previa\"</i>"
 
 #: ../data/pyrenamer.glade.h:15
 msgid "<i>The default selected directory</i>"
@@ -424,7 +419,7 @@ msgstr "_Cargar nombres desde fichero..."
 
 #: ../data/pyrenamer.glade.h:135
 msgid "_Preview"
-msgstr "_Vista previa"
+msgstr "Vista _previa"
 
 #: ../data/pyrenamer.glade.h:136
 msgid "_Rename"
@@ -526,7 +521,8 @@ msgstr "Seleccionar fichero"
 msgid "Reading contents of dir %s"
 msgstr "Leyendo el contenido del directorio %s"
 
-#: ../src/pyrenamer.py:861 ../src/pyrenamer.py:919
+#: ../src/pyrenamer.py:861
+#: ../src/pyrenamer.py:919
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directorio: %s - Archivos: %s"
@@ -549,7 +545,8 @@ msgstr "Seleccione el directorio raíz"
 msgid "Select active directory"
 msgstr "Seleccione el directorio activo"
 
-#: ../src/pyrenamer.py:1072 ../src/pyrenamer.py:1095
+#: ../src/pyrenamer.py:1072
+#: ../src/pyrenamer.py:1095
 msgid ""
 "\n"
 "The root directory is not valid!\n"
@@ -559,7 +556,8 @@ msgstr ""
 "El directorio raíz no es válido!\n"
 "Por favor, seleccione otro directorio."
 
-#: ../src/pyrenamer.py:1075 ../src/pyrenamer.py:1099
+#: ../src/pyrenamer.py:1075
+#: ../src/pyrenamer.py:1099
 msgid ""
 "\n"
 "The active directory is not valid!\n"
@@ -569,7 +567,8 @@ msgstr ""
 "El directorio activo no es válido!\n"
 "Por favor, seleccione otro directorio."
 
-#: ../src/pyrenamer.py:1083 ../src/pyrenamer.py:1108
+#: ../src/pyrenamer.py:1083
+#: ../src/pyrenamer.py:1108
 msgid ""
 "\n"
 "Please set both directories!"
@@ -611,3 +610,4 @@ msgstr "Mostrar archivos ocultos"
 
 #~ msgid "Last selected dir"
 #~ msgstr "Último directorio seleccionado"
+

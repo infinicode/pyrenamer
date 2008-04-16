@@ -10,8 +10,10 @@ pyrenamerdir = $(pythondir)/pyrenamer
 pyrenamer_PYTHON =			\
 	__init__.py				\
 	pyrenamer.py			\
-	pyrenamerfilefuncs.py	\
-	tooltips.py				\
+	pyrenamer_filefuncs.py	\
+	pyrenamer_menu_cb.py	\
+	pyrenamer_prefs.py		\
+	pyrenamer_tooltips.py				\
 	treefilebrowser.py		\
 	TreeViewTooltips.py		\
 	EXIF.py
