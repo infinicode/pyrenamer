@@ -330,8 +330,13 @@ class pyRenamer:
     def create_model(self):
     	""" Create the model to hold the needed data
         Model = [file, /path/to/file, newfilename, /path/to/newfilename] """
-        self.file_selected_model = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING)
+        self.file_selected_model = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gtk.gdk.Pixbuf)
         self.selected_files.set_model(self.file_selected_model)
+        
+        renderer0 = gtk.CellRendererPixbuf()
+        column0 = gtk.TreeViewColumn('', renderer0, pixbuf=4)
+        #column0.set_resizable(True)
+        self.selected_files.append_column(column0)
         
         renderer1 = gtk.CellRendererText()
         column1 = gtk.TreeViewColumn(_("Original file name"), renderer1, text=0)
@@ -976,6 +981,7 @@ class pyRenamer:
             self.selected_files.set_model(None)
             self.file_selected_model.set_value(iter, 0, elem[0])
             self.file_selected_model.set_value(iter, 1, elem[1])
+            self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
             
             self.progressbar.pulse()
             self.statusbar.push(self.statusbar_context, _("Adding file %s") % elem[1])
@@ -1022,6 +1028,50 @@ class pyRenamer:
         self.menu_rename.set_sensitive(True)
         
         f.close()
+        
+    
+    def get_icon(self, path):
+        
+        icon_theme = gtk.icon_theme_get_default()
+        if ospath.isdir(path):
+            try:
+                icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
+                return icon
+            except gobject.GError, exc:
+                try:
+                    icon = icon_theme.load_icon("gtk-directory", 16, 0)
+                    return icon
+                except:
+                    return None
+        else:
+            
+            mime = "text-x-generic"
+            
+            audio = ["mp3", "ogg", "wav", "aiff"]
+            image = ["jpg", "gif", "png", "tiff", "tif", "jpeg"]
+            video = ["avi", "ogm", "mpg"]
+            package = ["rar", "zip", "gz", "tar", "bz2", "tgz", "deb", "rpm"]
+            
+            file = path.split('/')[-1]
+            ext = (file.split('.')[-1]).lower()
+            
+            if ext in audio:
+                mime = "audio-x-generic"
+            
+            if ext in image:
+                mime = "image-x-generic"
+            
+            if ext in image:
+                mime = "image-x-generic"
+            
+            if ext in package:
+                mime = "package-x-generic"
+            
+            try:
+                icon = icon_theme.load_icon(mime, gtk.ICON_SIZE_MENU, 0)
+                return icon
+            except gobject.GError, exc:
+                return None
 
 
 #---------------------------------------------------------------------------------------
