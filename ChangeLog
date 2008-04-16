@@ -1,10 +1,5 @@
 2008-04-09  Adolfo González Blázquez <code@infinicode.org>
 
-	* data/pyrenamer.desktop.in.in.in:
-	"Encoding" field is deprecated from desktop files, so removed
-	
-2008-04-09  Adolfo González Blázquez <code@infinicode.org>
-
 	* Version 0.5.0 Released
 
 2007-11-26  Adolfo González Blázquez <code@infinicode.org>
