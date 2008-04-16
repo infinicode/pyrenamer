@@ -1,5 +1,6 @@
 2008-04-16  Adolfo González Blázquez <code@infinicode.org>
 
+	* Added option to rename directories
 	* Massive code refactorings
 	* GUI improved with options panel
 

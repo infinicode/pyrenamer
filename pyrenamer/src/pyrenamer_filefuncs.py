@@ -52,7 +52,7 @@ def escape_pattern(pattern):
     return pattern
 
 
-def get_file_listing(dir, pattern=None):
+def get_file_listing(dir, mode, pattern=None):
     """ Returns the file listing of a given directory. It returns only files.
     Returns a list of [file,/path/to/file] """
     
@@ -68,26 +68,40 @@ def get_file_listing(dir, pattern=None):
     listaux.sort(key=str.lower)
     for elem in listaux:
         if STOP: return filelist
-        if not os.path.isdir(os.path.join(dir,elem)): filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
-    
+        if mode == 0:
+            # Get files
+            if not os.path.isdir(os.path.join(dir,elem)): 
+                filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+        elif mode == 1:
+            # Get directories
+            if os.path.isdir(os.path.join(dir,elem)): 
+                filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+        elif mode == 2:
+            # Get files and directories
+            filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+        else:
+            # Get files
+            if not os.path.isdir(os.path.join(dir,elem)): 
+                filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+            
     return filelist
 
 
-def get_file_listing_recursive(dir, pattern=None):
+def get_file_listing_recursive(dir, mode, pattern=None):
     """ Returns the file listing of a given directory recursively.
     It returns only files. Returns a list of [file,/path/to/file] """
     
     filelist = []
     
     # Get root directory files
-    filelist = get_file_listing(dir, pattern)
+    filelist = get_file_listing(dir, mode, pattern)
     
     # Get files from subdirs
     for root, dirs, files in os.walk(dir):
         if STOP: return filelist
         for directory in dirs:
             if STOP: return filelist
-            elem = get_file_listing(os.path.join(root, directory), pattern)
+            elem = get_file_listing(os.path.join(root, directory), mode, pattern)
             for i in elem:
                 if STOP: return filelist
                 filelist.append(i)    

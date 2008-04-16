@@ -934,9 +934,9 @@ class pyRenamer:
 
         # Add files from the current directory (and subdirs if needed)
         if recursive:
-            self.listing = renamerfilefuncs.get_file_listing_recursive(dir, pattern)
+            self.listing = renamerfilefuncs.get_file_listing_recursive(dir, self.options_filedir, pattern)
         else:
-            self.listing = renamerfilefuncs.get_file_listing(dir, pattern)
+            self.listing = renamerfilefuncs.get_file_listing(dir, self.options_filedir, pattern)
 
         gobject.idle_add(self.populate_get_listing_end)
         

@@ -185,6 +185,7 @@ class PyrenamerPrefs:
     def on_filedir_combo_changed(self, combo):
         filedir = combo.get_active()
         self.main.options_filedir = filedir
+        self.main.dir_reload_current()
 
         
     def check_root_dir(self, root):
