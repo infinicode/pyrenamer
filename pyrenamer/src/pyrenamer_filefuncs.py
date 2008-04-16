@@ -26,6 +26,7 @@ import glob
 import re
 import sys
 import time
+import random
 
 import pyrenamer_globals
 import EXIF
@@ -334,6 +335,48 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     newname = newname.replace('{day}', time.strftime("%d", time.localtime()))
     newname = newname.replace('{dayname}', time.strftime("%A", time.localtime()))
     newname = newname.replace('{daysimp}', time.strftime("%a", time.localtime()))
+    
+    # Replace {rnd} with random number between 0 and 100.
+    # If {rnd500} the number will be between 0 and 500
+    # If {rnd10-20} the number will be between 10 and 20
+    # If you add ,5 the number will be padded with 5 digits
+    # ie. {rnd20,5} will be a number between 0 and 20 of 5 digits (00012)
+    rnd = ''
+    cr = re.compile("{(rnd)([0-9]*)}"
+                    "|{(rnd)([0-9]*)(\-)([0-9]*)}"
+                    "|{(rnd)([0-9]*)(\,)([0-9]*)}"
+                    "|{(rnd)([0-9]*)(\-)([0-9]*)(\,)([0-9]*)}")
+    try:
+        cg = cr.search(newname).groups()
+        if len(cg) == 16:
+            
+            if cg[0] == 'rnd':
+                if cg[1] == '':
+                    # {rnd}
+                    rnd = random.randint(0,100)
+                else: 
+                    # {rnd2}
+                    rnd = random.randint(0,int(cg[1]))
+            
+            elif cg[2] == 'rnd' and cg[4] == '-' and cg[3] != '' and cg[5] != '':
+                # {rnd10-100}
+                rnd = random.randint(int(cg[3]),int(cg[5]))
+                
+            elif cg[6] == 'rnd' and cg[8] == ',' and cg[9] != '':
+                if cg[7] == '':
+                    # {rnd,2}
+                    rnd = str(random.randint(0,100)).zfill(int(cg[9]))
+                else:
+                    # {rnd10,2}
+                    rnd = str(random.randint(0,int(cg[7]))).zfill(int(cg[9]))
+                    
+            elif cg[10] == 'rnd' and cg[12] == '-' and cg[14] == ',' and cg[11] != '' and cg[13] != '' and cg[15] != '':
+                # {rnd2-10,3}
+                rnd = str(random.randint(int(cg[11]),int(cg[13]))).zfill(int(cg[15]))
+                    
+        newname = cr.sub(str(rnd), newname)
+    except:
+        pass
         
     # Returns new name and path
     newpath = get_new_path(newname, path)
