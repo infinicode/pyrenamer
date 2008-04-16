@@ -694,11 +694,11 @@ Some today date replacements:
 {daysimp}		fri
 
 Random number replacements:
-{rnd} is random number between 0 and 100.
-{rnd,3} is random number between 0 and 100 of 3 digits (012)
-{rnd500} is random number between 0 and 500
-{rnd10-20} is random number between 10 and 20
-{rnd20,5} is random number between 0 and 20 of 5 digits (00012)</property>
+{rand} is random number between 0 and 100.
+{rand,3} is random number between 0 and 100 of 3 digits (012)
+{rand500} is random number between 0 and 500
+{rand10-20} is random number between 10 and 20
+{rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -1668,11 +1668,11 @@ Some today date replacements:
 {daysimp}		fri
 
 Random number replacements:
-{rnd} is random number between 0 and 100.
-{rnd,3} is random number between 0 and 100 of 3 digits (012)
-{rnd500} is random number between 0 and 500
-{rnd10-20} is random number between 10 and 20
-{rnd20,5} is random number between 0 and 20 of 5 digits (00012)</property>
+{rand} is random number between 0 and 100.
+{rand,3} is random number between 0 and 100 of 3 digits (012)
+{rand500} is random number between 0 and 500
+{rand10-20} is random number between 10 and 20
+{rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>
@@ -1902,11 +1902,11 @@ Some today date replacements:
 {daysimp}		fri
 
 Random number replacements:
-{rnd} is random number between 0 and 100.
-{rnd,3} is random number between 0 and 100 of 3 digits (012)
-{rnd500} is random number between 0 and 500
-{rnd10-20} is random number between 10 and 20
-{rnd20,5} is random number between 0 and 20 of 5 digits (00012)</property>
+{rand} is random number between 0 and 100.
+{rand,3} is random number between 0 and 100 of 3 digits (012)
+{rand500} is random number between 0 and 500
+{rand10-20} is random number between 10 and 20
+{rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
 		      <property name="visibility">True</property>

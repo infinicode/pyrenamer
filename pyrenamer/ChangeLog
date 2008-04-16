@@ -1,6 +1,6 @@
 2008-04-16  Adolfo González Blázquez <code@infinicode.org>
 
-	* Added random number pattern {rnd}
+	* Added random number pattern {rand}
 	* Added mime icon to files
 	* Added option to rename directories
 	* Massive code refactorings
