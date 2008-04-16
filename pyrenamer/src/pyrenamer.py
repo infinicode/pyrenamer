@@ -90,7 +90,8 @@ class pyRenamer:
         
         # Options
         self.options_shown = False
-        self.options_filedir = 0        # 0: Files; 1: Dirs; 2: Both
+        self.filedir = 0        # 0: Files; 1: Dirs; 2: Both
+        self.keepext = False
         
         # Read preferences using Gconf
         if HAS_GCONF:
@@ -154,9 +155,8 @@ class pyRenamer:
         
         self.options_panel_state(self.options_shown)
         self.menu_show_options.set_active(self.options_shown)
-        
-        self.filedir_combo.set_active(self.options_filedir)
-        
+        self.filedir_combo.set_active(self.filedir)
+        self.extensions_check.set_active(self.keepext)
        
         
         self.statusbar_context = self.statusbar.get_context_id("file_renamer")
@@ -177,8 +177,9 @@ class pyRenamer:
                     "on_exit_button_clicked": self.on_main_quit,
                     
                     "on_options_button_clicked": self.on_options_button_clicked,
-                    "on_add_recursive_toggled": self.on_add_recursive_toggled,
+                    "on_add_recursive_toggled": self.prefs.on_add_recursive_toggled,
                     "on_filedir_combo_changed": self.prefs.on_filedir_combo_changed,
+                    "on_extensions_check_toggled": self.prefs.on_extensions_check_toggled,
                     
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
@@ -376,11 +377,17 @@ class pyRenamer:
         newname = name
         newpath = path
         
+        if self.keepext:
+            ename, epath, ext = renamerfilefuncs.cut_extension(newname, newpath)
+            if ext != '':
+                newname = ename
+                newpath = epath
+        
         if self.notebook.get_current_page() == 0:
             # Replace using patterns
             pattern_ini = self.original_pattern.get_text()
             pattern_end = self.renamed_pattern.get_text()
-            newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
+            newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
         
         elif self.notebook.get_current_page() == 1:
             # Replace orig with new
@@ -442,6 +449,10 @@ class pyRenamer:
             pattern_end = self.music_renamed_pattern.get_text()
             newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
             newname, newpath = renamerfilefuncs.replace_music(name, path, newname, newpath)
+        
+        
+        if self.keepext:
+            if ext != '': newname, newpath = renamerfilefuncs.add_extension(newname, newpath, ext)
         
         
         # Set new values on model
@@ -608,11 +619,6 @@ class pyRenamer:
             
         self.options_shown = state
         self.menu_show_options.set_active(state)
-
-        
-    def on_add_recursive_toggled(self, widget):
-    	""" Reload current dir, but with Recursive flag enabled """
-        self.dir_reload_current()
 
 
     def on_file_pattern_changed(self, widget):
@@ -939,9 +945,9 @@ class pyRenamer:
 
         # Add files from the current directory (and subdirs if needed)
         if recursive:
-            self.listing = renamerfilefuncs.get_file_listing_recursive(dir, self.options_filedir, pattern)
+            self.listing = renamerfilefuncs.get_file_listing_recursive(dir, self.filedir, pattern)
         else:
-            self.listing = renamerfilefuncs.get_file_listing(dir, self.options_filedir, pattern)
+            self.listing = renamerfilefuncs.get_file_listing(dir, self.filedir, pattern)
 
         gobject.idle_add(self.populate_get_listing_end)
         

@@ -44,6 +44,8 @@ from os import path as ospath
 
 import pyrenamer_globals as pyrenamerglob
 
+from gettext import gettext as _
+
 class PyrenamerPrefs:
     
     def __init__(self, main):
@@ -60,7 +62,8 @@ class PyrenamerPrefs:
         self.gconf_window_posx = self.gconf_path + '/window_posx'
         self.gconf_window_posy = self.gconf_path + '/window_posy'
         self.gconf_options_shown = self.gconf_path + '/options_shown'
-        self.gconf_options_filedir = self.gconf_path + '/options_filedir'
+        self.gconf_filedir = self.gconf_path + '/filedir'
+        self.gconf_keepext = self.gconf_path + '/keepext'
         
     
     def create_preferences_dialog(self):
@@ -182,11 +185,17 @@ class PyrenamerPrefs:
             if active == '': self.prefs_entry_active.set_text(self.main.active_dir)
 
 
-    def on_filedir_combo_changed(self, combo):
-        filedir = combo.get_active()
-        self.main.options_filedir = filedir
+    def on_add_recursive_toggled(self, widget):
+        """ Reload current dir, but with Recursive flag enabled """
         self.main.dir_reload_current()
 
+    def on_filedir_combo_changed(self, combo):
+        filedir = combo.get_active()
+        self.main.filedir = filedir
+        self.main.dir_reload_current()
+        
+    def on_extensions_check_toggled(self, check):
+        self.main.keepext = check.get_active()
         
     def check_root_dir(self, root):
         """ Checks if the root dir is correct """
@@ -210,7 +219,8 @@ class PyrenamerPrefs:
         client.set_int(self.gconf_window_posx, self.main.window_posx)
         client.set_int(self.gconf_window_posy, self.main.window_posy)
         client.set_bool(self.gconf_options_shown, self.main.options_shown)
-        client.set_int(self.gconf_options_filedir, self.main.options_filedir)
+        client.set_int(self.gconf_filedir, self.main.filedir)
+        client.set_bool(self.gconf_keepext, self.main.keepext)
 
         
     def preferences_save_dirs(self):
@@ -250,5 +260,8 @@ class PyrenamerPrefs:
         options_shown = client.get_bool(self.gconf_options_shown)
         if options_shown != None: self.main.options_shown = options_shown
         
-        options_filedir = client.get_int(self.gconf_options_filedir)
-        if options_filedir != None: self.main.options_filedir = options_filedir
+        filedir = client.get_int(self.gconf_filedir)
+        if filedir != None: self.main.filedir = filedir
+        
+        keepext = client.get_bool(self.gconf_keepext)
+        if keepext != None: self.main.keepext = keepext

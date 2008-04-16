@@ -485,6 +485,7 @@ def replace_music(name, path, newname, newpath):
     """ Pattern replace for mp3 """
     
     file = get_new_path(name, path)
+    print "FILE", file
     
     if eyeD3.isMp3File(file):
         audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
@@ -572,3 +573,21 @@ def delete_from(name, path, ini, to):
     
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
+
+def cut_extension(name, path):
+    """ Remove extension from file name """
+    
+    if '.' in name:
+        ext = name.split('.')[-1]
+        name = name[0:len(name)-len(ext)-1]
+        path = path[0:len(path)-len(ext)-1]
+        return name, path, ext
+    else:
+        return name, path, ''
+    
+def add_extension(name, path, ext):
+    
+    if ext != '':
+        name = name + '.' + ext
+        path = path = '.' + ext
+    return name, path

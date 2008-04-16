@@ -1,5 +1,6 @@
 2008-04-16  Adolfo González Blázquez <code@infinicode.org>
 
+	* Added option to ignore files extensions
 	* Added random number pattern {rand}
 	* Added mime icon to files
 	* Added option to rename directories
