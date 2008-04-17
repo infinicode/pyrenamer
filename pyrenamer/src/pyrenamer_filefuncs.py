@@ -489,15 +489,15 @@ def replace_music(name, path, newname, newpath):
     file = get_new_path(name, path)
     
     try:
-        tag = PyrenamerMetadataMusic(file)
+        tags = PyrenamerMetadataMusic(file)
 
-        artist = tag.get_artist()
-        album  = tag.get_album()
-        title  = tag.get_title()
-        track  = tag.get_track_number()
-        trackt = tag.get_track_total()
-        genre  = tag.get_genre()
-        year   = tag.get_year()
+        artist = tags.get_artist()
+        album  = tags.get_album()
+        title  = tags.get_title()
+        track  = tags.get_track_number()
+        trackt = tags.get_track_total()
+        genre  = tags.get_genre()
+        year   = tags.get_year()
         
         if artist != None: newname = newname.replace('{artist}', artist)
         else: newname = newname.replace('{artist}', '')
@@ -508,10 +508,10 @@ def replace_music(name, path, newname, newpath):
         if title != None: newname = newname.replace('{title}', title)
         else: newname = newname.replace('{title}', '')
             
-        if track != None: newname = newname.replace('{track}', str(track))
+        if track != None: newname = newname.replace('{track}', str(track).zfill(2))
         else: newname = newname.replace('{track}', '')
             
-        if trackt != None: newname = newname.replace('{tracktotal}', str(trackt))
+        if trackt != None: newname = newname.replace('{tracktotal}', str(trackt).zfill(2))
         else: newname = newname.replace('{tracktotal}', '')
         
         if genre != None: newname = newname.replace('{genre}', genre)
