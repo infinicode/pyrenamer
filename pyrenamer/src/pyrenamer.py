@@ -452,7 +452,8 @@ class pyRenamer:
             newname, newpath = renamerfilefuncs.replace_music(name, path, newname, newpath)
         
         # Add the kept extension
-        if self.keepext and self.notebook.get_current_page() != 3:
+        print newname, newpath
+        if self.keepext and self.notebook.get_current_page() != 3 and (newname and newpath) != '':
             if ext != '': newname, newpath = renamerfilefuncs.add_extension(newname, newpath, ext)
         
         # Set new values on model
