@@ -13,7 +13,8 @@ pyrenamer_PYTHON =			\
 	pyrenamer_filefuncs.py	\
 	pyrenamer_menu_cb.py	\
 	pyrenamer_prefs.py		\
-	pyrenamer_tooltips.py				\
+	pyrenamer_tooltips.py	\
+	pyrenamer_metadata.py	\
 	treefilebrowser.py		\
 	TreeViewTooltips.py		\
 	EXIF.py
