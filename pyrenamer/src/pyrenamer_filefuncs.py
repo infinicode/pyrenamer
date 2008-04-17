@@ -589,5 +589,5 @@ def add_extension(name, path, ext):
     
     if ext != '':
         name = name + '.' + ext
-        path = path = '.' + ext
+        path = path + '.' + ext
     return name, path

@@ -377,7 +377,8 @@ class pyRenamer:
         newname = name
         newpath = path
         
-        if self.keepext:
+        # Keep extension (not valid on manual rename!)
+        if self.keepext and self.notebook.get_current_page() != 3:
             ename, epath, ext = renamerfilefuncs.cut_extension(newname, newpath)
             if ext != '':
                 newname = ename
@@ -450,10 +451,9 @@ class pyRenamer:
             newname, newpath = renamerfilefuncs.rename_using_patterns(name, path, pattern_ini, pattern_end, self.count)
             newname, newpath = renamerfilefuncs.replace_music(name, path, newname, newpath)
         
-        
-        if self.keepext:
+        # Add the kept extension
+        if self.keepext and self.notebook.get_current_page() != 3:
             if ext != '': newname, newpath = renamerfilefuncs.add_extension(newname, newpath, ext)
-        
         
         # Set new values on model
         if newname != '' and newname != None:
