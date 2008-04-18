@@ -22,7 +22,6 @@ If you find any bugs or have any suggestions email: code@infinicode.org
 
 from hachoir_core.cmd_line import unicodeFilename
 from hachoir_parser import createParser
-import hachoir_metadata
 from hachoir_metadata import extractMetadata
 from hachoir_metadata.metadata import MultipleMetadata
 
@@ -73,9 +72,12 @@ class PyrenamerMetadataMusic(PyrenamerMetadata):
 
     def get_artist(self):
         try:
-            return self.tags["Author"]
+            return self.tags["Artist"]
         except:
-            return None
+            try:
+                return self.tags["Author"]
+            except:
+                return None
     
     def get_album(self):
         try:
