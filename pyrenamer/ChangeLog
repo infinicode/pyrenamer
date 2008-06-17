@@ -1,11 +1,82 @@
-2008-04-16  Adolfo González Blázquez <code@infinicode.org>
+2008-04-18  Adolfo González Blázquez  <code@infinicode.org>
 
-	* Added option to ignore files extensions
-	* Added random number pattern {rand}
-	* Added mime icon to files
-	* Added option to rename directories
-	* Massive code refactorings
-	* GUI improved with options panel
+	* doc/treefilebrowser_example.py:
+	* src/pyrenamer.py:
+	* src/pyrenamer_filefuncs.py:
+	* src/pyrenamer_menu_cb.py:
+	* src/pyrenamer_metadata.py:
+	* src/pyrenamer_prefs.py:
+	* src/pyrenamer_tooltips.py:
+	* src/treefilebrowser.py:
+	Updated date on copyright header
+
+	* src/pyrenamer_metadata.py: (PyrenamerMetadataMusic.get_artist):
+	"Artist" and "Author" are both correct tags for Artist
+
+2008-04-17  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (pyRenamer.preview_rename_rows):
+	Fix extension keeping for music and images
+
+	* src/pyrenamer_filefuncs.py: (replace_music):
+	Added zero fill to tracks (1 -> 01)
+
+	* src/pyrenamer.py: (pyRenamer.preview_rename_rows):
+	Fix extension keeping for music and images
+
+	* src/pyrenamer_filefuncs.py: (replace_music), (replace_music_old),
+	  (add_extension):
+	Initial support for hachoir music metadata extraction
+
+
+	* src/pyrenamer.py: (pyRenamer.preview_rename_rows):
+	* src/pyrenamer_filefuncs.py: (add_extension):
+	Keep extension not valid on manual rename
+
+2008-04-16  Adolfo González Blázquez  <code@infinicode.org>
+
+	* data/pyrenamer.glade:
+	* data/pyrenamer.schemas.in:
+	* src/pyrenamer.py: (pyRenamer.__init__),
+	  (pyRenamer.preview_rename_rows), (pyRenamer.options_panel_state),
+	  (pyRenamer.populate_get_listing):
+	* src/pyrenamer_filefuncs.py: (replace_music), (delete_from),
+	  (cut_extension), (add_extension):
+	* src/pyrenamer_prefs.py: (PyrenamerPrefs.__init__),
+	  (PyrenamerPrefs.on_add_recursive_toggled),
+	  (PyrenamerPrefs.on_filedir_combo_changed),
+	  (PyrenamerPrefs.on_extensions_check_toggled),
+	  (PyrenamerPrefs.preferences_save), (PyrenamerPrefs.preferences_read):
+	Added option to ignore files extensions
+
+	* data/pyrenamer.glade:
+	* src/pyrenamer_filefuncs.py: (rename_using_patterns):
+	Added random number pattern {rand}
+	
+	* src/pyrenamer.py: (pyRenamer.create_model),
+	  (pyRenamer.populate_add_to_view), (pyRenamer.populate_from_file),
+	  (pyRenamer.get_icon):
+	Added mime icon to files
+
+	* src/pyrenamer.py: (pyRenamer.populate_get_listing):
+	* src/pyrenamer_filefuncs.py: (get_file_listing),
+	  (get_file_listing_recursive):
+	* src/pyrenamer_prefs.py: (PyrenamerPrefs.on_filedir_combo_changed):
+	Added option to rename directories
+	
+2008-04-09  Adolfo González Blázquez  <code@infinicode.org>
+
+	* data/pyrenamer.glade:
+	* data/pyrenamer.schemas.in:
+	GUI improved with options panel
+	
+	* src/pyrenamer.py: (pyRenamer.__init__),
+	  (pyRenamer.enable_rename_and_clean),
+	  (pyRenamer.on_main_hpaned_notify),
+	  (pyRenamer.on_options_button_clicked),
+	  (pyRenamer.options_panel_state), (pyRenamer.on_preferences_activate),
+	  (pyRenamer.on_main_quit):
+	Massive code refactorings
 
 2008-04-09  Adolfo González Blázquez <code@infinicode.org>
 
