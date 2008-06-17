@@ -594,7 +594,7 @@ def rename_file(ori, new):
         return False
     
     try:
-        os.rename(ori, new)
+        os.renames(ori, new)
         print "Renaming %s to %s" % (ori, new)
         return True
     except Exception, e:
@@ -643,3 +643,4 @@ def add_extension(name, path, ext):
         name = name + '.' + ext
         path = path + '.' + ext
     return name, path
+

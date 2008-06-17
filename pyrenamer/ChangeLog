@@ -1,3 +1,8 @@
+2008-06-17  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer_filefuncs.py: (rename_file):
+	Allow renamimg files and moving them to another directory
+
 2008-04-18  Adolfo González Blázquez  <code@infinicode.org>
 
 	* doc/treefilebrowser_example.py:
