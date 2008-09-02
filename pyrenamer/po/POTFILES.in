@@ -4,6 +4,6 @@ data/pyrenamer.glade
 data/pyrenamer.schemas.in
 src/pyrenamer.py
 src/pyrenamer_globals.py.in
-src/pyrenamerfilefuncs.py
-src/tooltips.py
+src/pyrenamer_filefuncs.py
+src/pyrenamer_tooltips.py
 src/treefilebrowser.py
