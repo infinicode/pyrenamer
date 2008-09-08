@@ -7,16 +7,17 @@ bin_SCRIPTS = pyrenamer
 
 pyrenamerdir = $(pythondir)/pyrenamer
 
-pyrenamer_PYTHON =			\
-	__init__.py				\
-	pyrenamer.py			\
-	pyrenamer_filefuncs.py	\
-	pyrenamer_menu_cb.py	\
-	pyrenamer_prefs.py		\
-	pyrenamer_tooltips.py	\
-	pyrenamer_metadata.py	\
-	treefilebrowser.py		\
-	TreeViewTooltips.py		\
+pyrenamer_PYTHON =				\
+	__init__.py					\
+	pyrenamer.py				\
+	pyrenamer_filefuncs.py		\
+	pyrenamer_menu_cb.py		\
+	pyrenamer_metadata.py		\
+	pyrenamer_pattern_editor.py	\
+	pyrenamer_prefs.py			\
+	pyrenamer_tooltips.py		\
+	treefilebrowser.py			\
+	TreeViewTooltips.py			\
 	EXIF.py
 	
 nodist_pyrenamer_PYTHON =	\

@@ -1,5 +1,17 @@
 2008-09-08  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/Makefile.am:
+	* src/pyrenamer.py:
+	* src/pyrenamer_globals.py.in:
+	Preliminary support for remebering patterns
+
+2008-09-08  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (__init__):
+	* src/pyrenamer_globals.py:
+	New global variables: home_dir and config_dir
+
 	* src/pyrenamer.glade:
 	Added UI support for saving patterns
 
