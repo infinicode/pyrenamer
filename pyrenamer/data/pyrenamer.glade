@@ -3200,7 +3200,7 @@ Random number replacements:
   </child>
 </widget>
 
-<widget class="GtkWindow" id="pattern_window">
+<widget class="GtkWindow" id="pattern_edit_window">
   <property name="visible">True</property>
   <property name="title" translatable="yes">Pattern editor</property>
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
@@ -3215,7 +3215,7 @@ Random number replacements:
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
   <property name="urgency_hint">False</property>
-  <signal name="destroy" handler="on_pattern_window_destroy" last_modification_time="Mon, 08 Sep 2008 10:14:11 GMT"/>
+  <signal name="destroy" handler="on_pattern_edit_window_destroy" last_modification_time="Mon, 08 Sep 2008 10:51:04 GMT"/>
 
   <child>
     <widget class="GtkHBox" id="hbox20">
@@ -3234,7 +3234,7 @@ Random number replacements:
 	  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 	  <child>
-	    <widget class="GtkTreeView" id="pattern_edit_tree">
+	    <widget class="GtkTreeView" id="pattern_edit_treeview">
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="headers_visible">True</property>
@@ -3280,7 +3280,7 @@ Random number replacements:
 	      </child>
 
 	      <child>
-		<widget class="GtkButton" id="pattern_edit_remove">
+		<widget class="GtkButton" id="pattern_edit_del">
 		  <property name="visible">True</property>
 		  <property name="can_default">True</property>
 		  <property name="can_focus">True</property>
@@ -3288,7 +3288,7 @@ Random number replacements:
 		  <property name="use_stock">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
-		  <signal name="clicked" handler="on_pattern_edit_remove_clicked" last_modification_time="Mon, 08 Sep 2008 10:12:34 GMT"/>
+		  <signal name="clicked" handler="on_pattern_edit_del_clicked" last_modification_time="Mon, 08 Sep 2008 10:51:15 GMT"/>
 		</widget>
 	      </child>
 
