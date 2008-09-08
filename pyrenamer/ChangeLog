@@ -1,3 +1,8 @@
+2008-09-08  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.glade:
+	Added UI support for saving patterns
+
 2008-06-17  Adolfo González Blázquez  <code@infinicode.org>
 
 	* src/pyrenamer_filefuncs.py: (rename_file):
@@ -57,7 +62,7 @@
 	* data/pyrenamer.glade:
 	* src/pyrenamer_filefuncs.py: (rename_using_patterns):
 	Added random number pattern {rand}
-	
+
 	* src/pyrenamer.py: (create_model),
 	  (populate_add_to_view), (populate_from_file),
 	  (get_icon):
@@ -68,13 +73,13 @@
 	  (get_file_listing_recursive):
 	* src/pyrenamer_prefs.py: (on_filedir_combo_changed):
 	Added option to rename directories
-	
+
 2008-04-09  Adolfo González Blázquez  <code@infinicode.org>
 
 	* data/pyrenamer.glade:
 	* data/pyrenamer.schemas.in:
 	GUI improved with options panel
-	
+
 	* src/pyrenamer.py: (__init__),
 	  (enable_rename_and_clean),
 	  (on_main_hpaned_notify),
@@ -87,19 +92,19 @@
 
 	* data/pyrenamer.desktop.in.in.in:
 	"Encoding" field is deprecated from desktop files, so removed
-	
+
 2008-04-09  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.5.0 Released
 
 2007-11-26  Adolfo González Blázquez <code@infinicode.org>
 
-	* pyrenamer.py: (__init__), 
-					(on_menu_load_names_from_file_activate), 
+	* pyrenamer.py: (__init__),
+					(on_menu_load_names_from_file_activate),
 					(populate_from_file):
 	* data/pyrenamer.glade:
 	Added option to read new file names from a text file
-	
+
 2007-10-19  Adolfo González Blázquez <code@infinicode.org>
 
 	* images/Makefile.am:
@@ -125,7 +130,7 @@
 2007-08-13  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4.1 Released
-	
+
 	* src/pyrenamer.py:
 	Check if directories set on preferences are correct
 
@@ -137,7 +142,7 @@
 
 	* src/pyrenamer.py: (on_manual_key_press_event):
 	Activate Rename button on selection using keys
-	
+
 2007-08-11  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.4 Released
@@ -168,7 +173,7 @@
 
 	* src/pyrenamer.py: (__init__), (read_preferences), (save_preferences):
 	Add rootdir and activedir to gconf preferences
-	
+
 	* src/pyrenamer:
 	* src/pyrenamer.py: (__init__):
 	Added support for command line options
@@ -203,7 +208,7 @@
 2007-08-08  Adolfo González Blázquez <code@infinicode.org>
 
 	* Updated .desktop file category
-	
+
 	* Autoconf scripts updated
 
 	* src/pyrenamer.py:
@@ -233,7 +238,7 @@
 	* src/pyrenamer.py:
 	* data/pyrenamer.glade:
 	Added "Clear Preview" button and menu item
-	
+
 2007-08-07  Adolfo González Blázquez <code@infinicode.org>
 
 	* src/pyrenamer.py: (on_clean_button_clicked):
@@ -301,30 +306,30 @@
 
 	* src/treefilebrowser.py: (get_folder_closed_icon), (get_folder_opened_icon):
 	Show default gtk-directory icon if theme default fails
-	
+
 	* src/pyrenamer.py: (__init__), (on_preview_button_clicked), (populate_add_to_view):
 	Count correctly the items displayed (self.count = 0)
-	
+
 	* src/treefilebrowser.py: (__init__), (set_show_hidden), (button_pressed), (show_hidden_toggled),
 	(create_popup), (make_view):
 	Add right-click context menu, with "Show hidden files" option
-	
+
 	* data/pyrenamer.glade:
 	Added Edit menu (Cut, Copy, Paste, Clear, Select All, Select Nothing)
-	
+
 	* src/pyrenamer.py:
 	Added Edit menu (Cut, Copy, Paste, Clear, Select All, Select Nothing)
-	
+
 	* src/pyrenamer.py:
 	Preview and rename just selected items (nothing selected = all selected)
-	
+
 	* src/pyrenamerfilefuncs.py: (rename_file):
 	Avoid overwritting files when renaming (don't rename if a file with the same name already exists)
-	
+
 	* data/pyrenamer.glade:
 	* src/pyrenamer.py:
 	Remove "Show hidden dirs" check box, as we have a context menu now on tree widget
-	
+
 	* data/pyrenamer.glade:
 	Add tooltip information for "File selection pattern" entry
 
@@ -332,22 +337,22 @@
 
 	* configure.ac:
 	Check if eyeD3 is installed, and enable music rename if it is
-	
+
 	* data/pyrenamer.glade:
 	Add support for music renaming using MP3 id3 tags
-		
+
 	* src/pyrenamer.py: (__init__), (preview_rename_rows):
 	Add support for renaming MP3 using its id3 tags
-	
+
 	* src/pyrenamer.py:
 	Some refactorings
-	
+
 	* src/pyrenamer_globals.py.in:
 	Added variable "have_eyed3" to control if we have support for reading mp3'd id3 tags
-	
+
 	* src/pyrenamerfilefuncs.py: (replace_images):
 	Add support for renaming using EXIF date tags
-	
+
 	* src/pyrenamerfilefuncs.py: (replace_music):
 	Add support for renaming MP3 using its id3 tags
 
@@ -355,20 +360,20 @@
 
 	* data/pyrenamer.glade:
 	Add support for extracting EXIF info from images, in a new tab called Images
-	
+
 	* src/pyrenamerfilefuncs.py: (rename_using_patterns), (replace_images), (get_exif_data):
 	Add support for extracting EXIF info from images, in a new tab called Images
-	
+
 	* src/pyrenamer.py:
 	Add support for extracting EXIF info from images, in a new tab called Images
-	
+
 2007-06-15  Adolfo González Blázquez <code@infinicode.org>
-	
+
 	* src/pyrenamerfilefuncs.py: (escape_pattern), (get_file_listing):
 	Add function to scape special chars on patterns, so glob doesn't get confused.
-	
+
 	* src/EXIF.py: Added EXIF parser from Gene Cash.
-	
+
 	* src/pyrenamerfilefuncs.py: (rename_using_patterns), (get_exif_data):
 	Add support for extracting EXIF date info from images, to be used in the pattern view.
 
