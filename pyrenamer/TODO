@@ -1,8 +1,8 @@
 URGENT TODO
 
 	* End saving patterns:
-		- Direct save
-		- Remember default combo option
+		x Direct save
+		x Remember default combo option
 
 	* Undo last rename:
 		- Use a list with the changes
@@ -12,11 +12,15 @@ URGENT TODO
 
 	* Fix exceptions causing apport to report bugs on launchpad
 
-	* Postpone hachoir for 0.7 instead of 0.6
+	x Postpone hachoir for 0.7 instead of 0.6
 
-	* New icon
+	x New icon
 
 	* Update translations
+
+	x Fix bugs:
+		x Empty name + Extension
+		x try: except: music and images
 
 
 OTHERS TODO
