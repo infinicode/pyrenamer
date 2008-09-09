@@ -6,12 +6,12 @@ Copyright (C) 2006-2008 Adolfo González Blázquez <code@infinicode.org>
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
 published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version. 
+of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details. 
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
@@ -34,7 +34,7 @@ from pyrenamer_metadata import PyrenamerMetadataMusic
 import EXIF
 if pyrenamer_globals.have_eyed3:
     import eyeD3
-    
+
 from gettext import gettext as _
 
 STOP = False
@@ -58,47 +58,47 @@ def escape_pattern(pattern):
 def get_file_listing(dir, mode, pattern=None):
     """ Returns the file listing of a given directory. It returns only files.
     Returns a list of [file,/path/to/file] """
-    
+
     filelist = []
-    
+
     if  pattern == (None or ''):
         listaux = dircache.listdir(dir)
     else:
         if dir != '/': dir += '/'
         dir = escape_pattern(dir + pattern)
         listaux = glob.glob(dir)
-    
+
     listaux.sort(key=str.lower)
     for elem in listaux:
         if STOP: return filelist
         if mode == 0:
             # Get files
-            if not os.path.isdir(os.path.join(dir,elem)): 
+            if not os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
         elif mode == 1:
             # Get directories
-            if os.path.isdir(os.path.join(dir,elem)): 
+            if os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
         elif mode == 2:
             # Get files and directories
             filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
         else:
             # Get files
-            if not os.path.isdir(os.path.join(dir,elem)): 
+            if not os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
-            
+
     return filelist
 
 
 def get_file_listing_recursive(dir, mode, pattern=None):
     """ Returns the file listing of a given directory recursively.
     It returns only files. Returns a list of [file,/path/to/file] """
-    
+
     filelist = []
-    
+
     # Get root directory files
     filelist = get_file_listing(dir, mode, pattern)
-    
+
     # Get files from subdirs
     for root, dirs, files in os.walk(dir):
         if STOP: return filelist
@@ -107,24 +107,24 @@ def get_file_listing_recursive(dir, mode, pattern=None):
             elem = get_file_listing(os.path.join(root, directory), mode, pattern)
             for i in elem:
                 if STOP: return filelist
-                filelist.append(i)    
-    
+                filelist.append(i)
+
     print "stop", dir
     return filelist
-    
+
 
 def get_dir_listing(dir):
     """ Returns the subdirectory listing of a given directory. It returns only directories.
      Returns a list of [dir,/path/to/dir] """
-    
+
     dirlist = []
-    
+
     listaux = dircache.listdir(dir)
     listaux.sort(key=str.lower)
     for elem in listaux:
         if STOP: return dirlist
         if os.path.isdir(os.path.join(dir,elem)): dirlist.append([os.path.basename(elem),os.path.join(dir,elem)])
-    
+
     return dirlist
 
 
@@ -142,10 +142,10 @@ def replace_spaces(name, path, mode):
         if mode == 3: '.' -> ' '
         if mode == 4: ' ' -> '-'
         if mode == 5: '-' -> ' ' """
-        
+
     name = unicode(name)
     path = unicode(path)
-    
+
     if mode == 0:
         newname = name.replace(' ', '_')
     elif mode == 1:
@@ -158,7 +158,7 @@ def replace_spaces(name, path, mode):
         newname = name.replace(' ', '-')
     elif mode == 5:
         newname = name.replace('-', ' ')
-        
+
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
@@ -170,7 +170,7 @@ def replace_capitalization(name, path, mode):
     3: first letter uppercase of each word """
     name = unicode(name)
     path = unicode(path)
-    
+
     if mode == 0:
         newname = name.upper()
     elif mode == 1:
@@ -183,7 +183,7 @@ def replace_capitalization(name, path, mode):
 
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
-    
+
 
 def replace_with(name, path, orig, new):
     """ Replace all occurences of orig with new """
@@ -196,7 +196,7 @@ def replace_accents(name, path):
     """ Remove accents, umlauts and other locale symbols from words """
     name = unicode(name)
     path = unicode(path)
-    
+
     newname = name.replace('á', 'a')
     newname = newname.replace('à', 'a')
     newname = newname.replace('ä', 'a')
@@ -205,7 +205,7 @@ def replace_accents(name, path):
     newname = newname.replace('À', 'A')
     newname = newname.replace('Ä', 'A')
     newname = newname.replace('Â', 'A')
-    
+
     newname = newname.replace('é', 'e')
     newname = newname.replace('è', 'e')
     newname = newname.replace('ë', 'e')
@@ -214,7 +214,7 @@ def replace_accents(name, path):
     newname = newname.replace('È', 'E')
     newname = newname.replace('Ë', 'E')
     newname = newname.replace('Ê', 'E')
-    
+
     newname = newname.replace('í', 'i')
     newname = newname.replace('ì', 'i')
     newname = newname.replace('ï', 'i')
@@ -223,7 +223,7 @@ def replace_accents(name, path):
     newname = newname.replace('Ì', 'I')
     newname = newname.replace('Ï', 'I')
     newname = newname.replace('Î', 'I')
-            
+
     newname = newname.replace('ó', 'o')
     newname = newname.replace('ò', 'o')
     newname = newname.replace('ö', 'o')
@@ -232,7 +232,7 @@ def replace_accents(name, path):
     newname = newname.replace('Ò', 'O')
     newname = newname.replace('Ö', 'O')
     newname = newname.replace('Ô', 'O')
-       
+
     newname = newname.replace('ú', 'u')
     newname = newname.replace('ù', 'u')
     newname = newname.replace('ü', 'u')
@@ -241,7 +241,7 @@ def replace_accents(name, path):
     newname = newname.replace('Ù', 'U')
     newname = newname.replace('Ü', 'U')
     newname = newname.replace('Û', 'U')
-    
+
     """ Czech language accents replacement """
     newname = newname.replace('ě', 'e')
     newname = newname.replace('š', 's')
@@ -257,7 +257,7 @@ def replace_accents(name, path):
     newname = newname.replace('Ž', 'Z')
     newname = newname.replace('Ý', 'Y')
     newname = newname.replace('Ů', 'U')
-    
+
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
@@ -265,7 +265,7 @@ def replace_accents(name, path):
 def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     """ This method parses te patterns given by the user and stores the new filename
     on the treestore. Posibble patterns are:
-        
+
     {#} Numbers
     {L} Letters
     {C} Characters (Numbers & letters, not spaces)
@@ -274,10 +274,10 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     """
     name = unicode(name)
     path = unicode(path)
-    
+
     pattern = pattern_ini
     newname = pattern_end
-    
+
     pattern = pattern.replace('.','\.')
     pattern = pattern.replace('[','\[')
     pattern = pattern.replace(']','\]')
@@ -289,7 +289,7 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     pattern = pattern.replace('{C}', '([\S]*)')
     pattern = pattern.replace('{X}', '([\S\s]*)')
     pattern = pattern.replace('{@}', '(.*)')
-    
+
     repattern = re.compile(pattern)
     try:
         groups = repattern.search(name).groups()
@@ -298,7 +298,7 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
             newname = newname.replace('{'+`i+1`+'}',groups[i])
     except:
         return None, None
-    
+
     # Replace {num} with item number.
     # If {num2} the number will be 02
     # If {num3+10} the number will be 010
@@ -308,26 +308,26 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     try:
         cg = cr.search(newname).groups()
         if len(cg) == 6:
-            
+
             if cg[0] == 'num':
                 # {num2}
                 if cg[1] != '': count = count.zfill(int(cg[1]))
                 newname = cr.sub(count, newname)
-            
+
             elif cg[2] == 'num' and cg[4] == '+':
                 # {num2+5}
                 if cg[5] != '': count = str(int(count)+int(cg[5]))
                 if cg[3] != '': count = count.zfill(int(cg[3]))
-                
+
         newname = cr.sub(count, newname)
     except:
         pass
-    
+
     # Replace {dir} with directory name
     dir = os.path.dirname(path)
     dir = os.path.basename(dir)
     newname = newname.replace('{dir}', dir)
-    
+
     # Some date replacements
     newname = newname.replace('{date}', time.strftime("%d%b%Y", time.localtime()))
     newname = newname.replace('{year}', time.strftime("%Y", time.localtime()))
@@ -337,7 +337,7 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     newname = newname.replace('{day}', time.strftime("%d", time.localtime()))
     newname = newname.replace('{dayname}', time.strftime("%A", time.localtime()))
     newname = newname.replace('{daysimp}', time.strftime("%a", time.localtime()))
-    
+
     # Replace {rand} with random number between 0 and 100.
     # If {rand500} the number will be between 0 and 500
     # If {rand10-20} the number will be between 10 and 20
@@ -351,19 +351,19 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     try:
         cg = cr.search(newname).groups()
         if len(cg) == 16:
-            
+
             if cg[0] == 'rand':
                 if cg[1] == '':
                     # {rand}
                     rnd = random.randint(0,100)
-                else: 
+                else:
                     # {rand2}
                     rnd = random.randint(0,int(cg[1]))
-            
+
             elif cg[2] == 'rand' and cg[4] == '-' and cg[3] != '' and cg[5] != '':
                 # {rand10-100}
                 rnd = random.randint(int(cg[3]),int(cg[5]))
-                
+
             elif cg[6] == 'rand' and cg[8] == ',' and cg[9] != '':
                 if cg[7] == '':
                     # {rand,2}
@@ -371,15 +371,15 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
                 else:
                     # {rand10,2}
                     rnd = str(random.randint(0,int(cg[7]))).zfill(int(cg[9]))
-                    
+
             elif cg[10] == 'rand' and cg[12] == '-' and cg[14] == ',' and cg[11] != '' and cg[13] != '' and cg[15] != '':
                 # {rand2-10,3}
                 rnd = str(random.randint(int(cg[11]),int(cg[13]))).zfill(int(cg[15]))
-                    
+
         newname = cr.sub(str(rnd), newname)
     except:
         pass
-        
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -387,15 +387,15 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
 
 def replace_images(name, path, newname, newpath):
     """ Pattern replace for images """
-    
+
     name = unicode(name)
     path = unicode(path)
     newname = unicode(newname)
     newpath = unicode(newpath)
-    
+
     # Image EXIF replacements
     date, width, height, cameramaker, cameramodel = get_exif_data(get_new_path(name, path))
-    
+
     if date != None:
         newname = newname.replace('{imagedate}', time.strftime("%d%b%Y", date))
         newname = newname.replace('{imageyear}', time.strftime("%Y", date))
@@ -422,10 +422,10 @@ def replace_images(name, path, newname, newpath):
         newname = newname.replace('{imagehour}', '')
         newname = newname.replace('{imageminute}', '')
         newname = newname.replace('{imagesecond}', '')
-        
+
     if width != None: newname = newname.replace('{imagewidth}', width)
     else: newname = newname.replace('{imagewidth}', '')
-    
+
     if height != None: newname = newname.replace('{imageheight}', height)
     else: newname = newname.replace('{imageheight}', '')
 
@@ -434,8 +434,8 @@ def replace_images(name, path, newname, newpath):
 
     if cameramodel != None: newname = newname.replace('{cameramodel}', cameramodel)
     else: newname = newname.replace('{cameramodel}', '')
-        
-        
+
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -448,18 +448,18 @@ def get_exif_data(path):
     height = None
     cameramaker = None
     cameramodel = None
-    
+
     try:
         file = open(path, 'rb')
     except:
         print "ERROR: Opening image file", path
         return date, width, height, cameramaker, cameramodel
-    
+
     tags = EXIF.process_file(file)
     if not tags:
         print "ERROR: No EXIF tags on", path
         return date, width, height, cameramaker, cameramodel
-    
+
     # tags['EXIF DateTimeOriginal'] = "2001:03:31 12:27:36"
     if tags.has_key('EXIF DateTimeOriginal'):
         data = str(tags['EXIF DateTimeOriginal'])
@@ -467,27 +467,27 @@ def get_exif_data(path):
             date = time.strptime(data, "%Y:%m:%d %H:%M:%S")
         except:
             date = None
-        
+
     if tags.has_key('EXIF ExifImageWidth'):
         width = str(tags['EXIF ExifImageWidth'])
-        
+
     if tags.has_key('EXIF ExifImageLength'):
         height = str(tags['EXIF ExifImageLength'])
-        
+
     if tags.has_key('Image Make'):
         cameramaker = str(tags['Image Make'])
-        
+
     if tags.has_key('Image Model'):
         cameramodel = str(tags['Image Model'])
-        
+
     return date, width, height, cameramaker, cameramodel
-    
+
 
 def replace_music(name, path, newname, newpath):
     """ Pattern replace for mp3 """
-    
+
     file = get_new_path(name, path)
-    
+
     try:
         tags = PyrenamerMetadataMusic(file)
 
@@ -498,28 +498,28 @@ def replace_music(name, path, newname, newpath):
         trackt = tags.get_track_total()
         genre  = tags.get_genre()
         year   = tags.get_year()
-        
+
         if artist != None: newname = newname.replace('{artist}', artist)
         else: newname = newname.replace('{artist}', '')
-        
+
         if album != None: newname = newname.replace('{album}', album)
         else: newname = newname.replace('{album}', '')
-            
+
         if title != None: newname = newname.replace('{title}', title)
         else: newname = newname.replace('{title}', '')
-            
+
         if track != None: newname = newname.replace('{track}', str(track).zfill(2))
         else: newname = newname.replace('{track}', '')
-            
+
         if trackt != None: newname = newname.replace('{tracktotal}', str(trackt).zfill(2))
         else: newname = newname.replace('{tracktotal}', '')
-        
+
         if genre != None: newname = newname.replace('{genre}', genre)
         else: newname = newname.replace('{genre}', '')
-            
+
         if year != None: newname = newname.replace('{year}', year)
         else: newname = newname.replace('{year}', '')
-    
+
     except:
         newname = newname.replace('{artist}', '')
         newname = newname.replace('{album}', '')
@@ -528,16 +528,16 @@ def replace_music(name, path, newname, newpath):
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{year}', '')
-        
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
 def replace_music_old(name, path, newname, newpath):
     """ Pattern replace for mp3 """
-    
+
     file = get_new_path(name, path)
-    
+
     if eyeD3.isMp3File(file):
         audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
         tag = audioFile.getTag()
@@ -548,25 +548,25 @@ def replace_music_old(name, path, newname, newpath):
         trackt = tag.getTrackNum()[1]
         genre  = tag.getGenre().getName()
         year   = tag.getYear()
-        
+
         if artist != None: newname = newname.replace('{artist}', artist)
         else: newname = newname.replace('{artist}', '')
-        
+
         if album != None: newname = newname.replace('{album}', album)
         else: newname = newname.replace('{album}', '')
-            
+
         if title != None: newname = newname.replace('{title}', title)
         else: newname = newname.replace('{title}', '')
-            
+
         if track != None: newname = newname.replace('{track}', str(track))
         else: newname = newname.replace('{track}', '')
-            
+
         if trackt != None: newname = newname.replace('{tracktotal}', str(trackt))
         else: newname = newname.replace('{tracktotal}', '')
-        
+
         if genre != None: newname = newname.replace('{genre}', genre)
         else: newname = newname.replace('{genre}', '')
-            
+
         if year != None: newname = newname.replace('{year}', year)
         else: newname = newname.replace('{year}', '')
     else:
@@ -577,7 +577,7 @@ def replace_music_old(name, path, newname, newpath):
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{year}', '')
-        
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -585,14 +585,14 @@ def replace_music_old(name, path, newname, newpath):
 
 def rename_file(ori, new):
     """ Change filename with the new one """
-    
+
     if ori == new:
         return True    # We don't need to rename the file, but don't show error message
-    
+
     if os.path.exists(new):
         print _("Error while renaming %s to %s! -> %s already exists!") % (ori, new, new)
         return False
-    
+
     try:
         os.renames(ori, new)
         print "Renaming %s to %s" % (ori, new)
@@ -609,9 +609,9 @@ def insert_at(name, path, text, pos):
         ini = name[0:pos]
         end = name[pos:len(name)]
         newname = ini + text + end
-    else: 
+    else:
         newname = name + text
-        
+
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
@@ -621,13 +621,13 @@ def delete_from(name, path, ini, to):
     textini = name[0:ini]
     textend = name[to+1:len(name)]
     newname = textini + textend
-    
+
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
 def cut_extension(name, path):
     """ Remove extension from file name """
-    
+
     if '.' in name:
         ext = name.split('.')[-1]
         name = name[0:len(name)-len(ext)-1]
@@ -635,11 +635,11 @@ def cut_extension(name, path):
         return name, path, ext
     else:
         return name, path, ''
-    
+
 def add_extension(name, path, ext):
     """ Add extension to file name """
-    
-    if ext != '':
+
+    if ext != '' and ext != None and name != '' and name != None:
         name = name + '.' + ext
         path = path + '.' + ext
     return name, path

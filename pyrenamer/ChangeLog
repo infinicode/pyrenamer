@@ -1,5 +1,10 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_filefuncs.py: (add_extension):
+	Fix crashing when extension or name are empty.
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
 	* data/pyrenamer.svg:
 	* data/pyrenamer.png:
 	New icon.
