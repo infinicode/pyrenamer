@@ -34,7 +34,7 @@ config_dir = os.path.join(user.home, '.' + "@PACKAGE@")
 
 name = "@PACKAGE@"
 name_long = "pyRenamer"
-copyright = 'Copyright © 2006-07 Adolfo González Blázquez'
+copyright = 'Copyright © 2006-08 Adolfo González Blázquez'
 authors = ["Adolfo González Blázquez <code@infinicode.org>"]
 artists = ["Adolfo González Blázquez <code@infinicode.org>"]
 website = "http://www.infinicode.org/code/pyrenamer/"

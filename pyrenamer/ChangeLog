@@ -1,3 +1,8 @@
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer_globals.py.in:
+	Updated copyright date
+
 2008-09-08  Adolfo González Blázquez  <code@infinicode.org>
 
 	* data/pyrenamer.glade:
