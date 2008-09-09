@@ -62,7 +62,7 @@ class PyrenamerPatternEditor:
             f = open(config_file, 'w')
             try:
                 if "ori" in selector:
-                    f.write('{X)\n')
+                    f.write('{X}\n')
                 else:
                     f.write('{1}\n')
             finally:
