@@ -530,6 +530,7 @@ Random number replacements:
 {rand10-20} is random number between 10 and 20
 {rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_renamed_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="renamed_pattern">
                             <property name="visible">True</property>
@@ -555,6 +556,7 @@ Random number replacements:
 {X}		Numbers, letters, and spaces
 {@}	Trash </property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_original_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="original_pattern">
                             <property name="visible">True</property>
@@ -1249,6 +1251,7 @@ Random number replacements:
 {rand10-20} is random number between 10 and 20
 {rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_images_renamed_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="images_renamed_pattern">
                             <property name="visible">True</property>
@@ -1274,6 +1277,7 @@ Random number replacements:
 {X}		Numbers, letters, and spaces
 {@}	Trash</property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_images_original_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="images_original_pattern">
                             <property name="visible">True</property>
@@ -1504,6 +1508,7 @@ Random number replacements:
 {rand10-20} is random number between 10 and 20
 {rand20,5} is random number between 0 and 20 of 5 digits (00012)</property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_music_renamed_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="music_renamed_pattern">
                             <property name="visible">True</property>
@@ -1529,6 +1534,7 @@ Random number replacements:
 {X}		Numbers, letters, and spaces
 {@}	Trash</property>
                         <property name="items" translatable="yes"></property>
+                        <signal name="changed" handler="on_music_original_pattern_combo_changed"/>
                         <child internal-child="entry">
                           <widget class="GtkEntry" id="music_original_pattern">
                             <property name="visible">True</property>

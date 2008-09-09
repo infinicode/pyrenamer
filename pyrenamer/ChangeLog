@@ -1,6 +1,19 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
 	* src/pyrenamer.py: (__init__), (populate_pattern_combos),
+	(on_original_pattern_combo_changed),
+	(on_renamed_pattern_combo_changed),
+	(on_images_original_pattern_combo_changed),
+	(on_images_renamed_pattern_combo_changed),
+	(on_music_original_pattern_combo_changed),
+	(on_music_renamed_pattern_combo_changed):
+	* src/pyrenamer_pattern_editor.py: (get_patterns):
+	Remember default selected pattern after launch editor.
+	On start, we select the first option.
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (__init__), (populate_pattern_combos),
 	(on_pattern_ori_save_clicked), (on_pattern_dest_save_clicked),
 	(on_images_ori_save_clicked), (on_images_dest_save_clicked),
 	(on_music_ori_save_clicked), (on_music_dest_save_clicked):

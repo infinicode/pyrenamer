@@ -74,7 +74,17 @@ class pyRenamer:
         self.populate_id = []
         self.listing = []
         self.listing_thread = None
+
+        # Patterns saving variables
         self.patterns = {}
+        self.patterns_default = {
+            "main_ori": "",
+            "main_dest": "",
+            "images_ori": "",
+            "images_dest": "",
+            "music_ori": "",
+            "music_dest": "" }
+
 
         # Window geometry vars
         self.window_maximized = False
@@ -190,6 +200,8 @@ class pyRenamer:
                     "on_pattern_ori_edit_clicked": self.on_pattern_ori_edit_clicked,
                     "on_pattern_dest_save_clicked": self.on_pattern_dest_save_clicked,
                     "on_pattern_dest_edit_clicked": self.on_pattern_dest_edit_clicked,
+                    "on_original_pattern_combo_changed": self.on_original_pattern_combo_changed,
+                    "on_renamed_pattern_combo_changed": self.on_renamed_pattern_combo_changed,
 
                     "on_preview_button_clicked": self.on_preview_button_clicked,
                     "on_clean_button_clicked": self.on_clean_button_clicked,
@@ -246,6 +258,8 @@ class pyRenamer:
                     "on_images_ori_edit_clicked": self.on_images_ori_edit_clicked,
                     "on_images_dest_save_clicked": self.on_images_dest_save_clicked,
                     "on_images_dest_edit_clicked": self.on_images_dest_edit_clicked,
+                    "on_images_original_pattern_combo_changed": self.on_images_original_pattern_combo_changed,
+                    "on_images_renamed_pattern_combo_changed": self.on_images_renamed_pattern_combo_changed,
 
                     "on_music_original_pattern_changed": self.on_music_original_pattern_changed,
                     "on_music_renamed_pattern_changed": self.on_music_renamed_pattern_changed,
@@ -253,6 +267,8 @@ class pyRenamer:
                     "on_music_ori_edit_clicked": self.on_music_ori_edit_clicked,
                     "on_music_dest_save_clicked": self.on_music_dest_save_clicked,
                     "on_music_dest_edit_clicked": self.on_music_dest_edit_clicked,
+                    "on_music_original_pattern_combo_changed": self.on_music_original_pattern_combo_changed,
+                    "on_music_renamed_pattern_combo_changed": self.on_music_renamed_pattern_combo_changed,
 
                     "on_menu_quit_activate": self.on_main_quit,
                     "on_menu_about_activate": self.about_info,
@@ -823,40 +839,63 @@ class pyRenamer:
         music_ori = pe.get_patterns('music_ori')
         music_dest = pe.get_patterns('music_dest')
 
+        def set_combo_element(combo, newtext):
+            pos = 0
+            try:
+                model = combo.get_model()
+                iter = model.get_iter_first()
+                elem = model.get_value(iter, 0)
+
+                while elem != newtext:
+                    iter = model.iter_next(iter)
+                    elem = model.get_value(iter, 0)
+                    pos += 1
+            except:
+                pos = -1
+
+            text = combo.get_active_text()
+            if pos >= 0:
+                combo.set_active(pos)
+            elif text == '':
+                combo.set_active(0)
+            else:
+                combo.child.set_text(text)
+
+
+        # Main original
         for p in main_ori:
             self.original_pattern_combo.append_text(p)
-        self.original_pattern_combo.set_active(0)
-        #self.patterns.append(main_ori)
+        set_combo_element(self.original_pattern_combo, self.patterns_default["main_ori"])
         self.patterns["main_ori"] = main_ori
 
+        # Main renamed
         for p in main_dest:
             self.renamed_pattern_combo.append_text(p)
-        self.renamed_pattern_combo.set_active(0)
-        #self.patterns.append(main_dest)
+        set_combo_element(self.renamed_pattern_combo, self.patterns_default["main_dest"])
         self.patterns["main_dest"] = main_dest
 
+        # Images original
         for p in images_ori:
             self.images_original_pattern_combo.append_text(p)
-        self.images_original_pattern_combo.set_active(0)
-        #self.patterns.append(images_ori)
+        set_combo_element(self.images_original_pattern_combo, self.patterns_default["images_ori"])
         self.patterns["images_ori"] = images_ori
 
+        # Images renamed
         for p in images_dest:
             self.images_renamed_pattern_combo.append_text(p)
-        self.images_renamed_pattern_combo.set_active(0)
-        #self.patterns.append(images_dest)
+        set_combo_element(self.images_renamed_pattern_combo, self.patterns_default["images_dest"])
         self.patterns["images_dest"] = images_dest
 
+        # Music original
         for p in music_ori:
             self.music_original_pattern_combo.append_text(p)
-        self.music_original_pattern_combo.set_active(0)
-        #self.patterns.append(music_ori)
+        set_combo_element(self.music_original_pattern_combo, self.patterns_default["music_ori"])
         self.patterns["music_ori"] = music_ori
 
+        # Music renamed
         for p in music_dest:
             self.music_renamed_pattern_combo.append_text(p)
-        self.music_renamed_pattern_combo.set_active(0)
-        #self.patterns.append(music_dest)
+        set_combo_element(self.music_renamed_pattern_combo, self.patterns_default["music_dest"])
         self.patterns["music_dest"] = music_dest
 
 
@@ -996,6 +1035,36 @@ class pyRenamer:
     def on_music_dest_edit_clicked(self, widget):
         pe = pyrenamer_pattern_editor.PyrenamerPatternEditor(self)
         pe.create_window('music_dest')
+
+
+    def on_original_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["main_ori"] = text
+
+
+    def on_renamed_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["main_dest"] = text
+
+
+    def on_images_original_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["images_ori"] = text
+
+
+    def on_images_renamed_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["images_dest"] = text
+
+
+    def on_music_original_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["music_ori"] = text
+
+
+    def on_music_renamed_pattern_combo_changed (self, widget):
+        text = widget.get_active_text()
+        self.patterns_default["music_dest"] = text
 
 
     def on_notebook_switch_page(self, notebook, page, page_num):

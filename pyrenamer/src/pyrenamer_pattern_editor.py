@@ -78,6 +78,9 @@ class PyrenamerPatternEditor:
             f.close()
 
         # Return found patterns
+        if patterns == []:
+            if "ori" in selector: patterns.append('{X}')
+            else: patterns.append('{1}')
         return patterns
 
 
