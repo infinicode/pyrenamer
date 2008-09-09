@@ -1,5 +1,14 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (populate_pattern_combos),
+	(on_pattern_ori_save_clicked), (on_pattern_dest_save_clicked),
+	(on_images_ori_save_clicked), (on_images_dest_save_clicked),
+	(on_music_ori_save_clicked), (on_music_dest_save_clicked):
+	* src/pyrenamer_pattern_editor.py: (populate_treeview):
+	Changed main patterns variable from list to dictionary
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (on_pattern_ori_save_clicked),
 	(on_pattern_dest_save_clicked), (on_images_ori_save_clicked),
 	(on_images_dest_save_clicked), (on_music_ori_save_clicked),

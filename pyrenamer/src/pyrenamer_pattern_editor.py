@@ -149,17 +149,17 @@ class PyrenamerPatternEditor:
 
         # Get data from main variable
         if selector == "main_ori":
-            data = self.main.patterns[0]
+            data = self.main.patterns["main_ori"]
         elif selector == "main_dest":
-            data = self.main.patterns[1]
+            data = self.main.patterns["main_dest"]
         elif selector == "images_ori":
-            data = self.main.patterns[2]
+            data = self.main.patterns["images_ori"]
         elif selector == "images_dest":
-            data = self.main.patterns[3]
+            data = self.main.patterns["images_dest"]
         elif selector == "music_ori":
-            data = self.main.patterns[4]
+            data = self.main.patterns["music_ori"]
         elif selector == "music_dest":
-            data = self.main.patterns[5]
+            data = self.main.patterns["music_dest"]
 
         # Create model
         self.model = gtk.ListStore(gobject.TYPE_STRING)

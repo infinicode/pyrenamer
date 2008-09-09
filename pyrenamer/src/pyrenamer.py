@@ -74,7 +74,7 @@ class pyRenamer:
         self.populate_id = []
         self.listing = []
         self.listing_thread = None
-        self.patterns = []
+        self.patterns = {}
 
         # Window geometry vars
         self.window_maximized = False
@@ -807,7 +807,7 @@ class pyRenamer:
         """ Populate pattern combo boxes """
 
         # Clear 'em all first
-        self.patterns = []
+        self.patterns = {}
         self.original_pattern_combo.get_model().clear()
         self.renamed_pattern_combo.get_model().clear()
         self.images_original_pattern_combo.get_model().clear()
@@ -826,32 +826,38 @@ class pyRenamer:
         for p in main_ori:
             self.original_pattern_combo.append_text(p)
         self.original_pattern_combo.set_active(0)
-        self.patterns.append(main_ori)
+        #self.patterns.append(main_ori)
+        self.patterns["main_ori"] = main_ori
 
         for p in main_dest:
             self.renamed_pattern_combo.append_text(p)
         self.renamed_pattern_combo.set_active(0)
-        self.patterns.append(main_dest)
+        #self.patterns.append(main_dest)
+        self.patterns["main_dest"] = main_dest
 
         for p in images_ori:
             self.images_original_pattern_combo.append_text(p)
         self.images_original_pattern_combo.set_active(0)
-        self.patterns.append(images_ori)
+        #self.patterns.append(images_ori)
+        self.patterns["images_ori"] = images_ori
 
         for p in images_dest:
             self.images_renamed_pattern_combo.append_text(p)
         self.images_renamed_pattern_combo.set_active(0)
-        self.patterns.append(images_dest)
+        #self.patterns.append(images_dest)
+        self.patterns["images_dest"] = images_dest
 
         for p in music_ori:
             self.music_original_pattern_combo.append_text(p)
         self.music_original_pattern_combo.set_active(0)
-        self.patterns.append(music_ori)
+        #self.patterns.append(music_ori)
+        self.patterns["music_ori"] = music_ori
 
         for p in music_dest:
             self.music_renamed_pattern_combo.append_text(p)
         self.music_renamed_pattern_combo.set_active(0)
-        self.patterns.append(music_dest)
+        #self.patterns.append(music_dest)
+        self.patterns["music_dest"] = music_dest
 
 
     def on_pattern_ori_save_clicked(self, widget):
@@ -864,9 +870,9 @@ class pyRenamer:
         pe.add_pattern('main_ori', text)
 
         # Add it to the variable
-        patterns = self.patterns[0]
+        patterns = self.patterns["main_ori"]
         patterns.append(text)
-        self.patterns[0] = patterns
+        self.patterns["main_ori"] = patterns
 
         # And show it on combobox
         self.original_pattern_combo.append_text(text)
@@ -887,9 +893,9 @@ class pyRenamer:
         pe.add_pattern('main_dest', text)
 
         # Add it to the variable
-        patterns = self.patterns[1]
+        patterns = self.patterns["main_dest"]
         patterns.append(text)
-        self.patterns[1] = patterns
+        self.patterns["main_dest"] = patterns
 
         # And show it on combobox
         self.renamed_pattern_combo.append_text(text)
@@ -910,9 +916,9 @@ class pyRenamer:
         pe.add_pattern('images_ori', text)
 
         # Add it to the variable
-        patterns = self.patterns[2]
+        patterns = self.patterns["images_ori"]
         patterns.append(text)
-        self.patterns[2] = patterns
+        self.patterns["images_ori"] = patterns
 
         # And show it on combobox
         self.images_original_pattern_combo.append_text(text)
@@ -933,9 +939,9 @@ class pyRenamer:
         pe.add_pattern('images_dest', text)
 
         # Add it to the variable
-        patterns = self.patterns[3]
+        patterns = self.patterns["images_dest"]
         patterns.append(text)
-        self.patterns[3] = patterns
+        self.patterns["images_dest"] = patterns
 
         # And show it on combobox
         self.images_renamed_pattern_combo.append_text(text)
@@ -956,9 +962,9 @@ class pyRenamer:
         pe.add_pattern('music_ori', text)
 
         # Add it to the variable
-        patterns = self.patterns[4]
+        patterns = self.patterns["music_ori"]
         patterns.append(text)
-        self.patterns[4] = patterns
+        self.patterns["music_ori"] = patterns
 
         # And show it on combobox
         self.music_original_pattern_combo.append_text(text)
@@ -979,9 +985,9 @@ class pyRenamer:
         pe.add_pattern('music_dest', text)
 
         # Add it to the variable
-        patterns = self.patterns[5]
+        patterns = self.patterns["music_dest"]
         patterns.append(text)
-        self.patterns[5] = patterns
+        self.patterns["music_dest"] = patterns
 
         # And show it on combobox
         self.music_renamed_pattern_combo.append_text(text)
