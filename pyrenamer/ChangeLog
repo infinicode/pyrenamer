@@ -1,5 +1,11 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.svg:
+	* data/pyrenamer.png:
+	New icon.
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init__), (populate_pattern_combos),
 	(on_original_pattern_combo_changed),
 	(on_renamed_pattern_combo_changed),
