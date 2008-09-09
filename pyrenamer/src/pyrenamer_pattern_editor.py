@@ -62,9 +62,9 @@ class PyrenamerPatternEditor:
             f = open(config_file, 'w')
             try:
                 if "ori" in selector:
-                    f.write('{X)')
+                    f.write('{X)\n')
                 else:
-                    f.write('{1}')
+                    f.write('{1}\n')
             finally:
                 f.close()
 
@@ -96,7 +96,13 @@ class PyrenamerPatternEditor:
 
 
     def add_pattern(self, selector, pattern):
-        print selector, pattern
+
+        config_file = os.path.join(self.config_dir, selector)
+        f = open(config_file, 'a')
+        try:
+            f.write(pattern + "\n")
+        finally:
+            f.close()
 
 
     def create_window(self, selector):

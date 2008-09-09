@@ -1,5 +1,14 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_pattern_ori_save_clicked),
+	(on_pattern_dest_save_clicked), (on_images_ori_save_clicked),
+	(on_images_dest_save_clicked), (on_music_ori_save_clicked),
+	(on_music_dest_save_clicked):
+	* src/pyrenamer_pattern_editor.py: (add_pattern):
+	Save pattern from main UI using the little button
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_globals.py.in:
 	Updated copyright date
 
