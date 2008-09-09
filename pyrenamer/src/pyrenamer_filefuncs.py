@@ -487,7 +487,7 @@ def get_exif_data(path):
     return date, width, height, cameramaker, cameramodel
 
 
-def replace_music(name, path, newname, newpath):
+def replace_music_new(name, path, newname, newpath):
     """ Pattern replace for mp3 """
 
     file = get_new_path(name, path)
@@ -537,21 +537,52 @@ def replace_music(name, path, newname, newpath):
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
-def replace_music_old(name, path, newname, newpath):
+def replace_music(name, path, newname, newpath):
     """ Pattern replace for mp3 """
 
     file = get_new_path(name, path)
 
     if eyeD3.isMp3File(file):
-        audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
-        tag = audioFile.getTag()
-        artist = tag.getArtist()
-        album  = tag.getAlbum()
-        title  = tag.getTitle()
-        track  = tag.getTrackNum()[0]
-        trackt = tag.getTrackNum()[1]
-        genre  = tag.getGenre().getName()
-        year   = tag.getYear()
+        try:
+            audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
+            tag = audioFile.getTag()
+        except:
+            newname = None
+
+        try:
+            artist = tag.getArtist()
+        except:
+            artist = None
+
+        try:
+            album  = tag.getAlbum()
+        except:
+            album = None
+
+        try:
+            title  = tag.getTitle()
+        except:
+            title = None
+
+        try:
+            track  = tag.getTrackNum()[0]
+        except:
+            track = None
+
+        try:
+            trackt = tag.getTrackNum()[1]
+        except:
+            trackt = None
+
+        try:
+            genre  = tag.getGenre().getName()
+        except:
+            genre = None
+
+        try:
+            year   = tag.getYear()
+        except:
+            year = None
 
         if artist != None: newname = newname.replace('{artist}', artist)
         else: newname = newname.replace('{artist}', '')
