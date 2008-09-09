@@ -1,6 +1,11 @@
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
 
-	* src/pyrenamer_pattern_editor.py:
+	* src/pyrenamer.py: (preview_rename_rows):
+	Remove uneeded print statement.
+
+2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer_pattern_editor.py: (get_patterns):
 	Fixed typo which set bad initial pattern.
 
 2008-09-09  Adolfo González Blázquez  <code@infinicode.org>
