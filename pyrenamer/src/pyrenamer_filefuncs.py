@@ -455,9 +455,13 @@ def get_exif_data(path):
         print "ERROR: Opening image file", path
         return date, width, height, cameramaker, cameramodel
 
-    tags = EXIF.process_file(file)
-    if not tags:
-        print "ERROR: No EXIF tags on", path
+    try:
+        tags = EXIF.process_file(file)
+        if not tags:
+            print "ERROR: No EXIF tags on", path
+            return date, width, height, cameramaker, cameramodel
+    except:
+        print "ERROR: proccesing EXIF tags on", path
         return date, width, height, cameramaker, cameramodel
 
     # tags['EXIF DateTimeOriginal'] = "2001:03:31 12:27:36"
