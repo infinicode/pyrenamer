@@ -2,7 +2,8 @@ URGENT TODO
 
 	* Update translations
 	* Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
-	* Fix file selected on changing to manual renaming
+	* Fix read position of panels when window is not maximized
+
 
 
 OTHERS TODO
@@ -17,6 +18,7 @@ OTHERS TODO
 
 DONE
 
+	x Fix file selected on changing to manual renaming
 	x Auto preview
 	x Reload folder
 	x Start on hidden directory

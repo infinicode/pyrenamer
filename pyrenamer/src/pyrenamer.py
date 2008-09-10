@@ -1150,6 +1150,19 @@ class pyRenamer:
         if page_num != 3:
             self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
 
+        else:
+            # Manual rename
+            try:
+                self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
+                model, iter = self.selected_files.get_selection().get_selected()
+                name = model.get_value(iter,0)
+                newname = model.get_value(iter,2)
+                if newname != None:
+                    self.manual.set_text(newname)
+                else:
+                    self.manual.set_text(name)
+            except: pass
+
 
     def on_copy_activate(self, widget):
         """ Copy to clipboard """

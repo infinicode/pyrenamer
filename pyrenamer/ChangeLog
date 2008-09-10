@@ -1,5 +1,11 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_notebook_switch_page):
+	When changing to manual rename put the selected filename
+	on the text field to rename.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* data/pyrenamer.glade:
 	* data/pyrenamer.schemas.in:
 	* src/pyrenamer.py: (__init__),
@@ -13,7 +19,7 @@
 	  (on_music_renamed_pattern_changed), (on_original_pattern_combo_changed),
 	  (on_renamed_pattern_combo_changed), (on_images_original_pattern_combo_changed), (on_images_renamed_pattern_combo_changed),
 	  (on_music_original_pattern_combo_changed),
-	  (on_music_renamed_pattern_combo_changed)
+	  (on_music_renamed_pattern_combo_changed):
 	* src/pyrenamer_prefs.py: (__init__), (on_autopreview_check_toggled),
 	  (preferences_save), (preferences_read):
 	Add autopreview option.
