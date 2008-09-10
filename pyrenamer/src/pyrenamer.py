@@ -324,11 +324,19 @@ class pyRenamer:
         self.create_model()
 
         #  Set cursor on selected dir
-        if not self.file_browser.set_active_dir(self.active_dir):
-            self.active_dir = self.home
+        try:
+
+            if "/." in (self.active_dir or self.root_dir):
+                self.file_browser.set_show_hidden(True)
+
             if not self.file_browser.set_active_dir(self.active_dir):
-                self.active_dir = self.root_dir
-                self.file_browser.set_active_dir(self.active_dir)
+                self.active_dir = self.home
+                if not self.file_browser.set_active_dir(self.active_dir):
+                    self.active_dir = self.root_dir
+                    self.file_browser.set_active_dir(self.active_dir)
+        except:
+            self.active_dir = self.home
+            self.file_browser.set_active_dir(self.active_dir)
 
         # Init comboboxes
         self.subs_spaces_combo.set_active(0)

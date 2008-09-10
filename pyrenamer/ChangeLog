@@ -1,5 +1,16 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__):
+	Fixed bug: If root or active dir is hidden pyrenamer fails.
+
+	* src/treefilebrowser.py: (set_show_hidden), (button_pressed),
+	  (create_popup):
+	Fix some bugs with hidden dirs/files. Right-click doesn't
+	select file anymore.
+
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_filefuncs.py: (replace_with), (rename_using_patterns),
 	  (insert_at), (delete_from):
 	Reverted clean filename. Only do it for music and images,
