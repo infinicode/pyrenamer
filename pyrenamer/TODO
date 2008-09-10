@@ -1,42 +1,40 @@
 URGENT TODO
 
-	* End saving patterns:
-		x Direct save
-		x Remember default combo option
-
-	* Undo last rename:
-		- Use a list with the changes
-		- Display a window before undoing with the changes?
-
-	* Check dir rename
-
-	* Fix exceptions causing apport to report bugs on launchpad
-
-	x Postpone hachoir for 0.7 instead of 0.6
-
-	x New icon
-
 	* Update translations
-
-	x Fix bugs:
-		x Empty name + Extension
-		x try: except: music and images
+	* Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
+	* Fix file selected on changing to manual renaming
 
 
 OTHERS TODO
 
-	* Remember last entered patterns
+	* Reorder elements in treeview
 	* Drop gconf (better using text files, so pyrenamer con run on Windows)
-	* Add support from other music formats (ogg, ape, etc.)
-	* Undo option
-	* Reload folder
-
-	* Rename folder
-	* Move files to another directories (target/$1)
 	* Add support for 1 char/number pattern, or to define just a number
 	  of chars, something like char{3} or {#4} for 4 numbers.
-	* Keep extensions while renaming
+	* Edit filename directly on treeview
 
-	* Unicode problems:
+
+
+DONE
+
+	x Auto preview
+	x Reload folder
+	x Start on hidden directory
+	x End saving patterns:
+		x Direct save
+		x Remember default combo option
+	x Undo last rename:
+		x Use a list with the changes
+		- Display a window before undoing with the changes?????
+	x Fix exceptions causing apport to report bugs on launchpad
+	x New icon
+	x Fix bugs:
+		x Empty name + Extension
+		x try: except: music and images
+	x Add support from other music formats (ogg, ape, etc.)
+	x Rename folder
+	x Move files to another directories (target/$1)
+	x Keep extensions while renaming
+	x Unicode problems:
 		- For example, if I have the file "Episódio 2.srt", I can use the pattern
 		  '{X} {C}.srt' but not 'Episódio {C}.srt'.
