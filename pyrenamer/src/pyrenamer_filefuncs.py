@@ -192,6 +192,10 @@ def replace_with(name, path, orig, new):
     """ Replace all occurences of orig with new """
     newname = name.replace(orig, new)
     newpath = get_new_path(newname, path)
+
+    # Clean filename
+    newname = clean_filename(newname)
+
     return unicode(newname), unicode(newpath)
 
 
@@ -383,6 +387,9 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     except:
         pass
 
+    # Clean filename
+    newname = clean_filename(newname)
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -438,6 +445,8 @@ def replace_images(name, path, newname, newpath):
     if cameramodel != None: newname = newname.replace('{cameramodel}', cameramodel)
     else: newname = newname.replace('{cameramodel}', '')
 
+    # Clean filename
+    newname = clean_filename(newname)
 
     # Returns new name and path
     newpath = get_new_path(newname, path)
@@ -535,6 +544,10 @@ def replace_music(name, path, newname, newpath):
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{myear}', '')
+
+
+    # Clean filename
+    newname = clean_filename(newname)
 
     # Returns new name and path
     newpath = get_new_path(newname, path)
@@ -650,6 +663,9 @@ def insert_at(name, path, text, pos):
     else:
         newname = name + text
 
+    # Clean filename
+    newname = clean_filename(newname)
+
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
@@ -682,3 +698,20 @@ def add_extension(name, path, ext):
         path = path + '.' + ext
     return name, path
 
+
+def clean_filename(name):
+    """ Removes reserver characters from a given filename """
+    try:
+        name = name.replace('|', '')
+        name = name.replace('/', '')
+        name = name.replace('\\', '')
+        name = name.replace('?', '')
+        name = name.replace('%', '')
+        name = name.replace('*', '')
+        name = name.replace(':', '')
+        name = name.replace('<', '')
+        name = name.replace('>', '')
+        name = name.replace('"', '')
+        return name
+    except:
+        return None

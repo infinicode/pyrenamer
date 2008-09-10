@@ -1,5 +1,12 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_filefuncs.py: (replace_with), (rename_using_patterns),
+	  (replace_images), (replace_music), (insert_at), (add_extension),
+	  (clean_filename):
+	  Clean filename of  special characters.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* data/pyrenamer.glade:
 	* src/pyrenamer_filefuncs.py: (replace_music):
 	Use 'myear' for getting an album year in music renaming, instead of
