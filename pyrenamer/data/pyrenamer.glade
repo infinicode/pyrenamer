@@ -123,6 +123,31 @@
                 <child>
                   <widget class="GtkMenu" id="edit1_menu">
                     <child>
+                      <widget class="GtkImageMenuItem" id="menu_undo">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-undo</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_menu_undo_activate"/>
+                        <accelerator key="Z" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkImageMenuItem" id="menu_redo">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">gtk-redo</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="on_menu_redo_activate"/>
+                         <accelerator key="Z" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK" signal="activate"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="separador5">
+                        <property name="visible">True</property>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkImageMenuItem" id="cut">
                         <property name="visible">True</property>
                         <property name="label">gtk-cut</property>

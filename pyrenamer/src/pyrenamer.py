@@ -48,6 +48,7 @@ import pyrenamer_tooltips as tooltips
 import pyrenamer_prefs
 import pyrenamer_pattern_editor
 import pyrenamer_menu_cb
+import pyrenamer_undo
 
 import threading
 from os import path as ospath
@@ -157,6 +158,9 @@ class pyRenamer:
         self.menu_rename = self.glade_tree.get_widget("menu_rename")
         self.menu_show_options = self.glade_tree.get_widget("menu_show_options")
 
+        self.menu_undo = self.glade_tree.get_widget("menu_undo")
+        self.menu_redo = self.glade_tree.get_widget("menu_redo")
+
         self.images_original_pattern = self.glade_tree.get_widget("images_original_pattern")
         self.images_renamed_pattern = self.glade_tree.get_widget("images_renamed_pattern")
         self.images_original_pattern_combo = self.glade_tree.get_widget("images_original_pattern_combo")
@@ -218,6 +222,8 @@ class pyRenamer:
                     "on_menu_load_names_from_file_activate": self.on_menu_load_names_from_file_activate,
                     "on_menu_clear_preview_activate": self.on_clean_button_clicked,
 
+                    "on_menu_undo_activate": self.menu_cb.on_menu_undo_activate,
+                    "on_menu_redo_activate": self.menu_cb.on_menu_redo_activate,
                     "on_cut_activate": self.on_cut_activate,
                     "on_copy_activate": self.on_copy_activate,
                     "on_paste_activate": self.on_paste_activate,
@@ -352,6 +358,11 @@ class pyRenamer:
         if not pyrenamerglob.have_hachoir:
             self.notebook.get_nth_page(5).hide()
 
+        # Init the undo/redo manager
+        self.undo_manager = pyrenamer_undo.PyrenamerUndo()
+        self.menu_undo.set_sensitive(False)
+        self.menu_redo.set_sensitive(False)
+
 
 
 #---------------------------------------------------------------------------------------
@@ -410,6 +421,7 @@ class pyRenamer:
         if new != None and new != '':
             result = renamerfilefuncs.rename_file(ori, new)
             if not result: self.display_error_dialog(_("Could not rename file %s to %s") % (ori, new))
+            else: self.undo_manager.add(ori, new)
 
 
     def preview_rename_rows(self, model, path, iter, paths):
@@ -609,6 +621,8 @@ class pyRenamer:
     def on_rename_button_clicked(self, widget):
     	""" For everyrow rename the files as requested """
 
+        self.undo_manager.clean()
+        self.menu_undo.set_sensitive(True)
         self.file_selected_model.foreach(self.rename_rows, None)
         self.dir_reload_current()
         self.clear_button.set_sensitive(False)

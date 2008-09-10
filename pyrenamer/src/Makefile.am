@@ -16,6 +16,7 @@ pyrenamer_PYTHON =				\
 	pyrenamer_pattern_editor.py	\
 	pyrenamer_prefs.py			\
 	pyrenamer_tooltips.py		\
+	pyrenamer_undo.py			\
 	treefilebrowser.py			\
 	TreeViewTooltips.py			\
 	EXIF.py

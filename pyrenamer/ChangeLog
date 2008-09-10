@@ -1,5 +1,15 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/Makefile.am:
+	* src/pyrenamer.py: (__init__), i(rename_rows), 
+	  (on_rename_button_clicked):
+	* src/pyrenamer_menu_cb.py: (PyrenamerMenuCB):
+	* src/pyrenamer_undo.py:
+	Added support for undo/redo last rename operation.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_filefuncs.py: (replace_with), (rename_using_patterns),
 	  (replace_images), (replace_music), (insert_at), (add_extension),
 	  (clean_filename):
