@@ -1,5 +1,10 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_filefuncs.py: (replace_capitalization):
+	Fix file capitalization.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init__):
 	Fixed bug: If root or active dir is hidden pyrenamer fails.
 

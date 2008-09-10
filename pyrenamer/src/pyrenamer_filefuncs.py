@@ -181,8 +181,8 @@ def replace_capitalization(name, path, mode):
     elif mode == 2:
         newname = name.capitalize()
     elif mode == 3:
-        newname = name.title()
-        #newname = ' '.join([x.capitalize() for x in name.split()])
+        #newname = name.title()
+        newname = ' '.join([x.capitalize() for x in name.split()])
 
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
