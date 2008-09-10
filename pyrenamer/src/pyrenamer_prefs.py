@@ -273,4 +273,3 @@ class PyrenamerPrefs:
 
         autopreview = client.get_bool(self.gconf_autopreview)
         if autopreview != None: self.main.autopreview = autopreview
-        print self.main.autopreview, autopreview
