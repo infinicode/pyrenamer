@@ -193,9 +193,6 @@ def replace_with(name, path, orig, new):
     newname = name.replace(orig, new)
     newpath = get_new_path(newname, path)
 
-    # Clean filename
-    newname = clean_filename(newname)
-
     return unicode(newname), unicode(newpath)
 
 
@@ -387,9 +384,6 @@ def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     except:
         pass
 
-    # Clean filename
-    newname = clean_filename(newname)
-
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -545,7 +539,6 @@ def replace_music(name, path, newname, newpath):
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{myear}', '')
 
-
     # Clean filename
     newname = clean_filename(newname)
 
@@ -662,9 +655,6 @@ def insert_at(name, path, text, pos):
         newname = ini + text + end
     else:
         newname = name + text
-
-    # Clean filename
-    newname = clean_filename(newname)
 
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
