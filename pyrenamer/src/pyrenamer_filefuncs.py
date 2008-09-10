@@ -524,8 +524,8 @@ def replace_music(name, path, newname, newpath):
         if genre != None: newname = newname.replace('{genre}', genre)
         else: newname = newname.replace('{genre}', '')
 
-        if year != None: newname = newname.replace('{year}', year)
-        else: newname = newname.replace('{year}', '')
+        if year != None: newname = newname.replace('{myear}', year)
+        else: newname = newname.replace('{myear}', '')
 
     except:
         newname = newname.replace('{artist}', '')
@@ -534,7 +534,7 @@ def replace_music(name, path, newname, newpath):
         newname = newname.replace('{track}', '')
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
-        newname = newname.replace('{year}', '')
+        newname = newname.replace('{myear}', '')
 
     # Returns new name and path
     newpath = get_new_path(newname, path)

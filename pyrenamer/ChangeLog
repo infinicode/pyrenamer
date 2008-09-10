@@ -1,5 +1,12 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/pyrenamer_filefuncs.py: (replace_music):
+	Use 'myear' for getting an album year in music renaming, instead of
+	year, which is used for getting current year.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* configure.ac:
 	* src/pyrenamer.py:
 	* src/pyrenamer_filefuncs.py: (replace_music), (replace_music_old):
