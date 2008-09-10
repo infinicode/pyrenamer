@@ -6,12 +6,12 @@ Copyright (C) 2006-2008 Adolfo González Blázquez <code@infinicode.org>
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
 published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version. 
+of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details. 
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
@@ -32,27 +32,27 @@ class PyrenamerMetadataException(Exception):
            return repr(self.parameter)
 
 class PyrenamerMetadata(PyrenamerMetadataException):
-    
+
     def __init__(self,  name):
         self.real_filename = name
         self.filename = unicodeFilename(self.real_filename)
         self.parser = createParser(self.filename, real_filename=self.real_filename)
-        
+
     def get_mime_type(self):
         return self.parser.mime_type
-        
+
     def get_metadata(self):
         self.metadata = extractMetadata(self.parser)
-        
-        
+
+
 class PyrenamerMetadataMusic(PyrenamerMetadata):
-        
+
     def __init__(self, name):
         super(PyrenamerMetadataMusic, self).__init__(name)
-        
+
         if not 'audio' in self.parser.mime_type:
             raise PyrenamerMetadataException("File is not music!")
-    
+
         self.get_metadata()
         if self.metadata is None:
             raise PyrenamerMetadataException("No metadata in file!")
@@ -78,19 +78,19 @@ class PyrenamerMetadataMusic(PyrenamerMetadata):
                 return self.tags["Author"]
             except:
                 return None
-    
+
     def get_album(self):
         try:
             return self.tags["Album"]
         except:
             return None
-    
+
     def get_title(self):
         try:
             return self.tags["Title"]
         except:
             return None
-    
+
     def get_track_number(self):
         try:
             return self.tags["Track number"]
@@ -102,52 +102,27 @@ class PyrenamerMetadataMusic(PyrenamerMetadata):
             return self.tags["Track total"]
         except:
             return None
-    
+
     def get_genre(self):
         try:
             return self.tags["Music genre"]
         except:
             return None
-    
+
     def get_year(self):
         try:
             return self.tags["Creation date"]
         except:
             return None
-    
+
     def get_duration(self):
         try:
             return self.tags["Duration"]
         except:
             return None
-    
+
     def get_bitrate(self):
         try:
             return self.tags["Bit rate"]
         except:
             return None
-
-        
-if __name__ == "__main__":
-    m = PyrenamerMetadataMusic('/home/fito/aclys.mp3')
-    print m.tags
-    print m.get_artist()
-    print m.get_album()
-    print m.get_title()
-    print m.get_track_number(), m.get_track_total()
-    print m.get_genre()
-    print m.get_year()
-    print m.get_duration()
-    print m.get_bitrate()
-    
-    print
-    m = PyrenamerMetadataMusic('/home/fito/riesgo.ogg')
-    print m.tags
-    print m.get_artist()
-    print m.get_album()
-    print m.get_title()
-    print m.get_track_number(), m.get_track_total()
-    print m.get_genre()
-    print m.get_year()
-    print m.get_duration()
-    print m.get_bitrate()
