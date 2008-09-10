@@ -104,6 +104,7 @@ class pyRenamer:
         self.options_shown = False
         self.filedir = 0        # 0: Files; 1: Dirs; 2: Both
         self.keepext = False
+        self.autopreview = False
 
         # Read preferences using Gconf
         if HAS_GCONF:
@@ -182,11 +183,13 @@ class pyRenamer:
         self.pattern_hbox = self.glade_tree.get_widget("pattern_hbox")
         self.add_recursive = self.glade_tree.get_widget("add_recursive")
         self.extensions_check = self.glade_tree.get_widget("extensions_check")
+        self.autopreview_check = self.glade_tree.get_widget("autopreview_check")
 
         self.options_panel_state(self.options_shown)
         self.menu_show_options.set_active(self.options_shown)
         self.filedir_combo.set_active(self.filedir)
         self.extensions_check.set_active(self.keepext)
+        self.autopreview_check.set_active(self.autopreview)
 
 
         self.statusbar_context = self.statusbar.get_context_id("file_renamer")
@@ -216,6 +219,7 @@ class pyRenamer:
                     "on_add_recursive_toggled": self.prefs.on_add_recursive_toggled,
                     "on_filedir_combo_changed": self.prefs.on_filedir_combo_changed,
                     "on_extensions_check_toggled": self.prefs.on_extensions_check_toggled,
+                    "on_autopreview_check_toggled": self.prefs.on_autopreview_check_toggled,
 
                     "on_menu_preview_activate": self.on_preview_button_clicked,
                     "on_menu_rename_activate": self.on_rename_button_clicked,
@@ -258,6 +262,8 @@ class pyRenamer:
                     "on_delete_radio_toggled": self.on_delete_radio_toggled,
                     "on_delete_from_changed": self.on_delete_from_changed,
                     "on_delete_to_changed": self.on_delete_to_changed,
+
+                    "on_manual_changed": self.on_manual_changed,
 
                     "on_images_original_pattern_changed": self.on_images_original_pattern_changed,
                     "on_images_renamed_pattern_changed": self.on_images_renamed_pattern_changed,
@@ -701,12 +707,16 @@ class pyRenamer:
     	""" Reload current dir and disable Rename button """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_renamed_pattern_changed(self, widget):
     	""" Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_spaces_toggled(self, widget):
@@ -714,6 +724,8 @@ class pyRenamer:
     	self.subs_spaces_combo.set_sensitive(widget.get_active())
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_capitalization_toggled(self, widget):
@@ -721,6 +733,8 @@ class pyRenamer:
     	self.subs_capitalization_combo.set_sensitive(widget.get_active())
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_replace_toggled(self, widget):
@@ -730,36 +744,48 @@ class pyRenamer:
         self.subs_replace_new.set_sensitive(widget.get_active())
         self.subs_replace_orig.set_sensitive(widget.get_active())
         self.subs_replace_label.set_sensitive(widget.get_active())
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_spaces_combo_changed(self, widget):
     	""" Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_capitalization_combo_changed(self, widget):
     	""" Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_replace_orig_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_replace_new_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_subs_accents_toggled(self, widget):
         """ Enable/Disable accents """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_insert_radio_toggled(self, widget):
@@ -771,18 +797,24 @@ class pyRenamer:
         self.insert_end.set_sensitive(True)
         self.delete_from.set_sensitive(False)
         self.delete_to.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_insert_entry_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_insert_pos_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_insert_end_toggled(self, widget):
@@ -790,6 +822,8 @@ class pyRenamer:
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
         self.insert_pos.set_sensitive(not self.insert_end.get_active())
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_delete_radio_toggled(self, widget):
@@ -801,6 +835,8 @@ class pyRenamer:
         self.insert_entry.set_sensitive(False)
         self.insert_pos.set_sensitive(False)
         self.insert_end.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_delete_from_changed(self, widget):
@@ -809,6 +845,8 @@ class pyRenamer:
         self.menu_rename.set_sensitive(False)
         if self.delete_from.get_value() > self.delete_to.get_value():
             self.delete_from.set_value(self.delete_to.get_value())
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_delete_to_changed(self, widget):
@@ -817,29 +855,46 @@ class pyRenamer:
         self.menu_rename.set_sensitive(False)
         if self.delete_to.get_value() < self.delete_from.get_value():
             self.delete_to.set_value(self.delete_from.get_value())
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
+
+    def on_manual_changed(self, widget):
+        """ Disable Rename button (user has to click on Preview again) """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
     def on_images_original_pattern_changed(self, widget):
         """ Reload current dir and disable Rename button """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_images_renamed_pattern_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_music_original_pattern_changed(self, widget):
         """ Reload current dir and disable Rename button """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def on_music_renamed_pattern_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
 
 
     def populate_pattern_combos(self):
