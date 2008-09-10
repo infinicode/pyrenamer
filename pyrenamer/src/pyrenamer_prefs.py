@@ -147,7 +147,7 @@ class PyrenamerPrefs:
                 self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
                 self.prefs_entry_root.set_text('/')
             elif not self.check_active_dir(root, active):
-                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
+                self.main.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
                 self.prefs_entry_active.set_text(root)
             else:
                 self.main.root_dir = root
@@ -155,7 +155,7 @@ class PyrenamerPrefs:
                 self.prefs_window.destroy()
                 self.preferences_save_dirs()
         else:
-            self.display_error_dialog(_("\nPlease set both directories!"))
+            self.main.display_error_dialog(_("\nPlease set both directories!"))
             if root == '': self.prefs_entry_root.set_text(self.main.root_dir)
             if active == '': self.prefs_entry_active.set_text(self.main.active_dir)
 
@@ -167,11 +167,11 @@ class PyrenamerPrefs:
         active = self.prefs_entry_active.get_text()
         if root != "" and active != "":
             if not self.check_root_dir(root):
-                self.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
+                self.main.display_error_dialog(_("\nThe root directory is not valid!\nPlease select another directory."))
                 self.create_preferences_dialog()
                 self.prefs_entry_root.set_text('/')
             elif not self.check_active_dir(root, active):
-                self.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
+                self.main.display_error_dialog(_("\nThe active directory is not valid!\nPlease select another directory."))
                 self.create_preferences_dialog()
                 self.prefs_entry_active.set_text(root)
             else:
@@ -180,7 +180,7 @@ class PyrenamerPrefs:
                 self.prefs_window.destroy()
                 self.preferences_save_dirs()
         else:
-            self.display_error_dialog(_("\nPlease set both directories!"))
+            self.main.display_error_dialog(_("\nPlease set both directories!"))
             self.create_preferences_dialog()
             if root == '': self.prefs_entry_root.set_text(self.main.root_dir)
             if active == '': self.prefs_entry_active.set_text(self.main.active_dir)

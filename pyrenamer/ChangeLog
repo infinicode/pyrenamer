@@ -1,5 +1,10 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_prefs.py: (on_prefs_close_clicked), (on_prefs_destroy):
+	Fixed bug when trying to display error dialog on bad preferences.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* data/pyrenamer.glade:
 	* src/pyrenamer.py: (__init__), (preview_rename_rows):
 	* src/pyrenamer_filefuncs.py: (replace_duplicated):
@@ -24,7 +29,8 @@
 	  (on_manual_changed), (on_images_original_pattern_changed),
 	  (on_images_renamed_pattern_changed), (on_music_original_pattern_changed),
 	  (on_music_renamed_pattern_changed), (on_original_pattern_combo_changed),
-	  (on_renamed_pattern_combo_changed), (on_images_original_pattern_combo_changed), (on_images_renamed_pattern_combo_changed),
+	  (on_renamed_pattern_combo_changed), (on_images_original_pattern_combo_changed),
+	  (on_images_renamed_pattern_combo_changed),
 	  (on_music_original_pattern_combo_changed),
 	  (on_music_renamed_pattern_combo_changed):
 	* src/pyrenamer_prefs.py: (__init__), (on_autopreview_check_toggled),
