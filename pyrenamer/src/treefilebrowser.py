@@ -296,12 +296,13 @@ class TreeFileBrowser(gobject.GObject):
                 self.view.expand_row(path, False)
                 iter = model.iter_children(iter)
 
+            # Don't expand last row
+            self.view.collapse_row(path)
+
             # Set the cursor
             self.view.set_cursor(path)
 
             return True
-
-
 
 
     def add_empty_child(self, model, iter):
