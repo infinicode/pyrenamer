@@ -37,6 +37,10 @@ class PyrenamerMenuCB:
         self.main.menu_undo.set_sensitive(True)
         self.main.menu_redo.set_sensitive(False)
 
+    def on_menu_refresh_activate(self, widget):
+        self.main.file_browser.create_new()
+        self.main.file_browser.set_active_dir(self.main.active_dir)
+
     def on_menu_patterns_activate(self, widget):
         self.main.notebook.set_current_page(0)
 

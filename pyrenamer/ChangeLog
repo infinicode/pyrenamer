@@ -1,5 +1,17 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/pyrenamer.py: (__init__):
+	* src/pyrenamer_menu_cb.py: (on_menu_refresh_activate):
+	Add refresh option to view menu (F5) to reload files and directories.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/treefilebrowser.py: (set_active_dir):
+	Don't expand last row while activating.
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_filefuncs.py: (replace_capitalization):
 	Fix file capitalization.
 

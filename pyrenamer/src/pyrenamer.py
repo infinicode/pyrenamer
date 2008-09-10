@@ -232,6 +232,7 @@ class pyRenamer:
                     "on_select_nothing_activate": self.on_select_nothing_activate,
                     "on_preferences_activate": self.on_preferences_activate,
 
+                    "on_menu_refresh_activate": self.menu_cb.on_menu_refresh_activate,
                     "on_menu_patterns_activate": self.menu_cb.on_menu_patterns_activate,
                     "on_menu_substitutions_activate": self.menu_cb.on_menu_substitutions_activate,
                     "on_menu_insert_activate": self.menu_cb.on_menu_insert_activate,
