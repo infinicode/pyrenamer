@@ -29,9 +29,12 @@ import time
 import random
 
 import pyrenamer_globals
-from pyrenamer_metadata import PyrenamerMetadataMusic
 
 import EXIF
+
+if pyrenamer_globals.have_hachoir:
+    from pyrenamer_metadata import PyrenamerMetadataMusic
+
 if pyrenamer_globals.have_eyed3:
     import eyeD3
 
@@ -487,7 +490,7 @@ def get_exif_data(path):
     return date, width, height, cameramaker, cameramodel
 
 
-def replace_music_new(name, path, newname, newpath):
+def replace_music(name, path, newname, newpath):
     """ Pattern replace for mp3 """
 
     file = get_new_path(name, path)
@@ -537,7 +540,7 @@ def replace_music_new(name, path, newname, newpath):
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
-def replace_music(name, path, newname, newpath):
+def replace_music_old(name, path, newname, newpath):
     """ Pattern replace for mp3 """
 
     file = get_new_path(name, path)

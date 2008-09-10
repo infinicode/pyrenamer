@@ -26,6 +26,18 @@ import user
 
 have_eyed3=@HAVE_EYED3@
 
+# Check for hachoir_metadata
+have_hachoir = True
+try:
+    import hachoir_metadata
+except ImportError, e:
+    if str(e).find("hachoir_metadata") >= 0:
+          have_hachoir = False
+          print "WARNING: python-hachoir-metadata not found. Music rename disabled!"
+except:
+    have_hachoir = False
+    print "WARNING: python-hachoir-metadata not found. Music rename disabled!"
+
 pixmaps_dir = "@RESOURCEDIR@"
 resources_dir = "@RESOURCEDIR@"
 locale_dir = "@LOCALEDIR@"

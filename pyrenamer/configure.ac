@@ -61,6 +61,28 @@ AC_SUBST(HAVE_EYED3)
 
 
 ###################################
+### Check for hachoir_metadata
+###################################
+AC_MSG_CHECKING([for hachoir_metadata module])
+if AC_RUN_LOG([DISPLAY= $PYTHON -c '
+try:
+    import hachoir_metadata
+except ImportError, e:
+    if str(e).find("hachoir_metadata") >= 0:
+          raise
+except:
+    pass
+']); then
+  AC_MSG_RESULT([yes])
+else
+  AC_MSG_RESULT([no])
+  AC_MSG_WARN([hachoir_metadata not found, renaming music will not work!])
+fi
+AC_SUBST(HAVE_HACHOIR)
+
+
+
+###################################
 ### Config and output
 ###################################
 AC_CONFIG_FILES([

@@ -348,7 +348,8 @@ class pyRenamer:
         tips.add_view(self.selected_files)
 
         # Hide music tab if necessary
-        if not pyrenamerglob.have_eyed3:
+        #if not pyrenamerglob.have_eyed3:
+        if not pyrenamerglob.have_hachoir:
             self.notebook.get_nth_page(5).hide()
 
 
