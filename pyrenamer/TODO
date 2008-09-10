@@ -1,7 +1,6 @@
 URGENT TODO
 
 	* Update translations
-	* Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
 	* Fix read position of panels when window is not maximized
 
 
@@ -18,6 +17,7 @@ OTHERS TODO
 
 DONE
 
+	x Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
 	x Fix file selected on changing to manual renaming
 	x Auto preview
 	x Reload folder

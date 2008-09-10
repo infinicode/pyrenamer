@@ -1,5 +1,12 @@
 2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/pyrenamer.py: (__init__), (preview_rename_rows):
+	* src/pyrenamer_filefuncs.py: (replace_duplicated):
+	Fix duplicted symbols (change ... to . or '   ' to ' ').
+
+2008-09-10  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (on_notebook_switch_page):
 	When changing to manual rename put the selected filename
 	on the text field to rename.

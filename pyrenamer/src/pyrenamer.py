@@ -144,6 +144,7 @@ class pyRenamer:
         self.subs_replace_new = self.glade_tree.get_widget("subs_replace_new")
         self.subs_replace_label = self.glade_tree.get_widget("subs_replace_label")
         self.subs_accents = self.glade_tree.get_widget("subs_accents")
+        self.subs_duplicated = self.glade_tree.get_widget("subs_duplicated")
 
         self.insert_radio = self.glade_tree.get_widget("insert_radio")
         self.insert_entry = self.glade_tree.get_widget("insert_entry")
@@ -253,6 +254,7 @@ class pyRenamer:
                     "on_subs_replace_orig_changed": self.on_subs_replace_orig_changed,
                     "on_subs_replace_new_changed": self.on_subs_replace_new_changed,
                     "on_subs_accents_toggled": self.on_subs_accents_toggled,
+                    "on_subs_duplicated_toggled": self.on_subs_duplicated_toggled,
 
                     "on_insert_radio_toggled": self.on_insert_radio_toggled,
                     "on_insert_entry_changed": self.on_insert_entry_changed,
@@ -484,6 +486,10 @@ class pyRenamer:
             # Replace accents
             if self.subs_accents.get_active() and newname != None:
                 newname, newpath = renamerfilefuncs.replace_accents(newname, newpath)
+
+            # Fix duplicated symbols
+            if self.subs_duplicated.get_active() and newname != None:
+                newname, newpath = renamerfilefuncs.replace_duplicated(newname, newpath)
 
         elif self.notebook.get_current_page() == 2:
             # Insert / delete
@@ -782,6 +788,13 @@ class pyRenamer:
 
     def on_subs_accents_toggled(self, widget):
         """ Enable/Disable accents """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
+
+    def on_subs_duplicated_toggled(self, widget):
+        """ Fixes duplicated symbols """
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
         if self.autopreview:

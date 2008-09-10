@@ -266,6 +266,26 @@ def replace_accents(name, path):
     return unicode(newname), unicode(newpath)
 
 
+def replace_duplicated(name, path):
+    """ Remove duplicated symbols """
+    print name
+    name = unicode(name)
+    path = unicode(path)
+
+    symbols = ['.', ' ', '-', '_']
+
+    newname = name[0]
+    for c in name[1:]:
+        if c in symbols:
+            if newname[-1] != c:
+                newname += c
+        else:
+            newname += c
+
+    newpath = get_new_path(newname, path)
+    return unicode(newname), unicode(newpath)
+
+
 def rename_using_patterns(name, path, pattern_ini, pattern_end, count):
     """ This method parses te patterns given by the user and stores the new filename
     on the treestore. Posibble patterns are:
