@@ -125,7 +125,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="menu_undo">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-undo</property>
+                        <property name="label">gtk-undo</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_menu_undo_activate"/>
@@ -135,7 +135,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="menu_redo">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-redo</property>
+                        <property name="label">gtk-redo</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_menu_redo_activate"/>
@@ -242,7 +242,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="menu_refresh">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">gtk-refresh</property>
+                        <property name="label">gtk-refresh</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="on_menu_refresh_activate"/>
@@ -1464,7 +1464,7 @@ Dashes to Spaces</property>
                     <child>
                       <widget class="GtkComboBoxEntry" id="images_renamed_pattern_combo">
                         <property name="visible">True</property>
-                        <property name="tooltip" translatable="yes">Image EXIF data replacements:
+                        <property name="tooltip" translatable="yes">Image metadata replacements:
 {imagewidth}			640
 {imageheight}			480
 {cameramaker}			Nikon
@@ -2437,7 +2437,7 @@ Random number replacements:
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">0</property>
                 <signal name="clicked" handler="on_add_pattern_dialog_cancel_clicked"/>
@@ -2448,7 +2448,7 @@ Random number replacements:
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">1</property>
                 <signal name="clicked" handler="on_add_pattern_dialog_ok_clicked"/>

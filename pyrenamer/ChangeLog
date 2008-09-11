@@ -1,5 +1,10 @@
 2008-09-11  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	Changed some strings.
+
+2008-09-11  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_prefs.py: (preferences_save):
 	Get pane position from main variable, not from the pane itself.
 
