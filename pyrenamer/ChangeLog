@@ -1,5 +1,10 @@
 2008-09-11  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_prefs.py: (preferences_save):
+	Get pane position from main variable, not from the pane itself.
+
+2008-09-11  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_filefuncs.py: (get_file_listing_recursive):
 	Forgot to add root directory contents to the list on previous commit.
 

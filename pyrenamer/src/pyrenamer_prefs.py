@@ -216,7 +216,7 @@ class PyrenamerPrefs:
     def preferences_save(self):
         """ Width and height are saved on the configure_event callback for main_window """
         client = gconf.client_get_default()
-        client.set_int(self.gconf_pane_position, self.main.main_hpaned.get_position())
+        client.set_int(self.gconf_pane_position, self.main.pane_position)
         client.set_bool(self.gconf_window_maximized, self.main.window_maximized)
         client.set_int(self.gconf_window_width, self.main.window_width)
         client.set_int(self.gconf_window_height, self.main.window_height)
