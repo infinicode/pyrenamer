@@ -2,13 +2,14 @@ URGENT TODO
 
 	* Update translations
 	* Fix read position of panels when window is not maximized
+	* Music rename: hachoir > eyed3 > none
 
 
 
 OTHERS TODO
 
 	* Reorder elements in treeview
-	* Drop gconf (better using text files, so pyrenamer con run on Windows)
+	* Drop gconf for python's ConfigParser
 	* Add support for 1 char/number pattern, or to define just a number
 	  of chars, something like char{3} or {#4} for 4 numbers.
 	* Edit filename directly on treeview
@@ -17,6 +18,7 @@ OTHERS TODO
 
 DONE
 
+	x Fix bug while renaming folders recursively
 	x Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
 	x Fix file selected on changing to manual renaming
 	x Auto preview

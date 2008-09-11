@@ -99,11 +99,7 @@ def get_file_listing_recursive(dir, mode, pattern=None):
 
     filelist = []
 
-    # Get root directory files
-    filelist = get_file_listing(dir, mode, pattern)
-
-    # Get files from subdirs
-    for root, dirs, files in os.walk(dir):
+    for root, dirs, files in os.walk(dir, topdown=False):
         if STOP: return filelist
         for directory in dirs:
             if STOP: return filelist
@@ -112,7 +108,6 @@ def get_file_listing_recursive(dir, mode, pattern=None):
                 if STOP: return filelist
                 filelist.append(i)
 
-    print "stop", dir
     return filelist
 
 
