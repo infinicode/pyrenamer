@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-23 11:20+0200\n"
+"POT-Creation-Date: 2008-09-11 19:52+0200\n"
 "PO-Revision-Date: 2007-11-26 21:15+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: French\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Renomme en masse les fichiers"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:167
+#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:177
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -58,19 +58,21 @@ msgid "<b>Options</b>"
 msgstr ""
 
 #: ../data/pyrenamer.glade.h:10
-msgid "<b>Rename MP3s using their ID3 tags</b>"
-msgstr "<b>Renommer les MP3 d'après leurs données ID3</b>"
-
-#: ../data/pyrenamer.glade.h:11
 msgid "<b>Rename files manually</b>"
 msgstr "<b>Renommer les fichiers manuellement</b>"
 
-#: ../data/pyrenamer.glade.h:12
+#: ../data/pyrenamer.glade.h:11
 msgid "<b>Rename files using patterns</b>"
 msgstr "<b>Renommer les fichiers en utilisant des règles</b>"
 
+#: ../data/pyrenamer.glade.h:12
+#, fuzzy
+msgid "<b>Rename images using their metadata</b>"
+msgstr "<b>Renommer les fichiers d'après leurs données EXIF</b>"
+
 #: ../data/pyrenamer.glade.h:13
-msgid "<b>Rename images using their EXIF data</b>"
+#, fuzzy
+msgid "<b>Rename music using its metadata</b>"
 msgstr "<b>Renommer les fichiers d'après leurs données EXIF</b>"
 
 #: ../data/pyrenamer.glade.h:14
@@ -104,6 +106,11 @@ msgid "Add files recursively"
 msgstr "Ajouter les fichiers récursivement"
 
 #: ../data/pyrenamer.glade.h:20
+#, fuzzy
+msgid "Add pattern"
+msgstr "Règles"
+
+#: ../data/pyrenamer.glade.h:21
 msgid ""
 "All uppercase\n"
 "All downcase\n"
@@ -115,37 +122,50 @@ msgstr ""
 "Première en majuscule\n"
 "Première lettre de chaque mot en majuscule"
 
-#: ../data/pyrenamer.glade.h:24
+#: ../data/pyrenamer.glade.h:25
 msgid "Browse..."
 msgstr "Parcourir..."
 
-#: ../data/pyrenamer.glade.h:25
+#: ../data/pyrenamer.glade.h:26
 msgid "C_lear"
 msgstr "_Vider"
 
-#: ../data/pyrenamer.glade.h:26
+#: ../data/pyrenamer.glade.h:27
 msgid "C_lear Preview"
 msgstr "_Vider l'aperçu"
 
-#: ../data/pyrenamer.glade.h:27
+#: ../data/pyrenamer.glade.h:28
 msgid "Capitalization"
 msgstr "Majuscules"
 
-#: ../data/pyrenamer.glade.h:28
+#: ../data/pyrenamer.glade.h:29
+msgid ""
+"Changes:\n"
+"..... to .\n"
+"----  to -\n"
+"____ to _\n"
+"'     ' to  ' '"
+msgstr ""
+
+#: ../data/pyrenamer.glade.h:34
 msgid "Delete from"
 msgstr "Effacer à partir de"
 
-#: ../data/pyrenamer.glade.h:29
+#: ../data/pyrenamer.glade.h:35
 msgid ""
 "Files\n"
 "Directories\n"
 "Files and directories"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:32
+#: ../data/pyrenamer.glade.h:38
+msgid "Fix duplicated symbols"
+msgstr ""
+
+#: ../data/pyrenamer.glade.h:39
 #, fuzzy
 msgid ""
-"Image EXIF data replacements:\n"
+"Image metadata replacements:\n"
 "{imagewidth}\t\t\t640\n"
 "{imageheight}\t\t\t480\n"
 "{cameramaker}\t\t\tNikon\n"
@@ -226,23 +246,23 @@ msgstr ""
 "{dayname}\t\tvendredi\n"
 "{daysimp}\t\tven"
 
-#: ../data/pyrenamer.glade.h:75
+#: ../data/pyrenamer.glade.h:82
 msgid "Images"
 msgstr "Images"
 
-#: ../data/pyrenamer.glade.h:76
+#: ../data/pyrenamer.glade.h:83
 msgid "Insert"
 msgstr "Insérer"
 
-#: ../data/pyrenamer.glade.h:77
+#: ../data/pyrenamer.glade.h:84
 msgid "Insert / Delete"
 msgstr "Insérer / Effacer"
 
-#: ../data/pyrenamer.glade.h:78
+#: ../data/pyrenamer.glade.h:85
 msgid "Keep extensions"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:79
+#: ../data/pyrenamer.glade.h:86
 #, fuzzy
 msgid ""
 "MP3 music ID3 replacements:\n"
@@ -251,7 +271,7 @@ msgid ""
 "{album}\tJóven pájaro negro muerto\n"
 "{track}\t\t02\n"
 "{tracktotal}\t10\n"
-"{year}\t\t2006\n"
+"{myear}\t2006\n"
 "{genre}\tHardcore\n"
 "\n"
 "Common replacements:\n"
@@ -308,64 +328,78 @@ msgstr ""
 "{dayname}\t\tvendredi\n"
 "{daysimp}\t\tven"
 
-#: ../data/pyrenamer.glade.h:113
+#: ../data/pyrenamer.glade.h:120
 msgid "Manual rename"
 msgstr "Renommage manuel"
 
-#: ../data/pyrenamer.glade.h:114
+#: ../data/pyrenamer.glade.h:121
 msgid "Music"
 msgstr "Musique"
 
-#: ../data/pyrenamer.glade.h:115
+#: ../data/pyrenamer.glade.h:122
 msgid "New file name"
 msgstr "Nouveau nom de fichier"
 
-#: ../data/pyrenamer.glade.h:116
+#: ../data/pyrenamer.glade.h:123
 msgid "Original file name pattern"
 msgstr "Règle du nom de fichier original"
 
-#: ../data/pyrenamer.glade.h:117
+#: ../data/pyrenamer.glade.h:124
+#, fuzzy
+msgid "Pattern editor"
+msgstr "Règles"
+
+#: ../data/pyrenamer.glade.h:125
+#, fuzzy
+msgid "Pattern:"
+msgstr "Règles"
+
+#: ../data/pyrenamer.glade.h:126
 msgid "Patterns"
 msgstr "Règles"
 
-#: ../data/pyrenamer.glade.h:118
+#: ../data/pyrenamer.glade.h:127
+msgid "Preview automatically"
+msgstr ""
+
+#: ../data/pyrenamer.glade.h:128
 msgid "Remove accents"
 msgstr "Effacer accents"
 
-#: ../data/pyrenamer.glade.h:119
+#: ../data/pyrenamer.glade.h:129
 msgid "Renamed file name pattern"
 msgstr "Règle du nom de fichier renommé"
 
-#: ../data/pyrenamer.glade.h:120
+#: ../data/pyrenamer.glade.h:130
 msgid "Replace"
 msgstr "Remplacer"
 
-#: ../data/pyrenamer.glade.h:121
+#: ../data/pyrenamer.glade.h:131
 msgid "Root"
 msgstr "Racine"
 
-#: ../data/pyrenamer.glade.h:122
+#: ../data/pyrenamer.glade.h:132
 msgid "Select  _nothing"
 msgstr "_Ne rien sélectionner"
 
-#: ../data/pyrenamer.glade.h:123
+#: ../data/pyrenamer.glade.h:133
 msgid "Select _all"
 msgstr "_Tout sélectionner"
 
-#: ../data/pyrenamer.glade.h:124
+#: ../data/pyrenamer.glade.h:134
 #, fuzzy
 msgid "Selection pattern"
 msgstr "Règle de sélection des fichiers"
 
-#: ../data/pyrenamer.glade.h:125
+#: ../data/pyrenamer.glade.h:135
 msgid "Show options"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:126
+#: ../data/pyrenamer.glade.h:136
 msgid "Spaces"
 msgstr "Espaces"
 
-#: ../data/pyrenamer.glade.h:127
+#: ../data/pyrenamer.glade.h:137
 msgid ""
 "Spaces to Underscores\n"
 "Underscores to Spaces\n"
@@ -380,11 +414,11 @@ msgstr ""
 "Points en espacesEspaces en tirets\n"
 "Tirets en espaces"
 
-#: ../data/pyrenamer.glade.h:133
+#: ../data/pyrenamer.glade.h:143
 msgid "Substitutions"
 msgstr "Substitutions"
 
-#: ../data/pyrenamer.glade.h:134
+#: ../data/pyrenamer.glade.h:144
 #, fuzzy
 msgid ""
 "Use {1} for first catched item. {2} for second, etc...\n"
@@ -431,61 +465,77 @@ msgstr ""
 "{dayname}\t\tvendredi\n"
 "{daysimp}\t\tven"
 
-#: ../data/pyrenamer.glade.h:158
+#: ../data/pyrenamer.glade.h:168
 msgid "_Edit"
 msgstr "É_dition"
 
-#: ../data/pyrenamer.glade.h:159
+#: ../data/pyrenamer.glade.h:169
 msgid "_File"
 msgstr "_Fichier"
 
-#: ../data/pyrenamer.glade.h:160
+#: ../data/pyrenamer.glade.h:170
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../data/pyrenamer.glade.h:161
+#: ../data/pyrenamer.glade.h:171
 #, fuzzy
 msgid "_Load names from file..."
 msgstr "_Load names from file..."
 
-#: ../data/pyrenamer.glade.h:162
+#: ../data/pyrenamer.glade.h:172
 msgid "_Preview"
 msgstr "A_perçu"
 
-#: ../data/pyrenamer.glade.h:163
+#: ../data/pyrenamer.glade.h:173
 msgid "_Rename"
 msgstr "_Renommer"
 
-#: ../data/pyrenamer.glade.h:164
+#: ../data/pyrenamer.glade.h:174
 #, fuzzy
 msgid "_View"
 msgstr "A_perçu"
 
-#: ../data/pyrenamer.glade.h:165
+#: ../data/pyrenamer.glade.h:175
 msgid "at"
 msgstr "en"
 
-#: ../data/pyrenamer.glade.h:166
+#: ../data/pyrenamer.glade.h:176
 msgid "or at the end"
 msgstr "ou à la fin"
 
-#: ../data/pyrenamer.glade.h:168
+#: ../data/pyrenamer.glade.h:178
 msgid "pyRenamer preferences"
 msgstr "Préférences de pyRenamer"
 
-#: ../data/pyrenamer.glade.h:169
+#: ../data/pyrenamer.glade.h:179
 msgid "to"
 msgstr "à"
 
-#: ../data/pyrenamer.glade.h:170
+#: ../data/pyrenamer.glade.h:180
 msgid "with"
 msgstr "par"
 
-#: ../data/pyrenamer.glade.h:171
+#: ../data/pyrenamer.glade.h:181
+#, fuzzy
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
-"{C}\tCharacters (numbers and letters, not spaces)\n"
+"{C}\t\tCharacters (numbers and letters, not spaces)\n"
+"{X}\t\tNumbers, letters, and spaces\n"
+"{@}\tTrash"
+msgstr ""
+"{#}\tChiffres\n"
+"{L}\t\tLettres\n"
+"{C}\tCaractères (chiffres et lettres, pas d'espaces)\n"
+"{X}\t\tChiffres, lettres et espaces\n"
+"{@}\tCorbeille "
+
+#: ../data/pyrenamer.glade.h:186
+#, fuzzy
+msgid ""
+"{#}\tNumbers\n"
+"{L}\t\tLetters\n"
+"{C}\t\tCharacters (numbers and letters, not spaces)\n"
 "{X}\t\tNumbers, letters, and spaces\n"
 "{@}\tTrash "
 msgstr ""
@@ -495,116 +545,149 @@ msgstr ""
 "{X}\t\tChiffres, lettres et espaces\n"
 "{@}\tCorbeille "
 
-#: ../data/pyrenamer.glade.h:176
-msgid "{1}"
-msgstr "{1}"
-
-#: ../data/pyrenamer.glade.h:177
-msgid "{X}"
-msgstr "{X}"
-
 #: ../data/pyrenamer.schemas.in.h:1
 msgid ""
 "0: Rename files / 1: Rename directories / 2: Rename files and directories"
 msgstr ""
 
 #: ../data/pyrenamer.schemas.in.h:2
+msgid "Auto preview changes"
+msgstr ""
+
+#: ../data/pyrenamer.schemas.in.h:3
 msgid "Default active dir"
 msgstr "Répertoire actif par défaut"
 
-#: ../data/pyrenamer.schemas.in.h:3
+#: ../data/pyrenamer.schemas.in.h:4
 msgid "Default root dir"
 msgstr "Répertoire racine par défaut"
 
-#: ../data/pyrenamer.schemas.in.h:4
+#: ../data/pyrenamer.schemas.in.h:5
 msgid "Display the options pane"
 msgstr ""
 
-#: ../data/pyrenamer.schemas.in.h:5
+#: ../data/pyrenamer.schemas.in.h:6
 msgid "Is the window maximized?"
 msgstr "La fenêtre est-elle maximisée?"
 
-#: ../data/pyrenamer.schemas.in.h:6
+#: ../data/pyrenamer.schemas.in.h:7
 msgid "Keep files extensions"
 msgstr ""
 
-#: ../data/pyrenamer.schemas.in.h:7
+#: ../data/pyrenamer.schemas.in.h:8
 msgid "Position of the pane separator"
 msgstr "Position du séparateur du panneau"
 
-#: ../data/pyrenamer.schemas.in.h:8
+#: ../data/pyrenamer.schemas.in.h:9
 #, fuzzy
 msgid "Rename files or directories"
 msgstr ""
 "\n"
 "Veuillez sélectionner les deux répertoires!"
 
-#: ../data/pyrenamer.schemas.in.h:9
+#: ../data/pyrenamer.schemas.in.h:10
 msgid "Window height"
 msgstr "Hauteur de la fenêtre"
 
-#: ../data/pyrenamer.schemas.in.h:10
+#: ../data/pyrenamer.schemas.in.h:11
 msgid "Window width"
 msgstr "Largeur de la fenêtre"
 
-#: ../data/pyrenamer.schemas.in.h:11
+#: ../data/pyrenamer.schemas.in.h:12
 msgid "X position of the window"
 msgstr "Position X de la fenêtre"
 
-#: ../data/pyrenamer.schemas.in.h:12
+#: ../data/pyrenamer.schemas.in.h:13
 msgid "Y position of the window"
 msgstr "Position Y de la fenêtre"
 
-#: ../src/pyrenamer.py:343
+#: ../src/pyrenamer.py:420
 msgid "Original file name"
 msgstr "Nom de fichier original"
 
-#: ../src/pyrenamer.py:348
+#: ../src/pyrenamer.py:425
 msgid "Renamed file name"
 msgstr "Nouveau nom de fichier"
 
-#: ../src/pyrenamer.py:363
+#: ../src/pyrenamer.py:440
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Le fichier n'a pas pu être renommé de %s en %s"
 
-#: ../src/pyrenamer.py:876
+#: ../src/pyrenamer.py:1275
 msgid "Select file"
 msgstr "Sélectionner fichier"
 
-#: ../src/pyrenamer.py:922
+#: ../src/pyrenamer.py:1321
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Parcoure le contenu du répertoire %s"
 
-#: ../src/pyrenamer.py:941 ../src/pyrenamer.py:1000
+#: ../src/pyrenamer.py:1340 ../src/pyrenamer.py:1399
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Répertoires: %s - Fichiers: %s"
 
-#: ../src/pyrenamer.py:994
+#: ../src/pyrenamer.py:1393
 #, python-format
 msgid "Adding file %s"
 msgstr "Ajout des fichiers %s"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1102
+#: ../src/pyrenamer.py:1501
 msgid "translator-credits"
 msgstr "Christophe Perez <christophe.perez.mail@gmail.com>"
 
-#: ../src/pyrenamer_globals.py.in:39
+#: ../src/pyrenamer_globals.py.in:54
 msgid "Mass file renamer for GNOME"
 msgstr "Renommage en masse de fichiers pour GNOME"
 
-#: ../src/pyrenamer_filefuncs.py:593
+#: ../src/pyrenamer_filefuncs.py:658
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Erreur au renommage %s en %s! -> %s existe déjà!"
 
-#: ../src/pyrenamer_filefuncs.py:601
+#: ../src/pyrenamer_filefuncs.py:666
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Erreur au renommage %s en %s!"
+
+#: ../src/pyrenamer_prefs.py:108
+msgid "Select root directory"
+msgstr "Sélectionnez le répertoire racine"
+
+#: ../src/pyrenamer_prefs.py:125
+msgid "Select active directory"
+msgstr "Sélectionnez le répertoire actif"
+
+#: ../src/pyrenamer_prefs.py:147 ../src/pyrenamer_prefs.py:170
+msgid ""
+"\n"
+"The root directory is not valid!\n"
+"Please select another directory."
+msgstr ""
+"\n"
+"Le répertoire racine choisi n'est pas valide!\n"
+"Veuillez sélectionner un autre répertoire."
+
+#: ../src/pyrenamer_prefs.py:150 ../src/pyrenamer_prefs.py:174
+msgid ""
+"\n"
+"The active directory is not valid!\n"
+"Please select another directory."
+msgstr ""
+"\n"
+"Le répertoire actif choisi n'est pas valide!\n"
+"Veuillez sélectionner un autre répertoire."
+
+#: ../src/pyrenamer_prefs.py:158 ../src/pyrenamer_prefs.py:183
+#, fuzzy
+msgid ""
+"\n"
+"Please set both directories!"
+msgstr ""
+"\n"
+"Veuillez sélectionner les deux répertoires!"
 
 #: ../src/pyrenamer_tooltips.py:39
 #, python-format
@@ -620,33 +703,18 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:374
+#: ../src/treefilebrowser.py:378
 msgid "Show hidden files"
 msgstr "Afficher les fichiers cachés"
 
-#~ msgid "Select root directory"
-#~ msgstr "Sélectionnez le répertoire racine"
+#~ msgid "<b>Rename MP3s using their ID3 tags</b>"
+#~ msgstr "<b>Renommer les MP3 d'après leurs données ID3</b>"
 
-#~ msgid "Select active directory"
-#~ msgstr "Sélectionnez le répertoire actif"
+#~ msgid "{1}"
+#~ msgstr "{1}"
 
-#~ msgid ""
-#~ "\n"
-#~ "The root directory is not valid!\n"
-#~ "Please select another directory."
-#~ msgstr ""
-#~ "\n"
-#~ "Le répertoire racine choisi n'est pas valide!\n"
-#~ "Veuillez sélectionner un autre répertoire."
-
-#~ msgid ""
-#~ "\n"
-#~ "The active directory is not valid!\n"
-#~ "Please select another directory."
-#~ msgstr ""
-#~ "\n"
-#~ "Le répertoire actif choisi n'est pas valide!\n"
-#~ "Veuillez sélectionner un autre répertoire."
+#~ msgid "{X}"
+#~ msgstr "{X}"
 
 #~ msgid "Last selected dir"
 #~ msgstr "Último directorio seleccionado"
