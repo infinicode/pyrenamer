@@ -1,3 +1,6 @@
+  * Removed python-eyed3 from Build-Depends-Indep
+  * Added python-hachoir-metadata | python-eyed3 to depends
+
 pyrenamer (0.5.0-1) unstable; urgency=medium
 
   [ Adolfo González Blázquez ]
