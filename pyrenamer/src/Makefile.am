@@ -42,6 +42,5 @@ pyrenamer_globals.py: pyrenamer_globals.py.in Makefile
 		-e s!\@PKGDATADIR\@!$(pkgdatadir)! \
 		-e s!\@PACKAGE\@!$(PACKAGE_NAME)! \
 		-e s!\@VERSION\@!$(PACKAGE_VERSION)! \
-		-e s!\@HAVE_EYED3\@!$(HAVE_EYED3)! \
 		< $< \
 		> $@
