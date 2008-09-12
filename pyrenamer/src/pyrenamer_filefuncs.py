@@ -514,8 +514,8 @@ def get_exif_data(path):
     return date, width, height, cameramaker, cameramodel
 
 
-def replace_music(name, path, newname, newpath):
-    """ Pattern replace for mp3 """
+def replace_music_hachoir(name, path, newname, newpath):
+    """ Pattern replace for music """
 
     file = get_new_path(name, path)
 
@@ -567,7 +567,7 @@ def replace_music(name, path, newname, newpath):
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
 
-def replace_music_old(name, path, newname, newpath):
+def replace_music_eyed3(name, path, newname, newpath):
     """ Pattern replace for mp3 """
 
     file = get_new_path(name, path)
@@ -576,42 +576,51 @@ def replace_music_old(name, path, newname, newpath):
         try:
             audioFile = eyeD3.Mp3AudioFile(file, eyeD3.ID3_ANY_VERSION)
             tag = audioFile.getTag()
-        except:
-            newname = None
+        except Exception, e:
+            print "ERROR eyeD3:", e
+            newpath = get_new_path('', path)
+            return '', unicode(newpath)
 
         try:
             artist = tag.getArtist()
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             artist = None
 
         try:
             album  = tag.getAlbum()
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             album = None
 
         try:
             title  = tag.getTitle()
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             title = None
 
         try:
             track  = tag.getTrackNum()[0]
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             track = None
 
         try:
             trackt = tag.getTrackNum()[1]
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             trackt = None
 
         try:
             genre  = tag.getGenre().getName()
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             genre = None
 
         try:
             year   = tag.getYear()
-        except:
+        except Exception, e:
+            print "ERROR eyeD3:", e
             year = None
 
         if artist != None: newname = newname.replace('{artist}', artist)
@@ -632,8 +641,8 @@ def replace_music_old(name, path, newname, newpath):
         if genre != None: newname = newname.replace('{genre}', genre)
         else: newname = newname.replace('{genre}', '')
 
-        if year != None: newname = newname.replace('{year}', year)
-        else: newname = newname.replace('{year}', '')
+        if year != None: newname = newname.replace('{myear}', year)
+        else: newname = newname.replace('{myear}', '')
     else:
         newname = newname.replace('{artist}', '')
         newname = newname.replace('{album}', '')
@@ -641,7 +650,7 @@ def replace_music_old(name, path, newname, newpath):
         newname = newname.replace('{track}', '')
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
-        newname = newname.replace('{year}', '')
+        newname = newname.replace('{myear}', '')
 
     # Returns new name and path
     newpath = get_new_path(newname, path)

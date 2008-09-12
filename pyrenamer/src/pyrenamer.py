@@ -163,6 +163,8 @@ class pyRenamer:
         self.menu_undo = self.glade_tree.get_widget("menu_undo")
         self.menu_redo = self.glade_tree.get_widget("menu_redo")
 
+        self.menu_music = self.glade_tree.get_widget("menu_music")
+
         self.images_original_pattern = self.glade_tree.get_widget("images_original_pattern")
         self.images_renamed_pattern = self.glade_tree.get_widget("images_renamed_pattern")
         self.images_original_pattern_combo = self.glade_tree.get_widget("images_original_pattern_combo")
@@ -371,9 +373,11 @@ class pyRenamer:
         tips.add_view(self.selected_files)
 
         # Hide music tab if necessary
-        #if not pyrenamerglob.have_eyed3:
-        if not pyrenamerglob.have_hachoir:
+        if not pyrenamerglob.have_hachoir and not pyrenamerglob.have_eyed3:
             self.notebook.get_nth_page(5).hide()
+            self.menu_music.hide()
+        if pyrenamerglob.have_hachoir: print "Using hachoir for music renaming."
+        elif pyrenamerglob.have_eyed3: print "Using eyed3 for music renaming."
 
         # Init the undo/redo manager
         self.undo_manager = pyrenamer_undo.PyrenamerUndo()
@@ -526,12 +530,15 @@ class pyRenamer:
             newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
             newname, newpath = renamerfilefuncs.replace_images(name, path, newname, newpath)
 
-        elif self.notebook.get_current_page() == 5 and pyrenamerglob.have_eyed3:
+        elif self.notebook.get_current_page() == 5 and (pyrenamerglob.have_hachoir or pyrenamerglob.have_eyed3):
             # Replace music using patterns
             pattern_ini = self.music_original_pattern.get_text()
             pattern_end = self.music_renamed_pattern.get_text()
             newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
-            newname, newpath = renamerfilefuncs.replace_music(name, path, newname, newpath)
+            if pyrenamerglob.have_hachoir:
+                newname, newpath = renamerfilefuncs.replace_music_hachoir(name, path, newname, newpath)
+            elif pyrenamerglob.have_eyed3:
+                newname, newpath = renamerfilefuncs.replace_music_eyed3(name, path, newname, newpath)
 
         # Add the kept extension
         if self.keepext and self.notebook.get_current_page() != 3 and (newname and newpath) != '':

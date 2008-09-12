@@ -1,5 +1,13 @@
 2008-09-12  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__):
+	* src/pyrenamer_filefuncs.py:
+	  (replace_music_hachoir), (replace_music_eyed3):
+	* src/pyrenamer_globals.py.in:
+	For music rename first try to use hachoir, then eyed3.
+
+2008-09-12  Adolfo González Blázquez  <code@infinicode.org>
+
 	* configure.ac:
 	Don't check for python-eyed3 or python-hachoir-metadata,
 	because we do it on runtime.
