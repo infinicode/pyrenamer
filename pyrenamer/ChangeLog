@@ -1,5 +1,12 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (dir_selected):
+	Fix bug that makes the treeview populate twice,
+	for example, when changing from "Show Directories" to
+	"Show Files" very fast.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (get_icon):
 	Add mime type for video files, so they display a correct icon.
 

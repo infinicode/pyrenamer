@@ -325,7 +325,7 @@ class pyRenamer:
         self.file_browser = treefilebrowser.TreeFileBrowser(self.root_dir)
         self.file_browser_view = self.file_browser.get_view()
         file_browser_scrolled = self.file_browser.get_scrolled()
-        self.file_browser.connect("cursor-changed", self.dir_selected)
+        signal = self.file_browser.connect("cursor-changed", self.dir_selected)
 
         # Add dirs and files tomain window
         self.main_hpaned.pack1(file_browser_scrolled, resize=True, shrink=False)
@@ -335,6 +335,7 @@ class pyRenamer:
         self.create_model()
 
         #  Set cursor on selected dir
+        self.file_browser.handler_block(signal)
         try:
 
             if "/." in (self.active_dir or self.root_dir):
@@ -348,6 +349,8 @@ class pyRenamer:
         except:
             self.active_dir = self.home
             self.file_browser.set_active_dir(self.active_dir)
+        self.file_browser.handler_unblock(signal)
+        self.file_browser.set_active_dir(self.active_dir)
 
         # Init comboboxes
         self.subs_spaces_combo.set_active(0)
@@ -1321,6 +1324,11 @@ class pyRenamer:
         self.stop_button.show()
         self.clear_button.set_sensitive(False)
         self.rename_button.set_sensitive(False)
+        self.file_selected_model.clear()
+
+        while gtk.events_pending():
+            gtk.main_iteration()
+
         self.file_selected_model.clear()
 
         self.populate_selected_files(dir)
