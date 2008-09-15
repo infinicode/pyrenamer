@@ -139,11 +139,11 @@ class PyrenamerPatternEditor:
 
         # Set window name
         if 'main' in selector:
-            self.pattern_edit_window.set_title('Patterns editor')
+            self.pattern_edit_window.set_title(_('Patterns editor'))
         elif 'images' in selector:
-            self.pattern_edit_window.set_title('Images patterns editor')
+            self.pattern_edit_window.set_title(_('Image patterns editor'))
         elif 'music' in selector:
-            self.pattern_edit_window.set_title('Music patterns editor')
+            self.pattern_edit_window.set_title(_('Music patterns editor'))
 
         self.populate_treeview(selector)
 

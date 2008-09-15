@@ -1,5 +1,10 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_pattern_editor.py: (create_window):
+	Set the pattern editor window title translatable.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (preview_rename_rows):
 	In subs tab, if nothing is selected, don't enable rename.
 
