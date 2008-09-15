@@ -75,6 +75,7 @@ class pyRenamer:
         self.populate_id = []
         self.listing = []
         self.listing_thread = None
+        self.ignore_errors = False
 
         # Patterns saving variables
         self.patterns = {}
@@ -444,8 +445,11 @@ class pyRenamer:
 
         if new != None and new != '':
             result = renamerfilefuncs.rename_file(ori, new)
-            if not result: self.display_error_dialog(_("Could not rename file %s to %s") % (ori, new))
-            else: self.undo_manager.add(ori, new)
+            if not result:
+                if not self.ignore_errors:
+                    self.display_error_dialog(_("Could not rename file %s to %s") % (ori, new))
+            else:
+                self.undo_manager.add(ori, new)
 
 
     def preview_rename_rows(self, model, path, iter, paths):
@@ -660,6 +664,7 @@ class pyRenamer:
         self.menu_clear_preview.set_sensitive(False)
         self.rename_button.set_sensitive(False)
         self.menu_rename.set_sensitive(False)
+        self.ignore_errors = False
 
 
     def on_preview_button_clicked(self, widget):
@@ -1500,8 +1505,15 @@ class pyRenamer:
 
     def display_error_dialog(self, text):
     	""" Yeps, it shows a error dialog """
-        dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, text)
-        dialog.run()
+
+        dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_NONE, text)
+        dialog.add_button(_("Ignore next errors"), 0)
+        dialog.add_button("gtk-ok", 1)
+        response = dialog.run()
+
+        if response == 0:
+            self.ignore_errors = True
+
         dialog.destroy()
 
 

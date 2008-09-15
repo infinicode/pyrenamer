@@ -1,5 +1,11 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (rename_rows),
+	  (on_rename_button_clicked), (display_error_dialog):
+	Add option to ignore next errors while renaming.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init__), (dir_selected):
 	Fix bug that makes the treeview populate twice,
 	for example, when changing from "Show Directories" to
