@@ -680,6 +680,7 @@ class pyRenamer:
         self.menu_clear_preview.set_sensitive(True)
         self.rename_button.set_sensitive(True)
         self.menu_rename.set_sensitive(True)
+        self.file_selected_model.foreach(self.enable_rename_and_clean)
 
 
     def on_clean_button_clicked(self, widget):

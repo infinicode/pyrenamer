@@ -1,5 +1,10 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_preview_button_clicked):
+	If nothing needs to be renamed, disable the Rename button.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init__), (on_main_window_configure_event):
 	Fix error placing the main window and setting it to correct width.
 
