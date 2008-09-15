@@ -8,6 +8,7 @@
 	* Allow renaming files and moving them to another directory
 	* Added refresh option, to reload files and directories
 	* Add option to fix duplicated symbols on filename
+	* Add option to ignore next errors while renaming
 	* Several bug fixes
 	* New icon
 
