@@ -322,6 +322,14 @@ class pyRenamer:
         self.statusbar.show_all()
         self.stop_button.hide()
 
+        # Init main window
+        self.main_window.set_title(pyrenamerglob.name_long)
+        self.main_window.set_icon_from_file(pyrenamerglob.icon)
+        self.main_window.move(self.window_posx, self.window_posy)
+        self.main_hpaned.set_position(self.pane_position)
+        self.main_window.resize(self.window_width, self.window_height)
+        if self.window_maximized: self.main_window.maximize()
+
         # Init TreeFileBrowser
         self.file_browser = treefilebrowser.TreeFileBrowser(self.root_dir)
         self.file_browser_view = self.file_browser.get_view()
@@ -336,36 +344,29 @@ class pyRenamer:
         self.create_model()
 
         #  Set cursor on selected dir
-        self.file_browser.handler_block(signal)
         try:
-
+            # Check if the dir is hidden
             if "/." in (self.active_dir or self.root_dir):
                 self.file_browser.set_show_hidden(True)
 
-            if not self.file_browser.set_active_dir(self.active_dir):
+            # Check if paths are correct
+            if not self.file_browser.check_active_dir(self.active_dir):
                 self.active_dir = self.home
-                if not self.file_browser.set_active_dir(self.active_dir):
+                if not self.file_browser.check_active_dir(self.active_dir):
                     self.active_dir = self.root_dir
-                    self.file_browser.set_active_dir(self.active_dir)
         except:
             self.active_dir = self.home
-            self.file_browser.set_active_dir(self.active_dir)
-        self.file_browser.handler_unblock(signal)
         self.file_browser.set_active_dir(self.active_dir)
 
         # Init comboboxes
         self.subs_spaces_combo.set_active(0)
         self.subs_capitalization_combo.set_active(0)
 
-        # Init menu items, some widgets and window name, and set position
+        # Init some menu items
         self.menu_rename.set_sensitive(False)
         self.menu_clear_preview.set_sensitive(False)
-        self.main_window.set_title(pyrenamerglob.name_long)
-        self.main_window.set_icon_from_file(pyrenamerglob.icon)
-        self.main_window.move(self.window_posx, self.window_posy)
-        self.main_window.resize(self.window_width, self.window_height)
-        self.main_hpaned.set_position(self.pane_position)
-        if self.window_maximized: self.main_window.maximize()
+
+        # Init delete radio buttons
         self.delete_from.set_sensitive(False)
         self.delete_to.set_sensitive(False)
 
@@ -650,7 +651,6 @@ class pyRenamer:
         """ Saving window size to avoid losing data when it gets destroyed """
         self.window_width, self.window_height = self.main_window.get_size()
         self.window_posx, self.window_posy = self.main_window.get_position()
-        self.pane_position = self.main_hpaned.get_position()
 
 
     def on_rename_button_clicked(self, widget):
