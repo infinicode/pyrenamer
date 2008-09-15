@@ -1,5 +1,10 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (get_icon):
+	Add mime type for video files, so they display a correct icon.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* data/pyrenamer.glade:
 	Updated tooltip for music renaming patterns.
 

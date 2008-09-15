@@ -1462,7 +1462,7 @@ class pyRenamer:
 
             audio = ["mp3", "ogg", "wav", "aiff"]
             image = ["jpg", "gif", "png", "tiff", "tif", "jpeg"]
-            video = ["avi", "ogm", "mpg"]
+            video = ["avi", "ogm", "mpg", "mpeg", "mov"]
             package = ["rar", "zip", "gz", "tar", "bz2", "tgz", "deb", "rpm"]
 
             file = path.split('/')[-1]
@@ -1471,13 +1471,13 @@ class pyRenamer:
             if ext in audio:
                 mime = "audio-x-generic"
 
-            if ext in image:
+            elif ext in image:
                 mime = "image-x-generic"
 
-            if ext in image:
-                mime = "image-x-generic"
+            elif ext in video:
+                mime = "video-x-generic"
 
-            if ext in package:
+            elif ext in package:
                 mime = "package-x-generic"
 
             try:
