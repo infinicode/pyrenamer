@@ -1,5 +1,10 @@
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/treefilebrowser.py: (check_active_dir):
+	Check if a directory is suitable for setting the active dir.
+
+2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init__), (rename_rows),
 	  (on_rename_button_clicked), (display_error_dialog):
 	Add option to ignore next errors while renaming.

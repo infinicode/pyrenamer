@@ -224,6 +224,17 @@ class TreeFileBrowser(gobject.GObject):
         path = model.get_path(iter)
         self.view.set_cursor(path)
 
+    def check_active_dir(self, directory):
+        rootdir = self.root
+        if not ospath.isdir(directory):
+            return False
+        if  not (rootdir in directory):
+            return False
+        if  directory == rootdir:
+            return True
+        return True
+
+
     def set_active_dir(self, directory):
 
         rootdir = self.root
