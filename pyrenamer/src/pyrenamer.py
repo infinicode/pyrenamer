@@ -1507,13 +1507,9 @@ class pyRenamer:
     	""" Yeps, it shows a error dialog """
 
         dialog = gtk.MessageDialog(None, 0, gtk.MESSAGE_ERROR, gtk.BUTTONS_NONE, text)
-        dialog.add_button(_("Ignore errors"), 0)
-        dialog.add_button("gtk-ok", 1)
-        response = dialog.run()
-
-        if response == 0:
-            self.ignore_errors = True
-
+        dialog.add_button(_("Ignore errors"), 1)
+        dialog.add_button("gtk-ok", 0)
+        self.ignore_errors = dialog.run()
         dialog.destroy()
 
 
