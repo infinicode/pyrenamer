@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-11 19:52+0200\n"
-"PO-Revision-Date: 2008-09-11 19:46+0100\n"
+"POT-Creation-Date: 2008-09-15 16:26+0200\n"
+"PO-Revision-Date: 2008-09-15 13:44+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -272,8 +272,16 @@ msgid "Keep extensions"
 msgstr "Keep extensions"
 
 #: ../data/pyrenamer.glade.h:86
+msgid "Manual rename"
+msgstr "Manual rename"
+
+#: ../data/pyrenamer.glade.h:87
+msgid "Music"
+msgstr "Music"
+
+#: ../data/pyrenamer.glade.h:88
 msgid ""
-"MP3 music ID3 replacements:\n"
+"Music metadata replacements:\n"
 "{artist}\t\tAnxiA\n"
 "{title}\t\tEl mundo no es una mercancía\n"
 "{album}\tJóven pájaro negro muerto\n"
@@ -308,7 +316,7 @@ msgid ""
 "{rand10-20} is random number between 10 and 20\n"
 "{rand20,5} is random number between 0 and 20 of 5 digits (00012)"
 msgstr ""
-"MP3 music ID3 replacements:\n"
+"Music metadata replacements:\n"
 "{artist}\t\tAnxiA\n"
 "{title}\t\tEl mundo no es una mercancía\n"
 "{album}\tJóven pájaro negro muerto\n"
@@ -342,14 +350,6 @@ msgstr ""
 "{rand500} is random number between 0 and 500\n"
 "{rand10-20} is random number between 10 and 20\n"
 "{rand20,5} is random number between 0 and 20 of 5 digits (00012)"
-
-#: ../data/pyrenamer.glade.h:120
-msgid "Manual rename"
-msgstr "Manual rename"
-
-#: ../data/pyrenamer.glade.h:121
-msgid "Music"
-msgstr "Music"
 
 #: ../data/pyrenamer.glade.h:122
 msgid "New file name"
@@ -613,53 +613,53 @@ msgstr "X position of the window"
 msgid "Y position of the window"
 msgstr "Y position of the window"
 
-#: ../src/pyrenamer.py:420
+#: ../src/pyrenamer.py:424
 msgid "Original file name"
 msgstr "Original file name"
 
-#: ../src/pyrenamer.py:425
+#: ../src/pyrenamer.py:429
 msgid "Renamed file name"
 msgstr "Renamed file name"
 
-#: ../src/pyrenamer.py:440
+#: ../src/pyrenamer.py:444
 #, python-format
 msgid "Could not rename file %s to %s"
 msgstr "Could not rename file %s to %s"
 
-#: ../src/pyrenamer.py:1275
+#: ../src/pyrenamer.py:1282
 msgid "Select file"
 msgstr "Select file"
 
-#: ../src/pyrenamer.py:1321
+#: ../src/pyrenamer.py:1329
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Reading contents of dir %s"
 
-#: ../src/pyrenamer.py:1340 ../src/pyrenamer.py:1399
+#: ../src/pyrenamer.py:1348 ../src/pyrenamer.py:1407
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directory: %s - Files: %s"
 
-#: ../src/pyrenamer.py:1393
+#: ../src/pyrenamer.py:1401
 #, python-format
 msgid "Adding file %s"
 msgstr "Adding file %s"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1501
+#: ../src/pyrenamer.py:1509
 msgid "translator-credits"
 msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
-#: ../src/pyrenamer_globals.py.in:54
+#: ../src/pyrenamer_globals.py.in:73
 msgid "Mass file renamer for GNOME"
 msgstr "Mass file renamer for GNOME"
 
-#: ../src/pyrenamer_filefuncs.py:658
+#: ../src/pyrenamer_filefuncs.py:667
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Error while renaming %s to %s! -> %s already exists!"
 
-#: ../src/pyrenamer_filefuncs.py:666
+#: ../src/pyrenamer_filefuncs.py:675
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Error while renaming %s to %s!"

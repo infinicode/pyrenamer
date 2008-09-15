@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pyrenamer 0.5\n"
+"Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-11 19:52+0200\n"
+"POT-Creation-Date: 2008-09-15 16:26+0200\n"
 "PO-Revision-Date: 2008-09-11 19:40+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -55,7 +55,7 @@ msgstr "<b>Zeichen in Dateinamen ersetzen oder löschen</b>"
 
 #: ../data/pyrenamer.glade.h:9
 msgid "<b>Options</b>"
-msgstr ""
+msgstr "<b>Optionen</b>"
 
 #: ../data/pyrenamer.glade.h:10
 msgid "<b>Rename files manually</b>"
@@ -157,10 +157,13 @@ msgid ""
 "Directories\n"
 "Files and directories"
 msgstr ""
+"Dateien\n"
+"Verzeichnisse\n"
+"Dateien und Verzeichnisse"
 
 #: ../data/pyrenamer.glade.h:38
 msgid "Fix duplicated symbols"
-msgstr ""
+msgstr "Doppelte Symbole reparieren"
 
 #: ../data/pyrenamer.glade.h:39
 #, fuzzy
@@ -260,12 +263,20 @@ msgstr "Einfügen / Löschen"
 
 #: ../data/pyrenamer.glade.h:85
 msgid "Keep extensions"
-msgstr ""
+msgstr "Erweiterungen behalten"
 
 #: ../data/pyrenamer.glade.h:86
+msgid "Manual rename"
+msgstr "Manuelles Umbenennen"
+
+#: ../data/pyrenamer.glade.h:87
+msgid "Music"
+msgstr "Musik"
+
+#: ../data/pyrenamer.glade.h:88
 #, fuzzy
 msgid ""
-"MP3 music ID3 replacements:\n"
+"Music metadata replacements:\n"
 "{artist}\t\tAnxiA\n"
 "{title}\t\tEl mundo no es una mercancía\n"
 "{album}\tJóven pájaro negro muerto\n"
@@ -328,14 +339,6 @@ msgstr ""
 "{dayname}\t\tfreitag\n"
 "{daysimp}\t\tfri"
 
-#: ../data/pyrenamer.glade.h:120
-msgid "Manual rename"
-msgstr "Manuelles Umbenennen"
-
-#: ../data/pyrenamer.glade.h:121
-msgid "Music"
-msgstr "Musik"
-
 #: ../data/pyrenamer.glade.h:122
 msgid "New file name"
 msgstr "Neuer Dateiname"
@@ -360,7 +363,7 @@ msgstr "Muster"
 
 #: ../data/pyrenamer.glade.h:127
 msgid "Preview automatically"
-msgstr ""
+msgstr "Vorschau automatisch zeigen"
 
 #: ../data/pyrenamer.glade.h:128
 msgid "Remove accents"
@@ -393,7 +396,7 @@ msgstr "Datei-Auswahlmuster"
 
 #: ../data/pyrenamer.glade.h:135
 msgid "Show options"
-msgstr ""
+msgstr "Optionen zeigen"
 
 #: ../data/pyrenamer.glade.h:136
 msgid "Spaces"
@@ -548,10 +551,12 @@ msgstr ""
 msgid ""
 "0: Rename files / 1: Rename directories / 2: Rename files and directories"
 msgstr ""
+"0: Dateien umbenennen / 1: Verzeichnisse umbenennen / 2: Dateien und "
+"Verzeichnisse umbenennen"
 
 #: ../data/pyrenamer.schemas.in.h:2
 msgid "Auto preview changes"
-msgstr ""
+msgstr "Auto-Vorschau der Änderungen"
 
 #: ../data/pyrenamer.schemas.in.h:3
 msgid "Default active dir"
@@ -563,7 +568,7 @@ msgstr "Vorgegebenes Ursprungs-Verzeichnis"
 
 #: ../data/pyrenamer.schemas.in.h:5
 msgid "Display the options pane"
-msgstr ""
+msgstr "Optionsbereich anzeigen"
 
 #: ../data/pyrenamer.schemas.in.h:6
 msgid "Is the window maximized?"
@@ -571,7 +576,7 @@ msgstr "Ist das Fenster maximiert?"
 
 #: ../data/pyrenamer.schemas.in.h:7
 msgid "Keep files extensions"
-msgstr ""
+msgstr "Dateierweiterungen behalten"
 
 #: ../data/pyrenamer.schemas.in.h:8
 msgid "Position of the pane separator"
@@ -580,9 +585,7 @@ msgstr "Position des Ausschnitts-Trenners"
 #: ../data/pyrenamer.schemas.in.h:9
 #, fuzzy
 msgid "Rename files or directories"
-msgstr ""
-"\n"
-"Bitte legen Sie beide Verzeichnisse fest!"
+msgstr "Bitte legen Sie beide Verzeichnisse fest!"
 
 #: ../data/pyrenamer.schemas.in.h:10
 msgid "Window height"
@@ -600,53 +603,53 @@ msgstr "X-Position des Fensters"
 msgid "Y position of the window"
 msgstr "Y-Position des Fensters"
 
-#: ../src/pyrenamer.py:420
+#: ../src/pyrenamer.py:424
 msgid "Original file name"
 msgstr "Ursprünglicher Dateiname"
 
-#: ../src/pyrenamer.py:425
+#: ../src/pyrenamer.py:429
 msgid "Renamed file name"
 msgstr "Umbenannter Dateiname"
 
-#: ../src/pyrenamer.py:440
+#: ../src/pyrenamer.py:444
 #, python-format
 msgid "Could not rename file %s to %s"
-msgstr "Konnte Datei % nicht nach %s umbenennen"
+msgstr "Konnte Datei %s nicht nach %s umbenennen"
 
-#: ../src/pyrenamer.py:1275
+#: ../src/pyrenamer.py:1282
 msgid "Select file"
 msgstr "Wähle Datei"
 
-#: ../src/pyrenamer.py:1321
+#: ../src/pyrenamer.py:1329
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Lese Inhalt des Verzeichnisses %s"
 
-#: ../src/pyrenamer.py:1340 ../src/pyrenamer.py:1399
+#: ../src/pyrenamer.py:1348 ../src/pyrenamer.py:1407
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Verzeichnis: %s - Dateien: %s"
 
-#: ../src/pyrenamer.py:1393
+#: ../src/pyrenamer.py:1401
 #, python-format
 msgid "Adding file %s"
 msgstr "Füge Datei %s hinzu"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1501
+#: ../src/pyrenamer.py:1509
 msgid "translator-credits"
 msgstr "Vinzenz Vietzke <vinz@v1nz.org>"
 
-#: ../src/pyrenamer_globals.py.in:54
+#: ../src/pyrenamer_globals.py.in:73
 msgid "Mass file renamer for GNOME"
 msgstr "Massen-Dateien-Umbenenner für GNOME"
 
-#: ../src/pyrenamer_filefuncs.py:658
+#: ../src/pyrenamer_filefuncs.py:667
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Fehler beim Umbenennen von %s in %s! -> %s existiert bereits!"
 
-#: ../src/pyrenamer_filefuncs.py:666
+#: ../src/pyrenamer_filefuncs.py:675
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Fehler beim Umbenennen von %s in %s!"
