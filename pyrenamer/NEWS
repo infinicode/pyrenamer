@@ -1,3 +1,17 @@
+	* You can save favorite patterns to reuse it
+	* Undo/redo feature
+	* Now you can rename more music formats (ogg, real... those supported by hachoir)
+	* You can keep file extensions untouched
+	* Now you can rename directories
+	* Added some icons to identify file types
+	* Added random number pattern {rand}
+	* Allow renaming files and moving them to another directory
+	* Added refresh option, to reload files and directories
+	* Add option to fix duplicated symbols on filename
+	* Several bug fixes
+	* New icon
+
+
 2008-04-09  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.5.0 Released
@@ -28,7 +42,7 @@
 	* Better unicode support
 	* Some GUI changes
 	* Bug fixes
-	
+
 
 2007-07-30  Adolfo González Blázquez <code@infinicode.org>
 
@@ -39,7 +53,7 @@
 	* Set good default values for window pos/size (bugfix)
 	* Bugfixes
 
-	
+
 2007-07-23  Adolfo González Blázquez <code@infinicode.org>
 
 	* Version 0.2 Released
@@ -49,7 +63,7 @@
 	* Added context menu to tree widget, to show hidden directories
 	* Some UI changes
 	* Fixed several bugs
-	
+
 
 2007-06-14  Adolfo González Blázquez <code@infinicode.org>
 

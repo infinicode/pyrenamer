@@ -1,23 +1,23 @@
 URGENT TODO
 
-	* Update translations
-	* Fix read position of panels when window is not maximized
-	* Music rename: hachoir > eyed3 > none
+	* Update translations (de)
 
 
 
-OTHERS TODO
+TODO
 
 	* Reorder elements in treeview
 	* Drop gconf for python's ConfigParser
 	* Add support for 1 char/number pattern, or to define just a number
 	  of chars, something like char{3} or {#4} for 4 numbers.
 	* Edit filename directly on treeview
+	* Fix read position of panels when window is not maximized
 
 
 
 DONE
 
+	x Music rename: hachoir > eyed3 > none
 	x Fix bug while renaming folders recursively
 	x Fix repeated symbols (... -> . | __ -> _ | '   ' -> ' ')
 	x Fix file selected on changing to manual renaming
