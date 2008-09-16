@@ -2,24 +2,24 @@
 # Copyright (C) 2007 THE pyrenamer'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the pyrenamer package.
 # Vinzenz Vietzke <vinz@v1nz.org>, 2008.
-#
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:44+0200\n"
-"PO-Revision-Date: 2008-09-16 12:39+0100\n"
-"Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
-"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
+"POT-Creation-Date: 2008-09-17 00:04+0200\n"
+"PO-Revision-Date: 2008-09-16 22:35+0200\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type:  text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/pyrenamer.desktop.in.in.in.h:1
 msgid "Mass rename files"
-msgstr "Massen-Dateien-Umbenenner"
+msgstr "Dateien massenweise umbenennen"
 
 #: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:177
 msgid "pyRenamer"
@@ -47,11 +47,11 @@ msgstr "<b>Gewöhnliche Ersetzungen</b>"
 
 #: ../data/pyrenamer.glade.h:7
 msgid "<b>Default directories</b>"
-msgstr "<b>Standardverzeichnisse</b>"
+msgstr "<b>Standardordner</b>"
 
 #: ../data/pyrenamer.glade.h:8
 msgid "<b>Insert or delete characters from filenames</b>"
-msgstr "<b>Zeichen in Dateinamen ersetzen oder löschen</b>"
+msgstr "<b>Zeichen in Dateinamen einfügen oder löschen</b>"
 
 #: ../data/pyrenamer.glade.h:9
 msgid "<b>Options</b>"
@@ -66,14 +66,12 @@ msgid "<b>Rename files using patterns</b>"
 msgstr "<b>Dateien anhand von Mustern umbenennen</b>"
 
 #: ../data/pyrenamer.glade.h:12
-#, fuzzy
 msgid "<b>Rename images using their metadata</b>"
-msgstr "<b>Dateien anhand ihrer EXIF-Daten umbennen</b>"
+msgstr "<b>Bilder anhand ihrer Meta-Daten umbennen</b>"
 
 #: ../data/pyrenamer.glade.h:13
-#, fuzzy
 msgid "<b>Rename music using its metadata</b>"
-msgstr "<b>Dateien anhand ihrer EXIF-Daten umbennen</b>"
+msgstr "<b>Musik anhand ihrer Meta-Daten umbennen</b>"
 
 #: ../data/pyrenamer.glade.h:14
 msgid ""
@@ -86,16 +84,16 @@ msgstr ""
 #: ../data/pyrenamer.glade.h:15
 msgid "<i>Select the file to rename, change its name and click Preview</i>"
 msgstr ""
-"<i>Wählen Sie die zu umbenennende Datei, ändern Sie ihren Namen und\n"
+"<i>Wählen Sie die umzubenennende Datei, ändern Sie den Namen und\n"
 "klicken Sie auf Vorschau</i>"
 
 #: ../data/pyrenamer.glade.h:16
 msgid "<i>The default selected directory</i>"
-msgstr "<i>Das standardmäßig gewählte Verzeichnis</i>"
+msgstr "<i>Der Vorgabeordner</i>"
 
 #: ../data/pyrenamer.glade.h:17
 msgid "<i>The parent of the directories tree</i>"
-msgstr "<i>Das Elternverzeichnis des Verzeichnisbaums</i>"
+msgstr "<i>Der Elternordner des Ordnerbaums</i>"
 
 #: ../data/pyrenamer.glade.h:18
 msgid "Active"
@@ -106,9 +104,8 @@ msgid "Add files recursively"
 msgstr "Dateien rekursiv hinzufügen"
 
 #: ../data/pyrenamer.glade.h:20
-#, fuzzy
 msgid "Add pattern"
-msgstr "Muster"
+msgstr "Muster hinzufügen"
 
 #: ../data/pyrenamer.glade.h:21
 msgid ""
@@ -163,15 +160,14 @@ msgid ""
 "Files and directories"
 msgstr ""
 "Dateien\n"
-"Verzeichnisse\n"
-"Dateien und Verzeichnisse"
+"Ordner\n"
+"Dateien und Ordner"
 
 #: ../data/pyrenamer.glade.h:38
 msgid "Fix duplicated symbols"
 msgstr "Doppelte Symbole reparieren"
 
 #: ../data/pyrenamer.glade.h:39
-#, fuzzy
 msgid ""
 "Image metadata replacements:\n"
 "{imagewidth}\t\t\t640\n"
@@ -242,7 +238,7 @@ msgstr ""
 "Verwende {num3} für 001, 002, 003...\n"
 "Verwende {num+10} für 10, 11, 12...\n"
 "Verwende {num2+10} für 010, 011, 012...\n"
-"Verwende {dir} um das aktuelle Verzeichnis zu bekommen\n"
+"Verwende {dir} um den aktuellen Ordner zu bekommen\n"
 "\n"
 "Einige Ersetzungen für das aktuelle Datum:\n"
 "{date}\t\t\t22feb1980\n"
@@ -252,7 +248,14 @@ msgstr ""
 "{monthsimp}\tfeb\n"
 "{day}\t\t\t22\n"
 "{dayname}\t\tfreitag\n"
-"{daysimp}\t\tfri"
+"{daysimp}\t\tfri\n"
+"\n"
+"Ersetzungen mit Zufallszahlen:\n"
+"{rand} ist eine Zufallszahl zwischen 0 und 100.\n"
+"{rand,3} ist eine Zufallszahl zwischen 0 und 100 von 3 Ziffern (012)\n"
+"{rand500} ist eine Zufallszahl zwischen 0 und 500\n"
+"{rand10-20} ist eine Zufallszahl zwischen 10 und 20\n"
+"{rand20,5} ist eine Zufallszahl zwischen 0 und 20 von 5 Ziffern (00012)"
 
 #: ../data/pyrenamer.glade.h:82
 msgid "Images"
@@ -279,7 +282,6 @@ msgid "Music"
 msgstr "Musik"
 
 #: ../data/pyrenamer.glade.h:88
-#, fuzzy
 msgid ""
 "Music metadata replacements:\n"
 "{artist}\t\tAnxiA\n"
@@ -332,7 +334,7 @@ msgstr ""
 "Verwende {num3} für 001, 002, 003...\n"
 "Verwende {num+10} für 10, 11, 12...\n"
 "Verwende {num2+10} für 010, 011, 012...\n"
-"Verwende {dir} um das aktuelle Verzeichnis zu bekommen\n"
+"Verwende {dir} um den aktuellen Ordner zu bekommen\n"
 "\n"
 "Einige Ersetzungen für das aktuelle Datum:\n"
 "{date}\t\t\t22feb1980\n"
@@ -342,7 +344,14 @@ msgstr ""
 "{monthsimp}\tfeb\n"
 "{day}\t\t\t22\n"
 "{dayname}\t\tfreitag\n"
-"{daysimp}\t\tfri"
+"{daysimp}\t\tfri\n"
+"\n"
+"Ersetzungen mit Zufallszahlen:\n"
+"{rand} ist eine Zufallszahl zwischen 0 und 100.\n"
+"{rand,3} ist eine Zufallszahl zwischen 0 und 100 von 3 Ziffern (012)\n"
+"{rand500} ist eine Zufallszahl zwischen 0 und 500\n"
+"{rand10-20} ist eine Zufallszahl zwischen 10 und 20\n"
+"{rand20,5} ist eine Zufallszahl zwischen 0 und 20 von 5 Ziffern (00012)"
 
 #: ../data/pyrenamer.glade.h:122
 msgid "New file name"
@@ -353,14 +362,12 @@ msgid "Original file name pattern"
 msgstr "Muster für den ursprünglichen Dateinamen"
 
 #: ../data/pyrenamer.glade.h:124
-#, fuzzy
 msgid "Pattern editor"
-msgstr "Muster"
+msgstr "Muster bearbeiten"
 
 #: ../data/pyrenamer.glade.h:125
-#, fuzzy
 msgid "Pattern:"
-msgstr "Muster"
+msgstr "Muster:"
 
 #: ../data/pyrenamer.glade.h:126
 msgid "Patterns"
@@ -395,9 +402,8 @@ msgid "Select _all"
 msgstr "_Alles wählen"
 
 #: ../data/pyrenamer.glade.h:134
-#, fuzzy
 msgid "Selection pattern"
-msgstr "Datei-Auswahlmuster"
+msgstr "Auswahlmuster"
 
 #: ../data/pyrenamer.glade.h:135
 msgid "Show options"
@@ -428,7 +434,6 @@ msgid "Substitutions"
 msgstr "Ersetzungen"
 
 #: ../data/pyrenamer.glade.h:144
-#, fuzzy
 msgid ""
 "Use {1} for first catched item. {2} for second, etc...\n"
 "Use {num} for adding 1, 2, 3... to file names\n"
@@ -461,7 +466,7 @@ msgstr ""
 "Verwende {num3} für 001, 002, 003...\n"
 "Verwende {num+10} für 10, 11, 12...\n"
 "Verwende {num2+10} für 010, 011, 012...\n"
-"Verwende {dir} um das aktuelle Verzeichnis zu bekommen\n"
+"Verwende {dir} um den aktuellen Ordner zu bekommen\n"
 "\n"
 "Einige Ersetzungen für das aktuelle Datum:\n"
 "{date}\t\t\t22feb1980\n"
@@ -471,7 +476,14 @@ msgstr ""
 "{monthsimp}\tfeb\n"
 "{day}\t\t\t22\n"
 "{dayname}\t\tfreitag\n"
-"{daysimp}\t\tfri"
+"{daysimp}\t\tfri\n"
+"\n"
+"Ersetzungen mit Zufallszahlen:\n"
+"{rand} ist eine Zufallszahl zwischen 0 und 100.\n"
+"{rand,3} ist eine Zufallszahl zwischen 0 und 100 von 3 Ziffern (012)\n"
+"{rand500} ist eine Zufallszahl zwischen 0 und 500\n"
+"{rand10-20} ist eine Zufallszahl zwischen 10 und 20\n"
+"{rand20,5} ist eine Zufallszahl zwischen 0 und 20 von 5 Ziffern (00012)"
 
 #: ../data/pyrenamer.glade.h:168
 msgid "_Edit"
@@ -498,9 +510,8 @@ msgid "_Rename"
 msgstr "_Umbenennen"
 
 #: ../data/pyrenamer.glade.h:174
-#, fuzzy
 msgid "_View"
-msgstr "_Vorschau"
+msgstr "_Anzeigen"
 
 #: ../data/pyrenamer.glade.h:175
 msgid "at"
@@ -523,7 +534,6 @@ msgid "with"
 msgstr "durch"
 
 #: ../data/pyrenamer.glade.h:181
-#, fuzzy
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -533,12 +543,11 @@ msgid ""
 msgstr ""
 "{#}\tZahlen\n"
 "{L}\t\tBuchstaben\n"
-"{C}\tZeichen (Zahlen und Buchstaben, keine Leerzeichen)\n"
+"{C}\t\tZeichen (Zahlen und Buchstaben, keine Leerzeichen)\n"
 "{X}\t\tZahlen, Buchstaben, und Leerzeichen\n"
-"{@}\tMüll "
+"{@}\tMüll"
 
 #: ../data/pyrenamer.glade.h:186
-#, fuzzy
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -548,7 +557,7 @@ msgid ""
 msgstr ""
 "{#}\tZahlen\n"
 "{L}\t\tBuchstaben\n"
-"{C}\tZeichen (Zahlen und Buchstaben, keine Leerzeichen)\n"
+"{C}\t\tZeichen (Zahlen und Buchstaben, keine Leerzeichen)\n"
 "{X}\t\tZahlen, Buchstaben, und Leerzeichen\n"
 "{@}\tMüll "
 
@@ -556,8 +565,8 @@ msgstr ""
 msgid ""
 "0: Rename files / 1: Rename directories / 2: Rename files and directories"
 msgstr ""
-"0: Dateien umbenennen / 1: Verzeichnisse umbenennen / 2: Dateien und "
-"Verzeichnisse umbenennen"
+"0: Dateien umbenennen / 1: Ordner umbenennen / 2: Dateien und Ordner "
+"umbenennen"
 
 #: ../data/pyrenamer.schemas.in.h:2
 msgid "Auto preview changes"
@@ -565,11 +574,11 @@ msgstr "Auto-Vorschau der Änderungen"
 
 #: ../data/pyrenamer.schemas.in.h:3
 msgid "Default active dir"
-msgstr "Vorgegebenes aktives Verzeichnis"
+msgstr "Aktive Vorgabeordner"
 
 #: ../data/pyrenamer.schemas.in.h:4
 msgid "Default root dir"
-msgstr "Vorgegebenes Ursprungs-Verzeichnis"
+msgstr "Vorgegebener Ursprungs-Ordner"
 
 #: ../data/pyrenamer.schemas.in.h:5
 msgid "Display the options pane"
@@ -588,9 +597,8 @@ msgid "Position of the pane separator"
 msgstr "Position des Ausschnitts-Trenners"
 
 #: ../data/pyrenamer.schemas.in.h:9
-#, fuzzy
 msgid "Rename files or directories"
-msgstr "Bitte legen Sie beide Verzeichnisse fest!"
+msgstr "Dateien oder Ordner umbenennen"
 
 #: ../data/pyrenamer.schemas.in.h:10
 msgid "Window height"
@@ -622,7 +630,7 @@ msgid ""
 "Could not rename file %s to %s\n"
 "%s"
 msgstr ""
-"Konnte Datei %s nicht nach %s umbenennen\n"
+"Konnte Datei »%s« nicht nach »%s« umbenennen\n"
 "%s"
 
 #: ../src/pyrenamer.py:1296
@@ -632,17 +640,17 @@ msgstr "Wähle Datei"
 #: ../src/pyrenamer.py:1347
 #, python-format
 msgid "Reading contents of dir %s"
-msgstr "Lese Inhalt des Verzeichnisses %s"
+msgstr "Lese Inhalt des Ordners »%s«"
 
 #: ../src/pyrenamer.py:1366 ../src/pyrenamer.py:1425
 #, python-format
 msgid "Directory: %s - Files: %s"
-msgstr "Verzeichnis: %s - Dateien: %s"
+msgstr "Ordner: »%s« - Dateien: %s"
 
 #: ../src/pyrenamer.py:1419
 #, python-format
 msgid "Adding file %s"
-msgstr "Füge Datei %s hinzu"
+msgstr "Füge Datei »%s« hinzu"
 
 #: ../src/pyrenamer.py:1516
 msgid "Ignore errors"
@@ -651,7 +659,9 @@ msgstr "Ignorieren Fehler"
 #. about.set_artists(pyrenamerglob.artists)
 #: ../src/pyrenamer.py:1530
 msgid "translator-credits"
-msgstr "Vinzenz Vietzke <vinz@v1nz.org>"
+msgstr ""
+"Vinzenz Vietzke <vinz@v1nz.org>\n"
+"Christian Kirbach <Christian.Kirbach@googlemail.com>"
 
 #: ../src/pyrenamer_globals.py.in:73
 msgid "Mass file renamer for GNOME"
@@ -660,35 +670,32 @@ msgstr "Massen-Dateien-Umbenenner für GNOME"
 #: ../src/pyrenamer_filefuncs.py:661
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
-msgstr "Fehler beim Umbenennen von %s in %s! -> %s existiert bereits!"
+msgstr "Fehler beim Umbenennen von »%s« nach »%s«! -> »%s« existiert bereits!"
 
 #: ../src/pyrenamer_filefuncs.py:670
 #, python-format
 msgid "Error while renaming %s to %s!"
-msgstr "Fehler beim Umbenennen von %s in %s!"
+msgstr "Fehler beim Umbenennen von »%s« nach »%s«!"
 
 #: ../src/pyrenamer_pattern_editor.py:142
-#, fuzzy
 msgid "Patterns editor"
-msgstr "Muster"
+msgstr "Muster bearbeiten"
 
 #: ../src/pyrenamer_pattern_editor.py:144
-#, fuzzy
 msgid "Image patterns editor"
-msgstr "Muster"
+msgstr "Muster für Bilder bearbeiten"
 
 #: ../src/pyrenamer_pattern_editor.py:146
-#, fuzzy
 msgid "Music patterns editor"
-msgstr "Muster"
+msgstr "Muster für Musik bearbeiten"
 
 #: ../src/pyrenamer_prefs.py:108
 msgid "Select root directory"
-msgstr "Wählen Sie das Ursprungs-Verzeichnis"
+msgstr "Wählen Sie den Ursprungs-Ordner"
 
 #: ../src/pyrenamer_prefs.py:125
 msgid "Select active directory"
-msgstr "Wählen Sie das aktive Verzeichnis"
+msgstr "Wählen Sie den aktiven Ordner"
 
 #: ../src/pyrenamer_prefs.py:147 ../src/pyrenamer_prefs.py:170
 msgid ""
@@ -697,8 +704,8 @@ msgid ""
 "Please select another directory."
 msgstr ""
 "\n"
-"Das Ursprungs-Verzeichnis ist ungültig!\n"
-"Bitte wählen Sie ein anderes Verzeichnis."
+"Der Ursprungs-Ordner ist ungültig!\n"
+"Bitte wählen Sie einen anderen Ordner."
 
 #: ../src/pyrenamer_prefs.py:150 ../src/pyrenamer_prefs.py:174
 msgid ""
@@ -707,17 +714,16 @@ msgid ""
 "Please select another directory."
 msgstr ""
 "\n"
-"Das aktive Verzeichnis ist ungültig!\n"
-"Bitte wählen Sie ein anderes Verzeichnis."
+"Der aktive Ordner ist ungültig!\n"
+"Bitte wählen Sie einen anderen Ordner."
 
 #: ../src/pyrenamer_prefs.py:158 ../src/pyrenamer_prefs.py:183
-#, fuzzy
 msgid ""
 "\n"
 "Please set both directories!"
 msgstr ""
 "\n"
-"Bitte legen Sie beide Verzeichnisse fest!"
+"Bitte legen Sie beide Ordner fest!"
 
 #: ../src/pyrenamer_tooltips.py:39
 #, python-format
@@ -725,13 +731,13 @@ msgid ""
 "<b>Original: </b> %s\n"
 "<b>Renamed: </b> %s"
 msgstr ""
-"<b>Original: </b> %s\n"
-"<b>Umbenannt: </b> %s"
+"<b>Original: </b> »%s«\n"
+"<b>Umbenannt: </b> »%s«"
 
 #: ../src/pyrenamer_tooltips.py:41
 #, python-format
 msgid "<b>Original: </b> %s"
-msgstr "<b>Original: </b> %s"
+msgstr "<b>Original: </b> »%s«"
 
 #: ../src/treefilebrowser.py:389
 msgid "Show hidden files"
