@@ -539,18 +539,19 @@ class pyRenamer:
             # Replace images using patterns
             pattern_ini = self.images_original_pattern.get_text()
             pattern_end = self.images_renamed_pattern.get_text()
-            newname, newpath = renamerfilefuncs.replace_images(name, path, newname, newpath)
             newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
+            newname, newpath = renamerfilefuncs.replace_images(name, path, newname, newpath)
 
         elif self.notebook.get_current_page() == 5 and (pyrenamerglob.have_hachoir or pyrenamerglob.have_eyed3):
             # Replace music using patterns
             pattern_ini = self.music_original_pattern.get_text()
             pattern_end = self.music_renamed_pattern.get_text()
+            newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
             if pyrenamerglob.have_hachoir:
                 newname, newpath = renamerfilefuncs.replace_music_hachoir(name, path, newname, newpath)
             elif pyrenamerglob.have_eyed3:
                 newname, newpath = renamerfilefuncs.replace_music_eyed3(name, path, newname, newpath)
-            newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
+
 
         # Add the kept extension
         if self.keepext and self.notebook.get_current_page() != 3 and (newname and newpath) != '':

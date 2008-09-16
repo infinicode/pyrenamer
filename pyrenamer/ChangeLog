@@ -1,6 +1,14 @@
 2008-09-16  Adolfo González Blázquez  <code@infinicode.org>
 
 	* src/pyrenamer.py: (preview_rename_rows),
+	* src/pyrenamer_filefuncs.py: (replace_music_hachoir),
+	  (replace_music_eyed3), (clean_metadata):
+	Revert previous commit. Instead, clean each tag while is read.
+	Don't use this for image metadata.
+
+2008-09-16  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (preview_rename_rows),
 	* src/pyrenamer_filefuncs.py: (replace_music_eyed3):
 	Do music/images patterns rename before applying general patterns, so
 	cleaning metadata bad characters doesn't remove things like dir/{1}.

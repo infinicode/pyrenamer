@@ -460,9 +460,6 @@ def replace_images(name, path, newname, newpath):
     if cameramodel != None: newname = newname.replace('{cameramodel}', cameramodel)
     else: newname = newname.replace('{cameramodel}', '')
 
-    # Clean filename
-    newname = clean_filename(newname)
-
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -522,13 +519,13 @@ def replace_music_hachoir(name, path, newname, newpath):
     try:
         tags = PyrenamerMetadataMusic(file)
 
-        artist = tags.get_artist()
-        album  = tags.get_album()
-        title  = tags.get_title()
-        track  = tags.get_track_number()
-        trackt = tags.get_track_total()
-        genre  = tags.get_genre()
-        year   = tags.get_year()
+        artist = clean_metadata(tags.get_artist())
+        album  = clean_metadata(tags.get_album())
+        title  = clean_metadata(tags.get_title())
+        track  = clean_metadata(tags.get_track_number())
+        trackt = clean_metadata(tags.get_track_total())
+        genre  = clean_metadata(tags.get_genre())
+        year   = clean_metadata(tags.get_year())
 
         if artist != None: newname = newname.replace('{artist}', artist)
         else: newname = newname.replace('{artist}', '')
@@ -560,9 +557,6 @@ def replace_music_hachoir(name, path, newname, newpath):
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{myear}', '')
 
-    # Clean filename
-    newname = clean_filename(newname)
-
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)
@@ -582,43 +576,43 @@ def replace_music_eyed3(name, path, newname, newpath):
             return '', unicode(newpath)
 
         try:
-            artist = tag.getArtist()
+            artist = clean_metadata(tag.getArtist())
         except Exception, e:
             print "ERROR eyeD3:", e
             artist = None
 
         try:
-            album  = tag.getAlbum()
+            album  = clean_metadata(tag.getAlbum())
         except Exception, e:
             print "ERROR eyeD3:", e
             album = None
 
         try:
-            title  = tag.getTitle()
+            title  = clean_metadata(tag.getTitle())
         except Exception, e:
             print "ERROR eyeD3:", e
             title = None
 
         try:
-            track  = tag.getTrackNum()[0]
+            track  = clean_metadata(tag.getTrackNum()[0])
         except Exception, e:
             print "ERROR eyeD3:", e
             track = None
 
         try:
-            trackt = tag.getTrackNum()[1]
+            trackt = clean_metadata(tag.getTrackNum()[1])
         except Exception, e:
             print "ERROR eyeD3:", e
             trackt = None
 
         try:
-            genre  = tag.getGenre().getName()
+            genre  = clean_metadata(tag.getGenre().getName())
         except Exception, e:
             print "ERROR eyeD3:", e
             genre = None
 
         try:
-            year   = tag.getYear()
+            year   = clean_metadata(tag.getYear())
         except Exception, e:
             print "ERROR eyeD3:", e
             year = None
@@ -651,9 +645,6 @@ def replace_music_eyed3(name, path, newname, newpath):
         newname = newname.replace('{tracktotal}', '')
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{myear}', '')
-
-    # Clean filename
-    newname = clean_filename(newname)
 
     # Returns new name and path
     newpath = get_new_path(newname, path)
@@ -723,19 +714,19 @@ def add_extension(name, path, ext):
     return name, path
 
 
-def clean_filename(name):
+def clean_metadata(tag):
     """ Removes reserver characters from a given filename """
     try:
-        name = name.replace('|', '')
-        name = name.replace('/', '')
-        name = name.replace('\\', '')
-        name = name.replace('?', '')
-        name = name.replace('%', '')
-        name = name.replace('*', '')
-        name = name.replace(':', '')
-        name = name.replace('<', '')
-        name = name.replace('>', '')
-        name = name.replace('"', '')
-        return name
+        tag = tag.replace('|', '')
+        tag = tag.replace('/', '')
+        tag = tag.replace('\\', '')
+        tag = tag.replace('?', '')
+        tag = tag.replace('%', '')
+        tag = tag.replace('*', '')
+        tag = tag.replace(':', '')
+        tag = tag.replace('<', '')
+        tag = tag.replace('>', '')
+        tag = tag.replace('"', '')
+        return tag
     except:
         return None
