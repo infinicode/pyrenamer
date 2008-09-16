@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pyrenamer 0.4\n"
+"Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 13:37+0200\n"
+"POT-Creation-Date: 2008-09-16 13:44+0200\n"
 "PO-Revision-Date: 2008-09-16 12:38+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: Spanish\n"

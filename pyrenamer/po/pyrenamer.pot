@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 12:39+0200\n"
+"POT-Creation-Date: 2008-09-16 13:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -491,31 +491,31 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1295
+#: ../src/pyrenamer.py:1296
 msgid "Select file"
 msgstr ""
 
-#: ../src/pyrenamer.py:1346
+#: ../src/pyrenamer.py:1347
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
+#: ../src/pyrenamer.py:1366 ../src/pyrenamer.py:1425
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1418
+#: ../src/pyrenamer.py:1419
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1515
+#: ../src/pyrenamer.py:1516
 msgid "Ignore errors"
 msgstr ""
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1529
+#: ../src/pyrenamer.py:1530
 msgid "translator-credits"
 msgstr ""
 
@@ -523,12 +523,12 @@ msgstr ""
 msgid "Mass file renamer for GNOME"
 msgstr ""
 
-#: ../src/pyrenamer_filefuncs.py:667
+#: ../src/pyrenamer_filefuncs.py:661
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr ""
 
-#: ../src/pyrenamer_filefuncs.py:676
+#: ../src/pyrenamer_filefuncs.py:670
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr ""
