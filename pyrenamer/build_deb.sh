@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION=0.6.0~beta
+VERSION=`cat configure.ac | grep AC_INIT | grep -o "[0-9]\.[0-9]\.[0-9]"`
 
 if [ ! -d /usr/share/build-essential ]; then
 	echo "Please install build-essential package!"
@@ -22,7 +22,7 @@ sh autogen.sh
 mkdir deb
 cp debian/changelog debian.changelog
 
-dch --newversion $VERSION+svn`date +%G%m%d`-1 "New version from SVN"
+dch --newversion $VERSION+svn`date +%G%m%d%H%S`-1 "New version from SVN"
 dpkg-buildpackage -rfakeroot -us -uc
 
 mv ../pyrenamer_$VERSION+svn* deb/
