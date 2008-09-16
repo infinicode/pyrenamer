@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 12:39+0200\n"
+"POT-Creation-Date: 2008-09-16 13:37+0200\n"
 "PO-Revision-Date: 2008-09-16 12:38+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: Spanish\n"
@@ -633,31 +633,31 @@ msgstr ""
 "No se pudo renombrar el archivo %s a %s\n"
 "%s"
 
-#: ../src/pyrenamer.py:1295
+#: ../src/pyrenamer.py:1296
 msgid "Select file"
 msgstr "Seleccionar fichero"
 
-#: ../src/pyrenamer.py:1346
+#: ../src/pyrenamer.py:1347
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Leyendo el contenido del directorio %s"
 
-#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
+#: ../src/pyrenamer.py:1366 ../src/pyrenamer.py:1425
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directorio: %s - Archivos: %s"
 
-#: ../src/pyrenamer.py:1418
+#: ../src/pyrenamer.py:1419
 #, python-format
 msgid "Adding file %s"
 msgstr "Añadiendo archivo %s"
 
-#: ../src/pyrenamer.py:1515
+#: ../src/pyrenamer.py:1516
 msgid "Ignore errors"
 msgstr "Ignorar errores"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1529
+#: ../src/pyrenamer.py:1530
 msgid "translator-credits"
 msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
@@ -665,12 +665,12 @@ msgstr "Adolfo González Blázquez <code@infinicode.org>"
 msgid "Mass file renamer for GNOME"
 msgstr "Renombramiento masivo de archivos para GNOME"
 
-#: ../src/pyrenamer_filefuncs.py:667
+#: ../src/pyrenamer_filefuncs.py:661
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Error al renombrar %s a %s! -> %s ya existe!"
 
-#: ../src/pyrenamer_filefuncs.py:676
+#: ../src/pyrenamer_filefuncs.py:670
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Error al renombrar %s a %s!"

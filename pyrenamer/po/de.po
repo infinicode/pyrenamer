@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-16 12:39+0200\n"
+"POT-Creation-Date: 2008-09-16 13:37+0200\n"
 "PO-Revision-Date: 2008-09-16 12:39+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -625,31 +625,31 @@ msgstr ""
 "Konnte Datei %s nicht nach %s umbenennen\n"
 "%s"
 
-#: ../src/pyrenamer.py:1295
+#: ../src/pyrenamer.py:1296
 msgid "Select file"
 msgstr "Wähle Datei"
 
-#: ../src/pyrenamer.py:1346
+#: ../src/pyrenamer.py:1347
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Lese Inhalt des Verzeichnisses %s"
 
-#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
+#: ../src/pyrenamer.py:1366 ../src/pyrenamer.py:1425
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Verzeichnis: %s - Dateien: %s"
 
-#: ../src/pyrenamer.py:1418
+#: ../src/pyrenamer.py:1419
 #, python-format
 msgid "Adding file %s"
 msgstr "Füge Datei %s hinzu"
 
-#: ../src/pyrenamer.py:1515
+#: ../src/pyrenamer.py:1516
 msgid "Ignore errors"
 msgstr "Ignorieren Fehler"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1529
+#: ../src/pyrenamer.py:1530
 msgid "translator-credits"
 msgstr "Vinzenz Vietzke <vinz@v1nz.org>"
 
@@ -657,12 +657,12 @@ msgstr "Vinzenz Vietzke <vinz@v1nz.org>"
 msgid "Mass file renamer for GNOME"
 msgstr "Massen-Dateien-Umbenenner für GNOME"
 
-#: ../src/pyrenamer_filefuncs.py:667
+#: ../src/pyrenamer_filefuncs.py:661
 #, python-format
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Fehler beim Umbenennen von %s in %s! -> %s existiert bereits!"
 
-#: ../src/pyrenamer_filefuncs.py:676
+#: ../src/pyrenamer_filefuncs.py:670
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Fehler beim Umbenennen von %s in %s!"
