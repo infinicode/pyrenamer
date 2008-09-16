@@ -2,4 +2,4 @@
 version=3
 
 # Download from infinicode.org
-http://www.infinicode.org/code/pyrenamer/ pyrenamer-(.*)\.tar\.gz
+http://www.infinicode.org/code/pyrenamer/files/ pyrenamer-(.*)\.tar\.gz

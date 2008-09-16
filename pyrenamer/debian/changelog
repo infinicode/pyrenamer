@@ -1,8 +1,18 @@
-pyrenamer (0.6.0~beta+svn20080912-1) intrepid; urgency=low
+pyrenamer (0.6.0-1) unstable; urgency=low
 
-  * New version from SVN
-  * Build-Depends-Indep: removed 'python-eyed3'
-  * Depends: changed 'python-eyed3' to 'python-hachoir-metadata | python-eyed3'
+  * New upstream release:
+  	- Fix crash when a id3 tag is not available or wrong, returning an
+  	  empty filename (LP: #235161)
+	- Fix crash while processing some bad exif tags, catching possible
+	  exceptions (LP: #261832)
+	- Fix crash while starting, fixing src/treefilebrowser.py (LP: #237482)
+  * debian/control:
+  	- Build-Depends-Indep: removed 'python-eyed3'
+  	- Depends: changed 'python-eyed3' to 'python-hachoir-metadata | python-eyed3'
+  	- Bump up Standards-Version to 3.8.0
+  * debian/copyright: updated copyright year
+  * debian/watch: updated
+  * debian/pyrenamer.xpm: new icon file
 
  -- Adolfo González Blázquez <code@infinicode.org>  Fri, 12 Sep 2008 13:26:21 +0200
 
