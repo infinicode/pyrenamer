@@ -652,6 +652,9 @@ def replace_music_eyed3(name, path, newname, newpath):
         newname = newname.replace('{genre}', '')
         newname = newname.replace('{myear}', '')
 
+    # Clean filename
+    newname = clean_filename(newname)
+
     # Returns new name and path
     newpath = get_new_path(newname, path)
     return unicode(newname), unicode(newpath)

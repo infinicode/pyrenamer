@@ -1,5 +1,12 @@
 2008-09-16  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (preview_rename_rows),
+	* src/pyrenamer_filefuncs.py: (replace_music_eyed3):
+	Do music/images patterns rename before applying general patterns, so
+	cleaning metadata bad characters doesn't remove things like dir/{1}.
+
+2008-09-16  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (rename_rows),
 	* src/pyrenamer_filefuncs.py: (rename_file):
 	Display more information on error dialog.
