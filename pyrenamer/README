@@ -17,7 +17,7 @@
   * pygtk (>= 2.6)
   * gconf
   * python-hachoir-metadata (for music renaming)
-    or
+     or
     python-eyed3 (for renaming MP3s)
 
 

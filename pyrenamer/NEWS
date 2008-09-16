@@ -1,16 +1,31 @@
-	* You can save favorite patterns to reuse it
-	* Undo/redo feature
-	* Now you can rename more music formats (ogg, real... those supported by hachoir)
-	* You can keep file extensions untouched
-	* Now you can rename directories
-	* Added some icons to identify file types
-	* Added random number pattern {rand}
-	* Allow renaming files and moving them to another directory
-	* Added refresh option, to reload files and directories
-	* Add option to fix duplicated symbols on filename
-	* Add option to ignore next errors while renaming
-	* Several bug fixes
-	* New icon
+	* Version 0.6 released:
+	* New features:
+		- You can save your favorite patterns to reuse them
+		- Undo/redo feature
+		- Now you can rename more music formats (ogg, real... those supported by hachoir)
+		- You can keep file extensions untouched while renaming
+		- Now you can rename directories
+		- Allow renaming files and moving them to another directory
+		- Added some icons to identify file types
+		- Added random number pattern {rand}
+		- Added refresh option, to reload files and directories
+		- Added autopreview option
+		- Add option to fix duplicated symbols on filename
+		- Add option to ignore next errors while renaming
+		- Better explanations on error dialogs
+		- New icon
+	* Bug fixes:
+		- Files don't appear duplicated anymore
+		- The position of the window is now placed correctly when pyRenamer starts
+		- Fixed bug when trying to display error dialog on bad preferences
+		- Reverse elements on recursive listing, so we rename deeper files and directories first
+		- Fix file capitalization
+		- If root or active dir is hidden, pyrenamer fails no more
+		- Use {myear} for getting an album year in music renaming, instead of {year}
+		- Fix crash when a id3 tag is not available or wrong, returning an empty filename (LP: #235161)
+		- Fix crash while processing some bad exif tags, catching possible exceptions (LP: #261832)
+		- Fix crash while starting, fixing src/treefilebrowser.py (LP: #237482)
+		- Fix crashing when extension or name are empty
 
 
 2008-04-09  Adolfo González Blázquez <code@infinicode.org>
