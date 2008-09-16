@@ -661,20 +661,21 @@ def rename_file(ori, new):
     """ Change filename with the new one """
 
     if ori == new:
-        return True    # We don't need to rename the file, but don't show error message
+        return True, None    # We don't need to rename the file, but don't show error message
 
     if os.path.exists(new):
         print _("Error while renaming %s to %s! -> %s already exists!") % (ori, new, new)
-        return False
+        error = "[Errno 17] %s" % os.strerror(17)
+        return False, error
 
     try:
         os.renames(ori, new)
         print "Renaming %s to %s" % (ori, new)
-        return True
+        return True, None
     except Exception, e:
         print _("Error while renaming %s to %s!") % (ori, new)
         print e
-        return False
+        return False, e
 
 
 def insert_at(name, path, text, pos):

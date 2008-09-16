@@ -1,3 +1,9 @@
+2008-09-16  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (rename_rows),
+	* src/pyrenamer_filefuncs.py: (rename_file):
+	Display more information on error dialog.
+
 2008-09-15  Adolfo González Blázquez  <code@infinicode.org>
 
 	* src/pyrenamer_pattern_editor.py: (create_window):

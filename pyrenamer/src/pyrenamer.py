@@ -445,10 +445,10 @@ class pyRenamer:
     	new = model.get_value(iter, 3)
 
         if new != None and new != '':
-            result = renamerfilefuncs.rename_file(ori, new)
+            result, error = renamerfilefuncs.rename_file(ori, new)
             if not result:
                 if not self.ignore_errors:
-                    self.display_error_dialog(_("Could not rename file %s to %s") % (ori, new))
+                    self.display_error_dialog(_("Could not rename file %s to %s\n%s") % (ori, new, error))
             else:
                 self.undo_manager.add(ori, new)
 
