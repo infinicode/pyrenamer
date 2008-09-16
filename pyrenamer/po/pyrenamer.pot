@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 16:26+0200\n"
+"POT-Creation-Date: 2008-09-16 12:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -476,40 +476,46 @@ msgstr ""
 msgid "Y position of the window"
 msgstr ""
 
-#: ../src/pyrenamer.py:424
+#: ../src/pyrenamer.py:429
 msgid "Original file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:429
+#: ../src/pyrenamer.py:434
 msgid "Renamed file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:444
+#: ../src/pyrenamer.py:451
 #, python-format
-msgid "Could not rename file %s to %s"
+msgid ""
+"Could not rename file %s to %s\n"
+"%s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1282
+#: ../src/pyrenamer.py:1295
 msgid "Select file"
 msgstr ""
 
-#: ../src/pyrenamer.py:1329
+#: ../src/pyrenamer.py:1346
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1348 ../src/pyrenamer.py:1407
+#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1401
+#: ../src/pyrenamer.py:1418
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
+#: ../src/pyrenamer.py:1515
+msgid "Ignore errors"
+msgstr ""
+
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1509
+#: ../src/pyrenamer.py:1529
 msgid "translator-credits"
 msgstr ""
 
@@ -522,9 +528,21 @@ msgstr ""
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr ""
 
-#: ../src/pyrenamer_filefuncs.py:675
+#: ../src/pyrenamer_filefuncs.py:676
 #, python-format
 msgid "Error while renaming %s to %s!"
+msgstr ""
+
+#: ../src/pyrenamer_pattern_editor.py:142
+msgid "Patterns editor"
+msgstr ""
+
+#: ../src/pyrenamer_pattern_editor.py:144
+msgid "Image patterns editor"
+msgstr ""
+
+#: ../src/pyrenamer_pattern_editor.py:146
+msgid "Music patterns editor"
 msgstr ""
 
 #: ../src/pyrenamer_prefs.py:108
@@ -567,6 +585,6 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr ""
 
-#: ../src/treefilebrowser.py:378
+#: ../src/treefilebrowser.py:389
 msgid "Show hidden files"
 msgstr ""

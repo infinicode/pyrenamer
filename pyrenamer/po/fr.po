@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 16:26+0200\n"
-"PO-Revision-Date: 2008-09-15 16:14+0100\n"
-"Last-Translator: Christophe Perez <christophe.perez.moure@gmail.com>\n"
+"POT-Creation-Date: 2008-09-16 12:39+0200\n"
+"PO-Revision-Date: 2008-09-16 12:38+0100\n"
+"Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -617,40 +617,48 @@ msgstr "Position X de la fenêtre"
 msgid "Y position of the window"
 msgstr "Position Y de la fenêtre"
 
-#: ../src/pyrenamer.py:424
+#: ../src/pyrenamer.py:429
 msgid "Original file name"
 msgstr "Nom de fichier original"
 
-#: ../src/pyrenamer.py:429
+#: ../src/pyrenamer.py:434
 msgid "Renamed file name"
 msgstr "Nouveau nom de fichier"
 
-#: ../src/pyrenamer.py:444
+#: ../src/pyrenamer.py:451
 #, python-format
-msgid "Could not rename file %s to %s"
-msgstr "Le fichier n'a pas pu être renommé de %s en %s"
+msgid ""
+"Could not rename file %s to %s\n"
+"%s"
+msgstr ""
+"Le fichier n'a pas pu être renommé de %s en %s\n"
+"%s"
 
-#: ../src/pyrenamer.py:1282
+#: ../src/pyrenamer.py:1295
 msgid "Select file"
 msgstr "Sélectionner fichier"
 
-#: ../src/pyrenamer.py:1329
+#: ../src/pyrenamer.py:1346
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Parcoure le contenu du répertoire %s"
 
-#: ../src/pyrenamer.py:1348 ../src/pyrenamer.py:1407
+#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Répertoires: %s - Fichiers: %s"
 
-#: ../src/pyrenamer.py:1401
+#: ../src/pyrenamer.py:1418
 #, python-format
 msgid "Adding file %s"
 msgstr "Ajout des fichiers %s"
 
+#: ../src/pyrenamer.py:1515
+msgid "Ignore errors"
+msgstr "Ignorer les erreurs"
+
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1509
+#: ../src/pyrenamer.py:1529
 msgid "translator-credits"
 msgstr "Christophe Perez <christophe.perez.moure@gmail.com>"
 
@@ -663,10 +671,22 @@ msgstr "Renommage en masse de fichiers pour GNOME"
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Erreur au renommage %s en %s! -> %s existe déjà!"
 
-#: ../src/pyrenamer_filefuncs.py:675
+#: ../src/pyrenamer_filefuncs.py:676
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Erreur au renommage %s en %s!"
+
+#: ../src/pyrenamer_pattern_editor.py:142
+msgid "Patterns editor"
+msgstr "Éditeur de règles"
+
+#: ../src/pyrenamer_pattern_editor.py:144
+msgid "Image patterns editor"
+msgstr "Éditeur de règles pour les images"
+
+#: ../src/pyrenamer_pattern_editor.py:146
+msgid "Music patterns editor"
+msgstr "Éditeur de règles pour la musique"
 
 #: ../src/pyrenamer_prefs.py:108
 msgid "Select root directory"
@@ -718,6 +738,6 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:378
+#: ../src/treefilebrowser.py:389
 msgid "Show hidden files"
 msgstr "Afficher les fichiers cachés"

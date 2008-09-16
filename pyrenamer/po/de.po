@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 16:26+0200\n"
-"PO-Revision-Date: 2008-09-11 19:40+0100\n"
+"POT-Creation-Date: 2008-09-16 12:39+0200\n"
+"PO-Revision-Date: 2008-09-16 12:39+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -146,6 +146,11 @@ msgid ""
 "____ to _\n"
 "'     ' to  ' '"
 msgstr ""
+"Änderungen:\n"
+"..... nach .\n"
+"----  nach -\n"
+"____ nach _\n"
+"'     ' nach  ' '"
 
 #: ../data/pyrenamer.glade.h:34
 msgid "Delete from"
@@ -603,40 +608,48 @@ msgstr "X-Position des Fensters"
 msgid "Y position of the window"
 msgstr "Y-Position des Fensters"
 
-#: ../src/pyrenamer.py:424
+#: ../src/pyrenamer.py:429
 msgid "Original file name"
 msgstr "Ursprünglicher Dateiname"
 
-#: ../src/pyrenamer.py:429
+#: ../src/pyrenamer.py:434
 msgid "Renamed file name"
 msgstr "Umbenannter Dateiname"
 
-#: ../src/pyrenamer.py:444
+#: ../src/pyrenamer.py:451
 #, python-format
-msgid "Could not rename file %s to %s"
-msgstr "Konnte Datei %s nicht nach %s umbenennen"
+msgid ""
+"Could not rename file %s to %s\n"
+"%s"
+msgstr ""
+"Konnte Datei %s nicht nach %s umbenennen\n"
+"%s"
 
-#: ../src/pyrenamer.py:1282
+#: ../src/pyrenamer.py:1295
 msgid "Select file"
 msgstr "Wähle Datei"
 
-#: ../src/pyrenamer.py:1329
+#: ../src/pyrenamer.py:1346
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Lese Inhalt des Verzeichnisses %s"
 
-#: ../src/pyrenamer.py:1348 ../src/pyrenamer.py:1407
+#: ../src/pyrenamer.py:1365 ../src/pyrenamer.py:1424
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Verzeichnis: %s - Dateien: %s"
 
-#: ../src/pyrenamer.py:1401
+#: ../src/pyrenamer.py:1418
 #, python-format
 msgid "Adding file %s"
 msgstr "Füge Datei %s hinzu"
 
+#: ../src/pyrenamer.py:1515
+msgid "Ignore errors"
+msgstr "Ignorieren Fehler"
+
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1509
+#: ../src/pyrenamer.py:1529
 msgid "translator-credits"
 msgstr "Vinzenz Vietzke <vinz@v1nz.org>"
 
@@ -649,10 +662,25 @@ msgstr "Massen-Dateien-Umbenenner für GNOME"
 msgid "Error while renaming %s to %s! -> %s already exists!"
 msgstr "Fehler beim Umbenennen von %s in %s! -> %s existiert bereits!"
 
-#: ../src/pyrenamer_filefuncs.py:675
+#: ../src/pyrenamer_filefuncs.py:676
 #, python-format
 msgid "Error while renaming %s to %s!"
 msgstr "Fehler beim Umbenennen von %s in %s!"
+
+#: ../src/pyrenamer_pattern_editor.py:142
+#, fuzzy
+msgid "Patterns editor"
+msgstr "Muster"
+
+#: ../src/pyrenamer_pattern_editor.py:144
+#, fuzzy
+msgid "Image patterns editor"
+msgstr "Muster"
+
+#: ../src/pyrenamer_pattern_editor.py:146
+#, fuzzy
+msgid "Music patterns editor"
+msgstr "Muster"
 
 #: ../src/pyrenamer_prefs.py:108
 msgid "Select root directory"
@@ -705,7 +733,7 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:378
+#: ../src/treefilebrowser.py:389
 msgid "Show hidden files"
 msgstr "Versteckte Dateien anzeigen"
 
