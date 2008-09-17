@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-17 12:49+0200\n"
+"POT-Creation-Date: 2008-09-17 14:10+0200\n"
 "PO-Revision-Date: 2008-09-16 22:35+0200\n"
 "Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -616,15 +616,15 @@ msgstr "X-Position des Fensters"
 msgid "Y position of the window"
 msgstr "Y-Position des Fensters"
 
-#: ../src/pyrenamer.py:429
+#: ../src/pyrenamer.py:430
 msgid "Original file name"
 msgstr "Ursprünglicher Dateiname"
 
-#: ../src/pyrenamer.py:434
+#: ../src/pyrenamer.py:435
 msgid "Renamed file name"
 msgstr "Umbenannter Dateiname"
 
-#: ../src/pyrenamer.py:451
+#: ../src/pyrenamer.py:452
 #, python-format
 msgid ""
 "Could not rename file %s to %s\n"
@@ -633,31 +633,31 @@ msgstr ""
 "Konnte Datei »%s« nicht nach »%s« umbenennen\n"
 "%s"
 
-#: ../src/pyrenamer.py:1311
+#: ../src/pyrenamer.py:1325
 msgid "Select file"
 msgstr "Wähle Datei"
 
-#: ../src/pyrenamer.py:1362
+#: ../src/pyrenamer.py:1376
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Lese Inhalt des Ordners »%s«"
 
-#: ../src/pyrenamer.py:1381 ../src/pyrenamer.py:1440
+#: ../src/pyrenamer.py:1395 ../src/pyrenamer.py:1454
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Ordner: »%s« - Dateien: %s"
 
-#: ../src/pyrenamer.py:1434
+#: ../src/pyrenamer.py:1448
 #, python-format
 msgid "Adding file %s"
 msgstr "Füge Datei »%s« hinzu"
 
-#: ../src/pyrenamer.py:1531
+#: ../src/pyrenamer.py:1545
 msgid "Ignore errors"
 msgstr "Ignorieren Fehler"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1545
+#: ../src/pyrenamer.py:1559
 msgid "translator-credits"
 msgstr ""
 "Vinzenz Vietzke <vinz@v1nz.org>\n"
@@ -677,15 +677,15 @@ msgstr "Fehler beim Umbenennen von »%s« nach »%s«! -> »%s« existiert berei
 msgid "Error while renaming %s to %s!"
 msgstr "Fehler beim Umbenennen von »%s« nach »%s«!"
 
-#: ../src/pyrenamer_pattern_editor.py:142
+#: ../src/pyrenamer_pattern_editor.py:152
 msgid "Patterns editor"
 msgstr "Muster bearbeiten"
 
-#: ../src/pyrenamer_pattern_editor.py:144
+#: ../src/pyrenamer_pattern_editor.py:154
 msgid "Image patterns editor"
 msgstr "Muster für Bilder bearbeiten"
 
-#: ../src/pyrenamer_pattern_editor.py:146
+#: ../src/pyrenamer_pattern_editor.py:156
 msgid "Music patterns editor"
 msgstr "Muster für Musik bearbeiten"
 

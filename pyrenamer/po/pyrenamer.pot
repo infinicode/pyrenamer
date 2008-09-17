@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-17 12:49+0200\n"
+"POT-Creation-Date: 2008-09-17 14:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -476,46 +476,46 @@ msgstr ""
 msgid "Y position of the window"
 msgstr ""
 
-#: ../src/pyrenamer.py:429
+#: ../src/pyrenamer.py:430
 msgid "Original file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:434
+#: ../src/pyrenamer.py:435
 msgid "Renamed file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:451
+#: ../src/pyrenamer.py:452
 #, python-format
 msgid ""
 "Could not rename file %s to %s\n"
 "%s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1311
+#: ../src/pyrenamer.py:1325
 msgid "Select file"
 msgstr ""
 
-#: ../src/pyrenamer.py:1362
+#: ../src/pyrenamer.py:1376
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1381 ../src/pyrenamer.py:1440
+#: ../src/pyrenamer.py:1395 ../src/pyrenamer.py:1454
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1434
+#: ../src/pyrenamer.py:1448
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1531
+#: ../src/pyrenamer.py:1545
 msgid "Ignore errors"
 msgstr ""
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1545
+#: ../src/pyrenamer.py:1559
 msgid "translator-credits"
 msgstr ""
 
@@ -533,15 +533,15 @@ msgstr ""
 msgid "Error while renaming %s to %s!"
 msgstr ""
 
-#: ../src/pyrenamer_pattern_editor.py:142
+#: ../src/pyrenamer_pattern_editor.py:152
 msgid "Patterns editor"
 msgstr ""
 
-#: ../src/pyrenamer_pattern_editor.py:144
+#: ../src/pyrenamer_pattern_editor.py:154
 msgid "Image patterns editor"
 msgstr ""
 
-#: ../src/pyrenamer_pattern_editor.py:146
+#: ../src/pyrenamer_pattern_editor.py:156
 msgid "Music patterns editor"
 msgstr ""
 
