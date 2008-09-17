@@ -1,3 +1,5 @@
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* Version 0.6 released:
 	* New features:
 		- You can save your favorite patterns to reuse them
@@ -29,7 +31,7 @@
 		- Fixes on manual renaming: cleaning correctly and changing file with keyboard.
 
 
-2008-04-09  Adolfo González Blázquez <code@infinicode.org>
+2008-04-09  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.5.0 Released
 	* Added option to read new file names from a text file
@@ -38,7 +40,8 @@
 	* Czech language accents replacement (thanks to Jan Virt)
 	* Fixed pygtk imports (add pygtk.require())
 
-2007-08-13  Adolfo González Blázquez <code@infinicode.org>
+
+2007-08-13  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.4.1 Released
 	* Check if directories set on Preferences are correct
@@ -46,7 +49,8 @@
 	* Fix bug reading preferences from gconf
 	* Activate Rename button on selection using keys
 
-2007-08-08  Adolfo González Blázquez <code@infinicode.org>
+
+2007-08-08  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.4 Released
 	* Now you can start pyRenamer in the directory that you want
@@ -61,7 +65,7 @@
 	* Bug fixes
 
 
-2007-07-30  Adolfo González Blázquez <code@infinicode.org>
+2007-07-30  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.3 Released
 	* Added internationalization support (english and spanish by now)
@@ -71,7 +75,7 @@
 	* Bugfixes
 
 
-2007-07-23  Adolfo González Blázquez <code@infinicode.org>
+2007-07-23  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.2 Released
 	* Added support for renaming images using their EXIF tags
@@ -82,6 +86,6 @@
 	* Fixed several bugs
 
 
-2007-06-14  Adolfo González Blázquez <code@infinicode.org>
+2007-06-14  Adolfo González Blázquez  <code@infinicode.org>
 
 	* Version 0.1 Released
