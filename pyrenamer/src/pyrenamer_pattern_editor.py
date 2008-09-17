@@ -55,16 +55,26 @@ class PyrenamerPatternEditor:
 
         patterns = []
 
+        default_patterns = {
+            "main_ori": "{X}\n",
+            "main_dest": "{1}\n",
+            "images_ori": "{X}\n",
+            "images_dest": "{1}\n" \
+                           "{imageyear}{imagemonth}{imageday}_{imagetime}_{1}\n" \
+                           "{imagewidth}x{imageheight}_{1}\n",
+            "music_ori": "{X}\n",
+            "music_dest": "{1}\n" \
+                          "{track} - {artist} ({album}) - {title}\n" \
+                          "{track} - {artist}\n",
+                            }
+
         config_file = os.path.join(self.config_dir, selector)
 
         # If the config file doesn't exist, create it with default options
         if not os.path.isfile(config_file):
             f = open(config_file, 'w')
             try:
-                if "ori" in selector:
-                    f.write('{X}\n')
-                else:
-                    f.write('{1}\n')
+                f.write(default_patterns[selector])
             finally:
                 f.close()
 

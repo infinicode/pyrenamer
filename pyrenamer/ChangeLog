@@ -1,5 +1,10 @@
 2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_pattern_editor.py: (get_patterns):
+	Added better default patterns for music and images.
+
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (__init)), (enable_rename_and_clean),
 	  (on_manual_key_press_event):
 	Fix enabling/disabling rename button.
