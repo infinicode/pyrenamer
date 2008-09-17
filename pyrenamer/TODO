@@ -1,10 +1,11 @@
 TODO
 
 	* Reorder elements in treeview
+	* Edit filename directly on treeview
 	* Drop gconf for python's ConfigParser
 	* Add support for 1 char/number pattern, or to define just a number
 	  of chars, something like char{3} or {#4} for 4 numbers.
-	* Edit filename directly on treeview
+	* Add more patterns
 
 
 
