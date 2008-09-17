@@ -14,7 +14,7 @@ pyrenamer (0.6.0-1) unstable; urgency=low
   * debian/watch: updated
   * debian/pyrenamer.xpm: new icon file
 
- -- Adolfo González Blázquez <code@infinicode.org>  Fri, 12 Sep 2008 13:26:21 +0200
+ -- Adolfo González Blázquez <code@infinicode.org>  Wed, 17 Sep 2008 14:22:21 +0200
 
 pyrenamer (0.5.0-1) unstable; urgency=medium
 
