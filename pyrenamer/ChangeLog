@@ -1,5 +1,10 @@
 2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer_filefuncs.py: (replace_duplicated):
+	Remove stupid print statement.
+
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (preview_rename_rows):
 	Revert change that prevented to use several substitutions
 	(tab 2) at the same time.

@@ -269,7 +269,7 @@ def replace_accents(name, path):
 
 def replace_duplicated(name, path):
     """ Remove duplicated symbols """
-    print name
+
     name = unicode(name)
     path = unicode(path)
 
