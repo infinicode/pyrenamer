@@ -1,5 +1,11 @@
 2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (preview_rename_rows):
+	Fix another stupid bug introduced by me, that prevented
+	substitutions to work when fix duplicated was not selected.
+
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer_filefuncs.py: (replace_duplicated):
 	Remove stupid print statement.
 

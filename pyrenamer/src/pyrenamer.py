@@ -481,15 +481,15 @@ class pyRenamer:
             newname, newpath = renamerfilefuncs.rename_using_patterns(newname, newpath, pattern_ini, pattern_end, self.count)
 
         elif self.notebook.get_current_page() == 1:
+            # Replace spaces
+            if self.subs_spaces.get_active() and newname != None:
+                newname, newpath = renamerfilefuncs.replace_spaces(newname, newpath, self.subs_spaces_combo.get_active())
+
             # Replace orig with new
             if self.subs_replace.get_active() and newname != None:
                 orig = self.subs_replace_orig.get_text()
                 new = self.subs_replace_new.get_text()
                 newname, newpath = renamerfilefuncs.replace_with(newname, newpath, orig, new)
-
-            # Replace spaces
-            if self.subs_spaces.get_active() and newname != None:
-                newname, newpath = renamerfilefuncs.replace_spaces(newname, newpath, self.subs_spaces_combo.get_active())
 
             # Replace capitalization
             if self.subs_capitalization.get_active() and newname != None:
@@ -502,10 +502,6 @@ class pyRenamer:
             # Fix duplicated symbols
             if self.subs_duplicated.get_active() and newname != None:
                 newname, newpath = renamerfilefuncs.replace_duplicated(newname, newpath)
-
-            else:
-                newname = None
-                newpath = None
 
         elif self.notebook.get_current_page() == 2:
             # Insert / delete
