@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-17 00:04+0200\n"
+"POT-Creation-Date: 2008-09-17 12:49+0200\n"
 "PO-Revision-Date: 2008-09-16 12:38+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: French\n"
@@ -634,31 +634,31 @@ msgstr ""
 "Le fichier n'a pas pu être renommé de %s en %s\n"
 "%s"
 
-#: ../src/pyrenamer.py:1296
+#: ../src/pyrenamer.py:1311
 msgid "Select file"
 msgstr "Sélectionner fichier"
 
-#: ../src/pyrenamer.py:1347
+#: ../src/pyrenamer.py:1362
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Parcoure le contenu du répertoire %s"
 
-#: ../src/pyrenamer.py:1366 ../src/pyrenamer.py:1425
+#: ../src/pyrenamer.py:1381 ../src/pyrenamer.py:1440
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Répertoires: %s - Fichiers: %s"
 
-#: ../src/pyrenamer.py:1419
+#: ../src/pyrenamer.py:1434
 #, python-format
 msgid "Adding file %s"
 msgstr "Ajout des fichiers %s"
 
-#: ../src/pyrenamer.py:1516
+#: ../src/pyrenamer.py:1531
 msgid "Ignore errors"
 msgstr "Ignorer les erreurs"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1530
+#: ../src/pyrenamer.py:1545
 msgid "translator-credits"
 msgstr "Christophe Perez <christophe.perez.moure@gmail.com>"
 
