@@ -659,6 +659,7 @@ class pyRenamer:
 
         self.undo_manager.clean()
         self.menu_undo.set_sensitive(True)
+        self.menu_redo.set_sensitive(False)
         self.file_selected_model.foreach(self.rename_rows, None)
         self.dir_reload_current()
         self.clear_button.set_sensitive(False)
