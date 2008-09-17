@@ -1260,6 +1260,7 @@ class pyRenamer:
         """ Key pressed on manual rename entry """
 
         if self.notebook.get_current_page() == 3:
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
             if event.keyval == gtk.keysyms.Page_Up:
                 try:
                     self.preview_selected_row()
@@ -1303,6 +1304,7 @@ class pyRenamer:
                     self.on_selected_files_cursor_changed(self.selected_files)
                 except:
                     pass
+            self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
 
 
     def on_menu_load_names_from_file_activate(self, widget):

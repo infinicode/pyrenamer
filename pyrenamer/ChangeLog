@@ -1,5 +1,10 @@
 2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_manual_key_press_event):
+	Another fix for manual renaming using keys: set correct single selection mode.
+
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (on_rename_button_clicked):
 	Disable redo menu option when you've just renamed.
 
