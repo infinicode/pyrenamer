@@ -268,8 +268,6 @@ class pyRenamer:
                     "on_delete_from_changed": self.on_delete_from_changed,
                     "on_delete_to_changed": self.on_delete_to_changed,
 
-                    "on_manual_changed": self.on_manual_changed,
-
                     "on_images_original_pattern_changed": self.on_images_original_pattern_changed,
                     "on_images_renamed_pattern_changed": self.on_images_renamed_pattern_changed,
                     "on_images_ori_save_clicked": self.on_images_ori_save_clicked,
@@ -339,6 +337,9 @@ class pyRenamer:
         # Add dirs and files tomain window
         self.main_hpaned.pack1(file_browser_scrolled, resize=True, shrink=False)
         self.main_hpaned.pack2(selected_files_scrolled, resize=True, shrink=False)
+
+        # Add signal for manual entry changed
+        self.manual_signal = self.manual.connect("changed", self.on_manual_changed)
 
         # Create model and add dirs
         self.create_model()
@@ -601,13 +602,17 @@ class pyRenamer:
     def enable_rename_and_clean(self, model, path, iter):
         """ Check if the rename button and menu should be enabled """
         val = model.get_value(iter, 2) != None
+        if path[0] > 0:
+            prev = self.rename_button.get_property("sensitive")
+        else:
+            prev = False
 
-        self.rename_button.set_sensitive(val)
-        self.menu_rename.set_sensitive(val)
-        self.clear_button.set_sensitive(val)
-        self.menu_clear_preview.set_sensitive(val)
+        self.rename_button.set_sensitive(val or prev)
+        self.menu_rename.set_sensitive(val or prev)
+        self.clear_button.set_sensitive(val or prev)
+        self.menu_clear_preview.set_sensitive(val or prev)
 
-        return val
+        return False
 
 
 #---------------------------------------------------------------------------------------
@@ -1272,8 +1277,10 @@ class pyRenamer:
                     iter = model.get_iter(path)
                     name = model.get_value(iter,0)
                     self.selected_files.get_selection().select_iter(iter)
+                    self.manual.handler_block(self.manual_signal)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.manual.handler_unblock(self.manual_signal)
                 except:
                     pass
             elif event.keyval == gtk.keysyms.Page_Down:
@@ -1286,8 +1293,10 @@ class pyRenamer:
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
                     self.selected_files.get_selection().select_iter(iter)
+                    self.manual.handler_block(self.manual_signal)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.manual.handler_unblock(self.manual_signal)
                 except:
                     pass
             elif event.keyval == gtk.keysyms.Return:
@@ -1300,8 +1309,10 @@ class pyRenamer:
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
                     self.selected_files.get_selection().select_iter(iter)
+                    self.manual.handler_block(self.manual_signal)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
+                    self.manual.handler_unblock(self.manual_signal)
                 except:
                     pass
             self.selected_files.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
