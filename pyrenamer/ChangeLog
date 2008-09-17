@@ -1,5 +1,10 @@
 2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (on_manual_key_press_event), (on_clean_button_clicked):
+	Fix problems on manual rename: cleaning and changing file with keys.
+
+2008-09-17  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (preview_rename_rows):
 	Fix another stupid bug introduced by me, that prevented
 	substitutions to work when fix duplicated was not selected.

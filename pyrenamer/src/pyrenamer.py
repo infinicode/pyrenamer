@@ -696,6 +696,20 @@ class pyRenamer:
 
         self.selected_files.columns_autosize()
 
+        if self.notebook.get_current_page() == 3:
+            # Manual rename
+            try:
+                self.selected_files.get_selection().set_mode(gtk.SELECTION_SINGLE)
+                model, iter = self.selected_files.get_selection().get_selected()
+                name = model.get_value(iter,0)
+                newname = model.get_value(iter,2)
+                if newname != None:
+                    self.manual.set_text(newname)
+                else:
+                    self.manual.set_text(name)
+            except:
+                pass
+
 
     def on_main_hpaned_notify(self, pane, gparamspec):
         if gparamspec.name == 'position':
@@ -1248,6 +1262,7 @@ class pyRenamer:
             if event.keyval == gtk.keysyms.Page_Up:
                 try:
                     self.preview_selected_row()
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                     model, iter = self.selected_files.get_selection().get_selected()
                     path = model.get_path(iter)
                     path = path[0]-1
@@ -1257,32 +1272,36 @@ class pyRenamer:
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
-                    self.file_selected_model.foreach(self.enable_rename_and_clean)
-                except: pass
+                except:
+                    pass
             elif event.keyval == gtk.keysyms.Page_Down:
                 try:
                     self.preview_selected_row()
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                     model, iter = self.selected_files.get_selection().get_selected()
                     iter = model.iter_next(iter)
+                    if iter == None: return
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
-                    self.file_selected_model.foreach(self.enable_rename_and_clean)
-                except: pass
+                except:
+                    pass
             elif event.keyval == gtk.keysyms.Return:
                 try:
                     self.preview_selected_row()
+                    self.file_selected_model.foreach(self.enable_rename_and_clean)
                     model, iter = self.selected_files.get_selection().get_selected()
                     iter = model.iter_next(iter)
+                    if iter == None: return
                     path = model.get_path(iter)
                     name = model.get_value(iter,0)
                     self.selected_files.get_selection().select_iter(iter)
                     self.selected_files.scroll_to_cell(path)
                     self.on_selected_files_cursor_changed(self.selected_files)
-                    self.file_selected_model.foreach(self.enable_rename_and_clean)
-                except: pass
+                except:
+                    pass
 
 
     def on_menu_load_names_from_file_activate(self, widget):
