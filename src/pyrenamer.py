@@ -49,6 +49,7 @@ import pyrenamer_prefs
 import pyrenamer_pattern_editor
 import pyrenamer_menu_cb
 import pyrenamer_undo
+import pyrenamer_debug as dbg
 
 import threading
 from os import path as ospath
@@ -1398,6 +1399,8 @@ class pyRenamer:
     def populate_get_listing(self, dir, pattern, recursive):
         """ Get the file listing using the utilities on renamerfilefuncs """
 
+        dbg.print_dbg("populate_get_listing: %s" % self.filedir)
+
         # Add files from the current directory (and subdirs if needed)
         if recursive:
             self.listing = renamerfilefuncs.get_file_listing_recursive(dir, self.filedir, pattern)
@@ -1410,6 +1413,8 @@ class pyRenamer:
     def populate_get_listing_end(self):
         """ The listing thread stuff is over, so now add things to the view """
 
+        dbg.print_dbg("populate_get_listing_end: %s" % self.filedir)
+
         if renamerfilefuncs.get_stop():
             self.populate_stop()
         else:
@@ -1421,6 +1426,8 @@ class pyRenamer:
     	""" Get the file listing using the utilities on renamerfilefuncs.
     	Then add it to the model while updating the gui """
 
+        dbg.print_dbg("populate_selected_files: start: %s" % dir)
+
         pattern = self.file_pattern.get_text()
         recursive = self.add_recursive.get_active()
 
@@ -1429,20 +1436,29 @@ class pyRenamer:
         self.listing_thread = threading.Thread(target=lambda:self.populate_get_listing(dir, pattern, recursive))
         self.listing_thread.start()
 
+        dbg.print_dbg("populate_selected_files: stop: %s" % dir)
+
         return
 
 
     def populate_add_to_view(self, listing):
         """ Add files to the treeview """
 
+        dbg.print_dbg("populate_add_to_view: start")
+
         # Add items to treeview
         for elem in listing:
+
+            dbg.print_dbg("populate_add_to_view: adding: %s" % elem)
+
             iter = self.file_selected_model.insert_before(None, None)
 
             self.selected_files.set_model(None)
             self.file_selected_model.set_value(iter, 0, elem[0])
             self.file_selected_model.set_value(iter, 1, elem[1])
             self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
+
+            dbg.print_dbg("populate_add_to_view: pulse: %s" % elem)
 
             self.progressbar.pulse()
             self.statusbar.push(self.statusbar_context, _("Adding file %s") % elem[1])
@@ -1454,6 +1470,9 @@ class pyRenamer:
         self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.active_dir, self.count))
         self.stop_button.hide()
         self.count = 0
+
+        dbg.print_dbg("populate_add_to_view: stop")
+
         yield False
 
 

@@ -29,6 +29,7 @@ import time
 import random
 
 import pyrenamer_globals
+import pyrenamer_debug as dbg
 
 import EXIF
 
@@ -46,15 +47,18 @@ def set_stop(stop):
     """ Set stop var to see if ther's no need to keep reading files """
     global STOP
     STOP = stop
+    dbg.print_dbg("set_stop: %s" % STOP)
 
 
 def get_stop():
+    dbg.print_dbg("get_stop: %s" % STOP)
     return STOP
 
 
 def escape_pattern(pattern):
     """ Escape special chars on patterns, so glob doesn't get confused """
     pattern = pattern.replace('[', '[[]')
+    dbg.print_dbg("espace_pattern: %s" % pattern)
     return pattern
 
 
@@ -65,12 +69,17 @@ def get_file_listing(dir, mode, pattern=None):
     filelist = []
 
     if  pattern == (None or ''):
+        dbg.print_dbg("get_file_listing: start dircache.listdir: %s" % dir)
         listaux = dircache.listdir(dir)
+        dbg.print_dbg("get_file_listing: stop dircache.listdir: %s" % dir)
     else:
         if dir != '/': dir += '/'
         dir = escape_pattern(dir + pattern)
+        dbg.print_dbg("get_file_listing: start glob.glob: %s" % dir)
         listaux = glob.glob(dir)
+        dbg.print_dbg("get_file_listing: stop glob.glob: %s" % dir)
 
+    dbg.print_dbg("get_file_listing: start adding elements to list")
     listaux.sort(key=str.lower)
     for elem in listaux:
         if STOP: return filelist
@@ -78,18 +87,23 @@ def get_file_listing(dir, mode, pattern=None):
             # Get files
             if not os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+                dbg.print_dbg("get_file_listing: file: adding %s" % elem)
         elif mode == 1:
             # Get directories
             if os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+                dbg.print_dbg("get_file_listing: dirs: adding %s" % elem)
         elif mode == 2:
             # Get files and directories
             filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+            dbg.print_dbg("get_file_listing: files/dirs: adding %s" % elem)
         else:
             # Get files
             if not os.path.isdir(os.path.join(dir,elem)):
                 filelist.append([os.path.basename(elem),os.path.join(dir,elem)])
+                dbg.print_dbg("get_file_listing: elsefiles: adding %s" % elem)
 
+    dbg.print_dbg("get_file_listing: stop adding elements to list")
     return filelist
 
 
@@ -100,20 +114,28 @@ def get_file_listing_recursive(dir, mode, pattern=None):
     filelist = []
 
     # Get subdirs
+    dbg.print_dbg("get_file_listing_recursive: start: %s" % dir)
     for root, dirs, files in os.walk(dir, topdown=False):
         if STOP: return filelist
         for directory in dirs:
             if STOP: return filelist
+            dbg.print_dbg("get_file_listing_recursive: start get_file_list: %s" % dir)
             elem = get_file_listing(os.path.join(root, directory), mode, pattern)
+            dbg.print_dbg("get_file_listing_recursive: stop get_file_list: %s" % dir)
             for i in elem:
                 if STOP: return filelist
                 filelist.append(i)
+                dbg.print_dbg("get_file_listing_recursive: adding: %s" % i)
 
     # Get root directory files
+    dbg.print_dbg("get_file_listing_recursive: start root get_file_listing: %s" % dir)
     list = get_file_listing(dir, mode, pattern)
+    dbg.print_dbg("get_file_listing_recursive: stop root get_file_listing: %s" % dir)
     for i in list:
         filelist.append(i)
+        dbg.print_dbg("get_file_listing_recursive: root adding: %s" % i)
 
+    dbg.print_dbg("get_file_listing_recursive: stop: %s" % dir)
     return filelist
 
 
@@ -123,12 +145,17 @@ def get_dir_listing(dir):
 
     dirlist = []
 
+    dbg.print_dbg("get_dir_listing: start: %s" % dir)
+    dbg.print_dbg("get_dir_listing: start dircache.listdir: %s" % dir)
     listaux = dircache.listdir(dir)
+    dbg.print_dbg("get_dir_listing: stop dircache.listdir: %s" % dir)
     listaux.sort(key=str.lower)
     for elem in listaux:
         if STOP: return dirlist
         if os.path.isdir(os.path.join(dir,elem)): dirlist.append([os.path.basename(elem),os.path.join(dir,elem)])
+        dbg.print_dbg("get_dir_listing: adding  %s" % elem)
 
+    dbg.print_dbg("get_dir_listing: stop: %s" % dir)
     return dirlist
 
 

@@ -10,6 +10,7 @@ pyrenamerdir = $(pythondir)/pyrenamer
 pyrenamer_PYTHON =				\
 	__init__.py					\
 	pyrenamer.py				\
+	pyrenamer_debug.py			\
 	pyrenamer_filefuncs.py		\
 	pyrenamer_menu_cb.py		\
 	pyrenamer_metadata.py		\
