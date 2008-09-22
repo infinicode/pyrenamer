@@ -8,7 +8,7 @@ pyrenamer (0.6.0-1) unstable; urgency=low
     - Fix crash while starting, fixing src/treefilebrowser.py (LP: #237482)
   * debian/control:
     - Build-Depends-Indep: removed 'python-eyed3'
-    - Depends: changed 'python-eyed3' to 'python-hachoir-metadata | python-eyed3'
+    - Depends: changed 'python-eyed3' to 'python-hachoir-metadata|python-eyed3'
     - Bump up Standards-Version to 3.8.0
     - Descrition: changed 'Mass' to 'mass'
   * debian/copyright: updated copyright year
