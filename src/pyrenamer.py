@@ -1446,6 +1446,8 @@ class pyRenamer:
 
         dbg.print_dbg("populate_add_to_view: start")
 
+        self.selected_files.set_model(None)
+
         # Add items to treeview
         for elem in listing:
 
@@ -1453,7 +1455,7 @@ class pyRenamer:
 
             iter = self.file_selected_model.insert_before(None, None)
 
-            self.selected_files.set_model(None)
+            #self.selected_files.set_model(None)
             self.file_selected_model.set_value(iter, 0, elem[0])
             self.file_selected_model.set_value(iter, 1, elem[1])
             self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
