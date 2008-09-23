@@ -73,7 +73,7 @@ def parse_commandline_options():
 			else:
 				return a, None
 		elif o in ("-d", "--debug"):
-			debug = True
+			debug = False
 
 	if len(args) > 0:
 		return None, args[0], debug
