@@ -423,7 +423,7 @@ class pyRenamer:
     def create_model(self):
     	""" Create the model to hold the needed data
         Model = [file, /path/to/file, newfilename, /path/to/newfilename] """
-        self.file_selected_model = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gtk.gdk.Pixbuf)
+        self.file_selected_model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gtk.gdk.Pixbuf)
         self.selected_files.set_model(self.file_selected_model)
 
         renderer0 = gtk.CellRendererPixbuf()
@@ -1457,12 +1457,14 @@ class pyRenamer:
 
             if self.debug: dbg.print_dbg("populate_add_to_view: adding: %s" % elem)
 
-            iter = self.file_selected_model.insert_before(None, None)
+            #iter = self.file_selected_model.insert_before(None, None)
+            row = [elem[0], elem[1], None, None, self.get_icon(elem[1])]
+            self.file_selected_model.append(row)
 
             #self.selected_files.set_model(None)
-            self.file_selected_model.set_value(iter, 0, elem[0])
-            self.file_selected_model.set_value(iter, 1, elem[1])
-            self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
+            #self.file_selected_model.set_value(iter, 0, elem[0])
+            #self.file_selected_model.set_value(iter, 1, elem[1])
+            #self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
 
             if self.debug: dbg.print_dbg("populate_add_to_view: pulse: %s" % elem)
 
