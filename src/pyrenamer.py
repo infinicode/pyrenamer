@@ -77,7 +77,10 @@ class pyRenamer:
         self.listing = []
         self.listing_thread = None
         self.ignore_errors = False
+
+        # Enable/disable debug
         self.debug = debug
+        dbg.set_dbg(debug)
 
         # Patterns saving variables
         self.patterns = {}

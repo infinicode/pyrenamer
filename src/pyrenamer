@@ -62,7 +62,7 @@ def parse_commandline_options():
 		command_unknown(sys.argv[1])
 		sys.exit(2)
 
-	debug = False
+	debug = True
 
 	for o, a in opts:
 		if o in ("-h", "--help"):
