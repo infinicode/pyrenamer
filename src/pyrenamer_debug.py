@@ -22,6 +22,12 @@ If you find any bugs or have any suggestions email: code@infinicode.org
 
 from time import localtime, strftime
 
+DEBUG = False
+
+def set_dbg(debug):
+    global DEBUG
+    DEBUG = debug
+
 def print_dbg(message):
     time = strftime("%H:%M:%S", localtime())
     print "[%s] %s" % (time, message)

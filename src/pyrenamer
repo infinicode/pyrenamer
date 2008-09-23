@@ -7,12 +7,12 @@ Copyright (C) 2006-07 Adolfo González Blázquez <code@infinicode.org>
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
 published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version. 
+of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details. 
+GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
@@ -46,6 +46,7 @@ def command_usage():
 	print "\n%s options:" % os.path.basename(sys.argv[0])
 	print "	-?, --help		Displays this dialog"
 	print "	-r, --root root_dir	Start pyRenamer with a new root dir"
+	print "	-d, --debug		Show debug information"
 	sys.exit(0)
 
 def command_unknown(cmd):
@@ -55,12 +56,14 @@ def command_unknown(cmd):
 def parse_commandline_options():
 	""" Parses options passed by command line and acts """
 	try:
-	    opts, args = getopt.getopt(sys.argv[1:],"hr:", ["help","root="])
+	    opts, args = getopt.getopt(sys.argv[1:],"hr:d", ["help","root=", "debug"])
 	except Exception, e:
 		print e
 		command_unknown(sys.argv[1])
 		sys.exit(2)
-	
+
+	debug = False
+
 	for o, a in opts:
 		if o in ("-h", "--help"):
 			command_usage()
@@ -69,21 +72,23 @@ def parse_commandline_options():
 				return a, args[0]
 			else:
 				return a, None
-	
+		elif o in ("-d", "--debug"):
+			debug = True
+
 	if len(args) > 0:
-		return None, args[0]
-	else: 
-		return None, None
+		return None, args[0], debug
+	else:
+		return None, None, debug
 
 
 def main():
 
-	rootdir, startdir = parse_commandline_options()
+	rootdir, startdir, debug = parse_commandline_options()
 
 	gtk.gdk.threads_init()
-	py = pyrenamer.pyRenamer(rootdir, startdir)
+	py = pyrenamer.pyRenamer(rootdir, startdir, debug)
 	gtk.main()
-    
+
 
 if __name__ == "__main__":
     main()
