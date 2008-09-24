@@ -121,7 +121,7 @@ def get_file_listing_recursive(dir, mode, pattern=None):
             if STOP: return filelist
             if dbg.DEBUG: dbg.print_dbg("get_file_listing_recursive: start get_file_list: %s" % dir)
             elem = get_file_listing(os.path.join(root, directory), mode, pattern)
-            dbg.print_dbg("get_file_listing_recursive: stop get_file_list: %s" % dir)
+            if dbg.DEBUG: dbg.print_dbg("get_file_listing_recursive: stop get_file_list: %s" % dir)
             for i in elem:
                 if STOP: return filelist
                 filelist.append(i)

@@ -1448,6 +1448,10 @@ class pyRenamer:
     def populate_add_to_view(self, listing):
         """ Add files to the treeview """
 
+        print "ListStore"
+    	import time
+    	t1 = time.time()
+
         if self.debug: dbg.print_dbg("populate_add_to_view: start")
 
         self.selected_files.set_model(None)
@@ -1480,6 +1484,9 @@ class pyRenamer:
         self.count = 0
 
         if self.debug: dbg.print_dbg("populate_add_to_view: stop")
+
+        t2 = time.time()
+        print "time", t2 - t1
 
         yield False
 
@@ -1520,13 +1527,16 @@ class pyRenamer:
 
     def get_icon(self, path):
 
+        if self.debug: dbg.print_dbg("get_icon: icon_theme_get_default %s" % path)
         icon_theme = gtk.icon_theme_get_default()
         if ospath.isdir(path):
             try:
+                if self.debug: dbg.print_dbg("get_icon: load_icon gnome-fs-directory %s" % path)
                 icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
                 return icon
             except gobject.GError, exc:
                 try:
+                    if self.debug: dbg.print_dbg("get_icon: load_icon gtk-directory %s" % path)
                     icon = icon_theme.load_icon("gtk-directory", 16, 0)
                     return icon
                 except:
@@ -1556,6 +1566,7 @@ class pyRenamer:
                 mime = "package-x-generic"
 
             try:
+                if self.debug: dbg.print_dbg("get_icon: load_icon %s %s" % (mime, path))
                 icon = icon_theme.load_icon(mime, gtk.ICON_SIZE_MENU, 0)
                 return icon
             except gobject.GError, exc:
