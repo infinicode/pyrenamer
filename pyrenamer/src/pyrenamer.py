@@ -71,7 +71,11 @@ class pyRenamer:
         self.menu_cb = pyrenamer_menu_cb.PyrenamerMenuCB(self)
 
         # Load default icons from current theme
-        self.get_default_icons()
+        icon_theme = self.get_default_icons()
+
+        # If icon theme changes, reload icons
+        icon_theme.connect("changed", self.icon_theme_changed)
+
 
         # Main variables
         self.count = 0
@@ -1538,6 +1542,13 @@ class pyRenamer:
             self.icon_package = icon_theme.load_icon("package-x-generic", gtk.ICON_SIZE_MENU, 0)
         except gobject.GError, exc:
             self.icon_package = None
+
+
+        return icon_theme
+
+
+    def icon_theme_changed(self, icon_theme):
+        self.get_default_icons()
 
 
     def get_icon(self, path):
