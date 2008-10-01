@@ -418,7 +418,7 @@ class pyRenamer:
     def create_model(self):
     	""" Create the model to hold the needed data
         Model = [file, /path/to/file, newfilename, /path/to/newfilename] """
-        self.file_selected_model = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gtk.gdk.Pixbuf)
+        self.file_selected_model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_STRING, gtk.gdk.Pixbuf)
         self.selected_files.set_model(self.file_selected_model)
 
         renderer0 = gtk.CellRendererPixbuf()
@@ -1435,20 +1435,21 @@ class pyRenamer:
     def populate_add_to_view(self, listing):
         """ Add files to the treeview """
 
+        # Don't display things while we're populating
+        self.selected_files.set_model(None)
+
         # Add items to treeview
         for elem in listing:
-            iter = self.file_selected_model.insert_before(None, None)
 
-            self.selected_files.set_model(None)
-            self.file_selected_model.set_value(iter, 0, elem[0])
-            self.file_selected_model.set_value(iter, 1, elem[1])
-            self.file_selected_model.set_value(iter, 4, self.get_icon(elem[1]))
+            row = [elem[0], elem[1], None, None, self.get_icon(elem[1])]
+            self.file_selected_model.append(row)
 
             self.progressbar.pulse()
             self.statusbar.push(self.statusbar_context, _("Adding file %s") % elem[1])
             self.count += 1
             yield True
 
+        # Show on treeview, reset progressbar and statusbar
         self.selected_files.set_model(self.file_selected_model)
         self.progressbar.set_fraction(0)
         self.statusbar.push(self.statusbar_context, _("Directory: %s - Files: %s") % (self.active_dir, self.count))
