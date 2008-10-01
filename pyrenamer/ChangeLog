@@ -1,5 +1,11 @@
 2008-10-01  Adolfo González Blázquez  <code@infinicode.org>
 
+	* src/pyrenamer.py: (__init__), (get_default_icons),
+	  (get_icon):
+	Load icons once at start, and the use it again and again.
+
+2008-10-01  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/pyrenamer.py: (create_model), (populate_add_to_view):
 	Use gtk.ListStore instead of gtk.TreeStore to store files on treeview.
 

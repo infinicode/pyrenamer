@@ -70,6 +70,9 @@ class pyRenamer:
 
         self.menu_cb = pyrenamer_menu_cb.PyrenamerMenuCB(self)
 
+        # Load default icons from current theme
+        self.get_default_icons()
+
         # Main variables
         self.count = 0
         self.populate_id = []
@@ -1492,22 +1495,56 @@ class pyRenamer:
         f.close()
 
 
+    def get_default_icons(self):
+
+        # Load default icon theme
+        icon_theme = gtk.icon_theme_get_default()
+
+        # Load directory icon
+        try:
+            self.icon_dir = icon_theme.load_icon("gnome-fs-directory", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            try:
+                self.icon_dir =  icon_theme.load_icon("gtk-directory", gtk.ICON_SIZE_MENU, 0)
+            except:
+                self.icon_dir = None
+
+        # Load text icon
+        try:
+            self.icon_text = icon_theme.load_icon("text-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_text = None
+
+        # Load image icon
+        try:
+            self.icon_image = icon_theme.load_icon("image-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_image = None
+
+        # Load audio icon
+        try:
+            self.icon_audio = icon_theme.load_icon("audio-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_audio = None
+
+        # Load video icon
+        try:
+            self.icon_video = icon_theme.load_icon("video-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_video = None
+
+        # Load package icon
+        try:
+            self.icon_package = icon_theme.load_icon("package-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_package = None
+
+
     def get_icon(self, path):
 
-        icon_theme = gtk.icon_theme_get_default()
         if ospath.isdir(path):
-            try:
-                icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
-                return icon
-            except gobject.GError, exc:
-                try:
-                    icon = icon_theme.load_icon("gtk-directory", 16, 0)
-                    return icon
-                except:
-                    return None
+            return self.icon_dir
         else:
-
-            mime = "text-x-generic"
 
             audio = ["mp3", "ogg", "wav", "aiff"]
             image = ["jpg", "gif", "png", "tiff", "tif", "jpeg"]
@@ -1518,22 +1555,15 @@ class pyRenamer:
             ext = (file.split('.')[-1]).lower()
 
             if ext in audio:
-                mime = "audio-x-generic"
-
+                return self.icon_audio
             elif ext in image:
-                mime = "image-x-generic"
-
+                return self.icon_image
             elif ext in video:
-                mime = "video-x-generic"
-
+                return self.icon_video
             elif ext in package:
-                mime = "package-x-generic"
-
-            try:
-                icon = icon_theme.load_icon(mime, gtk.ICON_SIZE_MENU, 0)
-                return icon
-            except gobject.GError, exc:
-                return None
+                return self.icon_package
+            else:
+                return self.icon_text
 
 
 #---------------------------------------------------------------------------------------
