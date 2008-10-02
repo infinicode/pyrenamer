@@ -66,6 +66,9 @@ class TreeFileBrowser(gobject.GObject):
 
         gobject.GObject.__init__(self)
 
+        #Load icons
+        self.get_default_icons()
+
         self.show_hidden = False
         self.show_only_dirs = True
         self.show_rules_hint = True
@@ -395,48 +398,48 @@ class TreeFileBrowser(gobject.GObject):
 
     def get_folder_closed_icon(self):
         """ Returns a pixbuf with the current theme closed folder icon """
-
-        icon_theme = gtk.icon_theme_get_default()
-        try:
-            icon = icon_theme.load_icon("gnome-fs-directory", 16, 0)
-            return icon
-        except gobject.GError, exc:
-            #print "Can't load icon", exc
-            try:
-                icon = icon_theme.load_icon("gtk-directory", 16, 0)
-                return icon
-            except:
-                #print "Can't load default icon"
-                return None
+        return self.icon_folder_closed
 
 
     def get_folder_opened_icon(self):
         """ Returns a pixbuf with the current theme opened folder icon """
-
-        icon_theme = gtk.icon_theme_get_default()
-        try:
-            icon = icon_theme.load_icon("gnome-fs-directory-accept", 16, 0)
-            return icon
-        except gobject.GError, exc:
-            #print "Can't load icon", exc
-            try:
-                icon = icon_theme.load_icon("gtk-directory", 16, 0)
-                return icon
-            except:
-                #print "Can't load default icon"
-                return None
+        return self.icon_folder_opened
 
 
     def get_file_icon(self):
         """ Returns a pixbuf with the current theme file icon """
+        return self.icon_file
 
+
+    def get_default_icons(self):
+        """ Load icons and store theme """
+
+        # Load default icon theme
         icon_theme = gtk.icon_theme_get_default()
+
+        # Load opened directory icon
         try:
-            icon = icon_theme.load_icon("text-x-generic", gtk.ICON_SIZE_MENU, 0)
-            return icon
+            self.icon_folder_closed = icon_theme.load_icon("gnome-fs-directory", gtk.ICON_SIZE_MENU, 0)
         except gobject.GError, exc:
-            #print "Can't load icon", exc
-            return None
+            try:
+                self.icon_folder_closed = icon_theme.load_icon("gtk-directory", gtk.ICON_SIZE_MENU, 0)
+            except:
+                self.icon_folder_closed = None
+
+        # Load closed directory icon
+        try:
+            self.icon_folder_opened = icon_theme.load_icon("gnome-fs-directory-accept", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            try:
+                self.icon_folder_opened = icon_theme.load_icon("gtk-directory", gtk.ICON_SIZE_MENU, 0)
+            except:
+                self.icon_folder_opened = None
+
+        # Load text icon
+        try:
+            self.icon_file = icon_theme.load_icon("text-x-generic", gtk.ICON_SIZE_MENU, 0)
+        except gobject.GError, exc:
+            self.icon_file = None
 
 
     #####################################################
