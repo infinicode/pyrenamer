@@ -1,5 +1,14 @@
 2008-10-02  Adolfo González Blázquez  <code@infinicode.org>
 
+	* data/pyrenamer.glade:
+	* src/pyrenamer.py: (__init__), (preview_rename_rows),
+	  (on_insert_radio_toggled), (on_delete_radio_toggled),
+	  (on_delete_end_toggled):
+	* src/pyrenamer_filefuncs.py: (delete_from):
+	Add option to delete a number of chars from the end of the filename.
+
+2008-10-02  Adolfo González Blázquez  <code@infinicode.org>
+
 	* src/treefilebrowser.py: (__init__), (get_default_icons),
 	  (get_default_icons), (get_default_icons), (get_default_icons):
 	Load icons once at start, and the use it again and again.

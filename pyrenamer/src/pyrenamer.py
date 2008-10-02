@@ -162,6 +162,7 @@ class pyRenamer:
         self.delete_radio = self.glade_tree.get_widget("delete_radio")
         self.delete_from = self.glade_tree.get_widget("delete_from")
         self.delete_to = self.glade_tree.get_widget("delete_to")
+        self.delete_end = self.glade_tree.get_widget("delete_end")
 
         self.manual = self.glade_tree.get_widget("manual")
         self.menu_clear_preview = self.glade_tree.get_widget("menu_clear_preview")
@@ -274,6 +275,7 @@ class pyRenamer:
                     "on_delete_radio_toggled": self.on_delete_radio_toggled,
                     "on_delete_from_changed": self.on_delete_from_changed,
                     "on_delete_to_changed": self.on_delete_to_changed,
+                    "on_delete_end_toggled": self.on_delete_end_toggled,
 
                     "on_images_original_pattern_changed": self.on_images_original_pattern_changed,
                     "on_images_renamed_pattern_changed": self.on_images_renamed_pattern_changed,
@@ -377,6 +379,7 @@ class pyRenamer:
         # Init delete radio buttons
         self.delete_from.set_sensitive(False)
         self.delete_to.set_sensitive(False)
+        self.delete_end.set_sensitive(False)
 
         # Init pattern comboboxes
         self.populate_pattern_combos()
@@ -524,7 +527,8 @@ class pyRenamer:
             elif self.delete_radio.get_active():
                 ini = int(self.delete_from.get_value())-1
                 to = int(self.delete_to.get_value())-1
-                newname, newpath = renamerfilefuncs.delete_from(newname, newpath, ini, to)
+                end = self.delete_end.get_active()
+                newname, newpath = renamerfilefuncs.delete_from(newname, newpath, ini, to, end)
 
         elif self.notebook.get_current_page() == 3:
             # Manual rename
@@ -854,6 +858,7 @@ class pyRenamer:
         self.insert_end.set_sensitive(True)
         self.delete_from.set_sensitive(False)
         self.delete_to.set_sensitive(False)
+        self.delete_end.set_sensitive(False)
         if self.autopreview:
             self.on_preview_button_clicked(None)
 
@@ -889,6 +894,7 @@ class pyRenamer:
         self.menu_rename.set_sensitive(False)
         self.delete_from.set_sensitive(True)
         self.delete_to.set_sensitive(True)
+        self.delete_end.set_sensitive(True)
         self.insert_entry.set_sensitive(False)
         self.insert_pos.set_sensitive(False)
         self.insert_end.set_sensitive(False)
@@ -914,6 +920,15 @@ class pyRenamer:
             self.delete_to.set_value(self.delete_from.get_value())
         if self.autopreview:
             self.on_preview_button_clicked(None)
+
+
+    def on_delete_end_toggled(self, widget):
+        """ Disable Rename button (user has to click on Preview again) """
+        self.rename_button.set_sensitive(False)
+        self.menu_rename.set_sensitive(False)
+        if self.autopreview:
+            self.on_preview_button_clicked(None)
+
 
     def on_manual_changed(self, widget):
         """ Disable Rename button (user has to click on Preview again) """

@@ -685,8 +685,17 @@ def insert_at(name, path, text, pos):
     return unicode(newname), unicode(newpath)
 
 
-def delete_from(name, path, ini, to):
+def delete_from(name, path, ini, to, end):
     """ Delete chars from ini till to"""
+
+    inin = ini
+    ton  = to
+
+    if end:
+        ini = len(name) -1 - ton
+        to  = len(name) -1 - inin
+        if ini < 0: ini = 0
+
     textini = name[0:ini]
     textend = name[to+1:len(name)]
     newname = textini + textend
