@@ -8,12 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-01 17:00+0200\n"
-"PO-Revision-Date: 2008-09-16 22:35+0200\n"
-"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"POT-Creation-Date: 2008-10-02 13:46+0200\n"
+"PO-Revision-Date: 2008-10-02 13:51+0100\n"
+"Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type:  text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -21,7 +21,8 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Dateien massenweise umbenennen"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:177
+#: ../data/pyrenamer.desktop.in.in.in.h:2
+#: ../data/pyrenamer.glade.h:178
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -74,9 +75,7 @@ msgid "<b>Rename music using its metadata</b>"
 msgstr "<b>Musik anhand ihrer Meta-Daten umbennen</b>"
 
 #: ../data/pyrenamer.glade.h:14
-msgid ""
-"<i>Put the mouse over the text fields to get help on which patterns you can "
-"use</i>"
+msgid "<i>Put the mouse over the text fields to get help on which patterns you can use</i>"
 msgstr ""
 "<i>Bewegen Sie den Mauszeiger über die Textfelder, um Hilfe bezüglich der \n"
 "nutzbaren Muster zu bekommen</i>"
@@ -518,22 +517,26 @@ msgid "at"
 msgstr "bei"
 
 #: ../data/pyrenamer.glade.h:176
+msgid "from the end"
+msgstr "aus dem Ende"
+
+#: ../data/pyrenamer.glade.h:177
 msgid "or at the end"
 msgstr "oder am Ende"
 
-#: ../data/pyrenamer.glade.h:178
+#: ../data/pyrenamer.glade.h:179
 msgid "pyRenamer preferences"
 msgstr "pyRenamer Voreinstellungen"
 
-#: ../data/pyrenamer.glade.h:179
+#: ../data/pyrenamer.glade.h:180
 msgid "to"
 msgstr "bis"
 
-#: ../data/pyrenamer.glade.h:180
+#: ../data/pyrenamer.glade.h:181
 msgid "with"
 msgstr "durch"
 
-#: ../data/pyrenamer.glade.h:181
+#: ../data/pyrenamer.glade.h:182
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -547,7 +550,7 @@ msgstr ""
 "{X}\t\tZahlen, Buchstaben, und Leerzeichen\n"
 "{@}\tMüll"
 
-#: ../data/pyrenamer.glade.h:186
+#: ../data/pyrenamer.glade.h:187
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -562,11 +565,8 @@ msgstr ""
 "{@}\tMüll "
 
 #: ../data/pyrenamer.schemas.in.h:1
-msgid ""
-"0: Rename files / 1: Rename directories / 2: Rename files and directories"
-msgstr ""
-"0: Dateien umbenennen / 1: Ordner umbenennen / 2: Dateien und Ordner "
-"umbenennen"
+msgid "0: Rename files / 1: Rename directories / 2: Rename files and directories"
+msgstr "0: Dateien umbenennen / 1: Ordner umbenennen / 2: Dateien und Ordner umbenennen"
 
 #: ../data/pyrenamer.schemas.in.h:2
 msgid "Auto preview changes"
@@ -616,15 +616,15 @@ msgstr "X-Position des Fensters"
 msgid "Y position of the window"
 msgstr "Y-Position des Fensters"
 
-#: ../src/pyrenamer.py:441
+#: ../src/pyrenamer.py:440
 msgid "Original file name"
 msgstr "Ursprünglicher Dateiname"
 
-#: ../src/pyrenamer.py:446
+#: ../src/pyrenamer.py:445
 msgid "Renamed file name"
 msgstr "Umbenannter Dateiname"
 
-#: ../src/pyrenamer.py:463
+#: ../src/pyrenamer.py:462
 #, python-format
 msgid ""
 "Could not rename file %s to %s\n"
@@ -633,31 +633,32 @@ msgstr ""
 "Konnte Datei »%s« nicht nach »%s« umbenennen\n"
 "%s"
 
-#: ../src/pyrenamer.py:1336
+#: ../src/pyrenamer.py:1347
 msgid "Select file"
 msgstr "Wähle Datei"
 
-#: ../src/pyrenamer.py:1387
+#: ../src/pyrenamer.py:1398
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Lese Inhalt des Ordners »%s«"
 
-#: ../src/pyrenamer.py:1406 ../src/pyrenamer.py:1466
+#: ../src/pyrenamer.py:1417
+#: ../src/pyrenamer.py:1477
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Ordner: »%s« - Dateien: %s"
 
-#: ../src/pyrenamer.py:1459
+#: ../src/pyrenamer.py:1470
 #, python-format
 msgid "Adding file %s"
 msgstr "Füge Datei »%s« hinzu"
 
-#: ../src/pyrenamer.py:1591
+#: ../src/pyrenamer.py:1602
 msgid "Ignore errors"
 msgstr "Ignorieren Fehler"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1605
+#: ../src/pyrenamer.py:1616
 msgid "translator-credits"
 msgstr ""
 "Vinzenz Vietzke <vinz@v1nz.org>\n"
@@ -697,7 +698,8 @@ msgstr "Wählen Sie den Ursprungs-Ordner"
 msgid "Select active directory"
 msgstr "Wählen Sie den aktiven Ordner"
 
-#: ../src/pyrenamer_prefs.py:147 ../src/pyrenamer_prefs.py:170
+#: ../src/pyrenamer_prefs.py:147
+#: ../src/pyrenamer_prefs.py:170
 msgid ""
 "\n"
 "The root directory is not valid!\n"
@@ -707,7 +709,8 @@ msgstr ""
 "Der Ursprungs-Ordner ist ungültig!\n"
 "Bitte wählen Sie einen anderen Ordner."
 
-#: ../src/pyrenamer_prefs.py:150 ../src/pyrenamer_prefs.py:174
+#: ../src/pyrenamer_prefs.py:150
+#: ../src/pyrenamer_prefs.py:174
 msgid ""
 "\n"
 "The active directory is not valid!\n"
@@ -717,7 +720,8 @@ msgstr ""
 "Der aktive Ordner ist ungültig!\n"
 "Bitte wählen Sie einen anderen Ordner."
 
-#: ../src/pyrenamer_prefs.py:158 ../src/pyrenamer_prefs.py:183
+#: ../src/pyrenamer_prefs.py:158
+#: ../src/pyrenamer_prefs.py:183
 msgid ""
 "\n"
 "Please set both directories!"
@@ -739,18 +743,16 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> »%s«"
 
-#: ../src/treefilebrowser.py:389
+#: ../src/treefilebrowser.py:392
 msgid "Show hidden files"
 msgstr "Versteckte Dateien anzeigen"
 
 #~ msgid "<b>Rename MP3s using their ID3 tags</b>"
 #~ msgstr "<b>MP3s anhand ihrere ID3-Tags umbenennen</b>"
-
 #~ msgid "{1}"
 #~ msgstr "{1}"
-
 #~ msgid "{X}"
 #~ msgstr "{X}"
-
 #~ msgid "Last selected dir"
 #~ msgstr "Last selected dir"
+

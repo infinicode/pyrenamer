@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pyrenamer 0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-01 17:00+0200\n"
-"PO-Revision-Date: 2008-10-01 17:00+0100\n"
+"POT-Creation-Date: 2008-10-02 13:46+0200\n"
+"PO-Revision-Date: 2008-10-02 13:47+0100\n"
 "Last-Translator: Adolfo González Blázquez <code@infinicode.org>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 msgid "Mass rename files"
 msgstr "Renombramiento masivo de archivos"
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:177
+#: ../data/pyrenamer.desktop.in.in.in.h:2
+#: ../data/pyrenamer.glade.h:178
 msgid "pyRenamer"
 msgstr "pyRenamer"
 
@@ -74,18 +75,12 @@ msgid "<b>Rename music using its metadata</b>"
 msgstr "<b>Renombrar música usando sus metadatos</b>"
 
 #: ../data/pyrenamer.glade.h:14
-msgid ""
-"<i>Put the mouse over the text fields to get help on which patterns you can "
-"use</i>"
-msgstr ""
-"<i>Ponga el ratón sobre los campos de texto para obtener ayuda sobre los "
-"patrones que puede usar</i>"
+msgid "<i>Put the mouse over the text fields to get help on which patterns you can use</i>"
+msgstr "<i>Ponga el ratón sobre los campos de texto para obtener ayuda sobre los patrones que puede usar</i>"
 
 #: ../data/pyrenamer.glade.h:15
 msgid "<i>Select the file to rename, change its name and click Preview</i>"
-msgstr ""
-"<i>Seleccione el archivo a renombrar, cambie su nombre y haga click en "
-"\"Vista previa\"</i>"
+msgstr "<i>Seleccione el archivo a renombrar, cambie su nombre y haga click en \"Vista previa\"</i>"
 
 #: ../data/pyrenamer.glade.h:16
 msgid "<i>The default selected directory</i>"
@@ -518,22 +513,26 @@ msgid "at"
 msgstr "en"
 
 #: ../data/pyrenamer.glade.h:176
+msgid "from the end"
+msgstr "desde el final"
+
+#: ../data/pyrenamer.glade.h:177
 msgid "or at the end"
 msgstr "o al final"
 
-#: ../data/pyrenamer.glade.h:178
+#: ../data/pyrenamer.glade.h:179
 msgid "pyRenamer preferences"
 msgstr "Preferencias de pyRenamer"
 
-#: ../data/pyrenamer.glade.h:179
+#: ../data/pyrenamer.glade.h:180
 msgid "to"
 msgstr "hasta"
 
-#: ../data/pyrenamer.glade.h:180
+#: ../data/pyrenamer.glade.h:181
 msgid "with"
 msgstr "con"
 
-#: ../data/pyrenamer.glade.h:181
+#: ../data/pyrenamer.glade.h:182
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -547,7 +546,7 @@ msgstr ""
 "{X}\t\tNúmeros, letras y espacios\n"
 "{@}\tBasura"
 
-#: ../data/pyrenamer.glade.h:186
+#: ../data/pyrenamer.glade.h:187
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -562,11 +561,8 @@ msgstr ""
 "{@}\tBasura"
 
 #: ../data/pyrenamer.schemas.in.h:1
-msgid ""
-"0: Rename files / 1: Rename directories / 2: Rename files and directories"
-msgstr ""
-"0: Renombrar ficheros / 1: Renombrar directorios / 2: Renombrar ficheros y "
-"directorios"
+msgid "0: Rename files / 1: Rename directories / 2: Rename files and directories"
+msgstr "0: Renombrar ficheros / 1: Renombrar directorios / 2: Renombrar ficheros y directorios"
 
 #: ../data/pyrenamer.schemas.in.h:2
 msgid "Auto preview changes"
@@ -616,15 +612,15 @@ msgstr "Posición X de la ventana"
 msgid "Y position of the window"
 msgstr "Posición Y de la ventana"
 
-#: ../src/pyrenamer.py:441
+#: ../src/pyrenamer.py:440
 msgid "Original file name"
 msgstr "Nombre de archivo original"
 
-#: ../src/pyrenamer.py:446
+#: ../src/pyrenamer.py:445
 msgid "Renamed file name"
 msgstr "Nombre de archivo nuevo"
 
-#: ../src/pyrenamer.py:463
+#: ../src/pyrenamer.py:462
 #, python-format
 msgid ""
 "Could not rename file %s to %s\n"
@@ -633,31 +629,32 @@ msgstr ""
 "No se pudo renombrar el archivo %s a %s\n"
 "%s"
 
-#: ../src/pyrenamer.py:1336
+#: ../src/pyrenamer.py:1347
 msgid "Select file"
 msgstr "Seleccionar fichero"
 
-#: ../src/pyrenamer.py:1387
+#: ../src/pyrenamer.py:1398
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr "Leyendo el contenido del directorio %s"
 
-#: ../src/pyrenamer.py:1406 ../src/pyrenamer.py:1466
+#: ../src/pyrenamer.py:1417
+#: ../src/pyrenamer.py:1477
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr "Directorio: %s - Archivos: %s"
 
-#: ../src/pyrenamer.py:1459
+#: ../src/pyrenamer.py:1470
 #, python-format
 msgid "Adding file %s"
 msgstr "Añadiendo archivo %s"
 
-#: ../src/pyrenamer.py:1591
+#: ../src/pyrenamer.py:1602
 msgid "Ignore errors"
 msgstr "Ignorar errores"
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1605
+#: ../src/pyrenamer.py:1616
 msgid "translator-credits"
 msgstr "Adolfo González Blázquez <code@infinicode.org>"
 
@@ -695,7 +692,8 @@ msgstr "Seleccione el directorio raíz"
 msgid "Select active directory"
 msgstr "Seleccione el directorio activo"
 
-#: ../src/pyrenamer_prefs.py:147 ../src/pyrenamer_prefs.py:170
+#: ../src/pyrenamer_prefs.py:147
+#: ../src/pyrenamer_prefs.py:170
 msgid ""
 "\n"
 "The root directory is not valid!\n"
@@ -705,7 +703,8 @@ msgstr ""
 "¡El directorio raíz no es válido!\n"
 "Por favor, seleccione otro directorio."
 
-#: ../src/pyrenamer_prefs.py:150 ../src/pyrenamer_prefs.py:174
+#: ../src/pyrenamer_prefs.py:150
+#: ../src/pyrenamer_prefs.py:174
 msgid ""
 "\n"
 "The active directory is not valid!\n"
@@ -715,7 +714,8 @@ msgstr ""
 "¡El directorio activo no es válido!\n"
 "Por favor, seleccione otro directorio."
 
-#: ../src/pyrenamer_prefs.py:158 ../src/pyrenamer_prefs.py:183
+#: ../src/pyrenamer_prefs.py:158
+#: ../src/pyrenamer_prefs.py:183
 msgid ""
 "\n"
 "Please set both directories!"
@@ -737,18 +737,16 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr "<b>Original: </b> %s"
 
-#: ../src/treefilebrowser.py:389
+#: ../src/treefilebrowser.py:392
 msgid "Show hidden files"
 msgstr "Mostrar archivos ocultos"
 
 #~ msgid "<b>Rename MP3s using their ID3 tags</b>"
 #~ msgstr "<b>Renombrar MP3s usando su etiquetas ID3</b>"
-
 #~ msgid "{1}"
 #~ msgstr "{1}"
-
 #~ msgid "{X}"
 #~ msgstr "{X}"
-
 #~ msgid "Last selected dir"
 #~ msgstr "Último directorio seleccionado"
+

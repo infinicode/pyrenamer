@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-01 17:00+0200\n"
+"POT-Creation-Date: 2008-10-02 13:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Mass rename files"
 msgstr ""
 
-#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:177
+#: ../data/pyrenamer.desktop.in.in.in.h:2 ../data/pyrenamer.glade.h:178
 msgid "pyRenamer"
 msgstr ""
 
@@ -390,22 +390,26 @@ msgid "at"
 msgstr ""
 
 #: ../data/pyrenamer.glade.h:176
+msgid "from the end"
+msgstr ""
+
+#: ../data/pyrenamer.glade.h:177
 msgid "or at the end"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:178
+#: ../data/pyrenamer.glade.h:179
 msgid "pyRenamer preferences"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:179
+#: ../data/pyrenamer.glade.h:180
 msgid "to"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:180
+#: ../data/pyrenamer.glade.h:181
 msgid "with"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:181
+#: ../data/pyrenamer.glade.h:182
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -414,7 +418,7 @@ msgid ""
 "{@}\tTrash"
 msgstr ""
 
-#: ../data/pyrenamer.glade.h:186
+#: ../data/pyrenamer.glade.h:187
 msgid ""
 "{#}\tNumbers\n"
 "{L}\t\tLetters\n"
@@ -476,46 +480,46 @@ msgstr ""
 msgid "Y position of the window"
 msgstr ""
 
-#: ../src/pyrenamer.py:441
+#: ../src/pyrenamer.py:440
 msgid "Original file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:446
+#: ../src/pyrenamer.py:445
 msgid "Renamed file name"
 msgstr ""
 
-#: ../src/pyrenamer.py:463
+#: ../src/pyrenamer.py:462
 #, python-format
 msgid ""
 "Could not rename file %s to %s\n"
 "%s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1336
+#: ../src/pyrenamer.py:1347
 msgid "Select file"
 msgstr ""
 
-#: ../src/pyrenamer.py:1387
+#: ../src/pyrenamer.py:1398
 #, python-format
 msgid "Reading contents of dir %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1406 ../src/pyrenamer.py:1466
+#: ../src/pyrenamer.py:1417 ../src/pyrenamer.py:1477
 #, python-format
 msgid "Directory: %s - Files: %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1459
+#: ../src/pyrenamer.py:1470
 #, python-format
 msgid "Adding file %s"
 msgstr ""
 
-#: ../src/pyrenamer.py:1591
+#: ../src/pyrenamer.py:1602
 msgid "Ignore errors"
 msgstr ""
 
 #. about.set_artists(pyrenamerglob.artists)
-#: ../src/pyrenamer.py:1605
+#: ../src/pyrenamer.py:1616
 msgid "translator-credits"
 msgstr ""
 
@@ -585,6 +589,6 @@ msgstr ""
 msgid "<b>Original: </b> %s"
 msgstr ""
 
-#: ../src/treefilebrowser.py:389
+#: ../src/treefilebrowser.py:392
 msgid "Show hidden files"
 msgstr ""
