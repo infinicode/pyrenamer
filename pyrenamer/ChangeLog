@@ -1,3 +1,8 @@
+2008-10-06  Adolfo González Blázquez  <code@infinicode.org>
+
+	* doc/pyrenamer.1:
+	Updated man page.
+
 2008-10-02  Adolfo González Blázquez  <code@infinicode.org>
 
 	* data/pyrenamer.glade:
