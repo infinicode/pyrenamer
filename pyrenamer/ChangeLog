@@ -1,3 +1,8 @@
+2008-10-07  Adolfo González Blázquez  <code@infinicode.org>
+
+	* src/pyrenamer.py: (get_icon):
+	Added a few more extensions for displaying their icons.
+
 2008-10-06  Adolfo González Blázquez  <code@infinicode.org>
 
 	* doc/pyrenamer.1:

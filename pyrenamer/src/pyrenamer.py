@@ -1572,8 +1572,8 @@ class pyRenamer:
             return self.icon_dir
         else:
 
-            audio = ["mp3", "ogg", "wav", "aiff"]
-            image = ["jpg", "gif", "png", "tiff", "tif", "jpeg"]
+            audio = ["mp3", "ogg", "wav", "aiff", "mp4", "aac"]
+            image = ["jpg", "gif", "png", "tiff", "tif", "jpeg", "xcf", "psd", "svg"]
             video = ["avi", "ogm", "mpg", "mpeg", "mov"]
             package = ["rar", "zip", "gz", "tar", "bz2", "tgz", "deb", "rpm"]
 
