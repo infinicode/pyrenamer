@@ -1,3 +1,9 @@
+2008-11-08  Adolfo González Blázquez  <code@infinicode.org>
+
+	* LINGUAS:
+	* cs.po:
+	Added Czech translation, thanks to Luboš Toman.
+
 2008-10-02  Adolfo González Blázquez  <code@infinicode.org>
 
 	* de.po:
